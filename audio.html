@@ -9,7 +9,27 @@
 <body class="bg-stone-100 font-sans">
   <div class="container mx-auto py-20 px-4">
     <h1 class="text-3xl font-bold text-forest-dark mb-8">声享 · 有声读物与音乐</h1>
-    <p class="text-stone text-lg mb-4">这里将展示生态主题的音频、自然音乐等内容。</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- 音频卡片1：本地音频 -->
+      <div class="bg-white p-6 rounded-xl shadow flex flex-col items-center">
+        <h2 class="font-semibold text-lg mb-2">森林雨声</h2>
+        <audio controls class="w-full mb-2">
+          <source src="assets/audio/forest-rain.mp3" type="audio/mp3">
+          您的浏览器不支持音频播放。
+        </audio>
+        <p class="text-stone text-sm">暴雨过后森林中的雨声与水滴声</p>
+      </div>
+      <!-- 音频卡片2：外链音频（如网易云/喜马拉雅等） -->
+      <div class="bg-white p-6 rounded-xl shadow flex flex-col items-center">
+        <h2 class="font-semibold text-lg mb-2">鸟鸣清晨</h2>
+        <audio controls class="w-full mb-2">
+          <source src="https://www.example.com/audio/bird-morning.mp3" type="audio/mp3">
+          您的浏览器不支持音频播放。
+        </audio>
+        <p class="text-stone text-sm">清晨森林中各种鸟类的歌唱</p>
+      </div>
+      <!-- 可继续添加更多音频卡片 -->
+    </div>
     <a href="index.html" class="text-forest hover:underline mt-8 inline-block">返回首页</a>
   </div>
 </body>
