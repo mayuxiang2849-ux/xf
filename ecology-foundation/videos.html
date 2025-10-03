@@ -2,41 +2,34 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>光影 | 生态宣传片</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光影 | 西丰县林业生态公益基金会</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header>
-    <img src="assets/images/logo.png" alt="基金会LOGO" class="logo">
-    <nav>
-      <a href="index.html">首页</a>
-      <a href="videos.html">光影</a>
-      <a href="articles.html">文苑</a>
-      <a href="audio.html">声享</a>
-      <a href="about.html">关于我们</a>
-    </nav>
-  </header>
-  <main>
-    <h1>光影 | 生态宣传片</h1>
-    <div class="video-grid">
-      <!-- 示例视频卡片 -->
-      <div class="video-card">
-        <img src="assets/images/video-thumb1.jpg" alt="森林宣传片">
-        <h2>森林的呼吸</h2>
-        <p>标签：森林、气候变化</p>
-        <a href="#">观看</a>
+<body class="bg-stone-100 font-sans">
+  <div class="container mx-auto py-20 px-4">
+    <h1 class="text-3xl font-bold text-forest-dark mb-8">光影 · 生态纪录片精选</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- B站纪录片合集 -->
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h2 class="font-semibold text-xl mb-4">《中国生态》纪录片（央视网）</h2>
+        <p class="mb-2 text-stone">央视网出品，全面展现中国多样生态。</p>
+        <a href="https://tv.cctv.com/2023/05/24/VIDAri1k9q4Ff6xQzR2eNk3J230524.shtml" target="_blank" class="text-forest hover:underline mb-4 inline-block">央视网观看全集</a>
+        <img src="https://img.cctvnews.cctv.com/2023/05/24/VIDAri1k9q4Ff6xQzR2eNk3J230524.jpg" alt="中国生态" class="rounded-xl w-full">
       </div>
-      <div class="video-card">
-        <img src="assets/images/video-thumb2.jpg" alt="海洋纪录片">
-        <h2>蔚蓝之心</h2>
-        <p>标签：海洋</p>
-        <a href="#">观看</a>
+
+      <!-- B站生态纪录片 -->
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h2 class="font-semibold text-xl mb-4">《自然的力量》B站合集</h2>
+        <p class="mb-2 text-stone">B站UP主整理，超清中字，适合国内观众。</p>
+        <a href="https://www.bilibili.com/video/BV1aK4y1a7R8/" target="_blank" class="text-forest hover:underline mb-4 inline-block">B站观看精选</a>
+        <div class="aspect-w-16 aspect-h-9 mb-2">
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1aK4y1a7R8&page=1" scrolling="no" frameborder="no" allowfullscreen="true" width="100%" height="400"></iframe>
+        </div>
       </div>
-      <!-- 更多视频可后续添加 -->
     </div>
-  </main>
-  <footer>
-    <div>西丰县林业生态公益基金会 © 2025</div>
-  </footer>
+    <a href="index.html" class="text-forest hover:underline mt-8 inline-block">返回首页</a>
+  </div>
 </body>
 </html>
