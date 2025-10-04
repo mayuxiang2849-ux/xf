@@ -1,35 +1,151 @@
-<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>声享 | 西丰县林业生态公益基金会</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="西丰县林业生态公益基金会 - 声享频道，有声读物与自然音乐精选。">
+    <title>声享 - 西丰县林业生态公益基金会</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: { dark: '#0F3817', DEFAULT: '#1A5E20', medium: '#2E7D32', light: '#4CAF50', accent: '#81C784' },
+                        earth: { dark: '#5D4037', DEFAULT: '#795548', light: '#A1887F' },
+                        stone: { dark: '#424242', DEFAULT: '#616161', light: '#E0E0E0' }
+                    },
+                    fontFamily: { sans: ['Noto Sans SC', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+            .transition-custom { transition: all 0.3s ease; }
+        }
+    </style>
 </head>
-<body class="bg-stone-100 font-sans">
-  <div class="container mx-auto py-20 px-4">
-    <h1 class="text-3xl font-bold text-forest-dark mb-8">声享 · 有声读物与自然音乐</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- 网易云音乐自然白噪音 -->
-      <div class="bg-white p-6 rounded-xl shadow flex flex-col items-center">
-        <h2 class="font-semibold text-lg mb-2">森林雨声·冥想白噪音</h2>
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="https://music.163.com/outchain/player?type=2&id=29567053&auto=0&height=66"></iframe>
-        <p class="text-stone text-sm mt-2">网易云音乐：自然白噪音，助眠冥想。</p>
-      </div>
-      <!-- 喜马拉雅有声故事 -->
-      <div class="bg-white p-6 rounded-xl shadow flex flex-col items-center">
-        <h2 class="font-semibold text-lg mb-2">《森林故事》有声读物</h2>
-        <a href="https://www.ximalaya.com/album/25732894" target="_blank" class="text-forest hover:underline">喜马拉雅收听</a>
-        <p class="text-stone text-sm mt-2">喜马拉雅FM：生态故事音频集。</p>
-      </div>
-      <!-- B站自然音乐 -->
-      <div class="bg-white p-6 rounded-xl shadow flex flex-col items-center">
-        <h2 class="font-semibold text-lg mb-2">鸟鸣清晨·自然音乐</h2>
-        <iframe src="//player.bilibili.com/player.html?aid=32186875&bvid=BV1Zs411V7uZ&cid=56149963&page=1" scrolling="no" frameborder="no" allowfullscreen="true" width="330" height="86"></iframe>
-        <p class="text-stone text-sm mt-2">B站：清晨森林鸟鸣，放松身心。</p>
-      </div>
-    </div>
-    <a href="index.html" class="text-forest hover:underline mt-8 inline-block">返回首页</a>
-  </div>
+<body class="font-sans bg-stone-100">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-forest-dark">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="assets/images/logo.png" alt="LOGO" class="h-12 w-auto">
+                <div>
+                    <h1 class="text-white text-xl md:text-2xl font-bold text-shadow">西丰县林业生态公益基金会</h1>
+                    <p class="text-forest-accent text-sm md:text-base">生态心声 · 万物有灵</p>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-white hover:text-forest-accent transition-custom font-medium">首页</a>
+                <a href="videos.html" class="text-white hover:text-forest-accent transition-custom font-medium">光影</a>
+                <a href="articles.html" class="text-white hover:text-forest-accent transition-custom font-medium">文苑</a>
+                <a href="audio.html" class="text-white hover:text-forest-accent transition-custom font-medium">声享</a>
+                <a href="about.html" class="text-white hover:text-forest-accent transition-custom font-medium">关于我们</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fa fa-bars"></i></button>
+        </nav>
+        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">首页</a>
+                <a href="videos.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">光影</a>
+                <a href="articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">文苑</a>
+                <a href="audio.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">声享</a>
+                <a href="about.html" class="text-white hover:text-forest-accent py-2 transition-custom">关于我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 内容区 -->
+    <section class="py-20 bg-white mt-20">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold text-forest-dark mb-8">声享频道 - 有声读物与自然音乐</h1>
+            <p class="text-stone mb-12">放松身心，点击卡片播放。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 音频1 -->
+                <a href="audio/audio1.html" class="block bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
+                    <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://picsum.photos/id/177/400/400" alt="森林雨声" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
+                        <button class="absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
+                            <i class="fa fa-play"></i>
+                        </button>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-1 group-hover:text-forest transition-custom">森林雨声·冥想白噪音</h3>
+                    <p class="text-stone text-sm mb-3">网易云音乐：自然白噪音，助眠冥想。</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-forest text-sm"><i class="fa fa-volume-up mr-1"></i> 自然白噪音</span>
+                        <span class="text-stone text-sm">45:20</span>
+                    </div>
+                </a>
+                
+                <!-- 音频2 -->
+                <a href="audio/audio2.html" class="block bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
+                    <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://picsum.photos/id/180/400/400" alt="鸟鸣清晨" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
+                        <button class="absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
+                            <i class="fa fa-play"></i>
+                        </button>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-1 group-hover:text-forest transition-custom">鸟鸣清晨</h3>
+                    <p class="text-stone text-sm mb-3">清晨森林中各种鸟类的歌唱</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-forest text-sm"><i class="fa fa-volume-up mr-1"></i> 自然声音</span>
+                        <span class="text-stone text-sm">30:15</span>
+                    </div>
+                </a>
+                
+                <!-- 音频3 -->
+                <a href="audio/audio3.html" class="block bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
+                    <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://picsum.photos/id/235/400/400" alt="森林故事：古树" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
+                        <button class="absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
+                            <i class="fa fa-play"></i>
+                        </button>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-1 group-hover:text-forest transition-custom">森林故事：古树</h3>
+                    <p class="text-stone text-sm mb-3">讲述百年古树的生命历程</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-forest text-sm"><i class="fa fa-book mr-1"></i> 有声读物</span>
+                        <span class="text-stone text-sm">22:45</span>
+                    </div>
+                </a>
+                
+                <!-- 音频4 -->
+                <a href="audio/audio4.html" class="block bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
+                    <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://picsum.photos/id/240/400/400" alt="自然冥想音乐" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
+                        <button class="absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
+                            <i class="fa fa-play"></i>
+                        </button>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-1 group-hover:text-forest transition-custom">自然冥想音乐</h3>
+                    <p class="text-stone text-sm mb-3">结合自然声音的冥想音乐</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-forest text-sm"><i class="fa fa-music mr-1"></i> 纯音乐</span>
+                        <span class="text-stone text-sm">60:00</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-forest-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-white/60 text-sm">© 2025 西丰县林业生态公益基金会. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+    </script>
 </body>
 </html>
