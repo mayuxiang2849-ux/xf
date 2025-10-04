@@ -1,35 +1,121 @@
-<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>光影 | 西丰县林业生态公益基金会</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="西丰县林业生态公益基金会 - 光影频道，生态纪录片精选。">
+    <title>光影 - 西丰县林业生态公益基金会</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: { dark: '#0F3817', DEFAULT: '#1A5E20', medium: '#2E7D32', light: '#4CAF50', accent: '#81C784' },
+                        earth: { dark: '#5D4037', DEFAULT: '#795548', light: '#A1887F' },
+                        stone: { dark: '#424242', DEFAULT: '#616161', light: '#E0E0E0' }
+                    },
+                    fontFamily: { sans: ['Noto Sans SC', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+            .transition-custom { transition: all 0.3s ease; }
+        }
+    </style>
 </head>
-<body class="bg-stone-100 font-sans">
-  <div class="container mx-auto py-20 px-4">
-    <h1 class="text-3xl font-bold text-forest-dark mb-8">光影 · 生态纪录片精选</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-      <!-- B站纪录片合集 -->
-      <div class="bg-white p-6 rounded-xl shadow">
-        <h2 class="font-semibold text-xl mb-4">《中国生态》纪录片（央视网）</h2>
-        <p class="mb-2 text-stone">央视网出品，全面展现中国多样生态。</p>
-        <a href="https://tv.cctv.com/2023/05/24/VIDAri1k9q4Ff6xQzR2eNk3J230524.shtml" target="_blank" class="text-forest hover:underline mb-4 inline-block">央视网观看全集</a>
-        <img src="https://img.cctvnews.cctv.com/2023/05/24/VIDAri1k9q4Ff6xQzR2eNk3J230524.jpg" alt="中国生态" class="rounded-xl w-full">
-      </div>
-
-      <!-- B站生态纪录片 -->
-      <div class="bg-white p-6 rounded-xl shadow">
-        <h2 class="font-semibold text-xl mb-4">《自然的力量》B站合集</h2>
-        <p class="mb-2 text-stone">B站UP主整理，超清中字，适合国内观众。</p>
-        <a href="https://www.bilibili.com/video/BV1aK4y1a7R8/" target="_blank" class="text-forest hover:underline mb-4 inline-block">B站观看精选</a>
-        <div class="aspect-w-16 aspect-h-9 mb-2">
-          <iframe src="//player.bilibili.com/player.html?bvid=BV1aK4y1a7R8&page=1" scrolling="no" frameborder="no" allowfullscreen="true" width="100%" height="400"></iframe>
+<body class="font-sans bg-stone-100">
+    <!-- 导航栏 (同主页) -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-forest-dark">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="assets/images/logo.png" alt="LOGO" class="h-12 w-auto">
+                <div>
+                    <h1 class="text-white text-xl md:text-2xl font-bold text-shadow">西丰县林业生态公益基金会</h1>
+                    <p class="text-forest-accent text-sm md:text-base">生态心声 · 万物有灵</p>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-white hover:text-forest-accent transition-custom font-medium">首页</a>
+                <a href="videos.html" class="text-white hover:text-forest-accent transition-custom font-medium">光影</a>
+                <a href="articles.html" class="text-white hover:text-forest-accent transition-custom font-medium">文苑</a>
+                <a href="audio.html" class="text-white hover:text-forest-accent transition-custom font-medium">声享</a>
+                <a href="about.html" class="text-white hover:text-forest-accent transition-custom font-medium">关于我们</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fa fa-bars"></i></button>
+        </nav>
+        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">首页</a>
+                <a href="videos.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">光影</a>
+                <a href="articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">文苑</a>
+                <a href="audio.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">声享</a>
+                <a href="about.html" class="text-white hover:text-forest-accent py-2 transition-custom">关于我们</a>
+            </div>
         </div>
-      </div>
-    </div>
-    <a href="index.html" class="text-forest hover:underline mt-8 inline-block">返回首页</a>
-  </div>
+    </header>
+
+    <!-- 内容区 -->
+    <section class="py-20 bg-white mt-20">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold text-forest-dark mb-8">光影频道 - 生态纪录片精选</h1>
+            <p class="text-stone mb-12">全面展现中国多样生态，点击卡片查看详情。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 视频1 -->
+                <a href="videos/video1.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://media.istockphoto.com/id/603903118/photo/look-up-in-a-dense-pine-forest.jpg?s=612x612&w=0&k=20&c=qyBpYoF1MdN1ALTIeWQO7XtgV85T6Z4k0UIRupU7Tl8=" alt="中国生态" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                            <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-play"></i></span>
+                        </div>
+                        <span class="absolute top-3 right-3 bg-forest-dark/80 text-white text-sm px-2 py-1 rounded">全集</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">《中国生态》纪录片（央视网）</h3>
+                        <p class="text-stone mb-4 line-clamp-2">央视网出品，全面展现中国多样生态。</p>
+                        <span class="text-stone text-sm">2025-10-04</span>
+                    </div>
+                </a>
+                
+                <!-- 视频2 -->
+                <a href="videos/video2.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://thumbs.dreamstime.com/b/environment-forest-nature-lake-summer-conservation-sustainability-ecosystem-jungle-landscape-river-315421486.jpg" alt="自然的力量" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                            <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-play"></i></span>
+                        </div>
+                        <span class="absolute top-3 right-3 bg-forest-dark/80 text-white text-sm px-2 py-1 rounded">合集</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">《自然的力量》B站合集</h3>
+                        <p class="text-stone mb-4 line-clamp-2">B站UP主整理，超清中字，适合国内观众。</p>
+                        <span class="text-stone text-sm">2025-10-04</span>
+                    </div>
+                </a>
+                
+                <!-- 添加更多视频卡片如果有 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 (同主页) -->
+    <footer class="bg-forest-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-white/60 text-sm">© 2025 西丰县林业生态公益基金会. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+    </script>
 </body>
 </html>
