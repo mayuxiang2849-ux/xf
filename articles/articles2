@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>树木的秘密生活 —— 地下真菌网络的奇迹</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2E7D32', // 深绿色作为主色调
+                        secondary: '#8D6E63', // 棕色调作为辅助色
+                        accent: '#4CAF50', // 亮绿色作为强调色
+                        neutral: '#F5F5F5', // 浅灰色作为背景
+                        earth: '#A1887F', // 土色
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'sans-serif'],
+                        serif: ['Noto Serif SC', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            }
+            .bg-texture {
+                background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23a1887f' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            }
+            .image-hover {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .image-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-neutral bg-texture font-sans text-gray-800">
+    <!-- 顶部导航栏 -->
+    <header class="bg-primary shadow-md sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300 flex items-center">
+                <i class="fa fa-tree mr-2 text-xl"></i>
+                <span>返回主页</span>
+            </a>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 标题区域 -->
+    <section class="relative bg-primary py-16 md:py-24 overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/818c21683ffe447d95d920e5037eef22.jpeg~tplv-a9rns2rl98-24:720:720.png?rcl=202510050253012C1AA7E0357537E4F73D&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760208782&x-signature=LAmL4eT5PQEX%2B3mWPXCNpVhKvxE%3D" 
+                 alt="土壤剖面背景" 
+                 class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 text-shadow leading-tight">
+                    树木的秘密生活 —— 地下真菌网络的奇迹
+                </h1>
+                <p class="text-xl text-gray-100 italic">文章由西丰县林业公益基金会制作</p>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-neutral to-transparent"></div>
+    </section>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto">
+            <!-- 引言 -->
+            <section class="mb-16">
+                <p class="text-lg leading-relaxed mb-6">
+                    在森林的地表之下，隐藏着一个庞大而复杂的 "地下互联网"—— 由真菌菌丝编织而成的网络将森林中的树木紧密连接在一起。这个被称为 "菌根网络"(Mycorrhizal Network) 的系统，是植物与真菌经过 4 亿多年协同进化形成的共生关系，不仅是养分交换的通道，更是植物间传递信息的通讯网络。近年来的科学研究揭示，这个地下网络不仅支撑着森林生态系统的健康运转，更为人类应对气候变化、发展可持续农业提供了重要启示。
+                </p>
+            </section>
+
+            <!-- 第一部分 -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-serif font-bold text-primary mb-6 pb-2 border-b-2 border-accent">
+                    一、地下网络的构建：真菌与植物的共生联盟
+                </h2>
+                
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">1.1 菌根网络的基本构成</h3>
+                <p class="leading-relaxed mb-4">
+                    菌根 (Mycorrhiza) 一词源于希腊语，意为 "真菌 - 根系"，描述的是土壤真菌与植物根系形成的共生联合体。这种共生关系可以追溯到 4 亿多年前，是植物从水生环境向陆地过渡时形成的关键适应性特征。在这一关系中，真菌的菌丝体如同植物根系的延伸，向外扩展形成庞大的网络，而植物则为真菌提供光合作用产生的碳水化合物。
+                </p>
+                <p class="leading-relaxed mb-6">
+                    根据真菌与植物根系的结合方式，菌根主要分为两种类型：
+                </p>
+                <ul class="list-disc pl-8 mb-8 space-y-2">
+                    <li>外生菌根 (Ectomycorrhizal, EM)：主要由担子菌门和子囊菌门的真菌形成，在植物根系表面形成致密的菌丝鞘 (mantle)，并在根细胞间隙生长形成哈蒂氏网 (Hartig net)，不穿透植物细胞。橡树、松树、桦树等木本植物多形成外生菌根。</li>
+                    <li>丛枝菌根 (Arbuscular Mycorrhizal, AM)：由球囊菌门的真菌形成，不仅在根系表面形成菌丝网络，还会穿透根细胞形成树状 "丛枝"(Arbuscules)（养分交换核心场所），可与 70%-90% 的陆地植物（含多数农作物）共生。</li>
+                </ul>
+
+                <!-- 图1：菌根结构 -->
+                <div class="my-10">
+                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden image-hover">
+                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/c1207a7a010a4383aee46c9e9416dbf7.png~tplv-a9rns2rl98-24:720:720.png?rcl=202510050253012C1AA7E0357537E4F73D&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760208782&x-signature=yQYs1lriQDnoqWFHvcmYvgdlhrM%3D" 
+                             alt="菌根结构示意图，展示小麦根横切和香豌豆根纵切中的内生菌丝" 
+                             class="w-full h-auto">
+                        <figcaption class="p-4 text-center text-gray-600 italic">
+                            图1：外生菌根与丛枝菌根结构对比（标注菌丝鞘、哈蒂氏网、丛枝等关键结构）
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">1.2 真菌与植物的识别与信号交流</h3>
+                <p class="leading-relaxed mb-6">
+                    菌根网络的建立始于真菌与植物的 "化学对话"：
+                </p>
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li>植物根系释放独脚金内酯 (Strigolactones) 等化学物质，刺激真菌孢子萌发与菌丝分支；</li>
+                    <li>真菌接触根系后，通过钙离子振荡、蛋白质互作等分子机制传递信号；</li>
+                    <li>植物通过 "菌根因子受体"(Mycorrhizal Factor Receptors) 识别真菌信号，区分 "有益真菌" 与 "有害病原体"，确保共生关系精准建立。</li>
+                </ul>
+
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">1.3 菌丝网络的扩展与连接</h3>
+                <p class="leading-relaxed mb-6">
+                    真菌与宿主植物建立联系后，菌丝向外扩展形成复杂网络：
+                </p>
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li>菌丝直径仅 2-10 微米，1 平方米森林土壤中菌丝总长可达数百公里，能穿透岩石缝隙与土壤颗粒；</li>
+                    <li>菌丝可连接周围多株植物根系，形成跨物种、跨区域的网络，单一真菌基因型曾被发现连接直径 2 公里范围内的树木，构成 "森林超级网络"。</li>
+                </ul>
+
+                <!-- 图2：菌根网络扩展 -->
+                <div class="my-10">
+                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden image-hover">
+                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/30ce6ffce1aa41c6aaf94969dc125ffe.jpeg~tplv-a9rns2rl98-24:720:720.png?rcl=202510050253012C1AA7E0357537E4F73D&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760208782&x-signature=Kv4kp1Ph9acoaKQLpwvH7k4juBI%3D" 
+                             alt="有丛枝菌根和无丛枝菌根的植物对比，显示菌根对植物吸收水分和养分的影响" 
+                             class="w-full h-auto">
+                        <figcaption class="p-4 text-center text-gray-600 italic">
+                            图2：真菌菌丝网络扩展示意图（展示菌丝连接多棵树木的 "超级网络" 范围）
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- 第二部分 -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-serif font-bold text-primary mb-6 pb-2 border-b-2 border-accent">
+                    二、地下网络的功能：资源交换与信息传递
+                </h2>
+                
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">2.1 养分交换的双向通道</h3>
+                <p class="leading-relaxed mb-6">
+                    菌根网络遵循 "公平交易" 原则，实现植物与真菌的养分双向流动：
+                </p>
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li>磷的获取：真菌菌丝延伸至根系无法到达的区域，通过 H⁺-ATP 酶吸收磷酸盐（转化为多聚磷酸盐），植物以 4%-20% 的净光合产量（糖、脂肪酸）作为 "报酬"；</li>
+                    <li>氮的获取：真菌通过 AMT1 高亲和力铵转运蛋白吸收 NH₄⁺/NO₃⁻，在细胞内转化为精氨酸等氨基酸后传递给植物；</li>
+                    <li>碳源突破：2017 年王二涛团队（《科学》）证实，脂肪酸而非糖是植物向丛枝菌根真菌传递的主要碳源。</li>
+                </ul>
+
+                <!-- 图3：养分交换示意图 -->
+                <div class="my-10">
+                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden image-hover">
+                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/ec64433e698a45dc843cdb113f2908e1.png~tplv-a9rns2rl98-24:720:720.png?rcl=202510050253012C1AA7E0357537E4F73D&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760208782&x-signature=jNW5LIz9%2BYURFZL6HTq92znpxpc%3D" 
+                             alt="菌根共生体中物质交换示意图，展示碳、氮、水等的流动" 
+                             class="w-full h-auto">
+                        <figcaption class="p-4 text-center text-gray-600 italic">
+                            图3：菌根网络养分交换示意图（标注碳、磷、氮的流动方向与关键分子机制）
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">2.2 植物间的资源再分配</h3>
+                <p class="leading-relaxed mb-6">
+                    菌根网络是森林的 "资源共享系统"，核心功能包括：
+                </p>
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li>从富到贫的流动：光照充足的植物向阴生植物输送碳，湿润区域植物向干旱植物调配水分，提升森林整体生存能力；</li>
+                    <li>母树的 "代际哺育"：森林中 "母树"（古老树木）通过网络优先向后代幼苗输送 40% 的碳资源，使幼苗存活率提升 400%；死亡前还会加速传递碳、氮，完成 "生态遗产" 交接；</li>
+                    <li>竞争与互惠平衡：真菌优先向提供更多碳水化合物的植物分配养分（"选择性投资"），但不同真菌菌株间的竞争可能降低传递效率。</li>
+                </ul>
+
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">2.3 植物间的信息传递与防御信号</h3>
+                <p class="leading-relaxed mb-6">
+                    菌根网络是植物的 "预警通讯系统"，可传递多种危机信号：
+                </p>
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li>虫害预警：植物受昆虫攻击时，通过菌丝释放化学信号（如茉莉酸、水杨酸），邻近植物 6 小时内激活防御酶（LOX、AOC、PAL）与抗病基因（PR3、PI-1），虫害损伤减少 80%；</li>
+                    <li>病原体防御：病原体入侵时，网络传递信号使其他植物提前合成植保素、强化细胞壁，响应速度提升 60%；</li>
+                    <li>跨物种通讯：如桦树被蚜虫啃咬时，通过菌丝向松树、橡树传递 "驱虫警报素"，增强群落防御；</li>
+                    <li>协同 "空中对话"：菌根网络可强化植物释放的挥发性有机化合物 (VOCs) 信号，提升 "空中通讯" 效率。</li>
+                </ul>
+            </section>
+
+            <!-- 第三部分 -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-serif font-bold text-primary mb-6 pb-2 border-b-2 border-accent">
+                    三、菌根网络的生态意义与功能
+                </h2>
+                
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">3.1 生物多样性的守护者</h3>
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li>抑制优势物种扩张：通过调节资源分配，限制优势树种过度竞争，为弱势物种保留生存空间，使森林物种多样性提升 35%；</li>
+                    <li>保护稀有物种：如兰科植物完全依赖特定菌根真菌获取养分，网络为其提供生存基础；</li>
+                    <li>助力森林更新：幼苗通过网络获取 60% 的碳需求，在阴暗林下存活至获得阳光，存活率比未连接个体高数倍。</li>
+                </ul>
+
+                <!-- 图4：菌根网络与植物多样性 -->
+                <div class="my-10">
+                    <figure class="bg-white rounded-lg shadow-lg overflow-hidden image-hover">
+                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/9fa567e3bf254d02aba6a59f7c7dd84a.jpeg~tplv-a9rns2rl98-24:720:720.png?rcl=202510050253012C1AA7E0357537E4F73D&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760208782&x-signature=7qRWi23rTlCE7t7kqFoON566vOo%3D" 
+                             alt="不同植物的根系与菌根网络连接示意图，展示菌根对生物多样性的支持" 
+                             class="w-full h-auto">
+                        <figcaption class="p-4 text-center text-gray-600 italic">
+                            图4：母树通过菌根网络哺育幼苗（标注碳资源流向与存活率提升数据）
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">3.2 森林生态系统的稳定器</h3>
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li>优化养分循环：外生菌根真菌减缓凋落物分解，促进表层颗粒有机质 (POM) 积累；丛枝菌根真菌通过菌丝周转促进深层矿物结合有机质 (MAOM) 形成，构成 "快速 - 慢速" 分解连续体；</li>
+                    <li>改善土壤结构：菌丝（尤其丛枝菌根真菌分泌的球囊霉素相关土壤蛋白 GRSP）粘结土壤颗粒，形成稳定团聚体，提升通气性与保水性，减少水土流失；</li>
+                    <li>增强抗干扰能力：干旱时，连接网络的松树幼苗死亡率（12%）远低于隔离个体（42%）；火灾、病虫害后，网络可快速协调植物恢复。</li>
+                </ul>
+
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">3.3 气候变化的缓冲器</h3>
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li>强化碳汇：植物 20%-40% 的光合碳通过根系输送给真菌，真菌将部分碳转化为土壤有机碳，全球菌根真菌每年固定约 13 亿吨二氧化碳（占人为碳排放的 10%）；</li>
+                    <li>长期碳储存：外生菌根系统擅长表层 POM 保存，丛枝菌根系统的 MAOM 储量可达外生菌根系统的 2 倍，实现碳的长效封存；</li>
+                    <li>缓解气候影响：高温时维持植物光合效率，极端降水时减少土壤径流，增强生态系统气候适应性。</li>
+                </ul>
+            </section>
+
+            <!-- 第四部分 -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-serif font-bold text-primary mb-6 pb-2 border-b-2 border-accent">
+                    四、菌根网络在农业与生态修复中的应用
+                </h2>
+                
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">4.1 农业生产中的菌根技术</h3>
+                <p class="leading-relaxed mb-4">
+                    减肥增效的菌根菌剂：
+                </p>
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li>王二涛团队突破 "菌种无法体外培养" 技术瓶颈，为菌根制剂产业化奠定基础；</li>
+                    <li>江西农科院培育 "赣菌稻 1 号"，化肥减量 50% 时仍保持产量与品质不变；</li>
+                    <li>增强作物抗性：油梨根际接种菌根真菌可提升根腐病抵抗力；盐碱地作物接种后耐盐性显著提高；</li>
+                    <li>改善作物品质：柑橘园接种外生菌根真菌，根系鲜重增加 45%-55%，果实可溶性糖提升 8%-12%、酸度降低 5%-8%；烟草接种后香气物质含量提升。</li>
+                </ul>
+
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">4.2 森林恢复与生态修复的新工具</h3>
+                <p class="leading-relaxed mb-4">
+                    促进植被恢复：毛乌素沙地樟子松人工林接种菌根真菌后，土壤结构与养分有效性改善，树木生长加速；
+                </p>
+                <p class="leading-relaxed mb-4">
+                    多功能森林恢复框架：
+                </p>
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li>环境评估：解析气候 - 土壤 - 菌根类型匹配度；</li>
+                    <li>物种选择：搭配深根丛枝菌根树种与外生菌根树种，形成垂直资源利用梯度；</li>
+                    <li>本土接种：优先选用本地适生菌株；</li>
+                    <li>动态监测：追踪土壤碳库与生态功能变化；</li>
+                    <li>退化土壤修复：砷污染土壤中，蚯蚓与丛枝菌根真菌协同接种，通过 "植物生长稀释 + 亚细胞砷区隔化"（植物层面）、"激活土壤酶 + 促进砷稳定化"（土壤层面），提升旱稻砷耐受性。</li>
+                </ul>
+
+                <h3 class="text-xl font-serif font-semibold text-secondary mb-4">4.3 菌根网络研究的未来方向</h3>
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li>网络动态与调控机制：探索环境变化对网络结构的影响，及植物 - 真菌对资源分配的调节策略；</li>
+                    <li>多营养级互作：研究土壤细菌、原生动物、线虫等与菌根网络的相互作用，优化网络功能；</li>
+                    <li>跨尺度整合研究：从分子信号（植物 - 真菌对话）到生态系统功能（碳循环），建立多尺度研究体系；</li>
+                    <li>技术创新与应用拓展：利用 DNA 测序解析真菌多样性、同位素示踪追踪资源流动、计算机建模预测网络动态，推动在农业、林业、生态修复中的应用。</li>
+                </ul>
+            </section>
+
+            <!-- 第五部分 -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-serif font-bold text-primary mb-6 pb-2 border-b-2 border-accent">
+                    五、结语：地下网络的启示
+                </h2>
+                
+                <p class="leading-relaxed mb-6">
+                    树木的秘密生活 —— 真菌菌丝编织的地下网络，为人类提供三大核心启示：
+                </p>
+                <ol class="list-decimal pl-8 mb-6 space-y-4">
+                    <li><span class="font-medium">共生共赢的生存智慧：</span>突破 "适者生存" 的单一竞争逻辑，通过合作实现资源高效利用，为应对全球资源短缺提供思路；</li>
+                    <li><span class="font-medium">去中心化的网络力量：</span>无中央节点却具备高灵活性与鲁棒性，为设计高效通讯、能源网络提供自然借鉴；</li>
+                    <li><span class="font-medium">尊重自然的生态伦理：</span>4.5 亿年演化的共生系统提醒人类，自然界的复杂性远超想象，生态保护需以理解自然规律为基础。</li>
+                </ol>
+                
+                <p class="leading-relaxed mb-6">
+                    未来，随着对菌根网络认知的深入，这个地下 "互联网" 将持续为人类揭示自然奥秘，为可持续发展提供解决方案 —— 正如它默默支撑森林生态系统一样，对自然规律的尊重与应用，也将成为人类社会永续发展的根基。
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                    <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300 flex items-center mb-4 md:mb-0">
+                        <i class="fa fa-tree mr-2 text-xl"></i>
+                        <span class="text-lg">返回主页</span>
+                    </a>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300">
+                            <i class="fa fa-facebook-square text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300">
+                            <i class="fa fa-twitter-square text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300">
+                            <i class="fa fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300">
+                            <i class="fa fa-linkedin-square text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="border-t border-gray-600 pt-8 text-center">
+                    <p class="mb-2">西丰县林业公益基金会 © 2023 版权所有</p>
+                    <p class="text-sm text-gray-300">致力于森林保护与生态研究</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    
