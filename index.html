@@ -54,6 +54,21 @@
             .cursor-leaf {
                 cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%232E7D32'%3E%3Cpath d='M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95C4.4,8.35 4.2,9.72 4.5,11H3V13H4.5C4.2,14.28 4.4,15.65 4.95,17H3V19H9.18C9.6,20.2 10.73,21 12,21C13.27,21 14.4,20.2 14.82,19H21V17H19.05C19.6,15.65 19.8,14.28 19.5,13H21V11H19.5C19.8,9.72 19.6,8.35 19.05,7H21V5H14.82C14.4,3.8 13.27,3 12,3M12,5C12.5,5 12.97,5.4 13.08,5.9L17.96,6.96C18.07,8.23 17.32,9.45 16.07,10.11L13.5,11.5V16.5L16.07,17.89C17.32,18.55 18.07,19.77 17.96,21.04L13.08,22.1C12.97,22.6 12.5,23 12,23C11.5,23 11.03,22.6 10.92,22.1L6.04,21.04C5.93,19.77 6.68,18.55 7.93,17.89L10.5,16.5V11.5L7.93,10.11C6.68,9.45 5.93,8.23 6.04,6.96L10.92,5.9C11.03,5.4 11.5,5 12,5Z'/%3E%3C/svg%3E"), auto;
             }
+            @media (max-width: 640px) {
+                #prevSlide {
+                    left: 0.25rem !important; /* 缩小左箭头间距 */
+                }
+                #nextSlide {
+                    right: 0.25rem !important; /* 缩小右箭头间距 */
+                }
+                #prevSlide, #nextSlide {
+                    font-size: 1.5rem !important; /* 缩小箭头大小 */
+                }
+                .carousel-item div.absolute.inset-0.flex { /* 调整文字容器 */
+                    padding-left: 2rem !important;
+                    padding-right: 2rem !important;
+                }
+            }
         }
     </style>
 </head>
@@ -101,11 +116,9 @@
         <div id="carousel" class="h-full">
             <!-- 轮播图片1 -->
             <div class="carousel-item absolute inset-0 opacity-100 transition-opacity duration-1000">
-
-<grok-card data-id="824e73" data-type="image_card"></grok-card>
-
+                <img src="https://media.istockphoto.com/id/1342229191/photo/a-lake-in-the-shape-of-the-worlds-continents-in-the-middle-of-untouched-nature-a-metaphor-for.jpg?s=612x612&w=0&k=20&c=PFwVm05zW04BGBUN9gtSdJpDQVIPcRQuBDWSA4c9EVw=" alt="茂密的森林景观" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-forest-dark/40"></div>
-                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                <div class="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-8">
                     <div>
                         <h2 class="text-white text-[clamp(2rem,5vw,4rem)] font-bold mb-6 text-shadow">回归，是未来的方向</h2>
                         <p class="text-white text-[clamp(1rem,2vw,1.25rem)] mb-8 max-w-2xl mx-auto text-shadow">探索自然之美，聆听生态之声，共同守护我们的绿色家园</p>
@@ -118,11 +131,9 @@
             
             <!-- 轮播图片2 -->
             <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-1000">
-
-<grok-card data-id="2d1cb4" data-type="image_card"></grok-card>
-
+                <img src="https://media.istockphoto.com/id/1044285108/photo/atlantic-forest-in-brazil-mata-atlantica.jpg?s=612x612&w=0&k=20&c=naVsTF9EAp-fWtOj1aC3vMYeb8eAUZVQH8qhphvrwFs=" alt="山间溪流景观" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-forest-dark/40"></div>
-                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                <div class="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-8">
                     <div>
                         <h2 class="text-white text-[clamp(2rem,5vw,4rem)] font-bold mb-6 text-shadow">我们，是生命的编织者</h2>
                         <p class="text-white text-[clamp(1rem,2vw,1.25rem)] mb-8 max-w-2xl mx-auto text-shadow">每一片绿叶，每一滴清泉，都是自然赋予的珍贵礼物</p>
@@ -135,11 +146,9 @@
             
             <!-- 轮播图片3 -->
             <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-1000">
-
-<grok-card data-id="214213" data-type="image_card"></grok-card>
-
+                <img src="https://media.istockphoto.com/id/1331942208/photo/a-conceptual-image-showing-a-lung-shaped-lake-in-a-lush-and-pristine-jungle-3d-rendering.jpg?s=612x612&w=0&k=20&c=rdwSzwujs8Kk1QVFTfPlRXVg69_1joNxtJcgVjcqDK8=" alt="清晨的森林雾气" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-forest-dark/40"></div>
-                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                <div class="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-8">
                     <div>
                         <h2 class="text-white text-[clamp(2rem,5vw,4rem)] font-bold mb-6 text-shadow">万物有灵，生生不息</h2>
                         <p class="text-white text-[clamp(1rem,2vw,1.25rem)] mb-8 max-w-2xl mx-auto text-shadow">沉浸在自然的声音中，感受生命的韵律与力量</p>
@@ -152,10 +161,10 @@
         </div>
         
         <!-- 轮播控制按钮 -->
-        <button id="prevSlide" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-forest-accent transition-custom z-10">
+        <button id="prevSlide" class="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 text-white text-2xl sm:text-4xl hover:text-forest-accent transition-custom z-10">
             <i class="fa fa-chevron-left"></i>
         </button>
-        <button id="nextSlide" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-forest-accent transition-custom z-10">
+        <button id="nextSlide" class="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 text-white text-2xl sm:text-4xl hover:text-forest-accent transition-custom z-10">
             <i class="fa fa-chevron-right"></i>
         </button>
         
@@ -178,9 +187,7 @@
             <!-- 内容分类入口 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <a href="videos.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
-
-<grok-card data-id="ad2dae" data-type="image_card"></grok-card>
-
+                    <img src="https://media.istockphoto.com/id/1474600581/photo/forest-aerial-view-drone-photography-spring-field-sustainability-protection-of-nature.jpg?s=612x612&w=0&k=20&c=a6O1v54XEhPHOJi9JJqxWjHMoioWa3AjCKePFBENpNM=" alt="光影 - 生态视频" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-forest-dark/60 group-hover:bg-forest-dark/70 transition-custom"></div>
                     <div class="relative text-center px-4">
                         <i class="fa fa-film text-white text-5xl mb-4 group-hover:text-forest-accent transition-custom"></i>
@@ -190,9 +197,7 @@
                 </a>
                 
                 <a href="articles.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
-
-<grok-card data-id="1c289d" data-type="image_card"></grok-card>
-
+                    <img src="https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=612x612&w=0&k=20&c=UHeb1pGOw6ozr6utsenXHhV19vW6oiPIxDqhKCS2Llk=" alt="文苑 - 生态文章" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-forest-dark/60 group-hover:bg-forest-dark/70 transition-custom"></div>
                     <div class="relative text-center px-4">
                         <i class="fa fa-book text-white text-5xl mb-4 group-hover:text-forest-accent transition-custom"></i>
@@ -202,9 +207,7 @@
                 </a>
                 
                 <a href="audio.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
-
-<grok-card data-id="7fc2cb" data-type="image_card"></grok-card>
-
+                    <img src="https://media.istockphoto.com/id/1471370789/photo/a-beautiful-forest-in-spring.jpg?s=612x612&w=0&k=20&c=yjyc4EyVeNhNB_OcVFTWjbBrVd2EDQePnpKLn4CWIyM=" alt="声享 - 生态音频" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-forest-dark/60 group-hover:bg-forest-dark/70 transition-custom"></div>
                     <div class="relative text-center px-4">
                         <i class="fa fa-music text-white text-5xl mb-4 group-hover:text-forest-accent transition-custom"></i>
@@ -230,9 +233,7 @@
                     <!-- 视频卡片1 -->
                     <a href="videos/video1.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
                         <div class="relative overflow-hidden">
-
-<grok-card data-id="8f17a8" data-type="image_card"></grok-card>
-
+                            <img src="https://media.istockphoto.com/id/603903118/photo/look-up-in-a-dense-pine-forest.jpg?s=612x612&w=0&k=20&c=qyBpYoF1MdN1ALTIeWQO7XtgV85T6Z4k0UIRupU7Tl8=" alt="森林生态系统" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
                             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
                                 <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center">
                                     <i class="fa fa-play"></i>
@@ -253,9 +254,7 @@
                     <!-- 视频卡片2 -->
                     <a href="videos/video2.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
                         <div class="relative overflow-hidden">
-
-<grok-card data-id="fc7d7f" data-type="image_card"></grok-card>
-
+                            <img src="https://www.shutterstock.com/image-photo/forest-mist-landscape-trees-outdoor-260nw-2569438489.jpg" alt="晨雾中的山谷" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
                             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
                                 <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center">
                                     <i class="fa fa-play"></i>
@@ -276,9 +275,7 @@
                     <!-- 视频卡片3 -->
                     <a href="videos/video3.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
                         <div class="relative overflow-hidden">
-
-<grok-card data-id="8a5362" data-type="image_card"></grok-card>
-
+                            <img src="https://thumbs.dreamstime.com/b/environment-forest-nature-lake-summer-conservation-sustainability-ecosystem-jungle-landscape-river-315421486.jpg" alt="溪流与生物多样性" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
                             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
                                 <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center">
                                     <i class="fa fa-play"></i>
@@ -313,9 +310,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- 重点文章 -->
                     <a href="articles/article1.html" class="relative rounded-xl overflow-hidden h-96 group">
-
-<grok-card data-id="757ae2" data-type="image_card"></grok-card>
-
+                        <img src="https://media.istockphoto.com/id/1331942208/photo/a-conceptual-image-showing-a-lung-shaped-lake-in-a-lush-and-pristine-jungle-3d-rendering.jpg?s=612x612&w=0&k=20&c=rdwSzwujs8Kk1QVFTfPlRXVg69_1joNxtJcgVjcqDK8=" alt="气候变化与森林生态" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-dark/50 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 right-0 p-8">
                             <span class="bg-forest text-white text-sm px-3 py-1 rounded-full">气候变化</span>
@@ -332,9 +327,7 @@
                     <div class="space-y-6">
                         <!-- 文章1 -->
                         <a href="articles/article2.html" class="flex flex-col md:flex-row gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-custom">
-
-<grok-card data-id="d2c6f6" data-type="image_card"></grok-card>
-
+                            <img src="https://img.freepik.com/premium-photo/environment-forest-nature-with-tree-spring-conservation-sustainability-ecosystem-jungle-landscape-green-location-with-rainforest-woods-adventure-exploration-hiking_590464-333729.jpg" alt="树木的秘密生活" class="w-full md:w-48 h-32 object-cover rounded-lg">
                             <div>
                                 <span class="bg-forest-light/20 text-forest text-xs px-3 py-1 rounded-full">森林生态</span>
                                 <h3 class="font-semibold text-lg mt-2 mb-1 hover:text-forest transition-custom">树木的秘密生活：地下网络的奇迹</h3>
@@ -349,9 +342,7 @@
                         
                         <!-- 文章2 -->
                         <a href="articles/article3.html" class="flex flex-col md:flex-row gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-custom">
-
-<grok-card data-id="b5abf3" data-type="image_card"></grok-card>
-
+                            <img src="https://www.shutterstock.com/image-photo/bottomup-view-green-mangrove-forest-600nw-2505695203.jpg" alt="生物多样性保护" class="w-full md:w-48 h-32 object-cover rounded-lg">
                             <div>
                                 <span class="bg-forest-light/20 text-forest text-xs px-3 py-1 rounded-full">保护策略</span>
                                 <h3 class="font-semibold text-lg mt-2 mb-1 hover:text-forest transition-custom">社区参与：生物多样性保护的新模式</h3>
@@ -366,9 +357,7 @@
                         
                         <!-- 文章3 -->
                         <a href="articles/article4.html" class="flex flex-col md:flex-row gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-custom">
-
-<grok-card data-id="06b88e" data-type="image_card"></grok-card>
-
+                            <img src="https://thumbs.dreamstime.com/b/landscape-green-mountains-curve-highway-road-lake-morning-nature-watershed-forest-water-sustainability-concept-387336336.jpg" alt="生态修复案例" class="w-full md:w-48 h-32 object-cover rounded-lg">
                             <div>
                                 <span class="bg-forest-light/20 text-forest text-xs px-3 py-1 rounded-full">修复实践</span>
                                 <h3 class="font-semibold text-lg mt-2 mb-1 hover:text-forest transition-custom">生态修复成功案例：从荒地到绿洲</h3>
@@ -400,9 +389,7 @@
                     <!-- 音频1 -->
                     <a href="audio/audio1.html" class="block bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
                         <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-
-<grok-card data-id="e58283" data-type="image_card"></grok-card>
-
+                            <img src="https://thumbs.dreamstime.com/b/sun-rays-glass-globe-green-forest-moss-sunlight-trees-reflection-sphere-ecology-nature-environment-conservation-concept-367442767.jpg" alt="森林雨声" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
                             <button class="absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
                                 <i class="fa fa-play"></i>
                             </button>
@@ -418,9 +405,7 @@
                     <!-- 音频2 -->
                     <a href="audio/audio2.html" class="block bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
                         <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-
-<grok-card data-id="e864fb" data-type="image_card"></grok-card>
-
+                            <img src="https://thumbs.dreamstime.com/b/forest-sunset-landscape-trees-outdoor-woods-park-overgrowth-summer-environment-greenery-forest-sunset-354043496.jpg" alt="鸟鸣清晨" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
                             <button class="absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
                                 <i class="fa fa-play"></i>
                             </button>
@@ -436,9 +421,7 @@
                     <!-- 音频3 -->
                     <a href="audio/audio3.html" class="block bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
                         <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-
-<grok-card data-id="f52972" data-type="image_card"></grok-card>
-
+                            <img src="https://cbx-prod.b-cdn.net/COLOURBOX63615797.jpg?width=800&height=800&quality=70" alt="森林故事：古树" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
                             <button class="absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
                                 <i class="fa fa-play"></i>
                             </button>
@@ -454,9 +437,7 @@
                     <!-- 音频4 -->
                     <a href="audio/audio4.html" class="block bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
                         <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-
-<grok-card data-id="dc8052" data-type="image_card"></grok-card>
-
+                            <img src="https://media.istockphoto.com/id/1611151233/photo/lakes-of-alaska-in-summer.jpg?s=612x612&w=0&k=20&c=1BHPFeLX0ja6Ur5QHaYr0-HxWBMSvglNTlwURq1ph9Y=" alt="自然冥想音乐" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
                             <button class="absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
                                 <i class="fa fa-play"></i>
                             </button>
@@ -549,7 +530,7 @@
     <script>
         // 移动菜单切换
         const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getId('mobileMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
