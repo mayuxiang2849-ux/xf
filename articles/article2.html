@@ -11,9 +11,9 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2E7D32', // 深绿色作为主色调
+                        primary: '#1E5631', // 调整为更贴近图片的自然绿色
                         secondary: '#8D6E63', // 棕色调作为辅助色
-                        accent: '#4CAF50', // 亮绿色作为强调色
+                        accent: '#70A945', // 调整为图片中的亮绿色作为强调色
                         neutral: '#F5F5F5', // 浅灰色作为背景
                         earth: '#A1887F', // 土色
                     },
@@ -40,6 +40,29 @@
                 transform: translateY(-5px);
                 box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             }
+            .back-to-top {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: theme('colors.primary');
+                color: white;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                opacity: 0;
+                transform: translateY(10px);
+                pointer-events: none;
+            }
+            .back-to-top.visible {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
@@ -48,7 +71,7 @@
     <!-- 顶部导航栏 -->
     <header class="bg-primary shadow-md sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300 flex items-center">
+            <a href="index.html" class="text-white hover:text-gray-200 transition-colors duration-300 flex items-center">
                 <i class="fa fa-tree mr-2 text-xl"></i>
                 <span>返回主页</span>
             </a>
@@ -306,7 +329,7 @@
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
                 <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-                    <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300 flex items-center mb-4 md:mb-0">
+                    <a href="index.html" class="text-white hover:text-gray-200 transition-colors duration-300 flex items-center mb-4 md:mb-0">
                         <i class="fa fa-tree mr-2 text-xl"></i>
                         <span class="text-lg">返回主页</span>
                     </a>
@@ -317,21 +340,4 @@
                         <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300">
                             <i class="fa fa-twitter-square text-2xl"></i>
                         </a>
-                        <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300">
-                            <i class="fa fa-instagram text-2xl"></i>
-                        </a>
-                        <a href="#" class="text-white hover:text-gray-200 transition-colors duration-300">
-                            <i class="fa fa-linkedin-square text-2xl"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="border-t border-gray-600 pt-8 text-center">
-                    <p class="mb-2">西丰县林业公益基金会 © 2023 版权所有</p>
-                    <p class="text-sm text-gray-300">致力于森林保护与生态研究</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- 回到顶部按钮 -->
-    
+                        
