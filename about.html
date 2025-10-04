@@ -5,23 +5,224 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>关于我们 | 西丰县林业生态公益基金会</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: { 
+              dark: '#0F3817', 
+              DEFAULT: '#1A5E20', 
+              medium: '#2E7D32', 
+              light: '#4CAF50', 
+              accent: '#81C784' 
+            },
+            stone: { 
+              dark: '#424242', 
+              DEFAULT: '#616161', 
+              light: '#E0E0E0' 
+            }
+          },
+          fontFamily: { 
+            sans: ['Noto Sans SC', 'sans-serif'] 
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .footer-divider {
+        @apply w-16 h-0.5 bg-forest-accent my-6;
+      }
+    }
+  </style>
 </head>
-<body class="bg-stone-100 font-sans">
-  <div class="container mx-auto py-20 px-4">
-    <h1 class="text-3xl font-bold text-forest-dark mb-8">关于我们</h1>
-    <div class="bg-white p-8 rounded-xl shadow mb-8">
-      <h2 class="font-semibold text-xl mb-3">西丰县林业生态公益基金会简介</h2>
-      <p class="text-stone mb-4">致力于保护西丰及周边地区的森林生态系统，开展生态科普、志愿活动、生态修复等公益项目，实现人与自然和谐共生。</p>
-      <h2 class="font-semibold text-xl mb-3">联系方式</h2>
-      <ul class="mb-4">
-        <li>地址：辽宁省铁岭市西丰县御林尊邸B区</li>
-        <li>电话：18941011179</li>
-        <li>邮箱：1519008300@qq.com</li>
-      </ul>
-      <h2 class="font-semibold text-xl mb-3">加入我们</h2>
-      <p class="text-stone">欢迎加入生态保护志愿者团队，关注基金会公众号或拨打电话了解最新活动。</p>
+<body class="bg-stone-100 font-sans text-stone-dark">
+  <!-- 导航栏 -->
+  <header id="navbar" class="fixed w-full top-0 z-50 bg-forest-dark transition-all duration-300">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-3">
+        <!-- 基金会LOGO -->
+        <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a260d32335004ba4b94b90cc1502d60e.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100420251004500165D25C4FB7DCC4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760185510&x-signature=n9SnY5klyQ7ixYqOWPec3Xl99Fs%3D" 
+             alt="西丰县林业生态公益基金会logo" 
+             class="h-12 w-auto">
+        <div>
+          <h1 class="text-white text-xl md:text-2xl font-bold">西丰县林业生态公益基金会</h1>
+          <p class="text-forest-accent text-sm">生态保护 · 公益同行</p>
+        </div>
+      </a>
+      
+      <!-- 桌面端导航 -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-white hover:text-forest-accent transition-colors">首页</a>
+        <a href="videos.html" class="text-white hover:text-forest-accent transition-colors">光影</a>
+        <a href="articles.html" class="text-white hover:text-forest-accent transition-colors">文苑</a>
+        <a href="projects.html" class="text-white hover:text-forest-accent transition-colors">项目</a>
+        <a href="about.html" class="text-forest-accent border-b-2 border-forest-accent pb-1 font-medium">关于我们</a>
+      </div>
+      
+      <!-- 移动端菜单按钮 -->
+      <button id="mobileMenuBtn" class="md:hidden text-white text-2xl">
+        <i class="fa fa-bars"></i>
+      </button>
+    </nav>
+    
+    <!-- 移动端导航菜单 -->
+    <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95 backdrop-blur-sm">
+      <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+        <a href="index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">首页</a>
+        <a href="videos.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">光影</a>
+        <a href="articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">文苑</a>
+        <a href="projects.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">项目</a>
+        <a href="about.html" class="text-forest-accent py-2">关于我们</a>
+      </div>
     </div>
-    <a href="index.html" class="text-forest hover:underline mt-8 inline-block">返回首页</a>
-  </div>
+  </header>
+
+  <!-- 页面主体内容 -->
+  <main class="container mx-auto px-4 pt-32 pb-16">
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-forest-dark mb-4">关于我们</h2>
+      <div class="w-20 h-1 bg-forest mx-auto"></div>
+    </div>
+    
+    <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg mb-12 max-w-4xl mx-auto">
+      <h3 class="font-semibold text-xl text-forest-dark mb-4 flex items-center">
+        <i class="fa fa-info-circle mr-2 text-forest"></i>西丰县林业生态公益基金会简介
+      </h3>
+      <p class="text-stone mb-6 leading-relaxed">
+        西丰县林业生态公益基金会致力于保护西丰及周边地区的森林生态系统，通过开展生态科普教育、组织志愿者活动、实施生态修复项目等多种方式，推动区域生态环境保护事业发展，促进人与自然和谐共生。
+      </p>
+      
+      <h3 class="font-semibold text-xl text-forest-dark mb-4 mt-8 flex items-center">
+        <i class="fa fa-bullseye mr-2 text-forest"></i>我们的使命与愿景
+      </h3>
+      <p class="text-stone mb-6 leading-relaxed">
+        使命：保护森林生态系统，提升公众环保意识，推动生态可持续发展。<br>
+        愿景：构建人与自然和谐共处的绿色家园，让子孙后代共享生态福祉。
+      </p>
+      
+      <h3 class="font-semibold text-xl text-forest-dark mb-4 mt-8 flex items-center">
+        <i class="fa fa-phone mr-2 text-forest"></i>联系方式
+      </h3>
+      <ul class="text-stone space-y-2 mb-6">
+        <li class="flex items-start">
+          <i class="fa fa-map-marker mt-1 mr-3 text-forest"></i>
+          <span>地址：辽宁省铁岭市西丰县御林尊邸B区</span>
+        </li>
+        <li class="flex items-center">
+          <i class="fa fa-phone mr-3 text-forest"></i>
+          <span>电话：18941011179</span>
+        </li>
+        <li class="flex items-center">
+          <i class="fa fa-envelope mr-3 text-forest"></i>
+          <span>邮箱：1519008300@qq.com</span>
+        </li>
+      </ul>
+      
+      <h3 class="font-semibold text-xl text-forest-dark mb-4 mt-8 flex items-center">
+        <i class="fa fa-users mr-2 text-forest"></i>加入我们
+      </h3>
+      <p class="text-stone leading-relaxed">
+        欢迎加入我们的生态保护志愿者团队！无论您是环保爱好者、专业人士还是普通市民，都可以通过关注基金会公众号或直接拨打电话，了解最新活动信息，为生态保护贡献自己的力量。
+      </p>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-forest-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+      <!-- 三列布局 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <!-- 左侧：关于我们 -->
+        <div>
+          <h4 class="text-xl font-bold mb-4 flex items-center">
+            <i class="fa fa-leaf text-forest-accent mr-2"></i>关于我们
+          </h4>
+          <div class="footer-divider"></div>
+          <p class="text-gray-300 text-sm mb-4">
+            西丰县林业生态公益基金会致力于林业生态保护、生物多样性维护及生态教育推广。
+          </p>
+          <p class="text-gray-300 text-sm">
+            我们相信，每一份努力都能为生态保护贡献力量，共同守护我们的绿色家园。
+          </p>
+        </div>
+        
+        <!-- 第二列：快速链接 -->
+        <div>
+          <h4 class="text-xl font-bold mb-4 flex items-center">
+            <i class="fa fa-link text-forest-accent mr-2"></i>快速链接
+          </h4>
+          <div class="footer-divider"></div>
+          <ul class="space-y-3 text-sm text-gray-300">
+            <li><a href="index.html" class="hover:text-forest-accent transition-colors flex items-center">
+              <i class="fa fa-angle-right mr-2 text-xs"></i>首页
+            </a></li>
+            <li><a href="videos.html" class="hover:text-forest-accent transition-colors flex items-center">
+              <i class="fa fa-angle-right mr-2 text-xs"></i>光影
+            </a></li>
+            <li><a href="articles.html" class="hover:text-forest-accent transition-colors flex items-center">
+              <i class="fa fa-angle-right mr-2 text-xs"></i>文苑
+            </a></li>
+            <li><a href="projects.html" class="hover:text-forest-accent transition-colors flex items-center">
+              <i class="fa fa-angle-right mr-2 text-xs"></i>项目
+            </a></li>
+            <li><a href="about.html" class="hover:text-forest-accent transition-colors flex items-center">
+              <i class="fa fa-angle-right mr-2 text-xs"></i>关于我们
+            </a></li>
+          </ul>
+        </div>
+        
+        <!-- 第三列：LOGO及名称 -->
+        <div>
+          <div class="mb-6 flex justify-center">
+            <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a260d32335004ba4b94b90cc1502d60e.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100420251004500165D25C4FB7DCC4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760185510&x-signature=n9SnY5klyQ7ixYqOWPec3Xl99Fs%3D" 
+                 alt="西丰县林业生态公益基金会logo" 
+                 class="h-24 w-auto">
+          </div>
+          <h4 class="text-lg font-bold text-center mb-4">西丰县林业生态公益基金会</h4>
+          <p class="text-forest-accent text-sm text-center">Xifeng County Forestry Ecological Foundation</p>
+        </div>
+      </div>
+      
+      <!-- 分隔线 -->
+      <div class="border-t border-gray-700 mb-8"></div>
+      
+      <!-- 版权信息区域 -->
+      <div class="text-center text-sm text-gray-400">
+        <p>© 2025 西丰县林业生态公益基金会 版权所有</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 导航栏滚动效果
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 30) {
+        navbar.classList.add('py-2', 'shadow-md');
+        navbar.classList.remove('py-4');
+      } else {
+        navbar.classList.add('py-4');
+        navbar.classList.remove('py-2', 'shadow-md');
+      }
+    });
+    
+    // 移动端菜单切换
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
+    
