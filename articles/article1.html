@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>气候变化对森林生态系统的影响及适应性管理策略</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D5D2A',       // 深绿色（森林主色）
+                        secondary: '#4A7C59',     // 中绿色
+                        accent: '#7FB77E',        // 浅绿色
+                        light: '#E8F5E9',         // 超浅绿背景
+                        dark: '#263238',          // 深灰色文字
+                        muted: '#546E7A',         // 中灰色文字
+                        background: '#FFFFFF',    // 白色背景
+                        sidebar: '#F5F7FA',       // 侧边栏背景
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .chapter-active {
+                @apply bg-light text-primary font-medium border-l-4 border-primary;
+            }
+            .figure-caption {
+                @apply text-sm text-muted text-center mt-2 italic;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-dark font-sans antialiased">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 bg-background border-b border-gray-200 z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <button id="sidebar-toggle" class="lg:hidden p-2 rounded-md hover:bg-light transition-colors">
+                    <i class="fa fa-bars text-primary"></i>
+                </button>
+                <h1 class="text-xl font-bold text-primary truncate max-w-md lg:max-w-xl">
+                    气候变化对森林生态系统的影响及适应性管理策略
+                </h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-md hover:bg-light transition-colors">
+                    <i class="fa fa-moon-o text-primary"></i>
+                </button>
+                <button id="toc-toggle" class="hidden lg:flex p-2 rounded-md hover:bg-light transition-colors">
+                    <i class="fa fa-list text-primary"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex min-h-screen pt-16">
+        <!-- 侧边栏目录 -->
+        <aside id="sidebar" class="fixed top-16 left-0 bottom-0 w-64 bg-sidebar border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40 overflow-y-auto scrollbar-hide">
+            <div class="p-4">
+                <h2 class="text-lg font-semibold text-primary mb-4 flex items-center">
+                    <i class="fa fa-book mr-2"></i>目录
+                </h2>
+                <nav class="space-y-1">
+                    <a href="#intro" class="block px-3 py-2 rounded-md hover:bg-light transition-colors" data-chapter="1">
+                        <i class="fa fa-angle-right mr-2 text-accent"></i>一、引言
+                    </a>
+                    <a href="#impact-types" class="block px-3 py-2 rounded-md hover:bg-light transition-colors" data-chapter="2">
+                        <i class="fa fa-angle-right mr-2 text-accent"></i>二、气候变化对不同类型森林的影响
+                    </a>
+                    <div class="pl-6 space-y-1">
+                        <a href="#impact-tropical" class="block px-3 py-2 rounded-md hover:bg-light text-sm transition-colors">
+                            2.1 对热带雨林的影响
+                        </a>
+                        <a href="#impact-temperate" class="block px-3 py-2 rounded-md hover:bg-light text-sm transition-colors">
+                            2.2 对温带森林的影响
+                        </a>
+                        <a href="#impact-boreal" class="block px-3 py-2 rounded-md hover:bg-light text-sm transition-colors">
+                            2.3 对北方针叶林的影响
+                        </a>
+                    </div>
+                    <a href="#long-term-prediction" class="block px-3 py-2 rounded-md hover:bg-light transition-colors" data-chapter="3">
+                        <i class="fa fa-angle-right mr-2 text-accent"></i>三、长期预测（50-100年）
+                    </a>
+                    <a href="#adaptation-strategies" class="block px-3 py-2 rounded-md hover:bg-light transition-colors" data-chapter="4">
+                        <i class="fa fa-angle-right mr-2 text-accent"></i>四、适应策略
+                    </a>
+                    <div class="pl-6 space-y-1">
+                        <a href="#strategy-research" class="block px-3 py-2 rounded-md hover:bg-light text-sm transition-colors">
+                            4.1 科学研究视角
+                        </a>
+                        <a href="#strategy-policy" class="block px-3 py-2 rounded-md hover:bg-light text-sm transition-colors">
+                            4.2 政策制定视角
+                        </a>
+                        <a href="#strategy-management" class="block px-3 py-2 rounded-md hover:bg-light text-sm transition-colors">
+                            4.3 林业管理视角
+                        </a>
+                        <a href="#strategy-conservation" class="block px-3 py-2 rounded-md hover:bg-light text-sm transition-colors">
+                            4.4 生态保护视角
+                        </a>
+                    </div>
+                    <a href="#case-studies" class="block px-3 py-2 rounded-md hover:bg-light transition-colors" data-chapter="5">
+                        <i class="fa fa-angle-right mr-2 text-accent"></i>五、区域案例分析
+                    </a>
+                    <a href="#conclusion" class="block px-3 py-2 rounded-md hover:bg-light transition-colors" data-chapter="6">
+                        <i class="fa fa-angle-right mr-2 text-accent"></i>六、结论与展望
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="flex-1 lg:ml-64 transition-all duration-300">
+            <div class="container mx-auto px-4 py-8 max-w-4xl">
+                <!-- 制作信息 -->
+                <div class="text-center mb-8">
+                    <p class="text-primary font-medium">本文由 西丰县林业生态公益基金会 制作</p>
+                </div>
+                
+                <!-- 标题区域 -->
+                <div class="mb-12 text-center">
+                    <h1 class="text-3xl md:text-4xl font-bold text-primary mb-4 text-balance">
+                        气候变化对森林生态系统结构与功能的影响及适应性管理策略研究
+                    </h1>
+                    <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                    <p class="text-muted italic">
+                        系统分析全球气候变化对森林生态系统的影响，探讨未来趋势及适应策略
+                    </p>
+                </div>
+
+                <!-- 森林生态系统全景图 -->
+                <figure class="mb-12">
+                    <img src="https://picsum.photos/id/15/1200/400" alt="多样化的森林生态系统全景，展示不同层次的植被和丰富的生物多样性" class="w-full h-auto rounded-xl shadow-md">
+                    <figcaption class="figure-caption">图1：健康的森林生态系统是生物多样性的宝库，同时提供重要的生态系统服务</figcaption>
+                </figure>
+
+                <!-- 森林类型对气候变化敏感度图表 -->
+                <div class="mb-12 bg-light rounded-xl p-4 shadow-sm">
+                    <h3 class="text-lg font-semibold text-primary mb-4 text-center">
+                        不同森林类型对气候变化的敏感度对比
+                    </h3>
+                    <div class="h-64">
+                        <canvas id="sensitivityChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- 一、引言 -->
+                <section id="intro" class="mb-16 scroll-mt-20">
+                    <div class="flex items-center mb-6">
+                        <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3">
+                            <i class="fa fa-info"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-primary">一、引言</h2>
+                    </div>
+                    <div class="prose prose-lg max-w-none text-dark">
+                        <p class="mb-4">
+                            森林是地球上最为复杂和重要的生态系统之一，它们不仅是生物多样性的宝库，还为人类提供了至关重要的生态系统服务，包括碳储存、气候调节、水源涵养、土壤保持和生物栖息地等。然而，全球气候变化正以前所未有的速度和强度影响着森林生态系统的结构和功能。
+                        </p>
+                        <p class="mb-4">
+                            根据最新观测数据，自1959年以来，全球平均气温已经上升了约0.85°C，而这种变暖趋势在高纬度地区表现得更为明显，如北极地区的升温速度是全球平均水平的两倍。气候变化对森林的影响表现在多个方面，包括温度升高、降水模式改变、极端气候事件频率和强度增加等。
+                        </p>
+                        <div class="bg-light p-4 rounded-lg border-l-4 border-primary my-6">
+                            <p class="font-medium text-primary mb-2">关键数据</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>自1959年以来，全球平均气温上升约0.85°C</li>
+                                <li>北极地区升温速度是全球平均水平的两倍</li>
+                                <li>若温室气体排放持续，到2100年全球平均气温可能上升2.5-4.0°C</li>
+                            </ul>
+                        </div>
+                        <p>
+                            本文旨在系统分析全球气候变化对不同类型森林生态系统（包括热带雨林、温带落叶林和北方针叶林）结构和功能的影响，探讨未来50-100年的变化趋势，并从科学研究、政策制定、林业管理和生态保护等多角度提出适应性管理策略。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 二、气候变化对不同类型森林生态系统结构与功能的影响 -->
+                <section id="impact-types" class="mb-16 scroll-mt-20">
+                    <div class="flex items-center mb-6">
+                        <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3">
+                            <i class="fa fa-tree"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-primary">二、气候变化对不同类型森林生态系统结构与功能的影响</h2>
+                    </div>
+
+                    <!-- 2.1 气候变化对热带雨林的影响 -->
+                    <section id="impact-tropical" class="mb-10 scroll-mt-20">
+                        <h3 class="text-xl font-semibold text-secondary mb-4 flex items-center">
+                            <i class="fa fa-leaf text-accent mr-2"></i>2.1 气候变化对热带雨林的影响
+                        </h3>
+                        <div class="prose prose-lg max-w-none text-dark">
+                            <figure class="mb-6">
+                                <img src="https://picsum.photos/id/29/1200/400" alt="茂密的热带雨林景观，高大的树木和丰富的林下植被" class="w-full h-auto rounded-xl shadow-md">
+                                <figcaption class="figure-caption">图2：热带雨林拥有地球上最丰富的生物多样性，但正面临气候变化的严重威胁</figcaption>
+                            </figure>
+                            
+                            <p class="mb-4">
+                                热带雨林是地球上生物多样性最丰富的生态系统，也是重要的碳汇。然而，气候变化正威胁着热带雨林的结构和功能。根据最新研究，热带雨林对气候变化的响应主要表现在温度影响、降水模式改变、极端气候事件增加等方面。
+                            </p>
+                            
+                            <h4 class="text-lg font-medium text-primary mt-6 mb-2">温度影响</h4>
+                            <p class="mb-4">
+                                温度升高对热带雨林的光合作用和碳吸收能力产生负面影响。研究表明，热带雨林的生产力已经开始下降，特别是在较温暖的年份，这种下降趋势更为明显。亚马逊雨林的冠层温度与空气温度的关系发生了变化，大部分时间里冠层温度高于空气温度，这增加了森林碳循环和死亡风险。
+                            </p>
+                            
+                            <h4 class="text-lg font-medium text-primary mt-6 mb-2">降水模式改变</h4>
+                            <p class="mb-4">
+                                气候变化导致热带雨林降水模式的改变，干旱季节延长，干旱事件频率和强度增加。研究表明，2005年和2010年亚马逊地区的严重干旱导致该地区暂时从碳汇转变为碳源，树木死亡率显著增加。
+                            </p>
+                            
+                            <h4 class="text-lg font-medium text-primary mt-6 mb-2">生物多样性影响</h4>
+                            <p>
+                                气候变化导致热带雨林物种分布范围的变化和物种组成的改变。研究表明，热带物种可能因气候变化而面临严重威胁，特别是当高海拔避难所不存在时，由于热带地区纬度温度梯度较浅，物种迁移能力有限。
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- 2.2 气候变化对温带森林的影响 -->
+                    <section id="impact-temperate" class="mb-10 scroll-mt-20">
+                        <h3 class="text-xl font-semibold text-secondary mb-4 flex items-center">
+                            <i class="fa fa-pagelines text-accent mr-2"></i>2.2 气候变化对温带森林的影响
+                        </h3>
+                        <div class="prose prose-lg max-w-none text-dark">
+                            <figure class="mb-6">
+                                <img src="https://picsum.photos/id/137/1200/400" alt="温带森林景观，展示四季分明的植被特征" class="w-full h-auto rounded-xl shadow-md">
+                                <figcaption class="figure-caption">图3：温带森林具有明显的季节性变化，对极端气候事件较为敏感</figcaption>
+                            </figure>
+                            
+                            <p class="mb-4">
+                                温带森林分布在中纬度地区，具有明显的季节性变化，包括落叶林、针叶林和混交林等类型。气候变化对温带森林的影响主要表现在温度影响、降水模式改变、极端气候事件增加等方面。
+                            </p>
+                            
+                            <div class="bg-light p-4 rounded-lg border-l-4 border-primary my-6">
+                                <p class="font-medium text-primary mb-2">欧洲温带森林关键发现</p>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>过去几十年年均温上升速率约为每十年0.4°C，夏季超过0.5°C</li>
+                                    <li>2014年斯洛文尼亚冰风暴导致超过一半森林（609,413公顷）受损</li>
+                                    <li>挪威云杉蓄积量过去20年呈下降趋势，欧洲山毛榉则呈增加趋势</li>
+                                    <li>正经历从针叶树向阔叶树的转变，南部欧洲更为明显</li>
+                                </ul>
+                            </div>
+                            
+                            <h4 class="text-lg font-medium text-primary mt-6 mb-2">极端气候事件</h4>
+                            <p class="mb-4">
+                                极端气候事件（如冰风暴、风灾和火灾）对温带森林的影响日益显著。研究显示，2014年斯洛文尼亚的一场大规模冰风暴导致该国超过一半的森林受损，其中105,856公顷的森林中超过10%的树木受损。气候变化还导致温带森林火灾风险增加，特别是在干旱季节。
+                            </p>
+                            
+                            <h4 class="text-lg font-medium text-primary mt-6 mb-2">干扰机制变化</h4>
+                            <p>
+                                气候变化改变了温带森林的自然干扰机制。研究发现，气候变化导致欧洲温带森林病虫害（如云杉八齿小蠹）爆发频率和强度增加。此外，气候变化还导致风灾风险增加，特别是在沿海地区和高山地带。
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- 2.3 气候变化对北方针叶林的影响 -->
+                    <section id="impact-boreal" class="mb-10 scroll-mt-20">
+                        <h3 class="text-xl font-semibold text-secondary mb-4 flex items-center">
+                            <i class="fa fa-snowflake-o text-accent mr-2"></i>2.3 气候变化对北方针叶林的影响
+                        </h3>
+                        <div class="prose prose-lg max-w-none text-dark">
+                            <figure class="mb-6">
+                                <img src="https://picsum.photos/id/129/1200/400" alt="北方针叶林景观，高大的针叶树和积雪覆盖的地面" class="w-full h-auto rounded-xl shadow-md">
+                                <figcaption class="figure-caption">图4：北方针叶林是地球上最大的陆地生态系统，正经历快速的气候变化</figcaption>
+                            </figure>
+                            
+                            <p class="mb-4">
+                                北方针叶林（又称泰加林）分布在高纬度地区，是地球上最大的陆地生态系统。气候变化对北方针叶林的影响尤为显著，主要表现在温度影响、降水模式改变、冻土融化等方面。
+                            </p>
+                            
+                            <h4 class="text-lg font-medium text-primary mt-6 mb-2">温度影响</h4>
+                            <p class="mb-4">
+                                北方针叶林地区是全球升温最快的区域，升温速度是全球平均水平的两倍以上。这种快速升温对北方针叶林的结构和功能产生深远影响。研究表明，北方针叶林对低温的缓冲作用最为明显，这有助于维持林下植物的多样性和生态系统功能。
+                            </p>
+                            
+                            <h4 class="text-lg font-medium text-primary mt-6 mb-2">冻土融化影响</h4>
+                            <p class="mb-4">
+                                气候变化导致北方针叶林地区永久冻土和季节性冻土的融化，这对森林结构和功能产生深远影响。冻土融化改变了土壤水分状况和养分循环，导致树木生长条件的改变，甚至可能导致树木死亡和森林退化。
+                            </p>
+                            
+                            <p>
+                                此外，冻土融化还释放了大量的有机碳，加剧了气候变化，形成了一个正反馈循环。这种反馈机制可能进一步加速北方针叶林的变化，对全球碳循环产生重大影响。
+                            </p>
+                        </div>
+                    </section>
+                </section>
+
+                <!-- 三、气候变化对森林生态系统影响的长期预测 -->
+                <section id="long-term-prediction" class="mb-16 scroll-mt-20">
+                    <div class="flex items-center mb-6">
+                        <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3">
+                            <i class="fa fa-line-chart"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-primary">三、气候变化对森林生态系统影响的长期预测（50-100年及更长）</h2>
+                    </div>
+
+                    <figure class="mb-8">
+                        <img src="https://picsum.photos/id/110/1200/400" alt="气候变化影响森林的示意图，左侧为健康森林，右侧为受影响的森林" class="w-full h-auto rounded-xl shadow-md">
+                        <figcaption class="figure-caption">图5：气候变化可能导致森林生态系统发生显著转变，影响其结构和功能</figcaption>
+                    </figure>
+
+                    <!-- 未来森林变化预测图表 -->
+                    <div class="mb-8 bg-light rounded-xl p-4 shadow-sm">
+                        <h3 class="text-lg font-semibold text-primary mb-4 text-center">
+                            未来50-100年森林结构变化预测（RCP8.5高排放情景）
+                        </h3>
+                        <div class="h-64">
+                            <canvas id="futureChangeChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="prose prose-lg max-w-none text-dark">
+                        <p class="mb-6">
+                            根据最新气候模型和生态系统模型的预测，未来50-100年不同类型的森林将面临显著变化。这些变化的程度和速度将在很大程度上取决于未来的温室气体排放路径，高排放情景（如RCP8.5）将导致更为严重的影响。
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-secondary mb-4">3.1 热带雨林未来变化预测</h3>
+                        <p class="mb-4">
+                            在高排放情景下，亚马逊雨林可能经历显著的结构变化，包括森林覆盖减少和森林向稀树草原的转变。研究表明，超过1.5-2°C的升温可能导致雨林崩溃风险的多倍增加。在亚马逊地区，这种风险可能比立即较低的升温情景增加约1.5-6倍。
+                        </p>
+                        <p class="mb-4">
+                            气候模型预测，未来50-100年热带雨林的碳吸收能力将继续下降，特别是在高排放情景下。亚马逊雨林可能在本世纪中叶后从碳汇转变为碳源。此外，降水减少和温度升高将导致热带雨林蒸发蒸腾减少，进一步改变区域水文循环和气候。
+                        </p>
+                        
+                        <div class="bg-light p-4 rounded-lg border-l-4 border-primary my-6">
+                            <p class="font-medium text-primary mb-2">临界点风险预警</p>
+                            <p>
+                                研究表明，当全球升温超过1.5°C时，亚马逊雨林发生突变的风险将显著增加。基于检测到的突变事件的集合平均值，在1.5°C以上的全球升温中，南美北部地区（包含大部分雨林）每升温1°C，将有7±5%的区域经历植被碳的突然下降。
+                            </p>
+                        </div>
+                        
+                        <h3 class="text-xl font-semibold text-secondary mb-4">3.2 温带森林未来变化预测</h3>
+                        <p class="mb-4">
+                            气候模型预测，欧洲温带森林的结构变化在21世纪后半叶将趋于平稳，无论气候情景如何。然而，气候情景导致树种变化的轨迹在21世纪后半叶出现分歧，在RCP 2.6和RCP 4.5情景下趋于稳定，而在RCP 8.5情景下针叶树加速减少。
+                        </p>
+                        <p class="mb-4">
+                            到2100年，欧洲约34%的森林土地（目前覆盖有挪威云杉等有价值的木材树）将只适合地中海橡树森林植被，导致森林所有者和木材行业的经济回报大大降低。气候变化还将导致温带森林火灾、病虫害和极端天气事件频率和强度增加。
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-secondary mb-4">3.3 北方针叶林未来变化预测</h3>
+                        <p class="mb-4">
+                            气候模型预测，未来50-100年北方针叶林将经历从纯黑云杉林向混合林的转变。到2050年，北极地区的植被将主要从苔原转变为北方针叶林。冻土融化将继续，到2100年，北方针叶林地区的冻土融化可能导致土壤有机碳损失10-20%。
+                        </p>
+                        <p>
+                            在加拿大魁北克省的北方森林中，气候模型预测，在RCP8.5情景下，针叶林生物量将在2100年后显著下降，而阔叶树种的生物量将持续增加。北方针叶林的南部边缘地区对气候变化最为敏感，温度升高和降水减少将导致这些地区的森林生产力显著下降。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 四、森林生态系统对气候变化的适应策略 -->
+                <section id="adaptation-strategies" class="mb-16 scroll-mt-20">
+                    <div class="flex items-center mb-6">
+                        <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3">
+                            <i class="fa fa-shield"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-primary">四、森林生态系统对气候变化的适应策略</h2>
+                    </div>
+
+                    <figure class="mb-8">
+                        <img src="https://picsum.photos/id/145/1200/400" alt="森林管理工作场景，展示专业人员进行森林调查和管理活动" class="w-full h-auto rounded-xl shadow-md">
+                        <figcaption class="figure-caption">图6：科学的森林管理策略是提高森林适应气候变化能力的关键</figcaption>
+                    </figure>
+
+                    <!-- 适应策略对比图表 -->
+                    <div class="mb-8 bg-light rounded-xl p-4 shadow-sm">
+                        <h3 class="text-lg font-semibold text-primary mb-4 text-center">
+                            不同视角适应策略的有效性对比
+                        </h3>
+                        <div class="h-64">
+                            <canvas id="strategyChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- 4.1 科学研究视角的适应策略 -->
+                    <section id="strategy-research" class="mb-10 scroll-mt-20">
+                        <h3 class="text-xl font-semibold text-secondary mb-4 flex items-center">
+                            <i class="fa fa-flask text-accent mr-2"></i>4.1 科学研究视角的适应策略
+                        </h3>
+                        <div class="prose prose-lg max-w-none text-dark">
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>加强监测和研究</strong>：建立全球和区域尺度的森林生态系统监测网络，加强对森林结构、功能和生物多样性变化的长期监测。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>改进生态系统模型</strong>：开发和改进能够准确模拟森林生态系统对气候变化响应的模型，包括森林生长模型、碳循环模型等。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>研究干扰相互作用</strong>：加强气候变化与森林火灾、病虫害和极端天气事件等干扰因素相互作用的研究。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>适应性管理技术研究</strong>：开展森林适应性管理技术研究，包括树种选择、林分结构优化等。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>基因多样性研究</strong>：加强森林基因多样性对森林适应气候变化能力影响的研究。</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="bg-light p-4 rounded-lg border-l-4 border-primary my-6">
+                                <p class="font-medium text-primary mb-2">关键研究需求</p>
+                                <p>
+                                    需要建立开放获取、免费使用的全球森林微气候网格产品和自动化协议，用于过去、现在和未来的微尺度地理空间数据。此外，需要加强对森林微气候的三维结构和时间动态的研究，这对于理解森林对气候变化的响应至关重要。
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 4.2 政策制定视角的适应策略 -->
+                    <section id="strategy-policy" class="mb-10 scroll-mt-20">
+                        <h3 class="text-xl font-semibold text-secondary mb-4 flex items-center">
+                            <i class="fa fa-gavel text-accent mr-2"></i>4.2 政策制定视角的适应策略
+                        </h3>
+                        <div class="prose prose-lg max-w-none text-dark">
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>制定适应政策</strong>：制定和实施国家和区域层面的森林气候变化适应政策，将森林适应气候变化纳入国家气候变化战略。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>加强保护政策</strong>：加强森林保护政策，特别是对原始林和高碳密度森林的保护。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>建立碳汇补偿机制</strong>：建立森林碳汇补偿机制，通过经济激励促进森林保护和恢复。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>跨境合作与协调</strong>：加强跨境森林保护和气候变化适应合作，特别是对跨国分布的森林生态系统。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>完善监测评估体系</strong>：完善森林资源监测和评估体系，为森林气候变化适应政策提供科学依据。</span>
+                                </li>
+                            </ul>
+                            
+                            <p class="mb-4">
+                                欧盟通过森林参考水平（FRL）评估2021-2025年欧盟森林对气候变化减缓的贡献，FRL是一个国家层面的基准，用于比较未来净排放量。这种方法可以为其他国家提供借鉴。在巴西亚马逊地区，保护政策的实施在2004-2015年间显著减缓了森林砍伐。
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- 4.3 林业管理视角的适应策略 -->
+                    <section id="strategy-management" class="mb-10 scroll-mt-20">
+                        <h3 class="text-xl font-semibold text-secondary mb-4 flex items-center">
+                            <i class="fa fa-pencil text-accent mr-2"></i>4.3 林业管理视角的适应策略
+                        </h3>
+                        <div class="prose prose-lg max-w-none text-dark">
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>实施适应性森林经营</strong>：根据气候变化趋势和预测调整森林经营措施，如实施近自然林业。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>优化森林结构</strong>：优化森林结构和物种组成，提高森林适应能力和恢复力。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>加强森林健康管理</strong>：加强森林病虫害监测和防治，提高森林火灾预防和控制能力。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>实施森林恢复</strong>：实施森林恢复和重建，提高森林覆盖度和质量。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>优化采伐策略</strong>：优化采伐和更新策略，平衡木材生产和森林生态系统服务提供。</span>
+                                </li>
+                            </ul>
+                            
+                            <p class="mb-4">
+                                在斯洛文尼亚，近自然林业传统上在研究区域得到实践，并在未来减少气候变化和干扰影响相关风险方面具有重要作用。在加拿大魁北克省的北方森林中，基于部分采伐的策略（如S4和S5）比皆伐更有利于维持森林碳储存和生物多样性。
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- 4.4 生态保护视角的适应策略 -->
+                    <section id="strategy-conservation" class="mb-10 scroll-mt-20">
+                        <h3 class="text-xl font-semibold text-secondary mb-4 flex items-center">
+                            <i class="fa fa-heart text-accent mr-2"></i>4.4 生态保护视角的适应策略
+                        </h3>
+                        <div class="prose prose-lg max-w-none text-dark">
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>加强保护区网络建设</strong>：加强森林保护区网络建设，保护生物多样性和生态系统服务。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>加强生态廊道建设</strong>：加强生态廊道建设，促进物种迁移和基因交流。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>加强生物多样性保护</strong>：加强森林生物多样性保护，特别是对气候变化敏感的物种。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>实施生态系统恢复</strong>：实施森林生态系统恢复，提高森林覆盖度和质量。</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="font-medium text-primary mr-2">•</span>
+                                    <span><strong>加强生态系统监测</strong>：加强森林生态系统监测，及时掌握气候变化影响。</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="bg-light p-4 rounded-lg border-l-4 border-primary my-6">
+                                <p class="font-medium text-primary mb-2">亚马逊保护挑战</p>
+                                <p>
+                                    尽管亚马逊地区的大部分区域已被保护在各种类型和名称的保护区内，但这些保护区中近50%允许资源开采，且过去二十年中14%的森林砍伐发生在原住民领地和保护区内。评估表明，最缺乏的是实施跨境保护愿景，这将为大型生态区制定全面的保护计划。
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <!-- 五、区域案例分析 -->
+                <section id="case-studies" class="mb-16 scroll-mt-20">
+                    <div class="flex items-center mb-6">
+                        <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-primary">五、区域案例分析</h2>
+                    </div>
+
+                    <!-- 区域案例对比图表 -->
+                    <div class="mb-8 bg-light rounded-xl p-4 shadow-sm">
+                        <h3 class="text-lg font-semibold text-primary mb-4 text-center">
+                            不同区域森林气候变化影响程度对比
+                        </h3>
+                        <div class="h-64">
+                            <canvas id="regionImpactChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- 案例卡片容器 -->
+                    <div class="grid md:grid-cols-1 gap-6 mb-8">
+                        <!-- 亚马逊雨林案例 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                            <div class="bg-primary/10 p-4 border-b border-gray-100">
+                                <h3 class="text-xl font-semibold text-primary">5.1 亚马逊雨林案例</h3>
+                            </div>
+                            <div class="p-6">
+                                <figure class="mb-4">
+                                    <img src="https://picsum.photos/id/125/1200/300" alt="亚马逊雨林景观，展示其丰富的生物多样性" class="w-full h-auto rounded-lg shadow-sm">
+                                    <figcaption class="figure-caption">图7：亚马逊雨林是全球最大的热带雨林，面临气候变化和人类活动的双重威胁</figcaption>
+                                </figure>
+                                
+                                <h4 class="text-lg font-medium text-secondary mb-2">气候变化影响</h4>
+                                <ul class="list-disc pl-5 space-y-1 mb-4 text-dark">
+                                    <li>冠层温度高于空气温度，增加森林碳循环和死亡风险</li>
+                                    <li>南部和东部地区降水减少最为明显</li>
+                                    <li>2005年和2010年严重干旱导致暂时从碳汇转变为碳源</li>
+                                    <li>超过四分之三的雨林区域表现出恢复力丧失的迹象</li>
+                                </ul>
+                                
+                                <h4 class="text-lg font-medium text-secondary mb-2">适应策略</h4>
+                                <ul class="list-disc pl-5 space-y-1 mb-4 text-dark">
+                                    <li>加强保护区和原住民领地建设，2004-2015年显著减缓砍伐</li>
+                                    <li>实施退化林地恢复，采用近自然恢复方法</li>
+                                    <li>优化土地利用规划，提高现有农业用地使用效率</li>
+                                    <li>建立跨境保护机制，共同制定保护政策</li>
+                                    <li>实施环境储备配额（CRA）等碳汇补偿机制</li>
+                                </ul>
+                                
+                                <div class="bg-light p-3 rounded-lg text-sm text-muted italic">
+                                    实施效果：巴西在2004-2015年间成功减缓了亚马逊雨林的砍伐速度，但近年来由于政策变化，砍伐率再次上升，表明长期承诺和有效执行的重要性。
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 欧洲温带森林案例 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                            <div class="bg-primary/10 p-4 border-b border-gray-100">
+                                <h3 class="text-xl font-semibold text-primary">5.2 欧洲温带森林案例</h3>
+                            </div>
+                            <div class="p-6">
+                                <figure class="mb-4">
+                                    <img src="https://picsum.photos/id/133/1200/300" alt="欧洲温带森林景观，展示其多样的树种组成" class="w-full h-auto rounded-lg shadow-sm">
+                                    <figcaption class="figure-caption">图8：欧洲温带森林正在经历从针叶树向阔叶树的转变，以适应气候变化</figcaption>
+                                </figure>
+                                
+                                <h4 class="text-lg font-medium text-secondary mb-2">气候变化影响</h4>
+                                <ul class="list-disc pl-5 space-y-1 mb-4 text-dark">
+                                    <li>年均温上升速率约为每十年0.4°C，夏季超过0.5°C</li>
+                                    <li>2014年斯洛文尼亚冰风暴导致超过一半森林受损</li>
+                                    <li>挪威云杉蓄积量下降，欧洲山毛榉蓄积量增加</li>
+                                    <li>从针叶树向阔叶树的转变，南部欧洲更为明显</li>
+                                    <li>云杉八齿小蠹等病虫害爆发频率和范围扩大</li>
+                                </ul>
+                                
+                                <h4 class="text-lg font-medium text-secondary mb-2">适应策略</h4>
+                                <ul class="list-disc pl-5 space-y-1 mb-4 text-dark">
+                                    <li>实施近自然林业，减少气候变化和干扰影响风险</li>
+                                    <li>增加耐旱树种混合种植，如银冷杉、欧洲落叶松等</li>
+                                    <li>冰风暴后增加抢救性采伐比例，减少病虫害风险</li>
+                                    <li>建立森林保护区，保护原始林和高碳密度森林</li>
+                                    <li>完善森林监测体系，及时掌握气候变化影响</li>
+                                </ul>
+                                
+                                <div class="bg-light p-3 rounded-lg text-sm text-muted italic">
+                                    实施效果：通过近自然林业和树种优化，欧洲部分地区森林对冰风暴和病虫害的抵抗力得到增强，对干旱和高温的适应能力也有所提高。
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 加拿大北方森林案例 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                            <div class="bg-primary/10 p-4 border-b border-gray-100">
+                                <h3 class="text-xl font-semibold text-primary">5.3 加拿大北方森林案例</h3>
+                            </div>
+                            <div class="p-6">
+                                <figure class="mb-4">
+                                    <img src="https://picsum.photos/id/15/1200/300" alt="加拿大北方森林景观，展示其广袤的针叶林覆盖" class="w-full h-auto rounded-lg shadow-sm">
+                                    <figcaption class="figure-caption">图9：加拿大北方森林正经历快速的温度上升，导致冻土融化和森林结构变化</figcaption>
+                                </figure>
+                                
+                                <h4 class="text-lg font-medium text-secondary mb-2">气候变化影响</h4>
+                                <ul class="list-disc pl-5 space-y-1 mb-4 text-dark">
+                                    <li>升温速度是全球平均水平的两倍以上</li>
+                                    <li>降雪减少，降雨增加，降水强度增加</li>
+                                    <li>森林火灾风险增加，特别是在干旱季节</li>
+                                    <li>永久冻土和季节性冻土融化，改变土壤条件</li>
+                                    <li>白桦和颤杨等阔叶树种增加，云杉和冷杉减少</li>
+                                </ul>
+                                
+                                <h4 class="text-lg font-medium text-secondary mb-2">适应策略</h4>
+                                <ul class="list-disc pl-5 space-y-1 mb-4 text-dark">
+                                    <li>实施基于部分采伐的策略（如S4和S5），优于皆伐</li>
+                                    <li>增加耐旱树种混合种植，提高适应能力</li>
+                                    <li>加强火灾监测预警系统，提高应急响应能力</li>
+                                    <li>优化森林碳汇管理，稳定生物量碳储存</li>
+                                    <li>加强冻土区森林管理，减少人为干扰</li>
+                                </ul>
+                                
+                                <div class="bg-light p-3 rounded-lg text-sm text-muted italic">
+                                    实施效果：在魁北克省，基于部分采伐的策略提高了森林碳储存能力，增加耐旱树种混合种植也增强了森林对气候变化的适应能力。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 六、结论与展望 -->
+                <section id="conclusion" class="mb-16 scroll-mt-20">
+                    <div class="flex items-center mb-6">
+                        <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3">
+                            <i class="fa fa-flag-checkered"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-primary">六、结论与展望</h2>
+                    </div>
+
+                    <div class="prose prose-lg max-w-none text-dark">
+                        <h3 class="text-xl font-semibold text-secondary mb-4">6.1 主要研究结论</h3>
+                        <div class="bg-light p-5 rounded-lg my-6">
+                            <ol class="list-decimal pl-5 space-y-2 text-dark">
+                                <li>
+                                    <strong>影响的普遍性和差异性</strong>：气候变化对全球森林生态系统产生广泛影响，但程度和形式因森林类型和区域而异。热带雨林对温度和降水变化最敏感，温带森林对极端天气和病虫害更敏感，北方针叶林则对温度升高和冻土融化最敏感。
+                                </li>
+                                <li>
+                                    <strong>结构和功能的显著变化</strong>：未来50-100年，气候变化将导致树种组成改变、生产力下降、碳吸收能力减弱和生物多样性减少。高排放情景下，部分森林可能面临临界点风险，发生不可逆转的转变。
+                                </li>
+                                <li>
+                                    <strong>适应能力受到威胁</strong>：气候变化导致森林适应能力和恢复力下降，亚马逊雨林超过四分之三区域已表现出恢复力丧失迹象，在降水较少和人类活动区域更为明显。
+                                </li>
+                                <li>
+                                    <strong>适应性管理的重要性</strong>：科学的适应性管理策略对提高森林适应能力至关重要。从多视角实施适应性管理，可以有效减轻负面影响，提高森林适应能力和恢复力。
+                                </li>
+                                <li>
+                                    <strong>区域合作的必要性</strong>：森林保护和适应需要区域合作和全球行动，特别是对跨国分布的森林生态系统，如亚马逊雨林、欧洲温带森林和加拿大北方森林。
+                                </li>
+                            </ol>
+                        </div>
+                        
+                        <h3 class="text-xl font-semibold text-secondary mb-4">6.2 未来研究展望</h3>
+                        <ul class="list-disc pl-5 space-y-2 mb-6 text-dark">
+                            <li>
+                                <strong>加强干扰相互作用研究</strong>：需要加强气候变化与森林火灾、病虫害和极端天气事件等干扰因素相互作用的研究，特别是协同作用对森林生态系统的影响。
+                            </li>
+                            <li>
+                                <strong>深化森林微气候研究</strong>：需要加强森林微气候研究，深入理解其对气候变化的响应机制及其对森林生态系统结构和功能的影响。
+                            </li>
+                            <li>
+                                <strong>加强碳循环和气候反馈研究</strong>：需要深入理解森林在全球碳循环中的作用及其对气候变化的反馈机制，特别是森林碳汇动态变化和未来趋势。
+                            </li>
+                            <li>
+                                <strong>开发适应性管理技术</strong>：需要开发适合不同森林类型和区域的适应性管理技术，为森林适应性管理提供技术支持。
+                            </li>
+                            <li>
+                                <strong>优化政策和经济激励机制</strong>：需要探索有效的政策工具和经济激励机制，促进森林保护和可持续经营，为森林保护和适应提供政策支持。
+                            </li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-semibold text-secondary mb-4">6.3 行动建议</h3>
+                        <div class="grid md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                                <div class="flex items-center mb-2">
+                                    <i class="fa fa-shield text-primary mr-2"></i>
+                                    <h4 class="font-medium text-primary">加强森林保护和恢复</h4>
+                                </div>
+                                <p class="text-sm text-dark">
+                                    加强全球森林保护和恢复，特别是对原始林和高碳密度森林的保护，提高森林覆盖度和质量，增强森林碳汇能力和生态系统服务功能。
+                                </p>
+                            </div>
+                            
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                                <div class="flex items-center mb-2">
+                                    <i class="fa fa-pencil text-primary mr-2"></i>
+                                    <h4 class="font-medium text-primary">实施适应性森林经营</h4>
+                                </div>
+                                <p class="text-sm text-dark">
+                                    根据气候变化趋势和预测调整森林经营措施，优化森林结构和物种组成，提高森林适应能力和恢复力。
+                                </p>
+                            </div>
+                            
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                                <div class="flex items-center mb-2">
+                                    <i class="fa fa-bell text-primary mr-2"></i>
+                                    <h4 class="font-medium text-primary">加强森林灾害风险管理</h4>
+                                </div>
+                                <p class="text-sm text-dark">
+                                    加强森林火灾、病虫害和极端天气事件等灾害的监测、预警和防控，提高森林灾害风险管理能力，减少灾害对森林生态系统的影响。
+                                </p>
+                            </div>
+                            
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                                <div class="flex items-center mb-2">
+                                    <i class="fa fa-area-chart text-primary mr-2"></i>
+                                    <h4 class="font-medium text-primary">加强森林生态系统监测</h4>
+                                </div>
+                                <p class="text-sm text-dark">
+                                    建立健全的监测网络和信息管理系统，及时掌握气候变化对森林生态系统的影响，为森林保护和适应决策提供科学依据。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-center italic text-muted mt-8">
+                            总之，通过加强森林保护和恢复，实施适应性森林经营，加强灾害风险管理和生态系统监测，以及加强国际合作和政策协调，我们可以提高森林适应能力和恢复力，为应对全球气候变化做出贡献。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 制作信息 -->
+                <div class="text-center py-8 border-t border-gray-200 mt-12">
+                    <p class="text-primary font-medium">本文由 西丰县林业生态公益基金会 制作</p>
+                    <p class="text-sm text-muted mt-2">致力于森林生态保护与可持续发展</p>
+                </div>
+
+                <!-- 返回顶部按钮 -->
+                <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-secondary">
+                    <i class="fa fa-arrow-up"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // DOM元素
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const tocToggle = document.getElementById('toc-toggle');
+        const backToTop = document.getElementById('back-to-top');
+        const chapterLinks = document.querySelectorAll('[data-chapter]');
+        const sections = document.querySelectorAll('section[id]');
+
+        // 侧边栏切换
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+        });
+
+        // 桌面端目录切换（如果需要）
+        if (tocToggle) {
+            tocToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+            });
+        }
+
+        // 点击外部关闭侧边栏（移动设备）
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 1024 && 
+                !sidebar.contains(e.target) && 
+                !sidebarToggle.contains(e.target) &&
+                !sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+
+        // 返回顶部按钮
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+
+            // 高亮当前章节
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            chapterLinks.forEach(link => {
+                link.classList.remove('chapter-active');
+                const chapterId = link.getAttribute('data-chapter');
+                const section = document.getElementById(getSectionIdByChapter(chapterId));
+                if (section && current && (section.id === current || section.contains(document.getElementById(current)))) {
+                    link.classList.add('chapter-active');
+                }
+            });
+        });
+
+        // 返回顶部功能
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 根据章节号获取对应的section ID
+        function getSectionIdByChapter(chapterNum) {
+            const chapterMap = {
+                '1': 'intro',
+                '2': 'impact-types',
+                '3': 'long-term-prediction',
+                '4': 'adaptation-strategies',
+                '5': 'case-studies',
+                '6': 'conclusion'
+            };
+            return chapterMap[chapterNum] || '';
+        }
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // 移动设备点击导航后关闭侧边栏
+                    if (window.innerWidth < 1024) {
+                        sidebar.classList.add('-translate-x-full');
+                    }
+                    
+                    // 平滑滚动到目标位置
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 图表初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. 不同森林类型对气候变化的敏感度对比
+            const sensitivityCtx = document.getElementById('sensitivityChart').getContext('2d');
+            new Chart(sensitivityCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['温度变化', '降水变化', '极端天气', '病虫害', '冻土融化', '生物多样性'],
+                    datasets: [
+                        {
+                            label: '热带雨林',
+                            data: [8, 9, 7, 6, 2, 9],
+                            backgroundColor: 'rgba(45, 93, 42, 0.2)',
+                            borderColor: 'rgba(45, 93, 42, 0.8)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgba(45, 93, 42, 1)'
+                        },
+                        {
+                            label: '温带森林',
+                            data: [6, 7, 8, 9, 3, 7],
+                            backgroundColor: 'rgba(127, 183, 126, 0.2)',
+                            borderColor: 'rgba(127, 183, 126, 0.8)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgba(127, 183, 126, 1)'
+                        },
+                        {
+                            label: '北方针叶林',
+                            data: [9, 6, 7, 6, 10, 8],
+                            backgroundColor: 'rgba(74, 124, 89, 0.2)',
+                            borderColor: 'rgba(74, 124, 89, 0.8)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgba(74, 124, 89, 1)'
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 10,
+                            ticks: {
+                                stepSize: 2
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // 2. 未来50-100年森林结构变化预测
+            const futureChangeCtx = document.getElementById('futureChangeChart').getContext('2d');
+            new Chart(futureChangeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['森林覆盖', '碳吸收能力', '生物多样性', '生产力', '恢复力'],
+                    datasets: [
+                        {
+                            label: '热带雨林',
+                            data: [-35, -45, -40, -30, -50],
+                            backgroundColor: 'rgba(45, 93, 42, 0.7)'
+                        },
+                        {
+                            label: '温带森林',
+                            data: [-20, -25, -30, -15, -35],
+                            backgroundColor: 'rgba(127, 183, 126, 0.7)'
+                        },
+                        {
+                            label: '北方针叶林',
+                            data: [-15, -20, -25, -10, -30],
+                            backgroundColor: 'rgba(74, 124, 89, 0.7)'
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: '变化百分比 (%) - 负值表示减少'
+                            },
+                            min: -50,
+                            max: 0
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 3. 不同视角适应策略的有效性对比
+            const strategyCtx = document.getElementById('strategyChart').getContext('2d');
+            new Chart(strategyCtx, {
+                type: 'polarArea',
+                data: {
+                    labels: ['科学研究', '政策制定', '林业管理', '生态保护'],
+                    datasets: [{
+                        data: [75, 85, 90, 80],
+                        backgroundColor: [
+                            'rgba(45, 93, 42, 0.7)',
+                            'rgba(74, 124, 89, 0.7)',
+                            'rgba(127, 183, 126, 0.7)',
+                            'rgba(232, 245, 233, 0.7)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                stepSize: 20
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: 有效性 ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 4. 不同区域森林气候变化影响程度对比
+            const regionImpactCtx = document.getElementById('regionImpactChart').getContext('2d');
+            new Chart(regionImpactCtx, {
+                type: 'line',
+                data: {
+                    labels: ['当前', '2030年', '2050年', '2070年', '2100年'],
+                    datasets: [
+                        {
+                            label: '亚马逊雨林',
+                            data: [30, 45, 60, 75, 90],
+                            borderColor: 'rgba(45, 93, 42, 0.8)',
+                            backgroundColor: 'rgba(45, 93, 42, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: '欧洲温带森林',
+                            data: [25, 35, 50, 65, 80],
+                            borderColor: 'rgba(127, 183, 126, 0.8)',
+                            backgroundColor: 'rgba(127, 183, 126, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: '加拿大北方森林',
+                            data: [40, 55, 70, 80, 88],
+                            borderColor: 'rgba(74, 124, 89, 0.8)',
+                            backgroundColor: 'rgba(74, 124, 89, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: '影响程度指数 (0-100)'
+                            },
+                            min: 0,
+                            max: 100
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
