@@ -1,35 +1,147 @@
-<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>文苑 | 西丰县林业生态公益基金会</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="西丰县林业生态公益基金会 - 文苑频道，生态科普文章精选。">
+    <title>文苑 - 西丰县林业生态公益基金会</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: { dark: '#0F3817', DEFAULT: '#1A5E20', medium: '#2E7D32', light: '#4CAF50', accent: '#81C784' },
+                        earth: { dark: '#5D4037', DEFAULT: '#795548', light: '#A1887F' },
+                        stone: { dark: '#424242', DEFAULT: '#616161', light: '#E0E0E0' }
+                    },
+                    fontFamily: { sans: ['Noto Sans SC', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+            .transition-custom { transition: all 0.3s ease; }
+        }
+    </style>
 </head>
-<body class="bg-stone-100 font-sans">
-  <div class="container mx-auto py-20 px-4">
-    <h1 class="text-3xl font-bold text-forest-dark mb-8">文苑 · 生态科普文章</h1>
-    <div class="space-y-10">
-      <!-- 文章1 -->
-      <article class="bg-white p-6 rounded-xl shadow">
-        <h2 class="font-semibold text-xl mb-3">什么是生物多样性？</h2>
-        <p class="text-stone mb-2">生物多样性是生态系统健康的基础。它包括物种、遗传和生态系统的多样性。</p>
-        <a href="https://www.cenews.com.cn/ecology/2023/05/13/202305131447161269.html" target="_blank" class="text-forest hover:underline">中国环境报科普</a>
-      </article>
-      <!-- 文章2 -->
-      <article class="bg-white p-6 rounded-xl shadow">
-        <h2 class="font-semibold text-xl mb-3">气候变化对中国森林的挑战</h2>
-        <p class="text-stone mb-2">气候变化正影响着中国的森林生态系统，科学管理和恢复至关重要。</p>
-        <a href="https://mp.weixin.qq.com/s/4rRr4uI9e1r2zv9ZrA2hHg" target="_blank" class="text-forest hover:underline">微信科普号</a>
-      </article>
-      <!-- 文章3 -->
-      <article class="bg-white p-6 rounded-xl shadow">
-        <h2 class="font-semibold text-xl mb-3">社区参与生态保护的力量</h2>
-        <p class="text-stone mb-2">西丰县林业公益基金会鼓励社区和志愿者参与保护生态，实现人与自然和谐共生。</p>
-        <a href="https://www.thepaper.cn/newsDetail_forward_23086642" target="_blank" class="text-forest hover:underline">澎湃新闻报道</a>
-      </article>
-    </div>
-    <a href="index.html" class="text-forest hover:underline mt-8 inline-block">返回首页</a>
-  </div>
+<body class="font-sans bg-stone-100">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-forest-dark">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="assets/images/logo.png" alt="LOGO" class="h-12 w-auto">
+                <div>
+                    <h1 class="text-white text-xl md:text-2xl font-bold text-shadow">西丰县林业生态公益基金会</h1>
+                    <p class="text-forest-accent text-sm md:text-base">生态心声 · 万物有灵</p>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-white hover:text-forest-accent transition-custom font-medium">首页</a>
+                <a href="videos.html" class="text-white hover:text-forest-accent transition-custom font-medium">光影</a>
+                <a href="articles.html" class="text-white hover:text-forest-accent transition-custom font-medium">文苑</a>
+                <a href="audio.html" class="text-white hover:text-forest-accent transition-custom font-medium">声享</a>
+                <a href="about.html" class="text-white hover:text-forest-accent transition-custom font-medium">关于我们</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fa fa-bars"></i></button>
+        </nav>
+        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">首页</a>
+                <a href="videos.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">光影</a>
+                <a href="articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">文苑</a>
+                <a href="audio.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">声享</a>
+                <a href="about.html" class="text-white hover:text-forest-accent py-2 transition-custom">关于我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 内容区 -->
+    <section class="py-20 bg-white mt-20">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold text-forest-dark mb-8">文苑频道 - 生态科普文章</h1>
+            <p class="text-stone mb-12">系统性生态科普，点击卡片阅读全文。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 文章1 -->
+                <a href="articles/article1.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://picsum.photos/id/106/800/600" alt="生物多样性" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                            <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">什么是生物多样性？</h3>
+                        <p class="text-stone mb-4 line-clamp-2">生物多样性是生态系统健康的基础。它包括物种、遗传和生态系统的多样性。</p>
+                        <span class="text-stone text-sm">2025-10-04</span>
+                    </div>
+                </a>
+                
+                <!-- 文章2 -->
+                <a href="articles/article2.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://picsum.photos/id/119/800/600" alt="气候变化对中国森林的挑战" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                            <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">气候变化对中国森林的挑战</h3>
+                        <p class="text-stone mb-4 line-clamp-2">气候变化正影响着中国的森林生态系统，科学管理和恢复至关重要。</p>
+                        <span class="text-stone text-sm">2025-10-04</span>
+                    </div>
+                </a>
+                
+                <!-- 文章3 -->
+                <a href="articles/article3.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://picsum.photos/id/129/800/600" alt="社区参与生态保护的力量" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                            <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">社区参与生态保护的力量</h3>
+                        <p class="text-stone mb-4 line-clamp-2">西丰县林业公益基金会鼓励社区和志愿者参与保护生态，实现人与自然和谐共生。</p>
+                        <span class="text-stone text-sm">2025-10-04</span>
+                    </div>
+                </a>
+
+                <!-- 文章4 -->
+                <a href="articles/article4.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://picsum.photos/id/133/800/600" alt="生态修复成功案例" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                            <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">生态修复成功案例：从荒地到绿洲</h3>
+                        <p class="text-stone mb-4 line-clamp-2">介绍国内外生态修复的成功案例，分析其关键技术与管理经验。</p>
+                        <span class="text-stone text-sm">2025-10-04</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-forest-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-white/60 text-sm">© 2025 西丰县林业生态公益基金会. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+    </script>
 </body>
 </html>
