@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!-- 修改视口设置，允许内容更宽地显示在手机上 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 视口设置为完全适应屏幕 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <meta name="description" content="以改变 致地球 - 西丰县林业生态公益基金会光影频道">
     <title>以改变 致地球 - 光影频道 - 西丰县林业生态公益基金会</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -61,42 +61,47 @@
             .backdrop-blur {
                 backdrop-filter: blur(8px);
             }
+            /* 移除所有默认边距 */
+            body {
+                margin: 0;
+                padding: 0;
+            }
         }
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-stone-dark">
-    <!-- 导航栏 -->
+    <!-- 导航栏 - 全屏宽度 -->
     <header id="navbar" class="fixed w-full top-0 z-50 bg-forest-dark transition-all duration-300">
-        <nav class="w-full px-4 py-4 flex justify-between items-center">
-            <a href="../index.html" class="flex items-center space-x-3">
+        <nav class="w-full px-3 py-3 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center space-x-2">
                 <!-- 基金会LOGO -->
                 <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a260d32335004ba4b94b90cc1502d60e.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100420251004500165D25C4FB7DCC4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760185510&x-signature=n9SnY5klyQ7ixYqOWPec3Xl99Fs%3D" 
                      alt="西丰县林业生态公益基金会logo" 
-                     class="h-12 w-auto">
+                     class="h-10 w-auto">
                 <div>
-                    <h1 class="text-white text-xl md:text-2xl font-bold">西丰县林业生态公益基金会</h1>
-                    <p class="text-forest-accent text-sm">生态保护 · 公益同行</p>
+                    <h1 class="text-white text-base md:text-xl font-bold">西丰县林业生态公益基金会</h1>
+                    <p class="text-forest-accent text-xs hidden md:block">生态保护 · 公益同行</p>
                 </div>
             </a>
             
             <!-- 桌面端导航 -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="../index.html" class="text-white hover:text-forest-accent transition-colors">首页</a>
-                <a href="../videos.html" class="text-forest-accent border-b-2 border-forest-accent pb-1 font-medium">光影</a>
-                <a href="../articles.html" class="text-white hover:text-forest-accent transition-colors">文苑</a>
-                <a href="../projects.html" class="text-white hover:text-forest-accent transition-colors">项目</a>
-                <a href="../about.html" class="text-white hover:text-forest-accent transition-colors">关于我们</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../index.html" class="text-white hover:text-forest-accent transition-colors text-sm">首页</a>
+                <a href="../videos.html" class="text-forest-accent border-b-2 border-forest-accent pb-1 font-medium text-sm">光影</a>
+                <a href="../articles.html" class="text-white hover:text-forest-accent transition-colors text-sm">文苑</a>
+                <a href="../projects.html" class="text-white hover:text-forest-accent transition-colors text-sm">项目</a>
+                <a href="../about.html" class="text-white hover:text-forest-accent transition-colors text-sm">关于我们</a>
             </div>
             
             <!-- 移动端菜单按钮 -->
-            <button id="mobileMenuBtn" class="md:hidden text-white text-2xl">
+            <button id="mobileMenuBtn" class="md:hidden text-white text-xl">
                 <i class="fa fa-bars"></i>
             </button>
         </nav>
         
-        <!-- 移动端导航菜单 -->
-        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95 backdrop-blur-sm">
-            <div class="w-full px-4 py-3 flex flex-col space-y-3">
+        <!-- 移动端导航菜单 - 全屏宽度 -->
+        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95 backdrop-blur-sm w-full">
+            <div class="w-full px-3 py-2 flex flex-col space-y-2">
                 <a href="../index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">首页</a>
                 <a href="../videos.html" class="text-forest-accent py-2 border-b border-forest-medium">光影</a>
                 <a href="../articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">文苑</a>
@@ -106,100 +111,97 @@
         </div>
     </header>
 
-    <!-- 页面主体内容 -->
-    <main class="w-full px-3 pt-28 pb-16">
-        <!-- 面包屑导航 -->
-        <div class="text-sm text-stone mb-8 max-w-5xl mx-auto">
+    <!-- 页面主体内容 - 全屏宽度，无左右边距 -->
+    <main class="w-full pt-24 pb-12">
+        <!-- 面包屑导航 - 仅留最小内边距 -->
+        <div class="text-sm text-stone mb-4 px-3">
             <a href="../index.html" class="hover:text-forest transition-colors">首页</a>
-            <span class="mx-2"><i class="fa fa-angle-right text-xs"></i></span>
+            <span class="mx-1"><i class="fa fa-angle-right text-xs"></i></span>
             <a href="../videos.html" class="hover:text-forest transition-colors">光影频道</a>
-            <span class="mx-2"><i class="fa fa-angle-right text-xs"></i></span>
+            <span class="mx-1"><i class="fa fa-angle-right text-xs"></i></span>
             <span class="text-stone-dark">以改变 致地球</span>
         </div>
         
-        <!-- 视频播放区：优化移动端显示 -->
-        <section class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden max-w-5xl mx-auto">
-            <!-- 调整容器内边距，移动端减少边距 -->
-            <div class="p-2 md:p-6">
-                <!-- 视频标题：居中显示 -->
-                <h2 class="text-2xl md:text-3xl font-bold text-forest-dark mb-4 md:mb-6 text-center">以改变 致地球</h2>
-                
-                <!-- 视频播放器：移动端突破容器限制，更宽显示 -->
-                <div class="video-container w-full md:w-[80%] mx-auto bg-gray-900 rounded-lg overflow-hidden mb-6 shadow-inner">
-                    <iframe 
-                        src="//player.bilibili.com/player.html?isOutside=true&aid=115321667133236&bvid=BV14BxMzSEr6&cid=32859554140&p=1" 
-                        scrolling="no" 
-                        border="0" 
-                        frameborder="no" 
-                        framespacing="0" 
-                        allowfullscreen="true"
-                        class="w-full h-full"
-                        title="以改变 致地球">
-                    </iframe>
+        <!-- 视频播放区：完全全屏宽度 -->
+        <section class="mb-6 bg-white shadow-sm w-full">
+            <!-- 视频标题：居中显示，最小内边距 -->
+            <h2 class="text-xl md:text-2xl font-bold text-forest-dark py-3 px-3 text-center">以改变 致地球</h2>
+            
+            <!-- 视频播放器：完全全屏宽度，无任何边距 -->
+            <div class="video-container w-full bg-gray-900">
+                <iframe 
+                    src="//player.bilibili.com/player.html?isOutside=true&aid=115321667133236&bvid=BV14BxMzSEr6&cid=32859554140&p=1" 
+                    scrolling="no" 
+                    border="0" 
+                    frameborder="no" 
+                    framespacing="0" 
+                    allowfullscreen="true"
+                    class="w-full h-full"
+                    title="以改变 致地球">
+                </iframe>
+            </div>
+            
+            <!-- 视频操作栏 -->
+            <div class="flex flex-wrap justify-between items-center gap-3 px-3 py-4">
+                <div class="flex items-center space-x-6">
+                    <button class="flex items-center text-stone hover:text-forest transition-colors" onclick="shareVideo()">
+                        <i class="fa fa-share-alt mr-1"></i> 分享
+                    </button>
+                    <button class="flex items-center text-stone hover:text-forest transition-colors">
+                        <i class="fa fa-heart-o mr-1"></i> 收藏
+                    </button>
+                    <button class="flex items-center text-stone hover:text-forest transition-colors">
+                        <i class="fa fa-thumbs-o-up mr-1"></i> 点赞
+                    </button>
                 </div>
                 
-                <!-- 视频操作栏 -->
-                <div class="flex flex-wrap justify-between items-center gap-4 mb-6 px-2">
-                    <div class="flex items-center space-x-6">
-                        <button class="flex items-center text-stone hover:text-forest transition-colors" onclick="shareVideo()">
-                            <i class="fa fa-share-alt mr-2"></i> 分享
-                        </button>
-                        <button class="flex items-center text-stone hover:text-forest transition-colors">
-                            <i class="fa fa-heart-o mr-2"></i> 收藏
-                        </button>
-                        <button class="flex items-center text-stone hover:text-forest transition-colors">
-                            <i class="fa fa-thumbs-o-up mr-2"></i> 点赞
-                        </button>
-                    </div>
-                    
-                    <div class="flex items-center space-x-4 text-sm text-stone">
-                        <span><i class="fa fa-eye mr-1 text-forest"></i> 播放量: 2,567</span>
-                        <span><i class="fa fa-calendar mr-1 text-forest"></i> 发布于: 2025-10-03</span>
-                    </div>
+                <div class="flex items-center space-x-3 text-sm text-stone">
+                    <span><i class="fa fa-eye mr-1 text-forest"></i> 2,567</span>
+                    <span><i class="fa fa-calendar mr-1 text-forest"></i> 2025-10-03</span>
                 </div>
+            </div>
+            
+            <!-- 视频描述 -->
+            <div class="border-t border-gray-200 px-3 py-4">
+                <h3 class="text-lg font-semibold mb-2 text-forest-dark">视频简介</h3>
+                <p class="text-stone mb-3 leading-relaxed">
+                    拯救森林，保护海洋，修复土地，净化环境，我们不再一味索取，我们决心致力改变！
+                </p>
+                <p class="text-stone mb-4 leading-relaxed">
+                    本纪录片记录了全球各地生态保护工作者的努力与成果，展示了人类如何通过实际行动弥补对自然造成的伤害。从雨林保护到海洋净化，从土地修复到可再生能源推广，每一个行动都是对地球的承诺。
+                </p>
                 
-                <!-- 视频描述 -->
-                <div class="border-t border-gray-200 pt-6 px-2">
-                    <h3 class="text-lg font-semibold mb-3 text-forest-dark">视频简介</h3>
-                    <p class="text-stone mb-4 leading-relaxed">
-                        拯救森林，保护海洋，修复土地，净化环境，我们不再一味索取，我们决心致力改变！
-                    </p>
-                    <p class="text-stone mb-6 leading-relaxed">
-                        本纪录片记录了全球各地生态保护工作者的努力与成果，展示了人类如何通过实际行动弥补对自然造成的伤害。从雨林保护到海洋净化，从土地修复到可再生能源推广，每一个行动都是对地球的承诺。
-                    </p>
-                    
-                    <!-- 标签 -->
-                    <div class="flex flex-wrap gap-2">
-                        <span class="inline-block px-3 py-1 bg-gray-100 text-stone text-sm rounded-full">
-                            <i class="fa fa-tag mr-1 text-forest"></i> 生态保护
-                        </span>
-                        <span class="inline-block px-3 py-1 bg-gray-100 text-stone text-sm rounded-full">
-                            <i class="fa fa-tag mr-1 text-forest"></i> 环境保护
-                        </span>
-                        <span class="inline-block px-3 py-1 bg-gray-100 text-stone text-sm rounded-full">
-                            <i class="fa fa-tag mr-1 text-forest"></i> 可持续发展
-                        </span>
-                        <span class="inline-block px-3 py-1 bg-gray-100 text-stone text-sm rounded-full">
-                            <i class="fa fa-tag mr-1 text-forest"></i> 全球行动
-                        </span>
-                    </div>
+                <!-- 标签 -->
+                <div class="flex flex-wrap gap-2">
+                    <span class="inline-block px-2 py-1 bg-gray-100 text-stone text-sm rounded-full">
+                        <i class="fa fa-tag mr-1 text-forest"></i> 生态保护
+                    </span>
+                    <span class="inline-block px-2 py-1 bg-gray-100 text-stone text-sm rounded-full">
+                        <i class="fa fa-tag mr-1 text-forest"></i> 环境保护
+                    </span>
+                    <span class="inline-block px-2 py-1 bg-gray-100 text-stone text-sm rounded-full">
+                        <i class="fa fa-tag mr-1 text-forest"></i> 可持续发展
+                    </span>
+                    <span class="inline-block px-2 py-1 bg-gray-100 text-stone text-sm rounded-full">
+                        <i class="fa fa-tag mr-1 text-forest"></i> 全球行动
+                    </span>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 页脚 -->
-    <footer class="bg-forest-dark text-white pt-16 pb-8">
-        <div class="w-full px-4">
+    <!-- 页脚 - 全屏宽度 -->
+    <footer class="bg-forest-dark text-white pt-10 pb-6 w-full">
+        <div class="w-full px-3">
             <!-- 三列布局 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 <!-- 左侧：关于我们 -->
                 <div>
-                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                    <h4 class="text-lg font-bold mb-3 flex items-center">
                         <i class="fa fa-leaf text-forest-accent mr-2"></i>关于我们
                     </h4>
                     <div class="footer-divider"></div>
-                    <p class="text-gray-300 text-sm mb-4">
+                    <p class="text-gray-300 text-sm mb-3">
                         西丰县林业生态公益基金会致力于林业生态保护、生物多样性维护及生态教育推广。
                     </p>
                     <p class="text-gray-300 text-sm">
@@ -209,11 +211,11 @@
                 
                 <!-- 第二列：快速链接 -->
                 <div>
-                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                    <h4 class="text-lg font-bold mb-3 flex items-center">
                         <i class="fa fa-link text-forest-accent mr-2"></i>快速链接
                     </h4>
                     <div class="footer-divider"></div>
-                    <ul class="space-y-3 text-sm text-gray-300">
+                    <ul class="space-y-2 text-sm text-gray-300">
                         <li><a href="../index.html" class="hover:text-forest-accent transition-colors flex items-center">
                             <i class="fa fa-angle-right mr-2 text-xs"></i>首页
                         </a></li>
@@ -234,21 +236,21 @@
                 
                 <!-- 第三列：LOGO及名称 -->
                 <div>
-                    <div class="mb-6 flex justify-center">
+                    <div class="mb-4 flex justify-center">
                         <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a260d32335004ba4b94b90cc1502d60e.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100420251004500165D25C4FB7DCC4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760185510&x-signature=n9SnY5klyQ7ixYqOWPec3Xl99Fs%3D" 
                              alt="西丰县林业生态公益基金会logo" 
-                             class="h-24 w-auto">
+                             class="h-20 w-auto">
                     </div>
-                    <h4 class="text-lg font-bold text-center mb-4">西丰县林业生态公益基金会</h4>
-                    <p class="text-forest-accent text-sm text-center">Xifeng County Forestry Ecological Foundation</p>
+                    <h4 class="text-base font-bold text-center mb-2">西丰县林业生态公益基金会</h4>
+                    <p class="text-forest-accent text-xs text-center">Xifeng County Forestry Ecological Foundation</p>
                 </div>
             </div>
             
             <!-- 分隔线 -->
-            <div class="border-t border-gray-700 mb-8 max-w-5xl mx-auto"></div>
+            <div class="border-t border-gray-700 mb-6"></div>
             
             <!-- 版权信息区域 -->
-            <div class="text-center text-sm text-gray-400">
+            <div class="text-center text-xs text-gray-400">
                 <p>© 2025 西丰县林业生态公益基金会 版权所有</p>
             </div>
         </div>
@@ -261,9 +263,9 @@
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 30) {
                 navbar.classList.add('py-2', 'shadow-md');
-                navbar.classList.remove('py-4');
+                navbar.classList.remove('py-3');
             } else {
-                navbar.classList.add('py-4');
+                navbar.classList.add('py-3');
                 navbar.classList.remove('py-2', 'shadow-md');
             }
         });
@@ -289,6 +291,15 @@
                     .catch(err => console.error('复制失败: ', err));
             }
         }
+
+        // 确保视频区域在窗口大小变化时始终保持全屏宽度
+        window.addEventListener('resize', function() {
+            const videoContainer = document.querySelector('.video-container');
+            if (videoContainer) {
+                videoContainer.style.width = `${window.innerWidth}px`;
+            }
+        });
     </script>
 </body>
 </html>
+    
