@@ -80,11 +80,11 @@
         .image-container {
             text-align: center;
             margin: 20px 0;
+            overflow: hidden; /* 确保图片不会溢出容器 */
         }
         .image-container img {
-            /* 保持图片实际像素大小 */
-            max-width: none;
-            height: auto;
+            max-width: 100%; /* 关键修改：图片最大宽度不超过容器宽度 */
+            height: auto; /* 保持图片比例 */
             border: 1px solid #ddd;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
