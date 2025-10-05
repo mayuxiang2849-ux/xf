@@ -64,7 +64,7 @@
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-stone-dark">
-    <!-- 导航栏：修复所有链接路径（添加../退级，指向根目录页面） -->
+    <!-- 导航栏 -->
     <header id="navbar" class="fixed w-full top-0 z-50 bg-forest-dark transition-all duration-300">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="../index.html" class="flex items-center space-x-3">
@@ -78,7 +78,7 @@
                 </div>
             </a>
             
-            <!-- 桌面端导航：修复链接路径 -->
+            <!-- 桌面端导航 -->
             <div class="hidden md:flex items-center space-x-8">
                 <a href="../index.html" class="text-white hover:text-forest-accent transition-colors">首页</a>
                 <a href="../videos.html" class="text-forest-accent border-b-2 border-forest-accent pb-1 font-medium">光影</a>
@@ -93,7 +93,7 @@
             </button>
         </nav>
         
-        <!-- 移动端导航菜单：修复链接路径 -->
+        <!-- 移动端导航菜单 -->
         <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95 backdrop-blur-sm">
             <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
                 <a href="../index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">首页</a>
@@ -107,7 +107,7 @@
 
     <!-- 页面主体内容 -->
     <main class="container mx-auto px-4 pt-28 pb-16">
-        <!-- 面包屑导航：修复链接路径 -->
+        <!-- 面包屑导航 -->
         <div class="text-sm text-stone mb-8">
             <a href="../index.html" class="hover:text-forest transition-colors">首页</a>
             <span class="mx-2"><i class="fa fa-angle-right text-xs"></i></span>
@@ -116,13 +116,13 @@
             <span class="text-stone-dark">以改变 致地球</span>
         </div>
         
-        <!-- 视频播放区：修复移动端尺寸（w-full md:w-[80%]实现响应式，移动端全屏、桌面端80%） -->
+        <!-- 视频播放区：优化移动端显示 -->
         <section class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden">
             <div class="p-4 md:p-6">
-                <!-- 视频标题 -->
-                <h2 class="text-2xl md:text-3xl font-bold text-forest-dark mb-6">以改变 致地球</h2>
+                <!-- 视频标题：已添加居中样式 -->
+                <h2 class="text-2xl md:text-3xl font-bold text-forest-dark mb-6 text-center">以改变 致地球</h2>
                 
-                <!-- 视频播放器：响应式宽度调整 -->
+                <!-- 视频播放器：确保移动端全屏显示 -->
                 <div class="video-container w-full md:w-[80%] mx-auto bg-gray-900 rounded-lg overflow-hidden mb-6 shadow-inner">
                     <iframe 
                         src="//player.bilibili.com/player.html?isOutside=true&aid=115321667133236&bvid=BV14BxMzSEr6&cid=32859554140&p=1" 
@@ -186,7 +186,7 @@
         </section>
     </main>
 
-    <!-- 页脚：修复链接路径 -->
+    <!-- 页脚 -->
     <footer class="bg-forest-dark text-white pt-16 pb-8">
         <div class="container mx-auto px-4">
             <!-- 三列布局 -->
