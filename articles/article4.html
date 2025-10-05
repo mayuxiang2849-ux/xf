@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="description" content="PDF文档内容 - 西丰县林业生态公益基金会文苑频道">
+    <title>重要通知 - 文苑频道 - 西丰县林业生态公益基金会</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 引入PDF.js库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: { 
+                            dark: '#0F3817', 
+                            DEFAULT: '#1A5E20', 
+                            medium: '#2E7D32', 
+                            light: '#4CAF50', 
+                            accent: '#81C784' 
+                        },
+                        earth: { 
+                            dark: '#5D4037', 
+                            DEFAULT: '#795548', 
+                            light: '#A1887F' 
+                        },
+                        stone: { 
+                            dark: '#424242', 
+                            DEFAULT: '#616161', 
+                            light: '#E0E0E0' 
+                        }
+                    },
+                    fontFamily: { 
+                        sans: ['Noto Sans SC', 'sans-serif'] 
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+            }
+            .footer-divider {
+                @apply w-16 h-0.5 bg-forest-accent my-6;
+            }
+            .backdrop-blur {
+                backdrop-filter: blur(8px);
+            }
+            .pdf-page {
+                @apply mx-auto my-6 shadow-md bg-white rounded-lg overflow-hidden transition-all duration-300;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-stone-dark">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full top-0 z-50 bg-forest-dark transition-all duration-300">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center space-x-3">
+                <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a260d32335004ba4b94b90cc1502d60e.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100420251004500165D25C4FB7DCC4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760185510&x-signature=n9SnY5klyQ7ixYqOWPec3Xl99Fs%3D" 
+                     alt="西丰县林业生态公益基金会logo" 
+                     class="h-12 w-auto">
+                <div>
+                    <h1 class="text-white text-xl md:text-2xl font-bold">西丰县林业生态公益基金会</h1>
+                    <p class="text-forest-accent text-sm">生态保护 · 公益同行</p>
+                </div>
+            </a>
+            
+            <!-- 桌面端导航 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="../index.html" class="text-white hover:text-forest-accent transition-colors">首页</a>
+                <a href="../videos.html" class="text-white hover:text-forest-accent transition-colors">光影</a>
+                <a href="../articles.html" class="text-forest-accent border-b-2 border-forest-accent pb-1 font-medium">文苑</a>
+                <a href="../projects.html" class="text-white hover:text-forest-accent transition-colors">项目</a>
+                <a href="../about.html" class="text-white hover:text-forest-accent transition-colors">关于我们</a>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="mobileMenuBtn" class="md:hidden text-white text-2xl">
+                <i class="fa fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95 backdrop-blur-sm">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="../index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">首页</a>
+                <a href="../videos.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">光影</a>
+                <a href="../articles.html" class="text-forest-accent py-2 border-b border-forest-medium">文苑</a>
+                <a href="../projects.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">项目</a>
+                <a href="../about.html" class="text-white hover:text-forest-accent py-2">关于我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 页面主体内容 -->
+    <main class="container mx-auto px-4 pt-28 pb-16">
+        <!-- 面包屑导航 -->
+        <div class="text-sm text-stone mb-6">
+            <a href="../index.html" class="hover:text-forest transition-colors">首页</a>
+            <span class="mx-1"><i class="fa fa-angle-right text-xs"></i></span>
+            <a href="../articles.html" class="hover:text-forest transition-colors">文苑频道</a>
+            <span class="mx-1"><i class="fa fa-angle-right text-xs"></i></span>
+            <span class="text-stone-dark">重要通知文件</span>
+        </div>
+        
+        <!-- 文章内容区 -->
+        <section class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden">
+            <!-- 文章标题和主题 -->
+            <div class="p-6 md:p-8 border-b border-gray-100">
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 bg-forest-accent/20 text-forest rounded-full text-sm mb-3">正式文件</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-forest-dark">重要通知文件内容</h2>
+                    <p class="text-lg text-stone mt-2">相关事项通知与说明</p>
+                </div>
+                
+                <!-- 文章操作栏 -->
+                <div class="flex justify-between items-center py-4 border-t border-gray-100">
+                    <div class="flex items-center space-x-6 text-sm text-stone">
+                        <span><i class="fa fa-eye mr-1 text-forest"></i> 3,752</span>
+                        <span><i class="fa fa-calendar mr-1 text-forest"></i> 2022-03-29</span>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3">
+                        <button id="download-pdf" class="btn btn-primary flex items-center px-4 py-2 bg-forest hover:bg-forest-medium text-white rounded-md transition-colors">
+                            <i class="fa fa-download mr-2"></i> 下载原文
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 文档内容区 -->
+            <div class="p-6 md:p-8">
+                <!-- 提示信息 -->
+                <div class="bg-blue-50 border-l-4 border-forest p-4 mb-6 rounded">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fa fa-info-circle text-forest"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-blue-700">
+                                提示：文档内容已做部分处理，仅展示第5页至倒数第3页的内容。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 加载指示器 -->
+                <div id="loading-indicator" class="flex items-center justify-center p-10">
+                    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-forest"></div>
+                    <p class="ml-4 text-stone">正在加载文档内容...</p>
+                </div>
+                
+                <!-- 错误消息 -->
+                <div id="error-message" class="hidden p-6 text-red-600 bg-red-50">
+                    <i class="fa fa-exclamation-circle mr-2"></i>
+                    <span>加载文档时发生错误，请稍后重试。</span>
+                </div>
+                
+                <!-- PDF控制栏 -->
+                <div id="pdf-controls" class="hidden flex flex-wrap items-center justify-between p-4 bg-gray-50 border rounded-lg mb-6">
+                    <div class="flex items-center space-x-4 mb-3 sm:mb-0">
+                        <button id="prev-page" class="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md text-stone hover:bg-gray-50 transition-colors">
+                            <i class="fa fa-chevron-left mr-1"></i> 上一页
+                        </button>
+                        <button id="next-page" class="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md text-stone hover:bg-gray-50 transition-colors">
+                            下一页 <i class="fa fa-chevron-right ml-1"></i>
+                        </button>
+                        <span class="text-stone"><span id="page-num">5</span> / <span id="page-count">?</span></span>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3">
+                        <button id="zoom-out" class="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md text-stone hover:bg-gray-50 transition-colors">
+                            <i class="fa fa-search-minus mr-1"></i> 缩小
+                        </button>
+                        <button id="zoom-in" class="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md text-stone hover:bg-gray-50 transition-colors">
+                            <i class="fa fa-search-plus mr-1"></i> 放大
+                        </button>
+                        <button id="reset-zoom" class="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md text-stone hover:bg-gray-50 transition-colors">
+                            <i class="fa fa-refresh mr-1"></i> 重置
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- PDF内容将在这里显示 -->
+                <div id="pdf-content" class="hidden"></div>
+                
+                <!-- 文档说明 -->
+                <div class="mt-8 pt-6 border-t border-gray-100">
+                    <h3 class="text-lg font-semibold mb-3 text-forest-dark">文档说明</h3>
+                    <p class="text-stone mb-4 leading-relaxed">
+                        本文档内容来源于官方发布的正式文件，为公众提供相关信息参考。文档已按要求进行部分内容筛选，仅展示第5页至倒数第3页的内容。
+                    </p>
+                    
+                    <!-- 标签 -->
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <span class="inline-block px-3 py-1 bg-gray-100 text-stone text-sm rounded-full">
+                            <i class="fa fa-tag mr-1 text-forest"></i> 官方文件
+                        </span>
+                        <span class="inline-block px-3 py-1 bg-gray-100 text-stone text-sm rounded-full">
+                            <i class="fa fa-tag mr-1 text-forest"></i> 通知公告
+                        </span>
+                        <span class="inline-block px-3 py-1 bg-gray-100 text-stone text-sm rounded-full">
+                            <i class="fa fa-tag mr-1 text-forest"></i> 政策文件
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-forest-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <!-- 三列布局 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- 左侧：关于我们 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-leaf text-forest-accent mr-2"></i>关于我们
+                    </h4>
+                    <div class="footer-divider"></div>
+                    <p class="text-gray-300 text-sm mb-4">
+                        西丰县林业生态公益基金会致力于林业生态保护、生物多样性维护及生态教育推广。
+                    </p>
+                    <p class="text-gray-300 text-sm">
+                        我们相信，每一份努力都能为生态保护贡献力量，共同守护我们的绿色家园。
+                    </p>
+                </div>
+                
+                <!-- 第二列：快速链接 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-link text-forest-accent mr-2"></i>快速链接
+                    </h4>
+                    <div class="footer-divider"></div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="../index.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>首页
+                        </a></li>
+                        <li><a href="../videos.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>光影
+                        </a></li>
+                        <li><a href="../articles.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>文苑
+                        </a></li>
+                        <li><a href="../projects.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>项目
+                        </a></li>
+                        <li><a href="../about.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>关于我们
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <!-- 第三列：LOGO及名称 -->
+                <div>
+                    <div class="mb-6 flex justify-center">
+                        <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a260d32335004ba4b94b90cc1502d60e.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100420251004500165D25C4FB7DCC4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760185510&x-signature=n9SnY5klyQ7ixYqOWPec3Xl99Fs%3D" 
+                             alt="西丰县林业生态公益基金会logo" 
+                             class="h-24 w-auto">
+                    </div>
+                    <h4 class="text-lg font-bold text-center mb-4">西丰县林业生态公益基金会</h4>
+                    <p class="text-forest-accent text-sm text-center">Xifeng County Forestry Ecological Foundation</p>
+                </div>
+            </div>
+            
+            <!-- 分隔线 -->
+            <div class="border-t border-gray-700 mb-8"></div>
+            
+            <!-- 版权信息区域 -->
+            <div class="text-center text-sm text-gray-400">
+                <p>© 2025 西丰县林业生态公益基金会 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 30) {
+                navbar.classList.add('py-2', 'shadow-md');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2', 'shadow-md');
+            }
+        });
+        
+        // 移动端菜单切换
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // PDF文档相关设置
+        const pdfUrl = 'https://www.jcgov.gov.cn/dtxx/zxts/202203/P020220329384785111838.pdf';
+        const firstVisiblePage = 5; // 从第5页开始显示
+        const pagesToHideFromEnd = 2; // 从末尾隐藏2页
+        
+        // PDF.js相关变量
+        let pdfDoc = null;
+        let currentPage = firstVisiblePage;
+        let zoom = 1.0;
+        let lastVisiblePage = null;
+        
+        // DOM元素
+        const pageNumEl = document.getElementById('page-num');
+        const pageCountEl = document.getElementById('page-count');
+        const prevPageBtn = document.getElementById('prev-page');
+        const nextPageBtn = document.getElementById('next-page');
+        const zoomInBtn = document.getElementById('zoom-in');
+        const zoomOutBtn = document.getElementById('zoom-out');
+        const resetZoomBtn = document.getElementById('reset-zoom');
+        const downloadBtn = document.getElementById('download-pdf');
+        const pdfContent = document.getElementById('pdf-content');
+        const pdfControls = document.getElementById('pdf-controls');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const errorMessage = document.getElementById('error-message');
+        
+        // 初始化PDF查看器
+        function initPdfViewer() {
+            // 设置PDF.js的工作器
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 
+                'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+            
+            // 加载PDF文档
+            pdfjsLib.getDocument(pdfUrl).promise.then(function(pdfDoc_) {
+                pdfDoc = pdfDoc_;
+                
+                // 计算最后可见页
+                lastVisiblePage = pdfDoc.numPages - pagesToHideFromEnd;
+                
+                // 检查文档是否有足够的页数
+                if (pdfDoc.numPages < firstVisiblePage) {
+                    showError(`文档页数不足，只有 ${pdfDoc.numPages} 页，无法从第 ${firstVisiblePage} 页开始显示`);
+                    return;
+                }
+                
+                if (lastVisiblePage < firstVisiblePage) {
+                    showError(`文档页数不足，无法满足显示要求（需要至少 ${firstVisiblePage + pagesToHideFromEnd} 页）`);
+                    return;
+                }
+                
+                // 更新页面计数显示
+                pageCountEl.textContent = lastVisiblePage;
+                
+                // 隐藏加载指示器，显示PDF内容区域和控制栏
+                loadingIndicator.classList.add('hidden');
+                pdfContent.classList.remove('hidden');
+                pdfControls.classList.remove('hidden');
+                
+                // 渲染第一可见页
+                renderPage(currentPage);
+            }).catch(function(error) {
+                console.error('加载PDF时出错:', error);
+                showError('加载文档时发生错误，请稍后重试。');
+            });
+        }
+        
+        // 显示错误消息
+        function showError(message) {
+            loadingIndicator.classList.add('hidden');
+            const errorText = errorMessage.querySelector('span');
+            errorText.innerHTML = message;
+            errorMessage.classList.remove('hidden');
+        }
+        
+        // 渲染指定页码
+        function renderPage(num) {
+            // 确保不会渲染被隐藏的页面
+            if (num < firstVisiblePage) num = firstVisiblePage;
+            if (num > lastVisiblePage) num = lastVisiblePage;
+            
+            pdfDoc.getPage(num).then(function(page) {
+                // 创建画布元素
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                // 清除现有内容
+                pdfContent.innerHTML = '';
+                pdfContent.appendChild(canvas);
+                
+                // 设置画布尺寸
+                const viewport = page.getViewport({ scale: zoom });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                
+                // 添加样式
+                canvas.classList.add('pdf-page', 'max-w-full', 'h-auto');
+                
+                // 渲染页面内容
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+                
+                const renderTask = page.render(renderContext);
+                renderTask.promise.then(function() {
+                    currentPage = num;
+                    pageNumEl.textContent = currentPage;
+                    
+                    // 更新按钮状态
+                    prevPageBtn.disabled = currentPage <= firstVisiblePage;
+                    nextPageBtn.disabled = currentPage >= lastVisiblePage;
+                    
+                    if (currentPage <= firstVisiblePage) {
+                        prevPageBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    } else {
+                        prevPageBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                    
+                    if (currentPage >= lastVisiblePage) {
+                        nextPageBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    } else {
+                        nextPageBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                });
+            });
+        }
+        
+        // 上一页
+        function onPrevPage() {
+            if (currentPage <= firstVisiblePage) return;
+            renderPage(currentPage - 1);
+        }
+        
+        // 下一页
+        function onNextPage() {
+            if (currentPage >= lastVisiblePage) return;
+            renderPage(currentPage + 1);
+        }
+        
+        // 放大
+        function onZoomIn() {
+            zoom += 0.1;
+            renderPage(currentPage);
+        }
+        
+        // 缩小
+        function onZoomOut() {
+            if (zoom > 0.5) {
+                zoom -= 0.1;
+                renderPage(currentPage);
+            }
+        }
+        
+        // 重置缩放
+        function onResetZoom() {
+            zoom = 1.0;
+            renderPage(currentPage);
+        }
+        
+        // 下载PDF
+        function downloadPdf() {
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'document.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // 绑定事件监听器
+        prevPageBtn.addEventListener('click', onPrevPage);
+        nextPageBtn.addEventListener('click', onNextPage);
+        zoomInBtn.addEventListener('click', onZoomIn);
+        zoomOutBtn.addEventListener('click', onZoomOut);
+        resetZoomBtn.addEventListener('click', onResetZoom);
+        downloadBtn.addEventListener('click', downloadPdf);
+        
+        // 键盘导航
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' && currentPage > firstVisiblePage) {
+                onPrevPage();
+            } else if (e.key === 'ArrowRight' && currentPage < lastVisiblePage) {
+                onNextPage();
+            } else if (e.key === '+') {
+                onZoomIn();
+            } else if (e.key === '-') {
+                onZoomOut();
+            } else if (e.key === '0') {
+                onResetZoom();
+            }
+        });
+        
+        // 页面加载完成后初始化PDF查看器
+        window.addEventListener('load', initPdfViewer);
+    </script>
+</body>
+</html>
