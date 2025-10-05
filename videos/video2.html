@@ -64,10 +64,10 @@
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-stone-dark">
-    <!-- 导航栏 -->
+    <!-- 导航栏：修复所有链接路径（添加../退级，指向根目录页面） -->
     <header id="navbar" class="fixed w-full top-0 z-50 bg-forest-dark transition-all duration-300">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
+            <a href="../index.html" class="flex items-center space-x-3">
                 <!-- 基金会LOGO -->
                 <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a260d32335004ba4b94b90cc1502d60e.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100420251004500165D25C4FB7DCC4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760185510&x-signature=n9SnY5klyQ7ixYqOWPec3Xl99Fs%3D" 
                      alt="西丰县林业生态公益基金会logo" 
@@ -78,13 +78,13 @@
                 </div>
             </a>
             
-            <!-- 桌面端导航 -->
+            <!-- 桌面端导航：修复链接路径 -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-white hover:text-forest-accent transition-colors">首页</a>
-                <a href="videos.html" class="text-forest-accent border-b-2 border-forest-accent pb-1 font-medium">光影</a>
-                <a href="articles.html" class="text-white hover:text-forest-accent transition-colors">文苑</a>
-                <a href="projects.html" class="text-white hover:text-forest-accent transition-colors">项目</a>
-                <a href="about.html" class="text-white hover:text-forest-accent transition-colors">关于我们</a>
+                <a href="../index.html" class="text-white hover:text-forest-accent transition-colors">首页</a>
+                <a href="../videos.html" class="text-forest-accent border-b-2 border-forest-accent pb-1 font-medium">光影</a>
+                <a href="../articles.html" class="text-white hover:text-forest-accent transition-colors">文苑</a>
+                <a href="../projects.html" class="text-white hover:text-forest-accent transition-colors">项目</a>
+                <a href="../about.html" class="text-white hover:text-forest-accent transition-colors">关于我们</a>
             </div>
             
             <!-- 移动端菜单按钮 -->
@@ -93,37 +93,37 @@
             </button>
         </nav>
         
-        <!-- 移动端导航菜单 -->
+        <!-- 移动端导航菜单：修复链接路径 -->
         <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95 backdrop-blur-sm">
             <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
-                <a href="index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">首页</a>
-                <a href="videos.html" class="text-forest-accent py-2 border-b border-forest-medium">光影</a>
-                <a href="articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">文苑</a>
-                <a href="projects.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">项目</a>
-                <a href="about.html" class="text-white hover:text-forest-accent py-2">关于我们</a>
+                <a href="../index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">首页</a>
+                <a href="../videos.html" class="text-forest-accent py-2 border-b border-forest-medium">光影</a>
+                <a href="../articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">文苑</a>
+                <a href="../projects.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">项目</a>
+                <a href="../about.html" class="text-white hover:text-forest-accent py-2">关于我们</a>
             </div>
         </div>
     </header>
 
     <!-- 页面主体内容 -->
     <main class="container mx-auto px-4 pt-28 pb-16">
-        <!-- 面包屑导航 -->
+        <!-- 面包屑导航：修复链接路径 -->
         <div class="text-sm text-stone mb-8">
-            <a href="index.html" class="hover:text-forest transition-colors">首页</a>
+            <a href="../index.html" class="hover:text-forest transition-colors">首页</a>
             <span class="mx-2"><i class="fa fa-angle-right text-xs"></i></span>
-            <a href="videos.html" class="hover:text-forest transition-colors">光影频道</a>
+            <a href="../videos.html" class="hover:text-forest transition-colors">光影频道</a>
             <span class="mx-2"><i class="fa fa-angle-right text-xs"></i></span>
             <span class="text-stone-dark">以改变 致地球</span>
         </div>
         
-        <!-- 视频播放区 -->
+        <!-- 视频播放区：修复移动端尺寸（w-full md:w-[80%]实现响应式，移动端全屏、桌面端80%） -->
         <section class="mb-12 bg-white rounded-xl shadow-lg overflow-hidden">
             <div class="p-4 md:p-6">
                 <!-- 视频标题 -->
                 <h2 class="text-2xl md:text-3xl font-bold text-forest-dark mb-6">以改变 致地球</h2>
                 
-                <!-- 视频播放器（已缩小20%并保持居中） -->
-                <div class="video-container w-[80%] mx-auto bg-gray-900 rounded-lg overflow-hidden mb-6 shadow-inner">
+                <!-- 视频播放器：响应式宽度调整 -->
+                <div class="video-container w-full md:w-[80%] mx-auto bg-gray-900 rounded-lg overflow-hidden mb-6 shadow-inner">
                     <iframe 
                         src="//player.bilibili.com/player.html?isOutside=true&aid=115321667133236&bvid=BV14BxMzSEr6&cid=32859554140&p=1" 
                         scrolling="no" 
@@ -186,7 +186,7 @@
         </section>
     </main>
 
-    <!-- 页脚 -->
+    <!-- 页脚：修复链接路径 -->
     <footer class="bg-forest-dark text-white pt-16 pb-8">
         <div class="container mx-auto px-4">
             <!-- 三列布局 -->
@@ -212,19 +212,19 @@
                     </h4>
                     <div class="footer-divider"></div>
                     <ul class="space-y-3 text-sm text-gray-300">
-                        <li><a href="index.html" class="hover:text-forest-accent transition-colors flex items-center">
+                        <li><a href="../index.html" class="hover:text-forest-accent transition-colors flex items-center">
                             <i class="fa fa-angle-right mr-2 text-xs"></i>首页
                         </a></li>
-                        <li><a href="videos.html" class="hover:text-forest-accent transition-colors flex items-center">
+                        <li><a href="../videos.html" class="hover:text-forest-accent transition-colors flex items-center">
                             <i class="fa fa-angle-right mr-2 text-xs"></i>光影
                         </a></li>
-                        <li><a href="articles.html" class="hover:text-forest-accent transition-colors flex items-center">
+                        <li><a href="../articles.html" class="hover:text-forest-accent transition-colors flex items-center">
                             <i class="fa fa-angle-right mr-2 text-xs"></i>文苑
                         </a></li>
-                        <li><a href="projects.html" class="hover:text-forest-accent transition-colors flex items-center">
+                        <li><a href="../projects.html" class="hover:text-forest-accent transition-colors flex items-center">
                             <i class="fa fa-angle-right mr-2 text-xs"></i>项目
                         </a></li>
-                        <li><a href="about.html" class="hover:text-forest-accent transition-colors flex items-center">
+                        <li><a href="../about.html" class="hover:text-forest-accent transition-colors flex items-center">
                             <i class="fa fa-angle-right mr-2 text-xs"></i>关于我们
                         </a></li>
                     </ul>
@@ -290,4 +290,3 @@
     </script>
 </body>
 </html>
-    
