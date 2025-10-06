@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <meta name="description" content="PDF文档内容 - 西丰县林业生态公益基金会文苑频道">
-    <title>重要通知 - 文苑频道 - 西丰县林业生态公益基金会</title>
+    <meta name="description" content="西丰县文明健康绿色环保生活方式手册 - 西丰县林业生态公益基金会文苑频道">
+    <title>西丰县文明健康绿色环保生活方式手册 - 文苑频道 - 西丰县林业生态公益基金会</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- 引入PDF.js库 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
     
     <script>
         tailwind.config = {
@@ -60,8 +58,14 @@
             .backdrop-blur {
                 backdrop-filter: blur(8px);
             }
-            .pdf-page {
-                @apply mx-auto my-6 shadow-md bg-white rounded-lg overflow-hidden transition-all duration-300;
+            .manual-section {
+                @apply mb-10;
+            }
+            .manual-section h3 {
+                @apply text-xl md:text-2xl font-bold text-forest mb-4 pb-2 border-b border-forest-accent/30;
+            }
+            .manual-section p {
+                @apply mb-4 leading-relaxed;
             }
             body {
                 margin: 0;
@@ -119,7 +123,7 @@
             <span class="mx-1"><i class="fa fa-angle-right text-xs"></i></span>
             <a href="../articles.html" class="hover:text-forest transition-colors">文苑频道</a>
             <span class="mx-1"><i class="fa fa-angle-right text-xs"></i></span>
-            <span class="text-stone-dark">重要通知文件</span>
+            <span class="text-stone-dark">西丰县文明健康绿色环保生活方式手册</span>
         </div>
         
         <!-- 文章内容区 -->
@@ -128,8 +132,8 @@
             <div class="p-6 md:p-8 border-b border-gray-100">
                 <div class="mb-4">
                     <span class="inline-block px-3 py-1 bg-forest-accent/20 text-forest rounded-full text-sm mb-3">正式文件</span>
-                    <h2 class="text-2xl md:text-3xl font-bold text-forest-dark">重要通知文件内容</h2>
-                    <p class="text-lg text-stone mt-2">相关事项通知与说明</p>
+                    <h2 class="text-2xl md:text-3xl font-bold text-forest-dark">西丰县文明健康绿色环保生活方式手册</h2>
+                    <p class="text-lg text-stone mt-2">文明健康 · 绿色环保 · 共同践行</p>
                 </div>
                 
                 <!-- 文章操作栏 -->
@@ -140,8 +144,8 @@
                     </div>
                     
                     <div class="flex items-center space-x-3">
-                        <button id="download-pdf" class="btn btn-primary flex items-center px-4 py-2 bg-forest hover:bg-forest-medium text-white rounded-md transition-colors">
-                            <i class="fa fa-download mr-2"></i> 下载原文
+                        <button id="download-manual" class="btn btn-primary flex items-center px-4 py-2 bg-forest hover:bg-forest-medium text-white rounded-md transition-colors">
+                            <i class="fa fa-download mr-2"></i> 下载手册
                         </button>
                     </div>
                 </div>
@@ -149,146 +153,225 @@
             
             <!-- 文档内容区 -->
             <div class="p-6 md:p-8">
-                <!-- 提示信息 -->
-                <div class="bg-blue-50 border-l-4 border-forest p-4 mb-6 rounded">
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            <i class="fa fa-info-circle text-forest"></i>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm text-blue-700">
-                                提示：文档内容已做部分处理，仅展示第5页至倒数第3页的内容。
-                            </p>
-                        </div>
-                    </div>
+                <!-- 封面图片 -->
+                <div class="mb-10 text-center">
+                    <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/8fcd8233bd26464da1a3c602dd459bfb.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251006182625846CA79D7A65F58F0721&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760351186&x-signature=0bq83XIWLLXORjp%2Fm8KBQ0XA%2Fag%3D" 
+                         alt="西丰县文明健康绿色环保生活方式手册封面" 
+                         class="max-w-full h-auto mx-auto shadow-md rounded-lg">
                 </div>
                 
-                <!-- 加载指示器 -->
-                <div id="loading-indicator" class="flex items-center justify-center p-10">
-                    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-forest"></div>
-                    <p class="ml-4 text-stone">正在加载文档内容...</p>
-                </div>
-                
-                <!-- 错误消息 -->
-                <div id="error-message" class="hidden p-6 text-red-600 bg-red-50">
-                    <i class="fa fa-exclamation-circle mr-2"></i>
-                    <span>加载文档时发生错误，请稍后重试。</span>
-                </div>
-                
-                <!-- PDF控制栏 -->
-                <div id="pdf-controls" class="hidden flex flex-wrap items-center justify-between p-4 bg-gray-50 border rounded-lg mb-6">
-                    <div class="flex items-center space-x-4 mb-3 sm:mb-0">
-                        <button id="prev-page" class="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md text-stone hover:bg-gray-50 transition-colors">
-                            <i class="fa fa-chevron-left mr-1"></i> 上一页
-                        </button>
-                        <button id="next-page" class="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md text-stone hover:bg-gray-50 transition-colors">
-                            下一页 <i class="fa fa-chevron-right ml-1"></i>
-                        </button>
-                        <span class="text-stone"><span id="page-num">5</span> / <span id="page-count">?</span></span>
+                <!-- 文章内容 -->
+                <div class="prose prose-lg max-w-none text-stone-dark">
+                    <!-- 第一篇 讲文明 -->
+                    <div class="manual-section">
+                        <h3 id="part1">## 第一篇 讲文明</h3>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">1. 树立文明卫生意识，养成良好卫生习惯</h4>
+                        <p>公民是自己健康的第一责任人，每个人都应当树立和践行对自己健康负责的理念，同时，尊重他人的健康权利。</p>
+                        <p>每个人都要树立文明卫生意识，养成正确洗手、常通风、不随地吐痰、不乱扔垃圾、不在公共场所吸烟、保持社交安全距离、注重咳嗽礼仪、科学佩戴口罩、定期开展卫生大扫除等良好卫生习惯。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">2. 学会正确洗手，保持手卫生</h4>
+                        <p>日常生活、工作、学习中，我们的手会接触到被病毒、细菌污染的物品，这些病毒和细菌会通过手触摸口、眼、鼻进入人体，导致人们生病。</p>
+                        <p>我们要养成勤洗手的好习惯，掌握正确的洗手方法。洗手时，使用流动水和肥皂或洗手液，每次揉搓20秒以上，确保手心、手指、手背、指缝、指甲缝、手腕等处均被清洗干净。不方便洗手时，可以使用免洗手消毒剂进行手部清洁。</p>
+                        <p>以下情况应及时洗手：外出归来，戴口罩前及摘口罩后，准备食物前，用餐前，上厕所前后，接触公共设施或物品（如扶手、门把手、电梯按钮、钱币等）后，接触泪液、鼻涕、痰液和唾液后，护理患者前后，抱孩子、喂孩子食物前，接触动物或动物粪便后等。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">3. 注意开窗通风，保持室内空气流通</h4>
+                        <p>开窗通风换气可有效改善室内空气质量，减少室内致病微生物和其他污染物的含量，降低室内二氧化碳和有害气体的浓度。此外，阳光中的紫外线还有杀菌作用。</p>
+                        <p>条件允许情况下，每天早、中、晚均应开窗通风，每次通风时间不少于30分钟；寒冷季节开窗通风时，注意保暖，避免受凉。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">4. 爱护公共环境，不随地吐痰，不乱扔垃圾</h4>
+                        <p>随地吐痰不仅破坏环境卫生，还会传播疾病。因此，不要随地吐痰，吐痰时应将痰液用纸包裹，再将其扔进垃圾桶。</p>
+                        <p>乱扔垃圾不仅会影响环境整洁美观，造成有毒有害物质污染环境，还会滋生蚊蝇，招引老鼠、蟑螂，导致疾病传播。生活垃圾应投放到指定的垃圾桶或垃圾站，在实行垃圾分类地区，应按要求分类投放。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">5. 不在公共场所吸烟，尊重他人的健康权益</h4>
+                        <p>吸烟和二手烟暴露会导致癌症、心血管疾病、呼吸系统疾病等多种疾病。烟草烟雾中至少含有69种致癌物。室内工作场所、公共场所和公共交通工具内完全禁烟是保护人们免受二手烟危害的有效措施。</p>
+                        <p>二手烟不存在所谓的"安全暴露"水平。在同一建筑物或室内，采取划分吸烟区和非吸烟区、安装空气净化或通风设备等措施，都不能够消除二手烟雾对不吸烟者的危害。吸烟者应当尊重他人的健康权益，不在他人特别是孕妇和儿童面前吸烟，不在禁止吸烟的场所吸烟。吸烟者应尽早戒烟，减少吸烟对自身和他人健康的危害。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">6. 少聚集，隔一米</h4>
+                        <p>呼吸道传染病大多通过飞沫传播。飞沫传播发生在与感染者近距离接触时。因此，为了预防呼吸道传染病，在日常工作、生活中，人与人的社交安全距离应保持在1米以上。</p>
+                        <p>保持社交安全距离不仅能降低疾病传播的风险，也是文明礼仪的体现。建议在旅游景区、商场、餐厅、医院等人群聚集的公共场所和窗口单位设置文明排队的地面指引标识和提示牌，引导公众自觉保持社交安全距离。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">7. 注重咳嗽礼仪，提升文明素养</h4>
+                        <p>新冠肺炎、肺结核病、流行性感冒、流行性脑脊髓膜炎等呼吸道传染病，可通过咳嗽、打喷嚏、大声说话时产生的飞沫传播给他人。咳嗽、打喷嚏时应用纸巾遮掩口鼻，使用后的纸巾扔入垃圾桶。如果来不及准备纸巾，可弯曲手肘，用手肘处的衣物遮掩口鼻，尽量避免直接用手遮掩口鼻。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">8. 坚持科学佩戴口罩</h4>
+                        <p>戴口罩可以有效阻挡空气和飞沫中的细菌、病毒，是预防呼吸道传染病的重要措施。公众应学会科学佩戴口罩，保护自己和他人。</p>
+                        <p>佩戴口罩前应洗手；分清口罩的正、反面，保持深色面朝外；金属条一侧在上，按压金属条使之紧贴鼻梁，使口罩与面部紧密贴合，口罩要遮盖鼻、口和下颌。口罩弄湿或弄脏后应及时更换。废弃口罩不要随地乱扔，应按垃圾分类要求妥善处理。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">9. 倡导餐桌文明，推广分餐公筷</h4>
+                        <p>餐桌文明是社会进步的体现。要做到合理备饭，不浪费粮食；讲究饮食卫生，拒绝食用野生动物；提倡分餐制，使用公勺公筷。</p>
+                        <p>研究表明，幽门螺杆菌、甲肝病毒等消化道致病微生物可通过唾液污染筷子、勺子进而污染食物，传染给其他就餐者。集体就餐时采用分餐制、使用公勺公筷，避免个人使用过的餐具污染公共食物，可以有效降低病从口入的风险，减少交叉感染。使用公勺公筷，剩余的饭菜可以放心打包或分装，减少食物浪费。</p>
+                        <p>此外，采用分餐制还可以根据每人每餐需要的营养搭配食物，定份定量，均衡营养，避免浪费，体现了文明健康、简约适度的生活理念。</p>
                     </div>
                     
-                    <div class="flex items-center space-x-3">
-                        <button id="zoom-out" class="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md text-stone hover:bg-gray-50 transition-colors">
-                            <i class="fa fa-search-minus mr-1"></i> 缩小
-                        </button>
-                        <button id="zoom-in" class="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md text-stone hover:bg-gray-50 transition-colors">
-                            <i class="fa fa-search-plus mr-1"></i> 放大
-                        </button>
-                        <button id="reset-zoom" class="flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md text-stone hover:bg-gray-50 transition-colors">
-                            <i class="fa fa-refresh mr-1"></i> 重置
-                        </button>
+                    <!-- 第二篇 铸健康 -->
+                    <div class="manual-section">
+                        <h3 id="part2">## 第二篇 铸健康</h3>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">10. 自觉践行健康生活方式</h4>
+                        <p>健康生活方式是指有益于健康的、习惯化的行为方式，主要表现为生活有规律，没有不良嗜好，合理膳食，适量运动，不吸烟、不酗酒，心理平衡，充足睡眠，讲究个人卫生，保持环境卫生等。</p>
+                        <p>我们每一个人都应树立科学的健康观念，增强健康意识，主动学习健康知识与技能，养成健康行为，践行健康生活方式，提高自身健康素养和健康水平。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">11. 合理膳食，食物多样</h4>
+                        <p>食物多样是实现合理营养、均衡膳食的基础，只有摄入多种类、多数量的食物，才能满足人体各种营养需求。每天的膳食应包括谷薯类、蔬菜水果类、畜禽鱼蛋奶类、大豆坚果类等食物。建议平均每人每天摄入12种以上食物，每周25种以上。</p>
+                        <p>谷类为主是平衡膳食模式的重要特征，每天摄入谷薯类食物250~400克，其中全谷物和杂豆类50~150克，薯类50~100克；膳食中碳水化合物提供的能量应占总能量的50%以上。</p>
+                        <p>提倡餐餐有蔬菜，推荐每天摄入300~500克，深色蔬菜应占1/2。天天吃水果，推荐每天摄入200~350克的新鲜水果，果汁不能代替鲜果。吃各种奶制品，每天摄入量相当于液态奶300克。经常吃豆制品，每天摄入量相当于大豆25克以上。适量吃坚果。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">12. 清淡饮食，少油少盐少糖</h4>
+                        <p>目前，我国多数居民食盐、烹调油和脂肪摄入过多，这是导致高血压、肥胖和心脑血管疾病等慢性病发病率居高不下的重要膳食因素。应当培养清淡饮食习惯，成人每天食盐不超过5克，每天烹调油不超过25~30克。</p>
+                        <p>过多摄入添加糖可增加龋齿和超重肥胖的风险，推荐每人每天摄入添加糖不超过50克，最好控制在25克以下（不包括天然存在于水果、奶类中的糖分），添加糖摄入量应低于总能量摄入的10%。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">13. 不吃病死禽畜，发现病死禽畜要及时报告</h4>
+                        <p>许多疾病可以通过动物传播，如鼠疫、狂犬病、高致病性禽流感等。预防动物源性疾病传播，应做到：接触禽畜后要洗手；尽量不与病畜、病禽接触；不加工、不食用病死禽畜；不加工、不食用未经卫生检疫合格的禽畜肉；不吃生的或未煮熟煮透的禽畜肉、水产品；不食用野生动物。</p>
+                        <p>发现病死禽畜要及时向当地兽医主管部门、动物卫生监督机构或动物疫病预防控制机构报告。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">14. 生熟食品要分开，肉类煮熟煮透后再吃</h4>
+                        <p>在食品加工、贮存过程中，生、熟食品要分开。切过生食品的刀不能直接切熟食品，盛放过生食品的容器不能直接盛放熟食品，避免生熟食品直接或间接接触。冰箱保存食物时，也要注意生熟分开，熟食品要加盖储存。</p>
+                        <p>肉类、蛋类、水产品要煮熟煮透再吃，剩饭菜应重新彻底加热后再食用。生吃蔬菜、水果要洗净，最好去皮，以去除农药残留、寄生虫卵和污垢等，避免因食物污染导致疾病发生。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">15. 不食用野生动物</h4>
+                        <p>野生动物指所有非经人工饲养而生活于自然环境下的各种动物。近年来，新发传染病不断出现，很多都与野生动物有关。这些新出现的传染病严重威胁人类健康。许多野生动物带有多种病原微生物，如果人与之接触，就可能感染病原微生物。如艾滋病病毒、埃博拉病毒、禽流感病毒等，都是在与野生动物的接触过程中传播到人类。</p>
+                        <p>我国早在1988年就颁布了《中华人民共和国野生动物保护法》，禁止出售、购买、利用国家重点保护野生动物及其制品，禁止生产、经营使用国家重点保护野生动物及其制品制作的食品，或者使用没有合法来源证明的非国家重点保护野生动物及其制品制作的食品。为了人类健康，个人不要接触、购买、食用野生动物。</p>
+                        <p>第十三届全国人民代表大会常务委员会第十六次会议通过《全国人民代表大会常务委员会关于全面禁止非法野生动物交易、革除滥食野生动物陋习、切实保障人民群众生命健康安全的决定》，内容包括：严格禁止猎捕、交易、运输、食用野生动物，如有违反，在现行法律规定基础上加重处罚。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">16. 坚持适量运动，保持健康体重</h4>
+                        <p>各个年龄段人群都应该坚持适量运动、吃动平衡、保持健康体重。运动应适度量力，选择适合自己的运动方式、强度和运动量。健康成年人每周应进行150分钟中等强度或75分钟高强度运动，或每天进行中等强度运动30分钟以上，每周3~5天。尽量减少久坐时间，每小时起来动一动，动则有益。</p>
+                        <p>健康体重是指长期保持体重适宜的健康状态。目前常用的判断健康体重的指标是体质指数（body mass index, BMI）。BMI＝体重（千克，kg）/身高²（米²，m²）。成人正常体质指数在18.5~23.9kg/m²之间，体质指数&lt;18.5kg/m²为体重过低，体质指数在24~27.9kg/m²之间为超重，体质指数≥28kg/m²为肥胖。</p>
+                        <p>腰围是判断超重、肥胖的另一常用指标。成人正常腰围的警戒线为男性≥85厘米，女性≥80厘米；成人腰围的超标线为男性≥90厘米，女性≥85厘米。</p>
+                        <p>体重过高或过低都是不健康的表现。体重过低一般反映能量摄入相对不足，易导致营养不良等。体重过高反映能量摄入相对过多或活动量不足，易导致超重和肥胖，会增加2型糖尿病、高血压、心脑血管疾病及结肠癌等疾病的发生风险。食物摄入量和身体活动量是维持健康体重的两个主要因素。每个年龄段的人群都应该合理控制能量摄入和能量消耗，保持能量平衡和健康体重。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">17. 及早戒烟，越早越好</h4>
+                        <p>吸烟可导致多种癌症、冠心病、脑卒中、慢性阻塞性肺疾病、糖尿病、白内障、男性勃起功能障碍、骨质疏松等疾病。现在吸烟者中将来会有一半人因吸烟而提早死亡，吸烟者的平均寿命比不吸烟者至少减少10年。"低焦油卷烟""中草药卷烟"不能降低吸烟带来的危害。</p>
+                        <p>人们应做到不吸烟，吸烟者应尽早戒烟。要充分了解吸烟的危害和戒烟的益处，坚定戒烟的决心，不要抱着试试看的态度，吸烟者本人的戒烟意愿是成功戒烟的基础，必要时可以寻求戒烟热线或者戒烟门诊的帮助。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">18. 远离二手烟</h4>
+                        <p>二手烟，亦称被动吸烟、环境烟草烟雾，是指由卷烟或其他烟草产品燃烧端释放出的及由吸烟者呼出的烟草烟雾所形成的混合烟雾。二手烟暴露可导致肺癌等恶性肿瘤、冠心病、脑卒中和慢性阻塞性肺疾病等疾病。人们应当远离二手烟。吸烟者不应在室内、公共场所和公共交通工具内吸烟，更不应在孕妇、婴幼儿和儿童面前吸烟，要尊重他人的健康权益。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">19. 少饮酒，不酗酒</h4>
+                        <p>长期过量饮酒，会对中枢神经系统、心脑血管系统、消化系统等造成损伤，严重危害健康。</p>
+                        <p>单次大量饮酒可导致脑卒中等心脑血管疾病急性发作、急性酒精中毒和意外伤害的发生。长期过量饮酒可增加多种疾病的患病风险，如高血压、酒精性肝炎、肝硬化、胃溃疡、胆囊炎、末梢神经损害、癫痫、恶性肿瘤等躯体疾病，以及抑郁症、焦虑症、慢性酒精中毒性精神障碍等精神心理疾病。长期过量饮酒还可导致人格改变，表现为以自我为中心，对家庭成员缺少关心照料；责任感降低，对工作不认真负责等。此外，过量饮酒还可导致交通事故和暴力事件增加。</p>
+                        <p>因此建议大家不饮酒或少饮酒，如饮酒需适量，不醉酒、不酗酒。成人一天饮酒的酒精量男性不超过25克，女性不超过15克。儿童、青少年、孕妇、哺乳期女性不饮酒。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">20. 重视心理健康，保持平和心态</h4>
+                        <p>健康是生理、心理和社会适应的完好状态。心理健康是指一种良好的心理状态和行为举止，能够恰当地认识和评价自己以及周围的人和事，有和谐的人际关系（包括家庭成员、朋友、同事等），情绪稳定，行为有目的性、有自律性，能够应对生活中的压力，能够正常学习、工作和生活，对家庭和社会有所贡献。</p>
+                        <p>心理健康的表现主要有：树立积极的人生态度，肯定自己的能力，正确认识自己的社会价值，培养自尊、自爱、自重、自信的品格；不断学习社会生活必需的知识和技能，掌握自我心理调节的技巧，提高应对社会环境的能力；在社会交往中，保持乐观、愉快、积极的情绪，融入家庭、学校、单位、社会，从社会活动中获得安全感、归属感和价值感；面对生活中的挫折和困难时，采取努力、拼搏、向上的态度，保持平和积极的心态。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">21. 及时调节负面情绪，积极乐观热爱生活</h4>
+                        <p>心理健康问题可以通过调节自身情绪和行为，向他人倾诉、寻求情感交流，拨打专业心理援助热线以及到精神心理卫生专科医院、综合医院心理门诊寻求专业人员帮助等方法解决或应对。</p>
+                        <p>采取乐观、开朗、豁达的生活态度，把目标定在自己能力所及的范围内，调适对社会和他人的期望值，建立良好的人际关系，培养健康的生活习惯和兴趣爱好，积极参加社会活动等，均有助于保持和促进心理健康。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">22. 生活规律，劳逸结合</h4>
+                        <p>任何生命活动都有其内在节律性。生活规律对健康十分重要，工作、学习、娱乐、休息、饮食、睡眠都要按作息规律进行。要注意劳逸结合，培养有益于健康的生活情趣和爱好。</p>
+                        <p>顺应四时，起居有常。睡眠时间存在个体差异，成人一般每天需要7~8小时，儿童、青少年需要更多睡眠，建议小学生每天睡眠时间不少于10小时，初中生不少于9小时，高中生不少于8小时，长期睡眠不足会危害健康。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">23. 看病网上预约，减少医院滞留时间</h4>
+                        <p>看病就医应遵从分级诊疗，避免盲目去大医院就诊。常见病、多发病患者首先到基层医疗卫生机构就诊，急危重症患者可以直接到二级以上医院就诊。</p>
+                        <p>看病网上预约可减少等待排队时间，减少人员聚集和医院交叉感染的风险；患者可以根据自己的意愿选择医生，可以选择自己方便的时间就诊；有利于使医院的门诊流量更合理，提高医疗服务效率，改善患者就医体验和就医环境等。</p>
+                        <p>疫情发生时，要遵守当地疫情防控要求，提前了解疫情期间医疗机构的就诊要求和流程，熟悉科室布局，减少在医院滞留时间。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">24. 定期体检，及时就医</h4>
+                        <p>定期进行健康体检，了解身体健康状况，及早发现潜在健康问题和疾病。根据体检结果，有针对性地改变不健康的生活方式与行为，远离健康危险因素。</p>
+                        <p>常见的体检项目包括一般状况、体格检查、实验室检查、影像学检查等。不同性别、不同年龄段、不同职业、不同健康状况的人，体检的内容也会不同，可咨询医生。有家族史、疾病史者，应定期进行有针对性的检查。</p>
+                        <p>身体出现不适症状时，要及时到正规医疗机构就诊，早诊断、早治疗，避免延误病情。就医时应遵守医院的诊疗秩序和规章制度，尊重医护人员，如实告知病情和病史，积极配合医生治疗。</p>
                     </div>
-                </div>
-                
-                <!-- PDF内容将在这里显示 -->
-                <div id="pdf-content" class="hidden"></div>
-                
-                <!-- 文档说明 -->
-                <div class="mt-8 pt-6 border-t border-gray-100">
-                    <h3 class="text-lg font-semibold mb-3 text-forest-dark">文档说明</h3>
-                    <p class="text-stone mb-4 leading-relaxed">
-                        本文档内容来源于官方发布的正式文件，为公众提供相关信息参考。文档已按要求进行部分内容筛选，仅展示第5页至倒数第3页的内容。
-                    </p>
                     
-                    <!-- 标签 -->
-                    <div class="flex flex-wrap gap-3 mt-6">
-                        <span class="inline-block px-3 py-1 bg-gray-100 text-stone text-sm rounded-full">
-                            <i class="fa fa-tag mr-1 text-forest"></i> 官方文件
-                        </span>
-                        <span class="inline-block px-3 py-1 bg-gray-100 text-stone text-sm rounded-full">
-                            <i class="fa fa-tag mr-1 text-forest"></i> 通知公告
-                        </span>
-                        <span class="inline-block px-3 py-1 bg-gray-100 text-stone text-sm rounded-full">
-                            <i class="fa fa-tag mr-1 text-forest"></i> 政策文件
-                        </span>
+                    <!-- 第三篇 守绿色 -->
+                    <div class="manual-section">
+                        <h3 id="part3">## 第三篇 守绿色</h3>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">25. 树立生态文明理念，建设清洁美丽家园</h4>
+                        <p>生态兴则文明兴，生态衰则文明衰。良好的生态环境是人类健康生存的根基，是人类社会可持续发展的依托，是最普惠的民生福祉。人类只有一个赖以生存的地球，必须树立尊重自然、顺应自然、保护自然的生态文明理念，增强"绿水青山就是金山银山"的意识，坚持人与自然和谐共生，才能保障人类健康生存和繁衍。</p>
+                        <p>优美生态环境为全社会共同享有，需要全社会共同建设、共同保护、共同治理，每个人都应该做生态文明建设的倡导者、实践者和推动者。实行最严格的生态环境保护制度，形成绿色发展方式和生活方式，坚定走科学发展、生活富裕、生态良好的文明发展道路，建设清洁美丽家园。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">26. 节约能源资源，实现可持续发展</h4>
+                        <p>我国人口众多，人均资源拥有量不到世界平均水平的一半。伴随着经济持续快速发展，工业化和城镇化持续推进，我国已进入能源高消耗期，严重的能源浪费和损失使得形势更加严峻。</p>
+                        <p>节约能源资源，发展循环经济，保护生态环境，是深入贯彻落实绿色发展理念、建设生态文明、实现可持续发展的内在要求。对于可再生资源来说，主要是通过合理调控资源使用率，实现资源的可持续利用；对于不可再生资源来说，主要是加强综合利用，提高资源利用率。加快发展清洁可再生能源，建立适应可持续发展要求的生产方式和消费方式，优化能源结构，推进产业升级，努力建设资源节约型、环境友好型社会，实现经济社会健康可持续发展。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">27. 保护自然，自觉践行绿色生活</h4>
+                        <p>每一个人都要树立良好的生态价值观和可持续发展理念，遵守生态环境保护法律法规，在生活和生产活动中不污染和破坏生态环境。在工农业生产中，杜绝排放不符合环保要求的废水、废气、废渣，减少固体废弃物产生，不随意焚烧垃圾、秸秆，科学合理使用化肥农药。在生活中使用合格燃煤、燃油，少烧散煤，少用含磷洗涤剂，少燃放烟花爆竹，抵制露天烧烤，减少油烟排放，不在室内公共场所吸烟，使用绿色环保装修材料。</p>
+                        <p>增强节约能源、节约资源、节约粮食的意识，减少能源资源消耗，做好垃圾分类。从身边的小事做起，自觉践行绿色低碳的生活方式，拒绝奢侈和浪费，争做生态环境保护的参与者、贡献者和引领者。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">28. 积极参与社区绿化美化，打造绿色整洁人居环境</h4>
+                        <p>社区就是我们的家，维护社区环境整洁是每一位社区居民应尽的责任。公众要主动参与到社区环境卫生整治，环境绿化、美化、净化中来，保持房前屋后和社区卫生整洁美观，保持居住地及周围环境清洁，及时清理居住区内的积水、生活垃圾、人畜粪便等，保持住宅、畜棚内外清洁干燥，消除鼠、蟑、蚊、蝇等病媒生物滋生环境。</p>
+                        <p>保持农贸市场、废品收购站、夜市摊区等重点场所环境卫生，不非法占道经营，不私搭乱建，不乱贴乱画，清理卫生死角。</p>
+                        <p>农村要使用卫生厕所、管理好人畜粪便，实行粪便无害化处理。禁止随地大小便，家禽家畜圈养，不让粪便污染环境及水源。病死畜禽进行无害化集中处理。</p>
+                        <p>保持家庭卫生，清除室内垃圾和杂物。人人动手，主动参与社区和房前屋后环境卫生整治，净化、绿化、美化周围环境。</p>
+                    </div>
+                    
+                    <!-- 第四篇 重环保 -->
+                    <div class="manual-section">
+                        <h3 id="part4">## 第四篇 重环保</h3>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">29. 推行垃圾分类，做到物尽其用</h4>
+                        <p>生活垃圾分类收集是指将生活垃圾按不同处理与处置手段的要求分成若干个种类进行收集，分类收集后采取适宜方式将各种不同类别的生活垃圾进行回收或处置，以减少生活垃圾最终处置量、实现部分有价值物质的回收利用、减少生活垃圾混合收集造成的环境污染。</p>
+                        <p>推行生活垃圾分类是减少环境污染、减少资源消耗、美化生活环境、实现社会可持续发展和资源合理利用的必由之路，也是城市环境建设和管理工作的重要内容。</p>
+                        <p>生活垃圾分类原则主要包括：可回收物与不可回收物分开，可燃物与不可燃物分开，干垃圾与湿垃圾分开，有害垃圾与一般垃圾分开。具体的分类方法要根据当地的生活垃圾管理规定和分类标准执行，按要求将不同类别的生活垃圾投放到对应的垃圾桶内。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">30. 选择绿色低碳出行，优先步行、骑车或公共交通出行</h4>
+                        <p>机动车污染物排放已成为我国许多城市空气污染的主要来源之一。选择绿色低碳出行，就是主动采用能降低二氧化碳排放量的交通方式，既节约能源、减少污染，也有益健康、兼顾效率。</p>
+                        <p>尽量减少使用私家车，优先步行、骑行或公共交通出行，多使用共享交通工具等绿色低碳出行方式。家庭用车应优先选择新能源汽车或节能型汽车，减少汽车尾气排放，改善空气质量，保护生态环境。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">31. 增强节约、生态、环保意识，持续改善生态环境</h4>
+                        <p>环境是人类赖以生存和发展的物质基础，环境与健康息息相关。随着人口数量增加，城镇化进程以及工业化的快速发展，人类在取得经济发展、科技进步的同时，也给生态环境带来了一定程度的破坏，造成了大气污染、水污染、土壤污染、海洋环境恶化以及生物多样性减少等后果，严重危及人类自身健康和可持续发展。</p>
+                        <p>环境恶化不仅制约经济社会发展，还是危害公众健康的重要因素，应当引起全社会的高度重视。党中央明确提出：坚决打赢蓝天保卫战，基本消除重污染天气；深入实施水污染防治行动计划，保障饮用水安全；全面落实土壤污染防治行动计划，让公众吃得放心、住得安心；持续开展农村人居环境整治行动，打造美丽乡村；持之以恒抓紧、抓好生态文明建设和生态环境保护，坚决打好污染防治攻坚战，实现人类社会的可持续发展。每一位公民都应积极响应党中央的号召，积极参与到上述行动中来，用自己的实际行动，保护生态环境，改善环境质量。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">32. 自觉做生态环境的保护者、建设者</h4>
+                        <p>爱护环境卫生、保护环境不受污染，是每一位公民应尽的责任。保护环境就是保护我们自己，要像保护眼睛一样保护生态环境，像对待生命一样对待生态环境，切实增强节约意识、环保意识和生态意识，提升生态文明素养，坚持简约适度、绿色低碳的生活与工作方式，践行绿色消费，自觉养成节约资源、不污染环境的良好习惯，努力营造清洁、优美、舒适的生活环境，为建设美丽中国、保障人民健康作贡献。</p>
+                        <p>积极参与和监督生态环境保护工作，劝阻、制止或通过"12369"平台举报破坏生态环境及影响公众健康的行为。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">33. 践行简约适度生活，从细微处做起</h4>
+                        <p>简约适度、绿色低碳的生活方式是顺应人类和自然发展规律、体现新时代特征的一种文明健康的生活风尚。公众应从日常生活中的小事做起：选购耐用品，少购买一次性用品；不跟风购买更新换代快的电子产品；选择低碳出行，优先步行、骑行或公共交通出行；利用自然采光，在光线充足的情况下尽量不开室内照明电灯，人走关灯，及时关闭电器电源；合理设定空调温度，夏季不低于26℃，冬季不高于20℃；多走楼梯，少乘电梯；一水多用，节约用纸，按需点餐不浪费；使用节能产品、绿色建材和绿色环保装修材料；闲置物品捐赠或转让，促进资源循环利用。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">34. 珍惜粮食，拒绝“舌尖上的浪费”</h4>
+                        <p>提倡勤俭节约，珍惜粮食，杜绝浪费，是中华民族的传统美德。家庭烹饪时，按需选购食物、按需备餐，提倡分餐不浪费；公务活动用餐推行简餐和自助餐；单位食堂建立采购、加工、配餐管理制度，对浪费行为给予批评教育。</p>
+                        <p>餐饮企业要引导消费者适量点餐、节约用餐、剩餐打包，不设置最低消费额。倡导婚丧嫁娶等红白喜事从简用餐，树立节约光荣、浪费可耻的社会风尚，共同营造珍惜粮食、反对浪费的良好氛围。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">35. 保护野生动植物，拒绝购买野生动物制品</h4>
+                        <p>爱护山水林田湖草生态系统，不破坏野生动植物栖息地，不随意进入自然保护区，不在自然保护区内进行砍伐、放牧、狩猎、捕捞、采药、开垦、烧荒、开矿、采石、挖沙等违法活动。</p>
+                        <p>不滥捕滥杀野生动物，拒绝购买野生动物制品，拒绝食用野生动物。掌握濒危动植物的相关知识，保护珍稀、濒危野生动植物，见到非法捕猎或采伐行为及时向相关部门举报，共同维护生物多样性和生态平衡。</p>
+                        
+                        <h4 class="text-lg font-semibold text-forest mb-3">36. 使用环保用品，减少使用一次性用品</h4>
+                        <p>环保材料具有成本低、无污染、易回收、可再利用等特点。使用环保材料，能够节省能源，降低对环境的影响，促进可持续发展。</p>
+                        <p>日常生活中的一次性用品是指只能使用一次的各类生活用品。一次性用品不仅消耗大量的自然资源，而且还会导致生活垃圾增加。在日常生活中，我们要多使用环保用品，尽量减少一次性用品的使用。如在外就餐时，尽量减少一次性餐具的使用；外出自带水杯，尽量减少一次性水杯的使用；外出购物，自带购物工具（如篮子、提包等），尽量减少一次性塑料袋的使用等。</p>
+                    </div>
+                    
+                    <!-- 返回按钮 -->
+                    <div class="mt-16 text-center">
+                        <a href="../articles.html" class="inline-flex items-center px-6 py-3 bg-forest hover:bg-forest-medium text-white font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+                            <i class="fa fa-arrow-left mr-2"></i> 返回文苑频道
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 页脚 -->
-    <footer class="bg-forest-dark text-white pt-16 pb-8">
+    <!-- 页脚 - 只保留LOGO和快速导航栏 -->
+    <footer class="bg-forest-dark text-white py-12">
         <div class="container mx-auto px-4">
-            <!-- 三列布局 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                <!-- 左侧：关于我们 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- LOGO部分 -->
                 <div>
-                    <h4 class="text-xl font-bold mb-4 flex items-center">
-                        <i class="fa fa-leaf text-forest-accent mr-2"></i>关于我们
-                    </h4>
-                    <div class="footer-divider"></div>
-                    <p class="text-gray-300 text-sm mb-4">
-                        西丰县林业生态公益基金会致力于林业生态保护、生物多样性维护及生态教育推广。
-                    </p>
-                    <p class="text-gray-300 text-sm">
-                        我们相信，每一份努力都能为生态保护贡献力量，共同守护我们的绿色家园。
-                    </p>
-                </div>
-                
-                <!-- 第二列：快速链接 -->
-                <div>
-                    <h4 class="text-xl font-bold mb-4 flex items-center">
-                        <i class="fa fa-link text-forest-accent mr-2"></i>快速链接
-                    </h4>
-                    <div class="footer-divider"></div>
-                    <ul class="space-y-3 text-sm text-gray-300">
-                        <li><a href="../index.html" class="hover:text-forest-accent transition-colors flex items-center">
-                            <i class="fa fa-angle-right mr-2 text-xs"></i>首页
-                        </a></li>
-                        <li><a href="../videos.html" class="hover:text-forest-accent transition-colors flex items-center">
-                            <i class="fa fa-angle-right mr-2 text-xs"></i>光影
-                        </a></li>
-                        <li><a href="../articles.html" class="hover:text-forest-accent transition-colors flex items-center">
-                            <i class="fa fa-angle-right mr-2 text-xs"></i>文苑
-                        </a></li>
-                        <li><a href="../projects.html" class="hover:text-forest-accent transition-colors flex items-center">
-                            <i class="fa fa-angle-right mr-2 text-xs"></i>项目
-                        </a></li>
-                        <li><a href="../about.html" class="hover:text-forest-accent transition-colors flex items-center">
-                            <i class="fa fa-angle-right mr-2 text-xs"></i>关于我们
-                        </a></li>
-                    </ul>
-                </div>
-                
-                <!-- 第三列：LOGO及名称 -->
-                <div>
-                    <div class="mb-6 flex justify-center">
+                    <div class="flex items-center space-x-3 mb-6">
                         <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a260d32335004ba4b94b90cc1502d60e.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100420251004500165D25C4FB7DCC4&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760185510&x-signature=n9SnY5klyQ7ixYqOWPec3Xl99Fs%3D" 
                              alt="西丰县林业生态公益基金会logo" 
-                             class="h-24 w-auto">
+                             class="h-10 w-auto">
+                        <h3 class="text-lg font-bold">西丰县林业生态公益基金会</h3>
                     </div>
-                    <h4 class="text-lg font-bold text-center mb-4">西丰县林业生态公益基金会</h4>
-                    <p class="text-forest-accent text-sm text-center">Xifeng County Forestry Ecological Foundation</p>
+                    <p class="text-gray-300 mb-4">致力于西丰县林业生态保护与修复，推动绿色发展，共建美丽家园。</p>
                 </div>
-            </div>
-            
-            <!-- 分隔线 -->
-            <div class="border-t border-gray-700 mb-8"></div>
-            
-            <!-- 版权信息区域 -->
-            <div class="text-center text-sm text-gray-400">
-                <p>© 2025 西丰县林业生态公益基金会 版权所有</p>
+                
+                <!-- 快速导航栏 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-300 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="../about.html" class="text-gray-300 hover:text-white transition-colors">关于我们</a></li>
+                        <li><a href="../projects.html" class="text-gray-300 hover:text-white transition-colors">生态项目</a></li>
+                        <li><a href="../articles.html" class="text-gray-300 hover:text-white transition-colors">文苑频道</a></li>
+                        <li><a href="../videos.html" class="text-gray-300 hover:text-white transition-colors">光影记录</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </footer>
@@ -298,214 +381,43 @@
         // 导航栏滚动效果
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 30) {
-                navbar.classList.add('py-2', 'shadow-md');
-                navbar.classList.remove('py-4');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-forest-dark/95', 'backdrop-blur', 'shadow-md');
+                navbar.classList.remove('bg-forest-dark');
             } else {
-                navbar.classList.add('py-4');
-                navbar.classList.remove('py-2', 'shadow-md');
+                navbar.classList.add('bg-forest-dark');
+                navbar.classList.remove('bg-forest-dark/95', 'backdrop-blur', 'shadow-md');
             }
         });
         
         // 移动端菜单切换
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+            } else {
+                mobileMenuBtn.innerHTML = '<i class="fa fa-times"></i>';
+            }
         });
         
-        // PDF文档相关设置
-        const pdfUrl = 'https://www.jcgov.gov.cn/dtxx/zxts/202203/P020220329384785111838.pdf';
-        const firstVisiblePage = 5; // 从第5页开始显示
-        const pagesToHideFromEnd = 2; // 从末尾隐藏2页
+        // 下载按钮功能
+        document.getElementById('download-manual').addEventListener('click', function() {
+            alert('手册下载功能即将上线，敬请期待！');
+        });
         
-        // PDF.js相关变量
-        let pdfDoc = null;
-        let currentPage = firstVisiblePage;
-        let zoom = 1.0;
-        let lastVisiblePage = null;
-        
-        // DOM元素
-        const pageNumEl = document.getElementById('page-num');
-        const pageCountEl = document.getElementById('page-count');
-        const prevPageBtn = document.getElementById('prev-page');
-        const nextPageBtn = document.getElementById('next-page');
-        const zoomInBtn = document.getElementById('zoom-in');
-        const zoomOutBtn = document.getElementById('zoom-out');
-        const resetZoomBtn = document.getElementById('reset-zoom');
-        const downloadBtn = document.getElementById('download-pdf');
-        const pdfContent = document.getElementById('pdf-content');
-        const pdfControls = document.getElementById('pdf-controls');
-        const loadingIndicator = document.getElementById('loading-indicator');
-        const errorMessage = document.getElementById('error-message');
-        
-        // 初始化PDF查看器
-        function initPdfViewer() {
-            // 设置PDF.js的工作器
-            pdfjsLib.GlobalWorkerOptions.workerSrc = 
-                'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
-            
-            // 加载PDF文档
-            pdfjsLib.getDocument(pdfUrl).promise.then(function(pdfDoc_) {
-                pdfDoc = pdfDoc_;
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
                 
-                // 计算最后可见页
-                lastVisiblePage = pdfDoc.numPages - pagesToHideFromEnd;
-                
-                // 检查文档是否有足够的页数
-                if (pdfDoc.numPages < firstVisiblePage) {
-                    showError(`文档页数不足，只有 ${pdfDoc.numPages} 页，无法从第 ${firstVisiblePage} 页开始显示`);
-                    return;
-                }
-                
-                if (lastVisiblePage < firstVisiblePage) {
-                    showError(`文档页数不足，无法满足显示要求（需要至少 ${firstVisiblePage + pagesToHideFromEnd} 页）`);
-                    return;
-                }
-                
-                // 更新页面计数显示
-                pageCountEl.textContent = lastVisiblePage;
-                
-                // 隐藏加载指示器，显示PDF内容区域和控制栏
-                loadingIndicator.classList.add('hidden');
-                pdfContent.classList.remove('hidden');
-                pdfControls.classList.remove('hidden');
-                
-                // 渲染第一可见页
-                renderPage(currentPage);
-            }).catch(function(error) {
-                console.error('加载PDF时出错:', error);
-                showError('加载文档时发生错误，请稍后重试。');
-            });
-        }
-        
-        // 显示错误消息
-        function showError(message) {
-            loadingIndicator.classList.add('hidden');
-            const errorText = errorMessage.querySelector('span');
-            errorText.innerHTML = message;
-            errorMessage.classList.remove('hidden');
-        }
-        
-        // 渲染指定页码
-        function renderPage(num) {
-            // 确保不会渲染被隐藏的页面
-            if (num < firstVisiblePage) num = firstVisiblePage;
-            if (num > lastVisiblePage) num = lastVisiblePage;
-            
-            pdfDoc.getPage(num).then(function(page) {
-                // 创建画布元素
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                
-                // 清除现有内容
-                pdfContent.innerHTML = '';
-                pdfContent.appendChild(canvas);
-                
-                // 设置画布尺寸
-                const viewport = page.getViewport({ scale: zoom });
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                
-                // 添加样式
-                canvas.classList.add('pdf-page', 'max-w-full', 'h-auto');
-                
-                // 渲染页面内容
-                const renderContext = {
-                    canvasContext: ctx,
-                    viewport: viewport
-                };
-                
-                const renderTask = page.render(renderContext);
-                renderTask.promise.then(function() {
-                    currentPage = num;
-                    pageNumEl.textContent = currentPage;
-                    
-                    // 更新按钮状态
-                    prevPageBtn.disabled = currentPage <= firstVisiblePage;
-                    nextPageBtn.disabled = currentPage >= lastVisiblePage;
-                    
-                    if (currentPage <= firstVisiblePage) {
-                        prevPageBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                    } else {
-                        prevPageBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                    }
-                    
-                    if (currentPage >= lastVisiblePage) {
-                        nextPageBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                    } else {
-                        nextPageBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                    }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
             });
-        }
-        
-        // 上一页
-        function onPrevPage() {
-            if (currentPage <= firstVisiblePage) return;
-            renderPage(currentPage - 1);
-        }
-        
-        // 下一页
-        function onNextPage() {
-            if (currentPage >= lastVisiblePage) return;
-            renderPage(currentPage + 1);
-        }
-        
-        // 放大
-        function onZoomIn() {
-            zoom += 0.1;
-            renderPage(currentPage);
-        }
-        
-        // 缩小
-        function onZoomOut() {
-            if (zoom > 0.5) {
-                zoom -= 0.1;
-                renderPage(currentPage);
-            }
-        }
-        
-        // 重置缩放
-        function onResetZoom() {
-            zoom = 1.0;
-            renderPage(currentPage);
-        }
-        
-        // 下载PDF
-        function downloadPdf() {
-            const link = document.createElement('a');
-            link.href = pdfUrl;
-            link.download = 'document.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-        
-        // 绑定事件监听器
-        prevPageBtn.addEventListener('click', onPrevPage);
-        nextPageBtn.addEventListener('click', onNextPage);
-        zoomInBtn.addEventListener('click', onZoomIn);
-        zoomOutBtn.addEventListener('click', onZoomOut);
-        resetZoomBtn.addEventListener('click', onResetZoom);
-        downloadBtn.addEventListener('click', downloadPdf);
-        
-        // 键盘导航
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowLeft' && currentPage > firstVisiblePage) {
-                onPrevPage();
-            } else if (e.key === 'ArrowRight' && currentPage < lastVisiblePage) {
-                onNextPage();
-            } else if (e.key === '+') {
-                onZoomIn();
-            } else if (e.key === '-') {
-                onZoomOut();
-            } else if (e.key === '0') {
-                onResetZoom();
-            }
         });
-        
-        // 页面加载完成后初始化PDF查看器
-        window.addEventListener('load', initPdfViewer);
     </script>
 </body>
 </html>
