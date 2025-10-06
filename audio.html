@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -25,169 +26,366 @@
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-            .transition-custom { transition: all 0.3s ease; }
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+            }
+            .footer-divider {
+                @apply w-16 h-0.5 bg-forest-accent my-6;
+            }
             .audio-player {
                 @apply w-full bg-stone-100 rounded-full overflow-hidden;
-            }
-            .audio-controls {
-                @apply flex items-center p-2 gap-3;
             }
         }
     </style>
 </head>
-<body class="font-sans bg-stone-100">
+<body class="font-sans bg-gray-50 text-stone-dark">
     <!-- 导航栏 -->
-    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-forest-dark">
+    <header id="navbar" class="fixed w-full top-0 z-50 bg-forest-dark transition-all duration-300">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2">
+            <a href="index.html" class="flex items-center space-x-3">
                 <!-- 使用提供的LOGO图片链接 -->
-                <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/74172e38bc784cbc8eb9ee51345412d6.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100501002908DC0998EC3DE1BC38B8&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760202029&x-signature=twmiEdjbViL36fyimCSkz5tTJY4%3D" alt="西丰县林业生态公益基金会LOGO" class="h-12 w-auto">
+                <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/74172e38bc784cbc8eb9ee51345412d6.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100501002908DC0998EC3DE1BC38B8&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760202029&x-signature=twmiEdjbViL36fyimCSkz5tTJY4%3D" 
+                     alt="西丰县林业生态公益基金会LOGO" 
+                     class="h-12 w-auto">
                 <div>
-                    <h1 class="text-white text-xl md:text-2xl font-bold text-shadow">西丰县林业生态公益基金会</h1>
-                    <p class="text-forest-accent text-sm md:text-base">生态心声 · 万物有灵</p>
+                    <h1 class="text-white text-xl md:text-2xl font-bold">西丰县林业生态公益基金会</h1>
+                    <p class="text-forest-accent text-sm">生态心声 · 万物有灵</p>
                 </div>
             </a>
+            
+            <!-- 桌面端导航 -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-white hover:text-forest-accent transition-custom font-medium">首页</a>
-                <a href="videos.html" class="text-white hover:text-forest-accent transition-custom font-medium">光影</a>
-                <a href="articles.html" class="text-white hover:text-forest-accent transition-custom font-medium">文苑</a>
+                <a href="index.html" class="text-white hover:text-forest-accent transition-colors">首页</a>
+                <a href="videos.html" class="text-white hover:text-forest-accent transition-colors">光影</a>
+                <a href="articles.html" class="text-white hover:text-forest-accent transition-colors">文苑</a>
                 <a href="audio.html" class="text-forest-accent border-b-2 border-forest-accent pb-1 font-medium">声享</a>
-                <a href="about.html" class="text-white hover:text-forest-accent transition-custom font-medium">关于我们</a>
+                <a href="about.html" class="text-white hover:text-forest-accent transition-colors">关于我们</a>
             </div>
-            <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fa fa-bars"></i></button>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="mobileMenuBtn" class="md:hidden text-white text-2xl">
+                <i class="fa fa-bars"></i>
+            </button>
         </nav>
-        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95">
-            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-                <a href="index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">首页</a>
-                <a href="videos.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">光影</a>
-                <a href="articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">文苑</a>
-                <a href="audio.html" class="text-forest-accent py-2 border-b border-forest-medium transition-custom">声享</a>
-                <a href="about.html" class="text-white hover:text-forest-accent py-2 transition-custom">关于我们</a>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95 backdrop-blur-sm">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">首页</a>
+                <a href="videos.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">光影</a>
+                <a href="articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">文苑</a>
+                <a href="audio.html" class="text-forest-accent py-2 border-b border-forest-medium">声享</a>
+                <a href="about.html" class="text-white hover:text-forest-accent py-2">关于我们</a>
             </div>
         </div>
     </header>
 
-    <!-- 内容区 -->
-    <section class="py-20 bg-white mt-20">
-        <div class="container mx-auto px-4">
-            <h1 class="text-3xl font-bold text-forest-dark mb-8">声享频道 - 有声读物与自然音乐</h1>
-            <p class="text-stone mb-12">放松身心，点击播放按钮聆听自然之声。</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- 音频1 -->
-                <div class="bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
-                    <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-                        <img src="https://picsum.photos/id/177/400/400" alt="森林雨声" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
-                        <button class="audio-play-btn absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
-                            <i class="fa fa-play"></i>
-                        </button>
-                    </div>
-                    <h3 class="font-semibold text-lg mb-1 group-hover:text-forest transition-custom">森林雨声·冥想白噪音</h3>
-                    <p class="text-stone text-sm mb-3">网易云音乐：自然白噪音，助眠冥想。</p>
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-forest text-sm"><i class="fa fa-volume-up mr-1"></i> 自然白噪音</span>
-                        <span class="text-stone text-sm">45:20</span>
-                    </div>
-                    <!-- 音频播放器 -->
-                    <div class="audio-player">
-                        <audio class="audio-track w-full" controls preload="none">
-                            <source src="https://samplelib.com/lib/preview/mp3/sample-15s.mp3" type="audio/mpeg">
-                            您的浏览器不支持音频播放
-                        </audio>
-                    </div>
-                </div>
-                
-                <!-- 音频2 -->
-                <div class="bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
-                    <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-                        <img src="https://picsum.photos/id/180/400/400" alt="鸟鸣清晨" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
-                        <button class="audio-play-btn absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
-                            <i class="fa fa-play"></i>
-                        </button>
-                    </div>
-                    <h3 class="font-semibold text-lg mb-1 group-hover:text-forest transition-custom">鸟鸣清晨</h3>
-                    <p class="text-stone text-sm mb-3">清晨森林中各种鸟类的歌唱</p>
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-forest text-sm"><i class="fa fa-volume-up mr-1"></i> 自然声音</span>
-                        <span class="text-stone text-sm">30:15</span>
-                    </div>
-                    <!-- 音频播放器 -->
-                    <div class="audio-player">
-                        <audio class="audio-track w-full" controls preload="none">
-                            <source src="https://samplelib.com/lib/preview/mp3/sample-6s.mp3" type="audio/mpeg">
-                            您的浏览器不支持音频播放
-                        </audio>
-                    </div>
-                </div>
-                
-                <!-- 音频3 -->
-                <div class="bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
-                    <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-                        <img src="https://picsum.photos/id/235/400/400" alt="森林故事：古树" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
-                        <button class="audio-play-btn absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
-                            <i class="fa fa-play"></i>
-                        </button>
-                    </div>
-                    <h3 class="font-semibold text-lg mb-1 group-hover:text-forest transition-custom">森林故事：古树</h3>
-                    <p class="text-stone text-sm mb-3">讲述百年古树的生命历程</p>
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-forest text-sm"><i class="fa fa-book mr-1"></i> 有声读物</span>
-                        <span class="text-stone text-sm">22:45</span>
-                    </div>
-                    <!-- 音频播放器 -->
-                    <div class="audio-player">
-                        <audio class="audio-track w-full" controls preload="none">
-                            <source src="https://samplelib.com/lib/preview/mp3/sample-9s.mp3" type="audio/mpeg">
-                            您的浏览器不支持音频播放
-                        </audio>
-                    </div>
-                </div>
-                
-                <!-- 音频4 -->
-                <div class="bg-gradient-to-br from-forest/5 to-forest/10 rounded-xl p-5 hover:shadow-md transition-custom group">
-                    <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-                        <img src="https://picsum.photos/id/240/400/400" alt="自然冥想音乐" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
-                        <button class="audio-play-btn absolute inset-0 m-auto w-12 h-12 bg-forest text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
-                            <i class="fa fa-play"></i>
-                        </button>
-                    </div>
-                    <h3 class="font-semibold text-lg mb-1 group-hover:text-forest transition-custom">自然冥想音乐</h3>
-                    <p class="text-stone text-sm mb-3">结合自然声音的冥想音乐</p>
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-forest text-sm"><i class="fa fa-music mr-1"></i> 纯音乐</span>
-                        <span class="text-stone text-sm">60:00</span>
-                    </div>
-                    <!-- 音频播放器 -->
-                    <div class="audio-player">
-                        <audio class="audio-track w-full" controls preload="none">
-                            <source src="https://samplelib.com/lib/preview/mp3/sample-12s.mp3" type="audio/mpeg">
-                            您的浏览器不支持音频播放
+    <!-- 页面主体内容 -->
+    <main class="container mx-auto px-4 pt-28 pb-16">
+        <!-- 页面标题区 -->
+        <div class="mb-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-forest-dark mb-4">声享频道</h2>
+            <p class="text-stone max-w-2xl mx-auto">聆听自然之声，感受生态之美</p>
+            <div class="w-20 h-1 bg-forest mx-auto mt-6"></div>
+        </div>
+        
+        <!-- 重点推荐音频（首位突出展示） -->
+        <section class="mb-16 bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-xl">
+            <div class="flex flex-col md:flex-row">
+                <!-- 音频播放区 -->
+                <div class="md:w-1/2 bg-gray-100 p-8 flex items-center justify-center">
+                    <div class="w-full max-w-md">
+                        <div class="relative mb-6">
+                            <img src="https://picsum.photos/id/177/600/600" 
+                                 alt="心声光影·生活指南封面图" 
+                                 class="w-full rounded-lg shadow-md">
+                            <button id="featuredAudioBtn" class="absolute inset-0 m-auto w-16 h-16 bg-forest rounded-full flex items-center justify-center text-white shadow-lg">
+                                <i class="fa fa-play text-xl"></i>
+                            </button>
+                        </div>
                         
+                        <!-- 音频播放器 -->
+                        <div class="audio-player">
+                            <audio id="featuredAudio" class="w-full" controls preload="none">
+                                <source src="https://samplelib.com/lib/preview/mp3/sample-15s.mp3" type="audio/mpeg">
+                                您的浏览器不支持音频播放
+                            </audio>
+                        </div>
+                        
+                        <div class="flex justify-between mt-4 text-sm text-stone">
+                            <span><i class="fa fa-headphones mr-1 text-forest"></i> 适合所有人聆听</span>
+                            <span><i class="fa fa-clock-o mr-1 text-forest"></i> 总时长: 60:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 音频信息区 -->
+                <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+                    <span class="inline-block px-3 py-1 bg-forest text-white text-sm font-medium rounded-full mb-4 self-start">
+                        <i class="fa fa-volume-up mr-1"></i> 重点推荐
+                    </span>
+                    <h3 class="text-2xl md:text-3xl font-bold text-forest-dark mb-4">心声光影·生活指南</h3>
+                    <p class="text-forest-accent font-medium mb-6">【西丰县林业生态公益基金会】出品 | 无障碍有声读物</p>
+                    
+                    <p class="text-stone mb-4">
+                        这不是一本普通的书，这是一座用声音搭建的"文明生活博物馆"。
+                    </p>
+                    <p class="text-stone mb-4">
+                        我们将《西丰县文明健康绿色环保生活方式手册》全文扫描，转化为温暖的有声故事，专为视障伙伴制作，亦献给所有热爱生活的你。
+                    </p>
+                    <p class="text-stone mb-4">
+                        在这里，您将用耳朵"看见"：如何从一次正确洗手、一顿健康餐食、一次绿色出行开始，塑造更健康、更文明、更环保的生活方式。
+                    </p>
+                    <p class="text-stone mb-6">
+                        让我们一起，在声波中相遇，共同奔赴一场美好生活实践。
+                    </p>
+                    
+                    <!-- 音频信息标签 -->
+                    <div class="mt-8 flex flex-wrap gap-3 text-sm">
+                        <span class="flex items-center text-stone"><i class="fa fa-calendar mr-2 text-forest"></i> 发布于 2025-10-05</span>
+                        <span class="flex items-center text-stone"><i class="fa fa-listens mr-2 text-forest"></i> 收听量 5,672</span>
+                        <span class="flex items-center text-stone"><i class="fa fa-tag mr-2 text-forest"></i> 无障碍有声读物</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
+        <!-- 其他音频列表 -->
+        <section>
+            <h3 class="text-2xl font-bold text-forest-dark mb-6 flex items-center">
+                <i class="fa fa-music text-forest mr-3"></i> 更多声音作品
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 音频1 - 鸟鸣清晨 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/180/400/400" 
+                             alt="鸟鸣清晨" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white audio-play-btn">
+                                <i class="fa fa-play"></i>
+                            </span>
+                        </div>
+                        <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">30:15</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">自然声音</span>
+                        <h4 class="font-semibold text-lg mb-2 line-clamp-1">鸟鸣清晨</h4>
+                        <p class="text-stone text-sm mb-3 line-clamp-2">清晨森林中各种鸟类的歌唱，唤醒新的一天</p>
+                        
+                        <!-- 音频播放器 -->
+                        <div class="audio-player mb-3">
+                            <audio class="audio-track w-full" controls preload="none">
+                                <source src="https://samplelib.com/lib/preview/mp3/sample-6s.mp3" type="audio/mpeg">
+                                您的浏览器不支持音频播放
+                            </audio>
+                        </div>
+                        
+                        <div class="flex justify-between items-center text-xs text-stone/70">
+                            <span>2025-10-04</span>
+                            <span><i class="fa fa-listens mr-1"></i> 收听量</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 音频2 - 自然冥想音乐 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/240/400/400" 
+                             alt="自然冥想音乐" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white audio-play-btn">
+                                <i class="fa fa-play"></i>
+                            </span>
+                        </div>
+                        <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">60:00</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">纯音乐</span>
+                        <h4 class="font-semibold text-lg mb-2 line-clamp-1">自然冥想音乐</h4>
+                        <p class="text-stone text-sm mb-3 line-clamp-2">结合自然声音的冥想音乐，帮助放松身心</p>
+                        
+                        <!-- 音频播放器 -->
+                        <div class="audio-player mb-3">
+                            <audio class="audio-track w-full" controls preload="none">
+                                <source src="https://samplelib.com/lib/preview/mp3/sample-12s.mp3" type="audio/mpeg">
+                                您的浏览器不支持音频播放
+                            </audio>
+                        </div>
+                        
+                        <div class="flex justify-between items-center text-xs text-stone/70">
+                            <span>2025-10-03</span>
+                            <span><i class="fa fa-listens mr-1"></i> 收听量</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 音频3 - 原第一个作品内容 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/177/400/400" 
+                             alt="森林雨声·冥想白噪音" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white audio-play-btn">
+                                <i class="fa fa-play"></i>
+                            </span>
+                        </div>
+                        <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">45:20</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">自然白噪音</span>
+                        <h4 class="font-semibold text-lg mb-2 line-clamp-1">森林雨声·冥想白噪音</h4>
+                        <p class="text-stone text-sm mb-3 line-clamp-2">网易云音乐：自然白噪音，助眠冥想的理想选择</p>
+                        
+                        <!-- 音频播放器 -->
+                        <div class="audio-player mb-3">
+                            <audio class="audio-track w-full" controls preload="none">
+                                <source src="https://samplelib.com/lib/preview/mp3/sample-15s.mp3" type="audio/mpeg">
+                                您的浏览器不支持音频播放
+                            </audio>
+                        </div>
+                        
+                        <div class="flex justify-between items-center text-xs text-stone/70">
+                            <span>2025-10-02</span>
+                            <span><i class="fa fa-listens mr-1"></i> 收听量</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 加载更多按钮 -->
+            <div class="mt-12 text-center">
+                <button id="loadMoreBtn" class="bg-white border border-forest text-forest hover:bg-forest hover:text-white transition-colors px-8 py-3 rounded-lg font-medium">
+                    加载更多作品 <i class="fa fa-angle-down ml-2"></i>
+                </button>
+            </div>
+        </section>
+    </main>
 
     <!-- 页脚 -->
     <footer class="bg-forest-dark text-white pt-16 pb-8">
         <div class="container mx-auto px-4">
-            <div class="text-center text-white/60 text-sm">© 2025 西丰县林业生态公益基金会. All rights reserved.</div>
+            <!-- 三列布局 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- 左侧：关于我们 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-leaf text-forest-accent mr-2"></i>关于我们
+                    </h4>
+                    <div class="footer-divider"></div>
+                    <p class="text-gray-300 text-sm mb-4">
+                        西丰县林业生态公益基金会致力于林业生态保护、生物多样性维护及生态教育推广。
+                    </p>
+                    <p class="text-gray-300 text-sm">
+                        我们相信，每一份努力都能为生态保护贡献力量，共同守护我们的绿色家园。
+                    </p>
+                </div>
+                
+                <!-- 第二列：快速链接 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-link text-forest-accent mr-2"></i>快速链接
+                    </h4>
+                    <div class="footer-divider"></div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="index.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>首页
+                        </a></li>
+                        <li><a href="videos.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>光影
+                        </a></li>
+                        <li><a href="articles.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>文苑
+                        </a></li>
+                        <li><a href="audio.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>声享
+                        </a></li>
+                        <li><a href="about.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>关于我们
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <!-- 第三列：LOGO及名称 -->
+                <div>
+                    <div class="mb-6 flex justify-center">
+                        <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/74172e38bc784cbc8eb9ee51345412d6.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100501002908DC0998EC3DE1BC38B8&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760202029&x-signature=twmiEdjbViL36fyimCSkz5tTJY4%3D" 
+                             alt="西丰县林业生态公益基金会logo" 
+                             class="h-24 w-auto">
+                    </div>
+                    <h4 class="text-lg font-bold text-center mb-4">西丰县林业生态公益基金会</h4>
+                    <p class="text-forest-accent text-sm text-center">Xifeng County Forestry Ecological Foundation</p>
+                </div>
+            </div>
+            
+            <!-- 分隔线 -->
+            <div class="border-t border-gray-700 mb-8"></div>
+            
+            <!-- 版权信息区域 -->
+            <div class="text-center text-sm text-gray-400">
+                <p>© 2025 西丰县林业生态公益基金会 版权所有</p>
+            </div>
         </div>
     </footer>
 
-    <!-- 脚本 -->
+    <!-- JavaScript -->
     <script>
-        // 移动端菜单切换
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 30) {
+                navbar.classList.add('py-2', 'shadow-md');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2', 'shadow-md');
+            }
+        });
         
-        // 音频播放控制
+        // 移动端菜单切换
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 重点推荐音频播放控制
+        const featuredAudioBtn = document.getElementById('featuredAudioBtn');
+        const featuredAudio = document.getElementById('featuredAudio');
+        
+        featuredAudioBtn.addEventListener('click', function() {
+            const icon = this.querySelector('i');
+            if (featuredAudio.paused) {
+                featuredAudio.play();
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+            } else {
+                featuredAudio.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+            }
+        });
+        
+        featuredAudio.addEventListener('ended', function() {
+            const icon = featuredAudioBtn.querySelector('i');
+            icon.classList.remove('fa-pause');
+            icon.classList.add('fa-play');
+        });
+        
+        // 其他音频播放控制
         document.querySelectorAll('.audio-play-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 // 获取当前卡片的音频元素
-                const audio = this.closest('div[class*="bg-gradient"]').querySelector('.audio-track');
+                const audio = this.closest('div[class*="bg-white"]').querySelector('.audio-track');
                 const icon = this.querySelector('i');
                 
                 // 控制播放/暂停
@@ -206,22 +404,22 @@
         // 音频结束时重置图标
         document.querySelectorAll('.audio-track').forEach(audio => {
             audio.addEventListener('ended', function() {
-                const btn = this.closest('div[class*="bg-gradient"]').querySelector('.audio-play-btn i');
+                const btn = this.closest('div[class*="bg-white"]').querySelector('.audio-play-btn i');
                 btn.classList.remove('fa-pause');
                 btn.classList.add('fa-play');
             });
         });
         
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 30) {
-                navbar.classList.add('py-2', 'shadow-md');
-                navbar.classList.remove('py-4');
-            } else {
-                navbar.classList.add('py-4');
-                navbar.classList.remove('py-2', 'shadow-md');
-            }
+        // 加载更多按钮功能
+        document.getElementById('loadMoreBtn').addEventListener('click', function() {
+            this.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 加载中...';
+            
+            // 模拟加载延迟
+            setTimeout(() => {
+                this.innerHTML = '没有更多作品了';
+                this.disabled = true;
+                this.classList.add('opacity-50', 'cursor-not-allowed');
+            }, 1500);
         });
     </script>
 </body>
