@@ -95,40 +95,35 @@
             <div class="w-20 h-1 bg-forest mx-auto mt-6"></div>
         </div>
         
-        <!-- 重点推荐音频（首位突出展示） -->
+        <!-- 重点推荐视频（首位突出展示） -->
         <section class="mb-16 bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-xl">
             <div class="flex flex-col md:flex-row">
-                <!-- 音频播放区 -->
+                <!-- 视频播放区 -->
                 <div class="md:w-1/2 bg-gray-100 p-8 flex items-center justify-center">
                     <div class="w-full max-w-md">
                         <div class="relative mb-6">
-                            <img src="https://picsum.photos/id/177/600/600" 
-                                 alt="心声光影·生活指南封面图" 
-                                 class="w-full rounded-lg shadow-md">
-                            <button id="featuredAudioBtn" class="absolute inset-0 m-auto w-16 h-16 bg-forest rounded-full flex items-center justify-center text-white shadow-lg">
-                                <i class="fa fa-play text-xl"></i>
-                            </button>
-                        </div>
-                        
-                        <!-- 音频播放器 -->
-                        <div class="audio-player">
-                            <audio id="featuredAudio" class="w-full" controls preload="none">
-                                <source src="https://samplelib.com/lib/preview/mp3/sample-15s.mp3" type="audio/mpeg">
-                                您的浏览器不支持音频播放
-                            </audio>
+                            <!-- 嵌入视频播放器 -->
+                            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115330089228145&bvid=BV1VzxUz3EDP&cid=32885706016&p=1" 
+                                    scrolling="no" 
+                                    border="0" 
+                                    frameborder="no" 
+                                    framespacing="0" 
+                                    allowfullscreen="true"
+                                    class="w-full aspect-video rounded-lg shadow-md"
+                                    title="心声光影·生活指南视频"></iframe>
                         </div>
                         
                         <div class="flex justify-between mt-4 text-sm text-stone">
-                            <span><i class="fa fa-headphones mr-1 text-forest"></i> 适合所有人聆听</span>
+                            <span><i class="fa fa-eye mr-1 text-forest"></i> 适合所有人观看</span>
                             <span><i class="fa fa-clock-o mr-1 text-forest"></i> 总时长: 60:00</span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- 音频信息区 -->
+                <!-- 视频信息区 -->
                 <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
                     <span class="inline-block px-3 py-1 bg-forest text-white text-sm font-medium rounded-full mb-4 self-start">
-                        <i class="fa fa-volume-up mr-1"></i> 重点推荐
+                        <i class="fa fa-video-camera mr-1"></i> 重点推荐
                     </span>
                     <h3 class="text-2xl md:text-3xl font-bold text-forest-dark mb-4">心声光影·生活指南</h3>
                     <p class="text-forest-accent font-medium mb-6">【西丰县林业生态公益基金会】出品 | 无障碍有声读物</p>
@@ -146,121 +141,109 @@
                         让我们一起，在声波中相遇，共同奔赴一场美好生活实践。
                     </p>
                     
-                    <!-- 音频信息标签 -->
+                    <!-- 视频信息标签 -->
                     <div class="mt-8 flex flex-wrap gap-3 text-sm">
                         <span class="flex items-center text-stone"><i class="fa fa-calendar mr-2 text-forest"></i> 发布于 2025-10-05</span>
-                        <span class="flex items-center text-stone"><i class="fa fa-listens mr-2 text-forest"></i> 收听量 5,672</span>
+                        <span class="flex items-center text-stone"><i class="fa fa-eye mr-2 text-forest"></i> 观看量 5,672</span>
                         <span class="flex items-center text-stone"><i class="fa fa-tag mr-2 text-forest"></i> 无障碍有声读物</span>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- 其他音频列表 -->
+        <!-- 其他音频作品列表 -->
         <section>
             <h3 class="text-2xl font-bold text-forest-dark mb-6 flex items-center">
                 <i class="fa fa-music text-forest mr-3"></i> 更多声音作品
             </h3>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 音频1 - 鸟鸣清晨 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="relative">
-                        <img src="https://picsum.photos/id/180/400/400" 
-                             alt="鸟鸣清晨" 
-                             class="w-full h-48 object-cover">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white audio-play-btn">
-                                <i class="fa fa-play"></i>
-                            </span>
+                <!-- 音频2 - 《心游太玄》冥想修行，静心解压 -->
+                <a href="audio/audio2.html" class="block">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full">
+                        <div class="relative">
+                            <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/f5874297a3ca422ba438140f769d7f42.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251007125508AD27D9967F947A2D4117&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760417708&x-signature=6GZTTShB6p4w%2FzGTQhwqBTXjklk%3D" 
+                                 alt="《心游太玄》冥想修行，静心解压封面" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white">
+                                    <i class="fa fa-play"></i>
+                                </span>
+                            </div>
+                            <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">30:15</span>
                         </div>
-                        <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">30:15</span>
-                    </div>
-                    <div class="p-5">
-                        <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">自然声音</span>
-                        <h4 class="font-semibold text-lg mb-2 line-clamp-1">鸟鸣清晨</h4>
-                        <p class="text-stone text-sm mb-3 line-clamp-2">清晨森林中各种鸟类的歌唱，唤醒新的一天</p>
-                        
-                        <!-- 音频播放器 -->
-                        <div class="audio-player mb-3">
-                            <audio class="audio-track w-full" controls preload="none">
-                                <source src="https://samplelib.com/lib/preview/mp3/sample-6s.mp3" type="audio/mpeg">
-                                您的浏览器不支持音频播放
-                            </audio>
-                        </div>
-                        
-                        <div class="flex justify-between items-center text-xs text-stone/70">
-                            <span>2025-10-04</span>
-                            <span><i class="fa fa-listens mr-1"></i> 收听量</span>
+                        <div class="p-5">
+                            <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">冥想音乐</span>
+                            <h4 class="font-semibold text-lg mb-2 line-clamp-1">《心游太玄》冥想修行，静心解压</h4>
+                            <p class="text-stone text-sm mb-3 line-clamp-2">
+                                曲子一响，杂念清空。让这道裹挟着风吟、雨落与流水潺潺的声波，为你构筑一座无形的自然结界。隔绝纷扰，净化思绪，引领你回归内心的静谧之地。专为需要瞬间沉静、深度解压的自然冥想时刻而生。
+                            </p>
+                            
+                            <div class="flex justify-between items-center text-xs text-stone/70">
+                                <span>2025-10-04</span>
+                                <span><i class="fa fa-listens mr-1"></i> 收听量</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 
-                <!-- 音频2 - 自然冥想音乐 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="relative">
-                        <img src="https://picsum.photos/id/240/400/400" 
-                             alt="自然冥想音乐" 
-                             class="w-full h-48 object-cover">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white audio-play-btn">
-                                <i class="fa fa-play"></i>
-                            </span>
+                <!-- 音频3 - 《雨浸深山・木鱼禅心》冥想解压白噪音 -->
+                <a href="audio/audio3.html" class="block">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full">
+                        <div class="relative">
+                            <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/37a810f1cf8d415c8ca6c0cc60515296.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251007125508AD27D9967F947A2D4117&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760417708&x-signature=wrbBUf8wFqdkQYqz1M7DiSLh70k%3D" 
+                                 alt="《雨浸深山・木鱼禅心》冥想解压白噪音封面" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white">
+                                    <i class="fa fa-play"></i>
+                                </span>
+                            </div>
+                            <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">60:00</span>
                         </div>
-                        <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">60:00</span>
-                    </div>
-                    <div class="p-5">
-                        <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">纯音乐</span>
-                        <h4 class="font-semibold text-lg mb-2 line-clamp-1">自然冥想音乐</h4>
-                        <p class="text-stone text-sm mb-3 line-clamp-2">结合自然声音的冥想音乐，帮助放松身心</p>
-                        
-                        <!-- 音频播放器 -->
-                        <div class="audio-player mb-3">
-                            <audio class="audio-track w-full" controls preload="none">
-                                <source src="https://samplelib.com/lib/preview/mp3/sample-12s.mp3" type="audio/mpeg">
-                                您的浏览器不支持音频播放
-                            </audio>
-                        </div>
-                        
-                        <div class="flex justify-between items-center text-xs text-stone/70">
-                            <span>2025-10-03</span>
-                            <span><i class="fa fa-listens mr-1"></i> 收听量</span>
+                        <div class="p-5">
+                            <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">自然白噪音</span>
+                            <h4 class="font-semibold text-lg mb-2 line-clamp-1">《雨浸深山・木鱼禅心》冥想解压白噪音</h4>
+                            <p class="text-stone text-sm mb-3 line-clamp-2">
+                                雨织深山为帐，古檐垂雨如珠，木鱼声缓，和着雨落的轻响，似禅意指尖抚过心尖。音声相和间，卸去一身纷扰，引你沉入冥想之境，于湿润禅意里疗愈身心、解压静心。
+                            </p>
+                            
+                            <div class="flex justify-between items-center text-xs text-stone/70">
+                                <span>2025-10-03</span>
+                                <span><i class="fa fa-listens mr-1"></i> 收听量</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 
-                <!-- 音频3 - 原第一个作品内容 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="relative">
-                        <img src="https://picsum.photos/id/177/400/400" 
-                             alt="森林雨声·冥想白噪音" 
-                             class="w-full h-48 object-cover">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white audio-play-btn">
-                                <i class="fa fa-play"></i>
-                            </span>
+                <!-- 音频4 - 《林涧絮语》幽静山间小溪流淌 -->
+                <a href="audio/audio4.html" class="block">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full">
+                        <div class="relative">
+                            <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/cfad38895f524ce29342a8fb606e689d.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251007125508AD27D9967F947A2D4117&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760417708&x-signature=EDcCexzrAT645oE%2BpC6IQnjUal8%3D" 
+                                 alt="《林涧絮语》幽静山间小溪流淌封面" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white">
+                                    <i class="fa fa-play"></i>
+                                </span>
+                            </div>
+                            <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">45:20</span>
                         </div>
-                        <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">45:20</span>
-                    </div>
-                    <div class="p-5">
-                        <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">自然白噪音</span>
-                        <h4 class="font-semibold text-lg mb-2 line-clamp-1">森林雨声·冥想白噪音</h4>
-                        <p class="text-stone text-sm mb-3 line-clamp-2">网易云音乐：自然白噪音，助眠冥想的理想选择</p>
-                        
-                        <!-- 音频播放器 -->
-                        <div class="audio-player mb-3">
-                            <audio class="audio-track w-full" controls preload="none">
-                                <source src="https://samplelib.com/lib/preview/mp3/sample-15s.mp3" type="audio/mpeg">
-                                您的浏览器不支持音频播放
-                            </audio>
-                        </div>
-                        
-                        <div class="flex justify-between items-center text-xs text-stone/70">
-                            <span>2025-10-02</span>
-                            <span><i class="fa fa-listens mr-1"></i> 收听量</span>
+                        <div class="p-5">
+                            <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">自然声音</span>
+                            <h4 class="font-semibold text-lg mb-2 line-clamp-1">《林涧絮语》幽静山间小溪流淌</h4>
+                            <p class="text-stone text-sm mb-3 line-clamp-2">
+                                那是森林最温柔的私语。每一道水纹都携带着宁静，每一滴落水都敲打在纷杂的思绪上。让自己沉浸在这片声音的溪涧里，洗涤烦躁，回归内在的平静与清明。
+                            </p>
+                            
+                            <div class="flex justify-between items-center text-xs text-stone/70">
+                                <span>2025-10-02</span>
+                                <span><i class="fa fa-listens mr-1"></i> 收听量</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             
             <!-- 加载更多按钮 -->
@@ -356,58 +339,6 @@
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('hidden');
-        });
-        
-        // 重点推荐音频播放控制
-        const featuredAudioBtn = document.getElementById('featuredAudioBtn');
-        const featuredAudio = document.getElementById('featuredAudio');
-        
-        featuredAudioBtn.addEventListener('click', function() {
-            const icon = this.querySelector('i');
-            if (featuredAudio.paused) {
-                featuredAudio.play();
-                icon.classList.remove('fa-play');
-                icon.classList.add('fa-pause');
-            } else {
-                featuredAudio.pause();
-                icon.classList.remove('fa-pause');
-                icon.classList.add('fa-play');
-            }
-        });
-        
-        featuredAudio.addEventListener('ended', function() {
-            const icon = featuredAudioBtn.querySelector('i');
-            icon.classList.remove('fa-pause');
-            icon.classList.add('fa-play');
-        });
-        
-        // 其他音频播放控制
-        document.querySelectorAll('.audio-play-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // 获取当前卡片的音频元素
-                const audio = this.closest('div[class*="bg-white"]').querySelector('.audio-track');
-                const icon = this.querySelector('i');
-                
-                // 控制播放/暂停
-                if (audio.paused) {
-                    audio.play();
-                    icon.classList.remove('fa-play');
-                    icon.classList.add('fa-pause');
-                } else {
-                    audio.pause();
-                    icon.classList.remove('fa-pause');
-                    icon.classList.add('fa-play');
-                }
-            });
-        });
-        
-        // 音频结束时重置图标
-        document.querySelectorAll('.audio-track').forEach(audio => {
-            audio.addEventListener('ended', function() {
-                const btn = this.closest('div[class*="bg-white"]').querySelector('.audio-play-btn i');
-                btn.classList.remove('fa-pause');
-                btn.classList.add('fa-play');
-            });
         });
         
         // 加载更多按钮功能
