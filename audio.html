@@ -41,6 +41,9 @@
             .audio-player {
                 @apply w-full bg-stone-100 rounded-full overflow-hidden;
             }
+            .video-container {
+                aspect-ratio: 16 / 9;
+            }
         }
     </style>
 </head>
@@ -95,32 +98,26 @@
             <div class="w-20 h-1 bg-forest mx-auto mt-6"></div>
         </div>
         
-        <!-- 重点推荐视频（首位突出展示） -->
+        <!-- 重点推荐作品（首位突出展示） -->
         <section class="mb-16 bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-xl">
             <div class="flex flex-col md:flex-row">
-                <!-- 视频播放区 - 增大尺寸，优化移动端显示 -->
-                <div class="md:w-1/2 bg-gray-100 p-4 md:p-8 flex items-center justify-center">
-                    <div class="w-full max-w-3xl px-2">
-                        <div class="relative mb-6">
-                            <!-- 嵌入视频播放器 - 增大尺寸 -->
-                            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115330089228145&bvid=BV1VzxUz3EDP&cid=32885706016&p=1" 
-                                    scrolling="no" 
-                                    border="0" 
-                                    frameborder="no" 
-                                    framespacing="0" 
-                                    allowfullscreen="true"
-                                    class="w-full aspect-video rounded-lg shadow-md min-h-[240px] md:min-h-[320px]"
-                                    title="心声光影·生活指南视频"></iframe>
-                        </div>
-                        
-                        <div class="flex justify-between mt-4 text-sm text-stone">
-                            <span><i class="fa fa-eye mr-1 text-forest"></i> 适合所有人观看</span>
-                            <span><i class="fa fa-clock-o mr-1 text-forest"></i> 总时长: 44:59</span>
-                        </div>
+                <!-- 视频播放区 - 按照要求调整为与光影频道首部作品相同的播放器样式 -->
+                <div class="md:w-1/2 bg-gray-900">
+                    <div class="video-container w-full">
+                        <iframe 
+                            src="//player.bilibili.com/player.html?isOutside=true&aid=115330089228145&bvid=BV1VzxUz3EDP&cid=32885706016&p=1" 
+                            scrolling="no" 
+                            border="0" 
+                            frameborder="no" 
+                            framespacing="0" 
+                            allowfullscreen="true"
+                            class="w-full h-full"
+                            title="心声光影·生活指南视频">
+                        </iframe>
                     </div>
                 </div>
                 
-                <!-- 视频信息区 -->
+                <!-- 作品信息区 -->
                 <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
                     <span class="inline-block px-3 py-1 bg-forest text-white text-sm font-medium rounded-full mb-4 self-start">
                         <i class="fa fa-video-camera mr-1"></i> 重点推荐
@@ -141,7 +138,7 @@
                         让我们一起，在声波中相遇，共同奔赴一场美好生活实践。
                     </p>
                     
-                    <!-- 视频信息标签 -->
+                    <!-- 作品信息标签 -->
                     <div class="mt-8 flex flex-wrap gap-3 text-sm">
                         <span class="flex items-center text-stone"><i class="fa fa-calendar mr-2 text-forest"></i> 发布于 2025-10-07</span>
                         <span class="flex items-center text-stone"><i class="fa fa-eye mr-2 text-forest"></i> 观看量 5,672</span>
