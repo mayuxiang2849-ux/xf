@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="西丰县林业生态公益基金会志愿者招募 - 加入我们，共同守护绿色家园">
+    <title>志愿者招募 - 西丰县林业生态公益基金会</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            dark: '#0F3817',
+                            DEFAULT: '#1A5E20',
+                            medium: '#2E7D32',
+                            light: '#4CAF50',
+                            accent: '#81C784'
+                        },
+                        earth: {
+                            dark: '#5D4037',
+                            DEFAULT: '#795548',
+                            light: '#A1887F'
+                        },
+                        stone: {
+                            dark: '#424242',
+                            DEFAULT: '#616161',
+                            light: '#E0E0E0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+            .transition-custom {
+                transition: all 0.3s ease;
+            }
+            .cursor-leaf {
+                cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%232E7D32'%3E%3Cpath d='M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95C4.4,8.35 4.2,9.72 4.5,11H3V13H4.5C4.2,14.28 4.4,15.65 4.95,17H3V19H9.18C9.6,20.2 10.73,21 12,21C13.27,21 14.4,20.2 14.82,19H21V17H19.05C19.6,15.65 19.8,14.28 19.5,13H21V11H19.5C19.8,9.72 19.6,8.35 19.05,7H21V5H14.82C14.4,3.8 13.27,3 12,3M12,5C12.5,5 12.97,5.4 13.08,5.9L17.96,6.96C18.07,8.23 17.32,9.45 16.07,10.11L13.5,11.5V16.5L16.07,17.89C17.32,18.55 18.07,19.77 17.96,21.04L13.08,22.1C12.97,22.6 12.5,23 12,23C11.5,23 11.03,22.6 10.92,22.1L6.04,21.04C5.93,19.77 6.68,18.55 7.93,17.89L10.5,16.5V11.5L7.93,10.11C6.68,9.45 5.93,8.23 6.04,6.96L10.92,5.9C11.03,5.4 11.5,5 12,5Z'/%3E%3C/svg%3E"), auto;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-stone-100 cursor-leaf">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-forest-dark/95 backdrop-blur-sm shadow-md">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/332ba86e9fb344d5a2c09a5c46d22107.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251004193056B64BD9101BCA12BB20D2&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760182256&x-signature=ZoLeopYwI6pKJ4Vhw05xb9gKxIM%3D" alt="西丰县林业生态公益基金会LOGO" class="h-12 w-auto">
+                <div>
+                    <h1 class="text-white text-xl md:text-2xl font-bold text-shadow">西丰县林业生态公益基金会</h1>
+                    <p class="text-forest-accent text-sm md:text-base">生态心声 · 万物有灵</p>
+                </div>
+            </a>
+            
+            <!-- 桌面导航 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-white hover:text-forest-accent transition-custom font-medium">首页</a>
+                <a href="videos.html" class="text-white hover:text-forest-accent transition-custom font-medium">光影</a>
+                <a href="articles.html" class="text-white hover:text-forest-accent transition-custom font-medium">文苑</a>
+                <a href="audio.html" class="text-white hover:text-forest-accent transition-custom font-medium">声享</a>
+                <a href="volunteer.html" class="text-forest-accent hover:text-forest-accent transition-custom font-medium">志愿者</a>
+                <a href="data-sharing.html" class="text-white hover:text-forest-accent transition-custom font-medium">数据共享</a>
+                <a href="forest-rights.html" class="text-white hover:text-forest-accent transition-custom font-medium">林权流转</a>
+                <a href="about.html" class="text-white hover:text-forest-accent transition-custom font-medium">关于我们</a>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-white text-2xl">
+                <i class="fa fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95 backdrop-blur-sm">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">首页</a>
+                <a href="videos.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">光影</a>
+                <a href="articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">文苑</a>
+                <a href="audio.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">声享</a>
+                <a href="volunteer.html" class="text-forest-accent py-2 border-b border-forest-medium transition-custom">志愿者</a>
+                <a href="data-sharing.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">数据共享</a>
+                <a href="forest-rights.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">林权流转</a>
+                <a href="about.html" class="text-white hover:text-forest-accent py-2 transition-custom">关于我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 页面标题区 -->
+    <section class="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-forest-dark">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://picsum.photos/id/125/1920/600" alt="森林背景" class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center">
+                <h1 class="text-white text-3xl md:text-5xl font-bold mb-4 text-shadow">志愿者招募</h1>
+                <p class="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">加入我们，用行动守护自然，用爱心呵护绿色家园</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主体内容区 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <!-- 左侧：报名表单 -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-forest-dark mb-6">志愿者报名表单</h2>
+                        <form id="volunteerForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-stone-dark font-medium mb-2">姓名 <span class="text-red-500">*</span></label>
+                                    <input type="text" id="name" name="name" required
+                                        class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-stone-dark font-medium mb-2">手机号码 <span class="text-red-500">*</span></label>
+                                    <input type="tel" id="phone" name="phone" required
+                                        class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-stone-dark font-medium mb-2">电子邮箱</label>
+                                <input type="email" id="email" name="email"
+                                    class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom">
+                            </div>
+                            
+                            <div>
+                                <label for="address" class="block text-stone-dark font-medium mb-2">居住地址</label>
+                                <input type="text" id="address" name="address"
+                                    class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-stone-dark font-medium mb-2">志愿意向 <span class="text-red-500">*</span></label>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
+                                        <input type="checkbox" name="interests" value="planting" class="mr-3 text-forest">
+                                        <span>植树造林活动</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
+                                        <input type="checkbox" name="interests" value="education" class="mr-3 text-forest">
+                                        <span>生态教育宣传</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
+                                        <input type="checkbox" name="interests" value="survey" class="mr-3 text-forest">
+                                        <span>森林资源调查</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
+                                        <input type="checkbox" name="interests" value="publicity" class="mr-3 text-forest">
+                                        <span>环保宣传活动</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
+                                        <input type="checkbox" name="interests" value="event" class="mr-3 text-forest">
+                                        <span>公益活动组织</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
+                                        <input type="checkbox" name="interests" value="other" class="mr-3 text-forest">
+                                        <span>其他（请说明）</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="availability" class="block text-stone-dark font-medium mb-2">可参与时间</label>
+                                <select id="availability" name="availability"
+                                    class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom">
+                                    <option value="">请选择...</option>
+                                    <option value="weekdays">工作日</option>
+                                    <option value="weekends">周末</option>
+                                    <option value="evenings">晚间</option>
+                                    <option value="holidays">节假日</option>
+                                    <option value="flexible">时间灵活</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="experience" class="block text-stone-dark font-medium mb-2">相关经验或技能</label>
+                                <textarea id="experience" name="experience" rows="3"
+                                    class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom"
+                                    placeholder="请描述您的相关志愿经验、专业技能或特长..."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label for="motivation" class="block text-stone-dark font-medium mb-2">为什么想成为志愿者 <span class="text-red-500">*</span></label>
+                                <textarea id="motivation" name="motivation" rows="3" required
+                                    class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom"
+                                    placeholder="请分享您想成为生态保护志愿者的原因..."></textarea>
+                            </div>
+                            
+                            <div class="pt-4">
+                                <button type="submit" 
+                                    class="bg-forest hover:bg-forest-medium text-white font-medium py-3 px-8 rounded-lg transition-custom shadow-md hover:shadow-lg">
+                                    提交报名 <i class="fa fa-paper-plane ml-2"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- 右侧：志愿者信息 -->
+                <div class="space-y-8">
+                    <!-- 志愿者权益 -->
+                    <div class="bg-forest/5 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-forest-dark mb-4 flex items-center">
+                            <i class="fa fa-heart text-forest mr-2"></i> 志愿者权益
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-forest mt-1 mr-3"></i>
+                                <span class="text-stone">获得官方志愿者证书及服务时长证明</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-forest mt-1 mr-3"></i>
+                                <span class="text-stone">免费参与专业生态保护技能培训</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-forest mt-1 mr-3"></i>
+                                <span class="text-stone">志愿活动期间的交通与餐饮补贴</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-forest mt-1 mr-3"></i>
+                                <span class="text-stone">优先参与基金会组织的特别活动</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-forest mt-1 mr-3"></i>
+                                <span class="text-stone">优秀志愿者年度表彰与奖励</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 近期活动 -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-bold text-forest-dark mb-4 flex items-center">
+                            <i class="fa fa-calendar text-forest mr-2"></i> 近期志愿活动
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-forest pl-4 py-1">
+                                <h4 class="font-semibold">秋季植树造林活动</h4>
+                                <p class="text-sm text-stone mb-1">10月26日 09:00-16:00</p>
+                                <p class="text-xs text-stone/70">西丰县生态公园</p>
+                            </div>
+                            <div class="border-l-4 border-forest pl-4 py-1">
+                                <h4 class="font-semibold">森林生态科普日</h4>
+                                <p class="text-sm text-stone mb-1">11月5日 10:00-15:00</p>
+                                <p class="text-xs text-stone/70">县文化中心广场</p>
+                            </div>
+                            <div class="border-l-4 border-forest pl-4 py-1">
+                                <h4 class="font-semibold">野生动物保护巡查</h4>
+                                <p class="text-sm text-stone mb-1">11月12日 全天</p>
+                                <p class="text-xs text-stone/70">西丰林区</p>
+                            </div>
+                        </div>
+                        <a href="#" class="text-forest hover:text-forest-medium text-sm font-medium mt-4 inline-block transition-custom">
+                            查看更多活动 <i class="fa fa-angle-right ml-1"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- 常见问题 -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-bold text-forest-dark mb-4 flex items-center">
+                            <i class="fa fa-question-circle text-forest mr-2"></i> 常见问题
+                        </h3>
+                        <div class="space-y-3">
+                            <div>
+                                <button class="faq-toggle w-full flex justify-between items-center text-left font-medium text-stone-dark hover:text-forest transition-custom">
+                                    <span>成为志愿者有什么条件？</span>
+                                    <i class="fa fa-plus text-forest"></i>
+                                </button>
+                                <div class="faq-content hidden mt-2 text-sm text-stone pl-0">
+                                    <p>年满18周岁，身体健康，热爱自然与环保事业，能够遵守志愿者章程和活动安排，具备良好的沟通能力和团队合作精神。</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-stone-light pt-3">
+                                <button class="faq-toggle w-full flex justify-between items-center text-left font-medium text-stone-dark hover:text-forest transition-custom">
+                                    <span>志愿服务时长有要求吗？</span>
+                                    <i class="fa fa-plus text-forest"></i>
+                                </button>
+                                <div class="faq-content hidden mt-2 text-sm text-stone pl-0">
+                                    <p>没有严格的时长要求，我们鼓励志愿者根据自身情况合理安排参与时间。年度服务满50小时可获得优秀志愿者评选资格。</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-stone-light pt-3">
+                                <button class="faq-toggle w-full flex justify-between items-center text-left font-medium text-stone-dark hover:text-forest transition-custom">
+                                    <span>报名后多久能收到回复？</span>
+                                    <i class="fa fa-plus text-forest"></i>
+                                </button>
+                                <div class="faq-content hidden mt-2 text-sm text-stone pl-0">
+                                    <p>我们会在收到报名信息后的3个工作日内进行审核，审核通过后将通过电话或邮件通知您，并邀请您加入志愿者微信群。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 志愿者故事 -->
+    <section class="py-16 bg-stone-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-forest-dark mb-3">志愿者故事</h2>
+                <p class="text-stone max-w-2xl mx-auto">他们用行动诠释着对自然的热爱，用热情感染着身边的每一个人</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-custom">
+                    <img src="https://picsum.photos/id/64/600/400" alt="志愿者张晓明在植树活动中" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">张晓明 · 坚持5年的植树人</h3>
+                        <p class="text-stone mb-4">"每次看到自己种下的小树苗长成大树，那种成就感难以言表。5年来，我已经参与种植了300多棵树，未来还会继续坚持。"</p>
+                        <div class="flex items-center text-sm text-stone/70">
+                            <span><i class="fa fa-calendar mr-1"></i> 志愿服务时长：320小时</span>
+                            <span class="mx-2">•</span>
+                            <span>2020年加入</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-custom">
+                    <img src="https://picsum.photos/id/26/600/400" alt="志愿者李婷在生态教育活动中" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">李婷 · 生态教育讲师</h3>
+                        <p class="text-stone mb-4">"孩子们对自然的好奇和热情是最宝贵的。通过生态教育，我希望能在他们心中种下环保的种子，让绿色理念代代相传。"</p>
+                        <div class="flex items-center text-sm text-stone/70">
+                            <span><i class="fa fa-calendar mr-1"></i> 志愿服务时长：180小时</span>
+                            <span class="mx-2">•</span>
+                            <span>2022年加入</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-custom">
+                    <img src="https://picsum.photos/id/91/600/400" alt="志愿者王建国在森林调查中" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">王建国 · 退休工程师的新事业</h3>
+                        <p class="text-stone mb-4">"退休后加入志愿者队伍是我做过的最正确的决定。用我的专业知识为家乡的生态保护贡献力量，感觉自己又年轻了。"</p>
+                        <div class="flex items-center text-sm text-stone/70">
+                            <span><i class="fa fa-calendar mr-1"></i> 志愿服务时长：250小时</span>
+                            <span class="mx-2">•</span>
+                            <span>2021年加入</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-forest-dark text-white pt-16 pb-8 w-full">
+        <div class="container mx-auto px-4">
+            <!-- 三列布局 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- 左侧：关于我们 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-leaf text-forest-accent mr-2"></i>关于我们
+                    </h4>
+                    <div class="h-px bg-forest-accent/30 my-4"></div>
+                    <p class="text-gray-300 text-sm mb-4">
+                        西丰县林业生态公益基金会致力于林业生态保护、生物多样性维护及生态教育推广。
+                    </p>
+                    <p class="text-gray-300 text-sm">
+                        我们相信，每一份努力都能为生态保护贡献力量，共同守护我们的绿色家园。
+                    </p>
+                </div>
+                
+                <!-- 第二列：快速链接 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-link text-forest-accent mr-2"></i>快速链接
+                    </h4>
+                    <div class="h-px bg-forest-accent/30 my-4"></div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="index.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>首页
+                        </a></li>
+                        <li><a href="videos.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>光影
+                        </a></li>
+                        <li><a href="articles.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>文苑
+                        </a></li>
+                        <li><a href="audio.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>声享
+                        </a></li>
+                        <li><a href="volunteer.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>志愿者
+                        </a></li>
+                        <li><a href="data-sharing.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>数据共享
+                        </a></li>
+                        <li><a href="forest-rights.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>林权流转
+                        </a></li>
+                        <li><a href="about.html" class="hover:text-forest-accent transition-colors flex items-center">
+                            <i class="fa fa-angle-right mr-2 text-xs"></i>关于我们
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <!-- 第三列：联系方式 -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-phone text-forest-accent mr-2"></i>联系我们
+                    </h4>
+                    <div class="h-px bg-forest-accent/30 my-4"></div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-forest-accent mt-1 mr-3 w-4 text-center"></i>
+                            <span>辽宁省铁岭市西丰县林业大厦5楼</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-forest-accent mr-3 w-4 text-center"></i>
+                            <span>024-77889900</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-forest-accent mr-3 w-4 text-center"></i>
+                            <span>contact@xflcef.org</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-clock-o text-forest-accent mr-3 w-4 text-center"></i>
+                            <span>周一至周五 9:00-17:00</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6 flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-forest/50 flex items-center justify-center hover:bg-forest-accent transition-custom">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-forest/50 flex items-center justify-center hover:bg-forest-accent transition-custom">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-forest/50 flex items-center justify-center hover:bg-forest-accent transition-custom">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 分隔线 -->
+            <div class="border-t border-gray-700 mb-8"></div>
+            
+            <!-- 版权信息区域 -->
+            <div class="text-center text-sm text-gray-400">
+                <p>© 2025 西丰县林业生态公益基金会 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 表单提交处理
+        const volunteerForm = document.getElementById('volunteerForm');
+        volunteerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // 这里可以添加表单验证和提交逻辑
+            alert('感谢您的报名！我们会尽快与您联系。');
+            volunteerForm.reset();
+        });
+        
+        // 常见问题折叠功能
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                if (content.classList.contains('hidden')) {
+                    icon.classList.remove('fa-minus');
+                    icon.classList.add('fa-plus');
+                } else {
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-minus');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+    
