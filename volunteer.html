@@ -123,29 +123,39 @@
                 <div class="lg:col-span-2">
                     <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
                         <h2 class="text-2xl font-bold text-forest-dark mb-6">志愿者报名表单</h2>
-                        <form id="volunteerForm" class="space-y-6">
+                        
+                        <!-- 表单消息提示区域 -->
+                        <div id="formMessage" class="hidden mb-6 p-4 rounded-lg"></div>
+                        
+                        <!-- 修改后的表单 -->
+                        <form id="volunteerForm" action="https://formspree.io/f/mwprwble" method="POST" class="space-y-6">
+                            <!-- 隐藏字段 -->
+                            <input type="hidden" name="_subject" value="志愿者招募表单提交">
+                            <input type="hidden" name="_language" value="zh">
+                            <input type="hidden" name="_format" value="plain">
+                            
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="block text-stone-dark font-medium mb-2">姓名 <span class="text-red-500">*</span></label>
-                                    <input type="text" id="name" name="name" required
+                                    <input type="text" id="name" name="姓名" required
                                         class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom">
                                 </div>
                                 <div>
                                     <label for="phone" class="block text-stone-dark font-medium mb-2">手机号码 <span class="text-red-500">*</span></label>
-                                    <input type="tel" id="phone" name="phone" required
+                                    <input type="tel" id="phone" name="手机号码" required
                                         class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom">
                                 </div>
                             </div>
                             
                             <div>
                                 <label for="email" class="block text-stone-dark font-medium mb-2">电子邮箱</label>
-                                <input type="email" id="email" name="email"
+                                <input type="email" id="email" name="电子邮箱"
                                     class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom">
                             </div>
                             
                             <div>
                                 <label for="address" class="block text-stone-dark font-medium mb-2">居住地址</label>
-                                <input type="text" id="address" name="address"
+                                <input type="text" id="address" name="居住地址"
                                     class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom">
                             </div>
                             
@@ -153,27 +163,27 @@
                                 <label class="block text-stone-dark font-medium mb-2">志愿意向 <span class="text-red-500">*</span></label>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                     <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
-                                        <input type="checkbox" name="interests" value="planting" class="mr-3 text-forest">
+                                        <input type="checkbox" name="志愿意向" value="植树造林活动" class="mr-3 text-forest">
                                         <span>植树造林活动</span>
                                     </label>
                                     <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
-                                        <input type="checkbox" name="interests" value="education" class="mr-3 text-forest">
+                                        <input type="checkbox" name="志愿意向" value="生态教育宣传" class="mr-3 text-forest">
                                         <span>生态教育宣传</span>
                                     </label>
                                     <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
-                                        <input type="checkbox" name="interests" value="survey" class="mr-3 text-forest">
+                                        <input type="checkbox" name="志愿意向" value="森林资源调查" class="mr-3 text-forest">
                                         <span>森林资源调查</span>
                                     </label>
                                     <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
-                                        <input type="checkbox" name="interests" value="publicity" class="mr-3 text-forest">
+                                        <input type="checkbox" name="志愿意向" value="环保宣传活动" class="mr-3 text-forest">
                                         <span>环保宣传活动</span>
                                     </label>
                                     <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
-                                        <input type="checkbox" name="interests" value="event" class="mr-3 text-forest">
+                                        <input type="checkbox" name="志愿意向" value="公益活动组织" class="mr-3 text-forest">
                                         <span>公益活动组织</span>
                                     </label>
                                     <label class="flex items-center p-3 border border-stone-light rounded-lg hover:border-forest hover:bg-forest/5 cursor-pointer transition-custom">
-                                        <input type="checkbox" name="interests" value="other" class="mr-3 text-forest">
+                                        <input type="checkbox" name="志愿意向" value="其他" class="mr-3 text-forest">
                                         <span>其他（请说明）</span>
                                     </label>
                                 </div>
@@ -181,27 +191,27 @@
                             
                             <div>
                                 <label for="availability" class="block text-stone-dark font-medium mb-2">可参与时间</label>
-                                <select id="availability" name="availability"
+                                <select id="availability" name="可参与时间"
                                     class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom">
                                     <option value="">请选择...</option>
-                                    <option value="weekdays">工作日</option>
-                                    <option value="weekends">周末</option>
-                                    <option value="evenings">晚间</option>
-                                    <option value="holidays">节假日</option>
-                                    <option value="flexible">时间灵活</option>
+                                    <option value="工作日">工作日</option>
+                                    <option value="周末">周末</option>
+                                    <option value="晚间">晚间</option>
+                                    <option value="节假日">节假日</option>
+                                    <option value="时间灵活">时间灵活</option>
                                 </select>
                             </div>
                             
                             <div>
                                 <label for="experience" class="block text-stone-dark font-medium mb-2">相关经验或技能</label>
-                                <textarea id="experience" name="experience" rows="3"
+                                <textarea id="experience" name="相关经验或技能" rows="3"
                                     class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom"
                                     placeholder="请描述您的相关志愿经验、专业技能或特长..."></textarea>
                             </div>
                             
                             <div>
                                 <label for="motivation" class="block text-stone-dark font-medium mb-2">为什么想成为志愿者 <span class="text-red-500">*</span></label>
-                                <textarea id="motivation" name="motivation" rows="3" required
+                                <textarea id="motivation" name="为什么想成为志愿者" rows="3" required
                                     class="w-full px-4 py-2 border border-stone-light rounded-lg focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent transition-custom"
                                     placeholder="请分享您想成为生态保护志愿者的原因..."></textarea>
                             </div>
@@ -331,7 +341,7 @@
                         <div class="flex items-center text-sm text-stone/70">
                             <span><i class="fa fa-calendar mr-1"></i> 志愿服务时长：320小时</span>
                             <span class="mx-2">•</span>
-                            <span>2020年加入</span>
+                            <span>2025年加入</span>
                         </div>
                     </div>
                 </div>
@@ -344,7 +354,7 @@
                         <div class="flex items-center text-sm text-stone/70">
                             <span><i class="fa fa-calendar mr-1"></i> 志愿服务时长：180小时</span>
                             <span class="mx-2">•</span>
-                            <span>2022年加入</span>
+                            <span>2025年加入</span>
                         </div>
                     </div>
                 </div>
@@ -357,7 +367,7 @@
                         <div class="flex items-center text-sm text-stone/70">
                             <span><i class="fa fa-calendar mr-1"></i> 志愿服务时长：250小时</span>
                             <span class="mx-2">•</span>
-                            <span>2021年加入</span>
+                            <span>2025年加入</span>
                         </div>
                     </div>
                 </div>
@@ -427,11 +437,11 @@
                     <ul class="space-y-3 text-sm text-gray-300">
                         <li class="flex items-start">
                             <i class="fa fa-map-marker text-forest-accent mt-1 mr-3 w-4 text-center"></i>
-                            <span>辽宁省铁岭市西丰县林业大厦5楼</span>
+                            <span>辽宁省铁岭市西丰县</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fa fa-phone text-forest-accent mr-3 w-4 text-center"></i>
-                            <span>024-77889900</span>
+                            <span>18941011179</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fa fa-envelope text-forest-accent mr-3 w-4 text-center"></i>
@@ -475,13 +485,42 @@
             mobileMenu.classList.toggle('hidden');
         });
         
-        // 表单提交处理
+        // 表单提交处理 - 已修改为Formspree集成
         const volunteerForm = document.getElementById('volunteerForm');
-        volunteerForm.addEventListener('submit', (e) => {
+        volunteerForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            // 这里可以添加表单验证和提交逻辑
-            alert('感谢您的报名！我们会尽快与您联系。');
-            volunteerForm.reset();
+            
+            // 禁用提交按钮，防止重复提交
+            const submitBtn = volunteerForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i>提交中...';
+            submitBtn.disabled = true;
+            
+            try {
+                // 使用Formspree原生提交
+                const formData = new FormData(volunteerForm);
+                const response = await fetch(volunteerForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // 显示成功消息
+                    alert('感谢您的报名！我们会尽快与您联系。');
+                    volunteerForm.reset();
+                } else {
+                    alert('提交失败，请稍后再试或直接联系我们。');
+                }
+            } catch (error) {
+                alert('网络错误，请检查您的网络连接。');
+            } finally {
+                // 恢复按钮状态
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
         });
         
         // 常见问题折叠功能
@@ -504,4 +543,3 @@
     </script>
 </body>
 </html>
-    
