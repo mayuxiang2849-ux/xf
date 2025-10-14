@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="西丰县林业生态公益基金会 - 声享频道，有声读物与自然音乐精选。">
     <title>声享 - 西丰县林业生态公益基金会</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 4.7 -->
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -24,331 +29,313 @@
             }
         }
     </script>
+
     <style type="text/tailwindcss">
         @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            }
-            .card-hover {
-                @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
-            }
-            .footer-divider {
-                @apply w-16 h-0.5 bg-forest-accent my-6;
-            }
-            .audio-player {
-                @apply w-full bg-stone-100 rounded-full overflow-hidden;
-            }
-            .video-container {
-                aspect-ratio: 16 / 9;
-            }
+            .content-auto { content-visibility: auto; }
+            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+            .card-hover { @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1; }
+            .footer-divider { @apply w-16 h-0.5 bg-forest-accent my-6; }
+            .audio-player { @apply w-full bg-stone-100 rounded-full overflow-hidden; }
+            .video-container { aspect-ratio: 16 / 9; }
         }
     </style>
 </head>
+
 <body class="font-sans bg-gray-50 text-stone-dark">
-    <!-- 导航栏 -->
-    <header id="navbar" class="fixed w-full top-0 z-50 bg-forest-dark transition-all duration-300">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
-                <!-- 使用提供的LOGO图片链接 -->
-                <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/74172e38bc784cbc8eb9ee51345412d6.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100501002908DC0998EC3DE1BC38B8&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760202029&x-signature=twmiEdjbViL36fyimCSkz5tTJY4%3D" 
-                     alt="西丰县林业生态公益基金会LOGO" 
-                     class="h-12 w-auto">
-                <div>
-                    <h1 class="text-white text-xl md:text-2xl font-bold">西丰县林业生态公益基金会</h1>
-                    <p class="text-forest-accent text-sm">生态心声 · 万物有灵</p>
+
+<!-- ========== 导航栏（统一风格） ========== -->
+<header id="navbar" class="sticky top-0 z-50 bg-forest-dark/95 backdrop-blur shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center space-x-2">
+            <!-- ✅ 圈白底 LOGO -->
+            <img src="https://s1.imagehub.cc/images/2025/10/13/f55001d78051544d0b97778ff3559bbb.png" alt="基金会LOGO圈白底" class="h-12">
+            <div>
+                <h1 class="text-white font-bold">西丰县林业生态公益基金会</h1>
+                <p class="text-forest-accent text-xs">生态心声 · 万物有灵</p>
+            </div>
+        </a>
+
+        <!-- 桌面导航 -->
+        <nav class="hidden md:flex space-x-6 text-white">
+            <a href="index.html" class="hover:text-forest-accent">首页</a>
+            <a href="videos.html" class="hover:text-forest-accent">光影</a>
+            <a href="articles.html" class="hover:text-forest-accent">文苑</a>
+            <a href="audio.html" class="text-forest-accent font-medium">声享</a>
+            <a href="volunteer.html" class="hover:text-forest-accent">志愿者</a>
+            <a href="data-sharing.html" class="hover:text-forest-accent">数据共享</a>
+            <a href="forest-rights.html" class="hover:text-forest-accent">林权流转</a>
+            <a href="about.html" class="hover:text-forest-accent">关于我们</a>
+        </nav>
+
+        <!-- 移动端菜单按钮 -->
+        <button id="mobileMenuBtn" class="md:hidden text-white text-2xl"><i class="fa fa-bars"></i></button>
+    </div>
+
+    <!-- 移动端导航 -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pb-4 text-white flex-col space-y-2">
+        <a href="index.html" class="hover:text-forest-accent">首页</a>
+        <a href="videos.html" class="hover:text-forest-accent">光影</a>
+        <a href="articles.html" class="hover:text-forest-accent">文苑</a>
+        <a href="audio.html" class="text-forest-accent font-medium">声享</a>
+        <a href="volunteer.html" class="hover:text-forest-accent">志愿者</a>
+        <a href="data-sharing.html" class="hover:text-forest-accent">数据共享</a>
+        <a href="forest-rights.html" class="hover:text-forest-accent">林权流转</a>
+        <a href="about.html" class="hover:text-forest-accent">关于我们</a>
+    </div>
+</header>
+
+<!-- ========== 页面主体内容 ========== -->
+<main class="container mx-auto px-4 pt-28 pb-16">
+    <!-- 页面标题区 -->
+    <div class="mb-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-forest-dark mb-4">声享频道</h2>
+        <p class="text-stone max-w-2xl mx-auto">聆听自然之声，感受生态之美</p>
+        <div class="w-20 h-1 bg-forest mx-auto mt-6"></div>
+    </div>
+    
+    <!-- 重点推荐作品（首位突出展示） -->
+    <section class="mb-16 bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-xl">
+        <div class="flex flex-col md:flex-row">
+            <!-- 视频播放区 - 与光影频道首部作品相同的播放器样式 -->
+            <div class="md:w-1/2 bg-gray-900">
+                <div class="video-container w-full">
+                    <iframe 
+                        src="//player.bilibili.com/player.html?isOutside=true&aid=115330089228145&bvid=BV1VzxUz3EDP&cid=32885706016&p=1" 
+                        scrolling="no" 
+                        border="0" 
+                        frameborder="no" 
+                        framespacing="0" 
+                        allowfullscreen="true"
+                        class="w-full h-full"
+                        title="心声光影·生活指南视频">
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- 作品信息区 -->
+            <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+                <span class="inline-block px-3 py-1 bg-forest text-white text-sm font-medium rounded-full mb-4 self-start">
+                    <i class="fa fa-video-camera mr-1"></i> 重点推荐
+                </span>
+                <h3 class="text-2xl md:text-3xl font-bold text-forest-dark mb-4">心声光影·生活指南</h3>
+                <p class="text-forest-accent font-medium mb-6">【西丰县林业生态公益基金会】出品 | 无障碍有声读物</p>
+                
+                <p class="text-stone mb-4">
+                    这不是一本普通的书，这是一座用声音搭建的"文明生活博物馆"。
+                </p>
+                <p class="text-stone mb-4">
+                    我们将《西丰县文明健康绿色环保生活方式手册》全文扫描，转化为温暖的有声故事，专为视障伙伴制作，亦献给所有热爱生活的你。
+                </p>
+                <p class="text-stone mb-4">
+                    在这里，您将用耳朵"看见"：如何从一次正确洗手、一顿健康餐食、一次绿色出行开始，塑造更健康、更文明、更环保的生活方式。
+                </p>
+                <p class="text-stone mb-6">
+                    让我们一起，在声波中相遇，共同奔赴一场美好生活实践。
+                </p>
+                
+                <!-- 作品信息标签 -->
+                <div class="mt-8 flex flex-wrap gap-3 text-sm">
+                    <span class="flex items-center text-stone"><i class="fa fa-calendar mr-2 text-forest"></i> 发布于 2025-10-16</span>
+                    <span class="flex items-center text-stone"><i class="fa fa-eye mr-2 text-forest"></i> 观看量 5,672</span>
+                    <span class="flex items-center text-stone"><i class="fa fa-tag mr-2 text-forest"></i> 无障碍有声读物</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 其他音频作品列表 -->
+    <section>
+        <h3 class="text-2xl font-bold text-forest-dark mb-6 flex items-center">
+            <i class="fa fa-music text-forest mr-3"></i> 更多声音作品
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 音频2 - 《心游太玄》冥想修行，静心解压 -->
+            <a href="audio/audio2.html" class="block">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full">
+                    <div class="relative">
+                        <!-- ✅ 新封面 -->
+                        <img src="https://s1.imagehub.cc/images/2025/10/14/992bd5ad00e8462469ec4ff645f2459c.jpeg" alt="心游太玄" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white">
+                                <i class="fa fa-play"></i>
+                            </span>
+                        </div>
+                        <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">59:37</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">冥想音乐</span>
+                        <h4 class="font-semibold text-lg mb-2 line-clamp-1">《心游太玄》冥想修行，静心解压</h4>
+                        <p class="text-stone text-sm mb-3 line-clamp-2">
+                            曲子一响，杂念清空。让这道裹挟着风吟、雨落与流水潺潺的声波，为你构筑一座无形的自然结界。隔绝纷扰，净化思绪，引领你回归内心的静谧之地。
+                        </p>
+                        <div class="flex justify-between items-center text-xs text-stone/70">
+                            <span>2025-10-16</span>
+                            <span><i class="fa fa-headphones mr-1"></i> 收听量</span>
+                        </div>
+                    </div>
                 </div>
             </a>
             
-            <!-- 桌面端导航 -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-white hover:text-forest-accent transition-colors">首页</a>
-                <a href="videos.html" class="text-white hover:text-forest-accent transition-colors">光影</a>
-                <a href="articles.html" class="text-white hover:text-forest-accent transition-colors">文苑</a>
-                <a href="audio.html" class="text-forest-accent border-b-2 border-forest-accent pb-1 font-medium">声享</a>
-                <a href="about.html" class="text-white hover:text-forest-accent transition-colors">关于我们</a>
-            </div>
+            <!-- 音频3 - 《雨浸深山・木鱼禅心》冥想解压白噪音 -->
+            <a href="audio/audio3.html" class="block">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full">
+                    <div class="relative">
+                        <!-- ✅ 新封面 -->
+                        <img src="https://s1.imagehub.cc/images/2025/10/14/87559a667c680ad391708ac6858bd009.jpeg" alt="雨浸深山・木鱼禅心" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white">
+                                <i class="fa fa-play"></i>
+                            </span>
+                        </div>
+                        <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">05:25</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">自然白噪音</span>
+                        <h4 class="font-semibold text-lg mb-2 line-clamp-1">《雨浸深山・木鱼禅心》冥想解压白噪音</h4>
+                        <p class="text-stone text-sm mb-3 line-clamp-2">
+                            雨织深山为帐，古檐垂雨如珠，木鱼声缓，和着雨落的轻响，似禅意指尖抚过心尖。音声相和间，卸去一身纷扰，引你沉入冥想之境，于湿润禅意里疗愈身心、解压静心。
+                        </p>
+                        <div class="flex justify-between items-center text-xs text-stone/70">
+                            <span>2025-10-16</span>
+                            <span><i class="fa fa-headphones mr-1"></i> 收听量</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
             
-            <!-- 移动端菜单按钮 -->
-            <button id="mobileMenuBtn" class="md:hidden text-white text-2xl">
-                <i class="fa fa-bars"></i>
+            <!-- 音频4 - 《林涧絮语》幽静山间小溪流淌 -->
+            <a href="audio/audio4.html" class="block">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full">
+                    <div class="relative">
+                        <!-- ✅ 新封面 -->
+                        <img src="https://s1.imagehub.cc/images/2025/10/14/497c5c443d8d621650e5bf7d2dc2eef0.jpeg" alt="林涧絮语" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white">
+                                <i class="fa fa-play"></i>
+                            </span>
+                        </div>
+                        <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">01:04:35</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">自然声音</span>
+                        <h4 class="font-semibold text-lg mb-2 line-clamp-1">《林涧絮语》幽静山间小溪流淌</h4>
+                        <p class="text-stone text-sm mb-3 line-clamp-2">
+                            那是森林最温柔的私语。每一道水纹都携带着宁静，每一滴落水都敲打在纷杂的思绪上。让自己沉浸在这片声音的溪涧里，洗涤烦躁，回归内在的平静与清明。
+                        </p>
+                        <div class="flex justify-between items-center text-xs text-stone/70">
+                            <span>2025-10-16</span>
+                            <span><i class="fa fa-headphones mr-1"></i> 收听量</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- 加载更多按钮 -->
+        <div class="mt-12 text-center">
+            <button id="loadMoreBtn" class="bg-white border border-forest text-forest hover:bg-forest hover:text-white transition-colors px-8 py-3 rounded-lg font-medium">
+                加载更多作品 <i class="fa fa-angle-down ml-2"></i>
             </button>
-        </nav>
-        
-        <!-- 移动端导航菜单 -->
-        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95 backdrop-blur-sm">
-            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
-                <a href="index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">首页</a>
-                <a href="videos.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">光影</a>
-                <a href="articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium">文苑</a>
-                <a href="audio.html" class="text-forest-accent py-2 border-b border-forest-medium">声享</a>
-                <a href="about.html" class="text-white hover:text-forest-accent py-2">关于我们</a>
+        </div>
+    </section>
+</main>
+
+<!-- ========== 页脚 ========== -->
+<footer class="bg-forest-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+        <!-- 三列布局 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- 左侧：关于我们 -->
+            <div>
+                <h4 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fa fa-leaf text-forest-accent mr-2"></i>关于我们
+                </h4>
+                <div class="footer-divider"></div>
+                <p class="text-gray-300 text-sm mb-4">
+                    西丰县林业生态公益基金会致力于林业生态保护、生物多样性维护及生态教育推广。
+                </p>
+                <p class="text-gray-300 text-sm">
+                    我们相信，每一份努力都能为生态保护贡献力量，共同守护我们的绿色家园。
+                </p>
+            </div>
+            
+            <!-- 第二列：快速链接 -->
+            <div>
+                <h4 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fa fa-link text-forest-accent mr-2"></i>快速链接
+                </h4>
+                <div class="footer-divider"></div>
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li><a href="index.html" class="hover:text-forest-accent transition-colors flex items-center">
+                        <i class="fa fa-angle-right mr-2 text-xs"></i>首页
+                    </a></li>
+                    <li><a href="videos.html" class="hover:text-forest-accent transition-colors flex items-center">
+                        <i class="fa fa-angle-right mr-2 text-xs"></i>光影
+                    </a></li>
+                    <li><a href="articles.html" class="hover:text-forest-accent transition-colors flex items-center">
+                        <i class="fa fa-angle-right mr-2 text-xs"></i>文苑
+                    </a></li>
+                    <li><a href="audio.html" class="hover:text-forest-accent transition-colors flex items-center">
+                        <i class="fa fa-angle-right mr-2 text-xs"></i>声享
+                    </a></li>
+                    <li><a href="about.html" class="hover:text-forest-accent transition-colors flex items-center">
+                        <i class="fa fa-angle-right mr-2 text-xs"></i>关于我们
+                    </a></li>
+                </ul>
+            </div>
+            
+            <!-- 第三列：LOGO及名称 -->
+            <div>
+                <div class="mb-6 flex justify-center">
+                    <img src="https://s1.imagehub.cc/images/2025/10/13/f55001d78051544d0b97778ff3559bbb.png" alt="基金会LOGO圈白底" class="h-24 w-auto">
+                </div>
+                <h4 class="text-lg font-bold text-center mb-4">西丰县林业生态公益基金会</h4>
+                <p class="text-forest-accent text-sm text-center">Xifeng County Forestry Ecological Foundation</p>
             </div>
         </div>
-    </header>
-
-    <!-- 页面主体内容 -->
-    <main class="container mx-auto px-4 pt-28 pb-16">
-        <!-- 页面标题区 -->
-        <div class="mb-12 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-forest-dark mb-4">声享频道</h2>
-            <p class="text-stone max-w-2xl mx-auto">聆听自然之声，感受生态之美</p>
-            <div class="w-20 h-1 bg-forest mx-auto mt-6"></div>
+        
+        <!-- 分隔线 -->
+        <div class="border-t border-gray-700 mb-8"></div>
+        
+        <!-- 版权信息区域 -->
+        <div class="text-center text-sm text-gray-400">
+            <p>© 2025 西丰县林业生态公益基金会 版权所有</p>
         </div>
-        
-        <!-- 重点推荐作品（首位突出展示） -->
-        <section class="mb-16 bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-xl">
-            <div class="flex flex-col md:flex-row">
-                <!-- 视频播放区 - 按照要求调整为与光影频道首部作品相同的播放器样式 -->
-                <div class="md:w-1/2 bg-gray-900">
-                    <div class="video-container w-full">
-                        <iframe 
-                            src="//player.bilibili.com/player.html?isOutside=true&aid=115330089228145&bvid=BV1VzxUz3EDP&cid=32885706016&p=1" 
-                            scrolling="no" 
-                            border="0" 
-                            frameborder="no" 
-                            framespacing="0" 
-                            allowfullscreen="true"
-                            class="w-full h-full"
-                            title="心声光影·生活指南视频">
-                        </iframe>
-                    </div>
-                </div>
-                
-                <!-- 作品信息区 -->
-                <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
-                    <span class="inline-block px-3 py-1 bg-forest text-white text-sm font-medium rounded-full mb-4 self-start">
-                        <i class="fa fa-video-camera mr-1"></i> 重点推荐
-                    </span>
-                    <h3 class="text-2xl md:text-3xl font-bold text-forest-dark mb-4">心声光影·生活指南</h3>
-                    <p class="text-forest-accent font-medium mb-6">【西丰县林业生态公益基金会】出品 | 无障碍有声读物</p>
-                    
-                    <p class="text-stone mb-4">
-                        这不是一本普通的书，这是一座用声音搭建的"文明生活博物馆"。
-                    </p>
-                    <p class="text-stone mb-4">
-                        我们将《西丰县文明健康绿色环保生活方式手册》全文扫描，转化为温暖的有声故事，专为视障伙伴制作，亦献给所有热爱生活的你。
-                    </p>
-                    <p class="text-stone mb-4">
-                        在这里，您将用耳朵"看见"：如何从一次正确洗手、一顿健康餐食、一次绿色出行开始，塑造更健康、更文明、更环保的生活方式。
-                    </p>
-                    <p class="text-stone mb-6">
-                        让我们一起，在声波中相遇，共同奔赴一场美好生活实践。
-                    </p>
-                    
-                    <!-- 作品信息标签 -->
-                    <div class="mt-8 flex flex-wrap gap-3 text-sm">
-                        <span class="flex items-center text-stone"><i class="fa fa-calendar mr-2 text-forest"></i> 发布于 2025-10-07</span>
-                        <span class="flex items-center text-stone"><i class="fa fa-eye mr-2 text-forest"></i> 观看量 5,672</span>
-                        <span class="flex items-center text-stone"><i class="fa fa-tag mr-2 text-forest"></i> 无障碍有声读物</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 其他音频作品列表 -->
-        <section>
-            <h3 class="text-2xl font-bold text-forest-dark mb-6 flex items-center">
-                <i class="fa fa-music text-forest mr-3"></i> 更多声音作品
-            </h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 音频2 - 《心游太玄》冥想修行，静心解压 -->
-                <a href="audio/audio2.html" class="block">
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full">
-                        <div class="relative">
-                            <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/f5874297a3ca422ba438140f769d7f42.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251007125508AD27D9967F947A2D4117&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760417708&x-signature=6GZTTShB6p4w%2FzGTQhwqBTXjklk%3D" 
-                                 alt="《心游太玄》冥想修行，静心解压封面" 
-                                 class="w-full h-48 object-cover">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white">
-                                    <i class="fa fa-play"></i>
-                                </span>
-                            </div>
-                            <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">59:37</span>
-                        </div>
-                        <div class="p-5">
-                            <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">冥想音乐</span>
-                            <h4 class="font-semibold text-lg mb-2 line-clamp-1">《心游太玄》冥想修行，静心解压</h4>
-                            <p class="text-stone text-sm mb-3 line-clamp-2">
-                                曲子一响，杂念清空。让这道裹挟着风吟、雨落与流水潺潺的声波，为你构筑一座无形的自然结界。隔绝纷扰，净化思绪，引领你回归内心的静谧之地。专为需要瞬间沉静、深度解压的自然冥想时刻而生。
-                            </p>
-                            
-                            <div class="flex justify-between items-center text-xs text-stone/70">
-                                <span>2025-10-07</span>
-                                <span><i class="fa fa-listens mr-1"></i> 收听量</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- 音频3 - 《雨浸深山・木鱼禅心》冥想解压白噪音 -->
-                <a href="audio/audio3.html" class="block">
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full">
-                        <div class="relative">
-                            <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/37a810f1cf8d415c8ca6c0cc60515296.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251007125508AD27D9967F947A2D4117&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760417708&x-signature=wrbBUf8wFqdkQYqz1M7DiSLh70k%3D" 
-                                 alt="《雨浸深山・木鱼禅心》冥想解压白噪音封面" 
-                                 class="w-full h-48 object-cover">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white">
-                                    <i class="fa fa-play"></i>
-                                </span>
-                            </div>
-                            <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">05:25</span>
-                        </div>
-                        <div class="p-5">
-                            <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">自然白噪音</span>
-                            <h4 class="font-semibold text-lg mb-2 line-clamp-1">《雨浸深山・木鱼禅心》冥想解压白噪音</h4>
-                            <p class="text-stone text-sm mb-3 line-clamp-2">
-                                雨织深山为帐，古檐垂雨如珠，木鱼声缓，和着雨落的轻响，似禅意指尖抚过心尖。音声相和间，卸去一身纷扰，引你沉入冥想之境，于湿润禅意里疗愈身心、解压静心。
-                            </p>
-                            
-                            <div class="flex justify-between items-center text-xs text-stone/70">
-                                <span>2025-10-07</span>
-                                <span><i class="fa fa-listens mr-1"></i> 收听量</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- 音频4 - 《林涧絮语》幽静山间小溪流淌 -->
-                <a href="audio/audio4.html" class="block">
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover h-full">
-                        <div class="relative">
-                            <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/cfad38895f524ce29342a8fb606e689d.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251007125508AD27D9967F947A2D4117&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760417708&x-signature=EDcCexzrAT645oE%2BpC6IQnjUal8%3D" 
-                                 alt="《林涧絮语》幽静山间小溪流淌封面" 
-                                 class="w-full h-48 object-cover">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <span class="w-12 h-12 bg-forest rounded-full flex items-center justify-center text-white">
-                                    <i class="fa fa-play"></i>
-                                </span>
-                            </div>
-                            <span class="absolute top-3 right-3 bg-forest text-white text-xs px-2 py-1 rounded">01:04:35</span>
-                        </div>
-                        <div class="p-5">
-                            <span class="inline-block px-2 py-1 bg-forest-accent/20 text-forest text-xs rounded mb-2">自然声音</span>
-                            <h4 class="font-semibold text-lg mb-2 line-clamp-1">《林涧絮语》幽静山间小溪流淌</h4>
-                            <p class="text-stone text-sm mb-3 line-clamp-2">
-                                那是森林最温柔的私语。每一道水纹都携带着宁静，每一滴落水都敲打在纷杂的思绪上。让自己沉浸在这片声音的溪涧里，洗涤烦躁，回归内在的平静与清明。
-                            </p>
-                            
-                            <div class="flex justify-between items-center text-xs text-stone/70">
-                                <span>2025-10-07</span>
-                                <span><i class="fa fa-listens mr-1"></i> 收听量</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <!-- 加载更多按钮 -->
-            <div class="mt-12 text-center">
-                <button id="loadMoreBtn" class="bg-white border border-forest text-forest hover:bg-forest hover:text-white transition-colors px-8 py-3 rounded-lg font-medium">
-                    加载更多作品 <i class="fa fa-angle-down ml-2"></i>
-                </button>
-            </div>
-        </section>
-    </main>
+    </div>
+</footer>
 
-    <!-- 页脚 -->
-    <footer class="bg-forest-dark text-white pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <!-- 三列布局 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                <!-- 左侧：关于我们 -->
-                <div>
-                    <h4 class="text-xl font-bold mb-4 flex items-center">
-                        <i class="fa fa-leaf text-forest-accent mr-2"></i>关于我们
-                    </h4>
-                    <div class="footer-divider"></div>
-                    <p class="text-gray-300 text-sm mb-4">
-                        西丰县林业生态公益基金会致力于林业生态保护、生物多样性维护及生态教育推广。
-                    </p>
-                    <p class="text-gray-300 text-sm">
-                        我们相信，每一份努力都能为生态保护贡献力量，共同守护我们的绿色家园。
-                    </p>
-                </div>
-                
-                <!-- 第二列：快速链接 -->
-                <div>
-                    <h4 class="text-xl font-bold mb-4 flex items-center">
-                        <i class="fa fa-link text-forest-accent mr-2"></i>快速链接
-                    </h4>
-                    <div class="footer-divider"></div>
-                    <ul class="space-y-3 text-sm text-gray-300">
-                        <li><a href="index.html" class="hover:text-forest-accent transition-colors flex items-center">
-                            <i class="fa fa-angle-right mr-2 text-xs"></i>首页
-                        </a></li>
-                        <li><a href="videos.html" class="hover:text-forest-accent transition-colors flex items-center">
-                            <i class="fa fa-angle-right mr-2 text-xs"></i>光影
-                        </a></li>
-                        <li><a href="articles.html" class="hover:text-forest-accent transition-colors flex items-center">
-                            <i class="fa fa-angle-right mr-2 text-xs"></i>文苑
-                        </a></li>
-                        <li><a href="audio.html" class="hover:text-forest-accent transition-colors flex items-center">
-                            <i class="fa fa-angle-right mr-2 text-xs"></i>声享
-                        </a></li>
-                        <li><a href="about.html" class="hover:text-forest-accent transition-colors flex items-center">
-                            <i class="fa fa-angle-right mr-2 text-xs"></i>关于我们
-                        </a></li>
-                    </ul>
-                </div>
-                
-                <!-- 第三列：LOGO及名称 -->
-                <div>
-                    <div class="mb-6 flex justify-center">
-                        <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/74172e38bc784cbc8eb9ee51345412d6.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100501002908DC0998EC3DE1BC38B8&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760202029&x-signature=twmiEdjbViL36fyimCSkz5tTJY4%3D" 
-                             alt="西丰县林业生态公益基金会logo" 
-                             class="h-24 w-auto">
-                    </div>
-                    <h4 class="text-lg font-bold text-center mb-4">西丰县林业生态公益基金会</h4>
-                    <p class="text-forest-accent text-sm text-center">Xifeng County Forestry Ecological Foundation</p>
-                </div>
-            </div>
-            
-            <!-- 分隔线 -->
-            <div class="border-t border-gray-700 mb-8"></div>
-            
-            <!-- 版权信息区域 -->
-            <div class="text-center text-sm text-gray-400">
-                <p>© 2025 西丰县林业生态公益基金会 版权所有</p>
-            </div>
-        </div>
-    </footer>
+<!-- ========== JavaScript ========== -->
+<script>
+// 导航栏滚动效果
+window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 30) {
+        navbar.classList.add('py-2', 'shadow-md');
+        navbar.classList.remove('py-4');
+    } else {
+        navbar.classList.add('py-4');
+        navbar.classList.remove('py-2', 'shadow-md');
+    }
+});
 
-    <!-- JavaScript -->
-    <script>
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 30) {
-                navbar.classList.add('py-2', 'shadow-md');
-                navbar.classList.remove('py-4');
-            } else {
-                navbar.classList.add('py-4');
-                navbar.classList.remove('py-2', 'shadow-md');
-            }
-        });
-        
-        // 移动端菜单切换
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // 加载更多按钮功能
-        document.getElementById('loadMoreBtn').addEventListener('click', function() {
-            this.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 加载中...';
-            
-            // 模拟加载延迟
-            setTimeout(() => {
-                this.innerHTML = '没有更多作品了';
-                this.disabled = true;
-                this.classList.add('opacity-50', 'cursor-not-allowed');
-            }, 1500);
-        });
-    </script>
+// 移动端菜单切换
+document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('hidden');
+});
+
+// 加载更多按钮功能
+document.getElementById('loadMoreBtn').addEventListener('click', function() {
+    this.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 加载中...';
+    setTimeout(() => {
+        this.innerHTML = '没有更多作品了';
+        this.disabled = true;
+        this.classList.add('opacity-50', 'cursor-not-allowed');
+    }, 1500);
+});
+</script>
+
 </body>
 </html>
