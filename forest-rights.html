@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="西丰县林权流转服务平台 - 规范、高效、透明的林权流转服务">
-    <title>林权流转服务平台 - 西丰县林业生态公益基金会</title>
+    <meta name="description" content="西丰县林业生态公益基金会 - 公益林权信息桥梁，免费发布林权流转信息，促进生态保护与公益对接。">
+    <title>公益林权信息桥梁 - 西丰县林业生态公益基金会</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 4.7 -->
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -23,283 +23,303 @@
                             light: '#4CAF50',
                             accent: '#81C784'
                         },
-                        earth: {
-                            dark: '#5D4037',
-                            DEFAULT: '#795548',
-                            light: '#A1887F'
-                        },
                         stone: {
-                            dark: '#424242',
-                            DEFAULT: '#616161',
-                            light: '#E0E0E0'
+                            light: '#F5F5F5',
+                            DEFAULT: '#9E9E9E',
+                            dark: '#424242'
                         }
-                    },
-                    fontFamily: {
-                        sans: ['Noto Sans SC', 'sans-serif'],
-                    },
+                    }
                 }
             }
         }
     </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            }
-            .transition-custom {
-                transition: all 0.3s ease;
-            }
-            .cursor-leaf {
-                cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%232E7D32'%3E%3Cpath d='M12,3C10.73,3 9.6,3.8 9.18,5H3V7H4.95C4.4,8.35 4.2,9.72 4.5,11H3V13H4.5C4.2,14.28 4.4,15.65 4.95,17H3V19H9.18C9.6,20.2 10.73,21 12,21C13.27,21 14.4,20.2 14.82,19H21V17H19.05C19.6,15.65 19.8,14.28 19.5,13H21V11H19.5C19.8,9.72 19.6,8.35 19.05,7H21V5H14.82C14.4,3.8 13.27,3 12,3M12,5C12.5,5 12.97,5.4 13.08,5.9L17.96,6.96C18.07,8.23 17.32,9.45 16.07,10.11L13.5,11.5V16.5L16.07,17.89C17.32,18.55 18.07,19.77 17.96,21.04L13.08,22.1C12.97,22.6 12.5,23 12,23C11.5,23 11.03,22.6 10.92,22.1L6.04,21.04C5.93,19.77 6.68,18.55 7.93,17.89L10.5,16.5V11.5L7.93,10.11C6.68,9.45 5.93,8.23 6.04,6.96L10.92,5.9C11.03,5.4 11.5,5 12,5Z'/%3E%3C/svg%3E"), auto;
-            }
-            .timeline-dot::before {
-                content: '';
-                position: absolute;
-                left: -9px;
-                top: 5px;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background-color: #1A5E20;
-                border: 3px solid white;
-            }
-        }
-    </style>
 </head>
-<body class="font-sans bg-stone-100 cursor-leaf">
-    <!-- 导航栏 -->
-    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-forest-dark/95 backdrop-blur-sm shadow-md">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2">
-                <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/332ba86e9fb344d5a2c09a5c46d22107.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251004193056B64BD9101BCA12BB20D2&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760182256&x-signature=ZoLeopYwI6pKJ4Vhw05xb9gKxIM%3D" alt="西丰县林业生态公益基金会LOGO" class="h-12 w-auto">
-                <div>
-                    <h1 class="text-white text-xl md:text-2xl font-bold text-shadow">西丰县林业生态公益基金会</h1>
-                    <p class="text-forest-accent text-sm md:text-base">生态心声 · 万物有灵</p>
-                </div>
-            </a>
-            
-            <!-- 桌面导航 -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-white hover:text-forest-accent transition-custom font-medium">首页</a>
-                <a href="videos.html" class="text-white hover:text-forest-accent transition-custom font-medium">光影</a>
-                <a href="articles.html" class="text-white hover:text-forest-accent transition-custom font-medium">文苑</a>
-                <a href="audio.html" class="text-white hover:text-forest-accent transition-custom font-medium">声享</a>
-                <a href="volunteer.html" class="text-white hover:text-forest-accent transition-custom font-medium">志愿者</a>
-                <a href="data-sharing.html" class="text-white hover:text-forest-accent transition-custom font-medium">数据共享</a>
-                <a href="forest-rights.html" class="text-forest-accent hover:text-forest-accent transition-custom font-medium">林权流转</a>
-                <a href="about.html" class="text-white hover:text-forest-accent transition-custom font-medium">关于我们</a>
+
+<body class="bg-stone-100 text-stone-800">
+
+<!-- ========== 导航栏（与数据共享页一致） ========== -->
+<header class="sticky top-0 z-50 bg-forest-dark/95 backdrop-blur shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center space-x-2">
+            <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/86b2afb44581460781d95b59f9a14a9c.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251013222858D6F409237749738BB606&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760970538&x-signature=%2BnBlQI%2BOmhnxBxiIMlOi4DadsS4%3D" alt="基金会LOGO" class="h-12">
+            <div>
+                <h1 class="text-white font-bold">西丰县林业生态公益基金会</h1>
+                <p class="text-forest-accent text-xs">生态心声 · 万物有灵</p>
             </div>
-            
-            <!-- 移动端菜单按钮 -->
-            <button id="menuBtn" class="md:hidden text-white text-2xl">
-                <i class="fa fa-bars"></i>
-            </button>
+        </a>
+        <nav class="hidden md:flex space-x-6 text-white">
+            <a href="index.html" class="hover:text-forest-accent">首页</a>
+            <a href="videos.html" class="hover:text-forest-accent">光影</a>
+            <a href="articles.html" class="hover:text-forest-accent">文苑</a>
+            <a href="audio.html" class="hover:text-forest-accent">声享</a>
+            <a href="volunteer.html" class="hover:text-forest-accent">志愿者</a>
+            <a href="data-sharing.html" class="hover:text-forest-accent">数据共享</a>
+            <a href="forest-rights.html" class="text-forest-accent font-medium">林权流转</a>
+            <a href="about.html" class="hover:text-forest-accent">关于我们</a>
         </nav>
-        
-        <!-- 移动端导航菜单 -->
-        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95 backdrop-blur-sm">
-            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-                <a href="index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">首页</a>
-                <a href="videos.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">光影</a>
-                <a href="articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">文苑</a>
-                <a href="audio.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">声享</a>
-                <a href="volunteer.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">志愿者</a>
-                <a href="data-sharing.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">数据共享</a>
-                <a href="forest-rights.html" class="text-forest-accent py-2 border-b border-forest-medium transition-custom">林权流转</a>
-                <a href="about.html" class="text-white hover:text-forest-accent py-2 transition-custom">关于我们</a>
+        <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fa fa-bars"></i></button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden px-4 pb-4 text-white flex-col space-y-2">
+        <a href="index.html" class="hover:text-forest-accent">首页</a>
+        <a href="videos.html" class="hover:text-forest-accent">光影</a>
+        <a href="articles.html" class="hover:text-forest-accent">文苑</a>
+        <a href="audio.html" class="hover:text-forest-accent">声享</a>
+        <a href="volunteer.html" class="hover:text-forest-accent">志愿者</a>
+        <a href="data-sharing.html" class="hover:text-forest-accent">数据共享</a>
+        <a href="forest-rights.html" class="text-forest-accent font-medium">林权流转</a>
+        <a href="about.html" class="hover:text-forest-accent">关于我们</a>
+    </div>
+</header>
+
+<!-- ========== Hero 区域 ========== -->
+<section class="relative h-96 flex items-center justify-center text-center text-white">
+    <img src="https://picsum.photos/id/15/1920/600" alt="晨雾森林" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-forest-dark/50"></div>
+    <div class="relative z-10 px-4">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-shadow">公益林权信息桥梁</h2>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto">
+            永久免费 · 不抽成 · 不撮合交易<br>
+            仅提供公益信息展示，守护生态红线
+        </p>
+    </div>
+</section>
+
+<!-- ========== 平台介绍 ========== -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+            <h3 class="text-3xl font-bold text-forest-dark mb-4">我们为什么免费？</h3>
+            <p class="text-stone text-lg leading-relaxed">
+                基金会不参与任何交易环节，<strong>不设会员费、不抽成、不撮合</strong>，
+                只为林农与生态公益项目搭建<strong>免费信息桥梁</strong>，减少信息不对称，
+                防止公益林被商业砍伐，促进<strong>可持续公益保护</strong>。
+            </p>
+        </div>
+
+        <!-- 三大特点 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl shadow p-6 text-center">
+                <div class="w-16 h-16 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa fa-dollar text-2xl text-forest line-through"></i>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">完全免费</h4>
+                <p class="text-sm text-stone">发布、查看、下载全程零费用，永久不收任何中介费。</p>
+            </div>
+            <div class="bg-white rounded-xl shadow p-6 text-center">
+                <div class="w-16 h-16 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa fa-shield text-2xl text-forest"></i>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">生态优先</h4>
+                <p class="text-sm text-stone">所有发布须承诺遵守生态保护红线，不得改变公益林性质。</p>
+            </div>
+            <div class="bg-white rounded-xl shadow p-6 text-center">
+                <div class="w-16 h-16 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa fa-handshake-o text-2xl text-forest"></i>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">信息对称</h4>
+                <p class="text-sm text-stone">公开透明的信息栏，减少林农与项目方之间的信息差。</p>
             </div>
         </div>
-    </header>
+    </div>
+</section>
 
-    <!-- 页面标题区 -->
-    <section class="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-forest-dark">
-        <div class="absolute inset-0 opacity-20">
-            <img src="https://picsum.photos/id/184/1920/600" alt="林地与林权背景" class="w-full h-full object-cover">
-        </div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center">
-                <h1 class="text-white text-3xl md:text-5xl font-bold mb-4 text-shadow">林权流转服务平台</h1>
-                <p class="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">规范、高效、透明的林权流转服务，促进林业可持续发展</p>
+<!-- ========== 发布流程 ========== -->
+<section id="process" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h3 class="text-3xl font-bold text-forest-dark mb-8 text-center">公益发布流程</h3>
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mb-3">1</div>
+                <h4 class="font-semibold mb-1">在线申请</h4>
+                <p class="text-sm text-stone">填写公益信息发布表，上传林权证/权属证明</p>
             </div>
-        </div>
-    </section>
 
-    <!-- 林权流转概述 -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold text-forest-dark mb-6">林权流转的意义与价值</h2>
-                    <p class="text-stone mb-6">林权流转是指在不改变林地所有权性质和林地用途的前提下，林权权利人将其拥有的林地承包经营权、林地使用权、林木所有权和林木使用权等依法转让给他人的行为。</p>
-                    
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-start">
-                            <div class="bg-forest-light/30 p-2 rounded-full mr-4 mt-1">
-                                <i class="fa fa-line-chart text-forest"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-lg mb-1">优化林业资源配置</h3>
-                                <p class="text-stone text-sm">通过市场化流转，使林业资源向有能力、有意愿、会经营的主体集中，提高林业生产效率。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-forest-light/30 p-2 rounded-full mr-4 mt-1">
-                                <i class="fa fa-pagelines text-forest"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-lg mb-1">促进生态保护</h3>
-                                <p class="text-stone text-sm">规范的林权流转与科学的经营管理相结合，能够实现生态保护与经济发展的双赢。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-forest-light/30 p-2 rounded-full mr-4 mt-1">
-                                <i class="fa fa-money text-forest"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-lg mb-1">增加林农收入</h3>
-                                <p class="text-stone text-sm">通过合法流转获得收益，同时可以解放劳动力，拓宽增收渠道，助力乡村振兴。</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="#policy" class="inline-block bg-forest hover:bg-forest-medium text-white font-medium py-3 px-8 rounded-lg transition-custom shadow-md hover:shadow-lg">
-                        了解政策法规 <i class="fa fa-arrow-right ml-2"></i>
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mb-3">2</div>
+                <h4 class="font-semibold mb-1">生态审核</h4>
+                <p class="text-sm text-stone">基金会5个工作日内完成公益性与生态合规审核</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mb-3">3</div>
+                <h4 class="font-semibold mb-1">免费展示</h4>
+                <p class="text-sm text-stone">通过审核后永久免费展示，不收取任何中介费用</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <div class="w-14 h-14 bg-forest text-white rounded-full flex items-center justify-center font-bold text-lg mb-3">4</div>
+                <h4 class="font-semibold mb-1">自行对接</h4>
+                <p class="text-sm text-stone">双方自行联系、自愿协商，基金会不参与交易</p>
+            </div>
+
+        </div>
+        <div class="text-center mt-10">
+            <a href="#form" class="inline-flex items-center bg-forest text-white px-6 py-3 rounded-lg hover:bg-forest-medium transition">
+                <i class="fa fa-pencil mr-2"></i>立即免费发布信息
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 政策法规速查 ========== -->
+<section id="policy" class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+        <h3 class="text-3xl font-bold text-forest-dark mb-8 text-center">政策法规速查</h3>
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div class="bg-white rounded-xl shadow p-6">
+                <h4 class="font-semibold text-lg mb-2 flex items-center">
+                    <i class="fa fa-file-text-o text-forest mr-2"></i>《森林法》要点
+                </h4>
+                <ul class="list-disc list-inside text-sm text-stone space-y-1">
+                    <li>公益林不得商业砍伐</li>
+                    <li>流转不得改变林地用途</li>
+                    <li>需县级林业主管部门备案</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-6">
+                <h4 class="font-semibold text-lg mb-2 flex items-center">
+                    <i class="fa fa-file-text-o text-forest mr-2"></i>《辽宁省森林条例》摘要
+                </h4>
+                <ul class="list-disc list-inside text-sm text-stone space-y-1">
+                    <li>天然林严禁商业采伐</li>
+                    <li>25°以上坡地禁止皆伐</li>
+                    <li>流转后需继续履行管护义务</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="text-center mt-8">
+            <a href="assets/doc/policy-summary.pdf" target="_blank" class="text-forest hover:underline text-sm">
+                <i class="fa fa-download mr-1"></i>下载完整政策摘要PDF
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 公益项目展示 ========== -->
+<section id="projects" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h3 class="text-3xl font-bold text-forest-dark mb-8 text-center">公益项目展示</h3>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- 项目卡片 1 -->
+            <div class="border rounded-xl p-5 hover:shadow transition">
+                <h4 class="font-semibold text-lg mb-2">凉泉镇天然林管护权流转</h4>
+                <p class="text-sm text-stone mb-3">面积：312亩 | 期限：30年 | 用途：水源涵养公益林</p>
+                <p class="text-sm text-stone mb-3">所有者：凉泉村村委会 | 意向：寻找公益组织合作管护</p>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-stone">发布：2025-05-10</span>
+                    <a href="mailto:project@xfforest.org?subject=凉泉镇项目咨询" class="text-forest hover:underline text-sm">
+                        <i class="fa fa-envelope-o mr-1"></i>联系
                     </a>
                 </div>
-                
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="space-y-6">
-                        <img src="https://picsum.photos/id/133/600/800" alt="森林资源航拍图" class="w-full h-64 object-cover rounded-xl shadow-md hover:shadow-lg transition-custom">
-                        <img src="https://picsum.photos/id/177/600/400" alt="林业工作者在林地调查" class="w-full h-40 object-cover rounded-xl shadow-md hover:shadow-lg transition-custom">
-                    </div>
-                    <div class="space-y-6 pt-8">
-                        <img src="https://picsum.photos/id/137/600/400" alt="林地经营管理场景" class="w-full h-40 object-cover rounded-xl shadow-md hover:shadow-lg transition-custom">
-                        <img src="https://picsum.photos/id/119/600/800" alt="林业资源管理系统界面" class="w-full h-64 object-cover rounded-xl shadow-md hover:shadow-lg transition-custom">
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- 流转数据统计 -->
-    <section class="py-16 bg-stone-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-forest-dark mb-3">林权流转数据统计</h2>
-                <p class="text-stone max-w-2xl mx-auto">近年来西丰县林权流转情况概览</p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white rounded-xl shadow-md p-6">
-                    <h3 class="text-xl font-semibold mb-4 text-forest-dark">2020-2024年林权流转面积统计 (单位：公顷)</h3>
-                    <div class="h-80">
-                        <canvas id="transferAreaChart"></canvas>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-xl shadow-md p-6">
-                    <h3 class="text-xl font-semibold mb-4 text-forest-dark">林权流转类型占比</h3>
-                    <div class="h-80">
-                        <canvas id="transferTypeChart"></canvas>
-                    </div>
+            <!-- 项目卡片 2 -->
+            <div class="border rounded-xl p-5 hover:shadow transition">
+                <h4 class="font-semibold text-lg mb-2">成平乡集体林项目</h4>
+                <p class="text-sm text-stone mb-3">面积：580亩 | 期限：20年 | 用途：自然教育</p>
+                <p class="text-sm text-stone mb-3">所有者：成平乡村民组 | 意向：收益分成+志愿活动</p>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-stone">发布：2025-04-28</span>
+                    <a href="mailto:project@xfforest.org?subject=成平乡碳汇项目咨询" class="text-forest hover:underline text-sm">
+                        <i class="fa fa-envelope-o mr-1"></i>联系
+                    </a>
                 </div>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-custom">
-                    <div class="text-4xl font-bold text-forest mb-2">12,845</div>
-                    <p class="text-stone">累计流转面积 (公顷)</p>
-                </div>
-                
-                <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-custom">
-                    <div class="text-4xl font-bold text-forest mb-2">326</div>
-                    <p class="text-stone">累计流转宗数</p>
-                </div>
-                
-                <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-custom">
-                    <div class="text-4xl font-bold text-forest mb-2">87%</div>
-                    <p class="text-stone">生态保护达标率</p>
-                </div>
-                
-                <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-custom">
-                    <div class="text-4xl font-bold text-forest mb-2">96%</div>
-                    <p class="text-stone">群众满意度</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- 流转项目展示 -->
-    <section id="projects" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-end mb-10">
+            <!-- 项目卡片 3 -->
+            <div class="border rounded-xl p-5 hover:shadow transition">
+                <h4 class="font-semibold text-lg mb-2">柏榆镇生态廊道建设</h4>
+                <p class="text-sm text-stone mb-3">面积：105亩 | 期限：15年 | 用途：生物多样性走廊</p>
+                <p class="text-sm text-stone mb-3">所有者：柏榆镇合作社 | 意向：寻求公益资金与技术</p>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-stone">发布：2025-05-05</span>
+                    <a href="mailto:project@xfforest.org?subject=柏榆镇廊道项目咨询" class="text-forest hover:underline text-sm">
+                        <i class="fa fa-envelope-o mr-1"></i>联系
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="text-center mt-10">
+            <p class="text-sm text-stone mb-4">以上项目均已通过生态合规审核，仅供公益用途</p>
+            <a href="#form" class="inline-flex items-center bg-forest text-white px-6 py-3 rounded-lg hover:bg-forest-medium transition">
+                <i class="fa fa-plus mr-2"></i>发布我的公益项目
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 发布表单（占位） ========== -->
+<section id="form" class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto bg-white rounded-xl shadow p-6 md:p-8">
+            <h3 class="text-2xl font-bold text-forest-dark mb-4">免费发布公益流转信息</h3>
+            <p class="text-sm text-stone mb-6">请确保已阅读并同意《生态保护承诺》，所有字段均为必填。</p>
+
+            <form action="https://formspree.io/f/xwkgwvqe" method="POST" class="space-y-4">
                 <div>
-                    <h2 class="text-3xl font-bold text-forest-dark mb-2">林权流转项目</h2>
-                    <p class="text-stone text-lg">最新公开的林权流转项目信息</p>
+                    <label class="block text-sm font-medium text-stone-700 mb-1">项目名称</label>
+                    <input type="text" name="project_name" required class="w-full border border-stone-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-forest" placeholder="如：凉泉镇天然林管护权流转">
                 </div>
-                <a href="#" class="text-forest hover:text-forest-light transition-custom flex items-center font-medium">
-                    查看全部项目 <i class="fa fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 项目1 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-custom border border-stone-light">
-                    <img src="https://picsum.photos/id/133/600/400" alt="青山林场杉木林地" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="font-semibold text-xl">青山林场杉木林地流转</h3>
-                            <span class="bg-forest-light/20 text-forest text-xs px-2 py-1 rounded">公开竞价</span>
-                        </div>
-                        
-                        <div class="space-y-3 mb-6">
-                            <div class="flex justify-between">
-                                <span class="text-stone">流转面积</span>
-                                <span class="font-medium">426.5 公顷</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-stone">流转期限</span>
-                                <span class="font-medium">30年</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-stone">林木类型</span>
-                                <span class="font-medium">杉木、松木混交林</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-stone">起始价格</span>
-                                <span class="font-medium text-forest">1,280,000元</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-stone">报名截止</span>
-                                <span class="font-medium">2025-11-15</span>
-                            </div>
-                        </div>
-                        
-                        <div class="border-t border-stone-light pt-4 flex justify-between">
-                            <a href="#" class="text-forest hover:text-forest-medium font-medium transition-custom">
-                                查看详情
-                            </a>
-                            <a href="#" class="bg-forest hover:bg-forest-medium text-white text-sm px-4 py-2 rounded-lg transition-custom">
-                                我要报名
-                            </a>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-stone-700 mb-1">面积（亩）</label>
+                        <input type="number" name="area" required class="w-full border border-stone-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-forest" placeholder="312">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-stone-700 mb-1">流转期限（年）</label>
+                        <input type="number" name="duration" required class="w-full border border-stone-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-forest" placeholder="30">
                     </div>
                 </div>
-                
-                <!-- 项目2 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-custom border border-stone-light">
-                    <img src="https://picsum.photos/id/110/600/400" alt="绿水镇经济林" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="font-semibold text-xl">绿水镇经济林经营权流转</h3>
-                            <span class="bg-forest-light/20 text-forest text-xs px-2 py-1 rounded">协商转让</span>
-                        </div>
-                        
-                        <div class="space-y-3 mb-6">
-                            <div class="flex justify-between">
-                                
+                <div>
+                    <label class="block text-sm font-medium text-stone-700 mb-1">意向用途</label>
+                    <textarea name="purpose" required rows="3" class="w-full border border-stone-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-forest" placeholder="如：水源涵养公益林/碳汇林/自然教育等"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-stone-700 mb-1">联系人姓名</label>
+                    <input type="text" name="contact_name" required class="w-full border border-stone-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-forest">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-stone-700 mb-1">联系电话/邮箱</label>
+                    <input type="email" name="contact_email" required class="w-full border border-stone-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-forest">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-stone-700 mb-1">林权证或权属证明（PDF/JPG）</label>
+                    <input type="file" name="certificate" accept=".pdf,.jpg,.jpeg,.png" required class="w-full border border-stone-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-forest">
+                </div>
+                <div class="flex items-start">
+                    <input type="checkbox" id="ecoPledge" required class="mt-1 mr-2">
+                    <label for="ecoPledge" class="text-sm text-stone">我已阅读并同意《生态保护承诺》：所发布项目不破坏生态红线，不用于商业砍伐，不改变公益林性质。</label>
+                </div>
+                <button type="submit" class="w-full bg-forest text-white py-3 rounded-lg hover:bg-forest-medium transition">
+                    <i class="fa fa-paper-plane mr-2"></i>提交公益发布申请
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 页脚 ========== -->
+<footer class="bg-forest-dark text-white py-10">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-gray-300">© 2025 西丰县林业生态公益基金会 版权所有</p>
+        <p class="text-xs text-gray-400 mt-2">林权信息永久免费展示，公益桥梁，守护生态</p>
+    </div>
+</footer>
+
+<!-- ========== 移动端菜单 JS ========== -->
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+</script>
+
+</body>
+</html>
