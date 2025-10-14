@@ -191,11 +191,6 @@
             </div>
 
         </div>
-        <div class="text-center mt-8">
-            <a href="assets/doc/policy-summary.pdf" target="_blank" class="text-forest hover:underline text-sm">
-                <i class="fa fa-download mr-1"></i>下载完整政策摘要PDF
-            </a>
-        </div>
     </div>
 </section>
 
@@ -287,12 +282,13 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-stone-700 mb-1">联系电话/邮箱</label>
-                    <input type="email" name="contact_email" required class="w-full border border-stone-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-forest">
+                    <input type="text" name="contact_info" required class="w-full border border-stone-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-forest" placeholder="可以输入电话号码或邮箱地址">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-stone-700 mb-1">林权证或权属证明（PDF/JPG）</label>
-                    <input type="file" name="certificate" accept=".pdf,.jpg,.jpeg,.png" class="w-full border border-stone-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-forest">
-                    <p class="text-xs text-stone mt-1">注意：Formspree免费版不支持文件上传，如需上传文件请通过邮件发送</p>
+                    <label class="block text-sm font-medium text-stone-700 mb-1">林权证或权属证明</label>
+                    <div class="border border-stone-300 rounded-lg px-3 py-2 bg-stone-50">
+                        <p class="text-sm text-stone">如需上传相关资料，请联系管理员或请把相关附件发送到邮件：<a href="mailto:wangzan@sina.com" class="text-forest hover:underline">wangzan@sina.com</a></p>
+                    </div>
                 </div>
                 <div class="flex items-start">
                     <input type="checkbox" id="ecoPledge" name="eco_pledge" required class="mt-1 mr-2">
