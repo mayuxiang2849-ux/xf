@@ -1,14 +1,20 @@
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="西丰县林业生态公益基金会 - 文苑频道，生态科普文章精选。">
     <title>文苑 - 西丰县林业生态公益基金会</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 4.7 -->
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -23,6 +29,7 @@
             }
         }
     </script>
+
     <style type="text/tailwindcss">
         @layer utilities {
             .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
@@ -30,118 +37,133 @@
         }
     </style>
 </head>
+
 <body class="font-sans bg-stone-100">
-    <!-- 导航栏 -->
-    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-forest-dark">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2">
-                <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/6e33b9c750544d7c9f5656018cf7b7e5.png~tplv-a9rns2rl98-24:720:720.png?rcl=202510042220013F745A0580AC0EC9F974&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760192401&x-signature=suWXGdWMMaqrIV7Ky7rvnTElTPw%3D" alt="西丰县林业生态公益基金会LOGO" class="h-12 w-auto">
-                <div>
-                    <h1 class="text-white text-xl md:text-2xl font-bold text-shadow">西丰县林业生态公益基金会</h1>
-                    <p class="text-forest-accent text-sm md:text-base">生态心声 · 万物有灵</p>
+
+<!-- ========== 导航栏（复用统一风格） ========== -->
+<header class="sticky top-0 z-50 bg-forest-dark/95 backdrop-blur shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center space-x-2">
+            <!-- ✅ 新 LOGO（圈白底） -->
+            <img src="https://s1.imagehub.cc/images/2025/10/13/f55001d78051544d0b97778ff3559bbb.png" alt="基金会LOGO圈白底" class="h-12">
+            <div>
+                <h1 class="text-white font-bold">西丰县林业生态公益基金会</h1>
+                <p class="text-forest-accent text-xs">生态心声 · 万物有灵</p>
+            </div>
+        </a>
+
+        <!-- 桌面导航 -->
+        <nav class="hidden md:flex space-x-6 text-white">
+            <a href="index.html" class="hover:text-forest-accent">首页</a>
+            <a href="videos.html" class="hover:text-forest-accent">光影</a>
+            <a href="articles.html" class="text-forest-accent font-medium">文苑</a>
+            <a href="audio.html" class="hover:text-forest-accent">声享</a>
+            <a href="volunteer.html" class="hover:text-forest-accent">志愿者</a>
+            <a href="data-sharing.html" class="hover:text-forest-accent">数据共享</a>
+            <a href="forest-rights.html" class="hover:text-forest-accent">林权流转</a>
+            <a href="about.html" class="hover:text-forest-accent">关于我们</a>
+        </nav>
+
+        <!-- 移动端菜单按钮 -->
+        <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fa fa-bars"></i></button>
+    </div>
+
+    <!-- 移动端导航 -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pb-4 text-white flex-col space-y-2">
+        <a href="index.html" class="hover:text-forest-accent">首页</a>
+        <a href="videos.html" class="hover:text-forest-accent">光影</a>
+        <a href="articles.html" class="text-forest-accent font-medium">文苑</a>
+        <a href="audio.html" class="hover:text-forest-accent">声享</a>
+        <a href="volunteer.html" class="hover:text-forest-accent">志愿者</a>
+        <a href="data-sharing.html" class="hover:text-forest-accent">数据共享</a>
+        <a href="forest-rights.html" class="hover:text-forest-accent">林权流转</a>
+        <a href="about.html" class="hover:text-forest-accent">关于我们</a>
+    </div>
+</header>
+
+<!-- ========== 内容区 ========== -->
+<section class="py-20 bg-white mt-20">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold text-forest-dark mb-8">文苑频道 - 生态科普文章</h1>
+        <p class="text-stone mb-12">系统性生态科普，点击卡片阅读全文。</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 文章1 -->
+            <a href="articles/article1.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                <div class="relative overflow-hidden">
+                    <img src="https://s1.imagehub.cc/images/2025/10/13/43b2073056eb9291f80e481a938c04af.png" alt="气候变化封面" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                        <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">气候变化对森林生态系统的长期影响</h3>
+                    <p class="text-stone mb-4 line-clamp-2">分析全球气候变化如何影响森林生态系统的结构与功能，探讨适应性管理策略。</p>
+                    <span class="text-stone text-sm">2025-10-16</span>
                 </div>
             </a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-white hover:text-forest-accent transition-custom font-medium">首页</a>
-                <a href="videos.html" class="text-white hover:text-forest-accent transition-custom font-medium">光影</a>
-                <a href="articles.html" class="text-white hover:text-forest-accent transition-custom font-medium">文苑</a>
-                <a href="audio.html" class="text-white hover:text-forest-accent transition-custom font-medium">声享</a>
-                <a href="about.html" class="text-white hover:text-forest-accent transition-custom font-medium">关于我们</a>
-            </div>
-            <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fa fa-bars"></i></button>
-        </nav>
-        <div id="mobileMenu" class="hidden md:hidden bg-forest-dark/95">
-            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-                <a href="index.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">首页</a>
-                <a href="videosS.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">光影</a>
-                <a href="articles.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">文苑</a>
-                <a href="audio.html" class="text-white hover:text-forest-accent py-2 border-b border-forest-medium transition-custom">声享</a>
-                <a href="about.html" class="text-white hover:text-forest-accent py-2 transition-custom">关于我们</a>
-            </div>
+
+            <!-- 文章2 -->
+            <a href="articles/article2.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                <div class="relative overflow-hidden">
+                    <img src="https://s1.imagehub.cc/images/2025/10/14/2e7cf122e28e4c6b71305bd1abead035.png" alt="树木的秘密生活" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                        <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">树木的秘密生活：地下网络的奇迹</h3>
+                    <p class="text-stone mb-4 line-clamp-2">探索树木之间通过地下真菌网络进行信息和养分交换的奇妙现象。</p>
+                    <span class="text-stone text-sm">2025-10-16</span>
+                </div>
+            </a>
+
+            <!-- 文章3 -->
+            <a href="articles/article3.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                <div class="relative overflow-hidden">
+                    <img src="https://s1.imagehub.cc/images/2025/10/13/1585ad470db637878d958a35f514a76f.png" alt="搭载激光雷达设备的无人机" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                        <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">科技赋能高效林调</h3>
+                    <p class="text-stone mb-4 line-clamp-2">大疆禅思 L2 激光雷达无人机遥感技术的应用实践</p>
+                    <span class="text-stone text-sm">2025-10-16</span>
+                </div>
+            </a>
+
+            <!-- 文章4 -->
+            <a href="articles/article4.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
+                <div class="relative overflow-hidden">
+                    <img src="https://s1.imagehub.cc/images/2025/10/13/3a8961af2814c35f30334469cbc16c08.png" alt="环保手册封面配图" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
+                        <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">《西丰县文明健康绿色环保生活方式手册》电子版</h3>
+                    <p class="text-stone mb-4 line-clamp-2">当文明的理念，长成画面；让健康与绿色，皆有迹可循。</p>
+                    <span class="text-stone text-sm">2025-10-16</span>
+                </div>
+            </a>
         </div>
-    </header>
+    </div>
+</section>
 
-    <!-- 内容区 -->
-    <section class="py-20 bg-white mt-20">
-        <div class="container mx-auto px-4">
-            <h1 class="text-3xl font-bold text-forest-dark mb-8">文苑频道 - 生态科普文章</h1>
-            <p class="text-stone mb-12">系统性生态科普，点击卡片阅读全文。</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 文章1 - 替换为第一张图片 -->
-                <a href="articles/article1.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
-                    <div class="relative overflow-hidden">
-                        <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/0cd46dbca0054ba5a1ad915fa1cb94d6.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100618530437F3FD65A940B7CBCEFB&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760352784&x-signature=Hx1ggF84v5RgIHCSc8fUsRpsZEk%3D" alt="多样化的森林生态系统全景" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
-                            <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">气候变化对森林生态系统的长期影响</h3>
-                        <p class="text-stone mb-4 line-clamp-2">分析全球气候变化如何影响森林生态系统的结构与功能，探讨适应性管理策略。</p>
-                        <span class="text-stone text-sm">2025-10-06</span>
-                    </div>
-                </a>
-                
-                <!-- 文章2 - 替换为第二张图片 -->
-                <a href="articles/article2.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
-                    <div class="relative overflow-hidden">
-                        <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/9e29a9c0f4e449c6ae46c252b725bd8e.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100618530437F3FD65A940B7CBCEFB&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760352784&x-signature=pQMSUzKfWrM6Mt7keMcTTZNJEHY%3D" alt="树木的地下网络示意图" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
-                            <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">树木的秘密生活:地下网络的奇迹</h3>
-                        <p class="text-stone mb-4 line-clamp-2">探索树木之间通过地下真菌网络进行信息和养分交换的奇妙现象。</p>
-                        <span class="text-stone text-sm">2025-10-06</span>
-                    </div>
-                </a>
-                
-                <!-- 文章3 - 保持不变 -->
-                <a href="articles/article3.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
-                    <div class="relative overflow-hidden">
-                        <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/b7d4da4f808440b29d48f495450ece7d.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251005161315F02335D6A6C92BF00DEC&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760256795&x-signature=JDwK5eS9hRALDMAPrp0hIird750%3D" alt="大疆禅思 L2 激光雷达无人机进行林业调查" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
-                            <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">科技赋能高效林调</h3>
-                        <p class="text-stone mb-4 line-clamp-2">大疆禅思 L2 激光雷达无人机遥感技术的应用实践</p>
-                        <span class="text-stone text-sm">2025-10-06</span>
-                    </div>
-                </a>
+<!-- ========== 页脚 ========== -->
+<footer class="bg-forest-dark text-white py-10">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-gray-300">© 2025 西丰县林业生态公益基金会. All rights reserved.</p>
+    </div>
+</footer>
 
-                <!-- 文章4 - 替换为第三张图片并更新内容 -->
-                <a href="articles/article4.html" class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom group">
-                    <div class="relative overflow-hidden">
-                        <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/fb2de2bee9af4bd9897dc839079ffdea.png~tplv-a9rns2rl98-24:720:720.png?rcl=2025100618530437F3FD65A940B7CBCEFB&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760352784&x-signature=9KgMIvQdBuwWnk0GclULomMtEEk%3D" alt="西丰县文明健康绿色环保生活方式手册封面" class="w-full h-48 object-cover transition-custom group-hover:scale-105">
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-custom">
-                            <span class="bg-forest text-white w-12 h-12 rounded-full flex items-center justify-center"><i class="fa fa-book"></i></span>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-semibold text-xl mb-2 group-hover:text-forest transition-custom">《西丰县文明健康绿色环保生活方式手册》电子版</h3>
-                        <p class="text-stone mb-4 line-clamp-2">当文明的理念，长成画面让健康与绿色，皆有迹可循。</p>
-                        <span class="text-stone text-sm">2025-10-06</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+<!-- ========== 脚本 ========== -->
+<script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+</script>
 
-    <!-- 页脚 -->
-    <footer class="bg-forest-dark text-white pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="text-center text-white/60 text-sm">© 2025 西丰县林业生态公益基金会. All rights reserved.</div>
-        </div>
-    </footer>
-
-    <!-- 脚本 -->
-    <script>
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-    </script>
 </body>
 </html>
