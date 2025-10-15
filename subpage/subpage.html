@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西丰县森林资源与生态环境数据汇编</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script>
+        // Tailwind配置
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2E7D32',     // 深绿色（主色）
+                        secondary: '#4CAF50',   // 中绿色（辅助色）
+                        accent: '#81C784',      // 浅绿色（强调色）
+                        blue: '#1976D2',        // 蓝色（交互元素）
+                        neutral: {
+                            100: '#F5F5F5',
+                            200: '#EEEEEE',
+                            300: '#E0E0E0',
+                            700: '#616161',
+                            800: '#424242',
+                            900: '#212121',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .table-shadow {
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            }
+            .nav-active {
+                @apply bg-primary/10 text-primary border-l-4 border-primary;
+            }
+            .section-fade {
+                transition: opacity 0.5s ease-in-out;
+            }
+        }
+    </style>
+    <style>
+        /* 全局样式 */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        /* 表格样式 */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        th {
+            background-color: #F5F5F5;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #FAFAFA;
+        }
+        tr:hover {
+            background-color: #F5F5F5;
+        }
+        /* 图表容器样式 */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            margin: 1rem 0;
+        }
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-neutral-800">
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm transition-all duration-300" id="top-nav">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold text-primary flex items-center">
+                <i class="fa fa-tree mr-2"></i>
+                <span class="hidden sm:inline">西丰县森林资源与生态环境数据汇编</span>
+                <span class="sm:hidden">西丰县生态数据</span>
+            </h1>
+            <button id="mobile-menu-btn" class="md:hidden text-neutral-700 focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#overview" class="text-neutral-700 hover:text-primary transition-colors duration-200">资源概况</a>
+                <a href="#forest-data" class="text-neutral-700 hover:text-primary transition-colors duration-200">森林数据</a>
+                <a href="#biodiversity" class="text-neutral-700 hover:text-primary transition-colors duration-200">生物多样性</a>
+                <a href="#eco-monitor" class="text-neutral-700 hover:text-primary transition-colors duration-200">生态监测</a>
+                <a href="#data-guide" class="text-neutral-700 hover:text-primary transition-colors duration-200">数据使用</a>
+                <a href="#achievements" class="text-neutral-700 hover:text-primary transition-colors duration-200">建设成就</a>
+            </nav>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-neutral-200">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#overview" class="py-2 text-neutral-700 hover:text-primary transition-colors duration-200">资源概况</a>
+                <a href="#forest-data" class="py-2 text-neutral-700 hover:text-primary transition-colors duration-200">森林数据</a>
+                <a href="#biodiversity" class="py-2 text-neutral-700 hover:text-primary transition-colors duration-200">生物多样性</a>
+                <a href="#eco-monitor" class="py-2 text-neutral-700 hover:text-primary transition-colors duration-200">生态监测</a>
+                <a href="#data-guide" class="py-2 text-neutral-700 hover:text-primary transition-colors duration-200">数据使用</a>
+                <a href="#achievements" class="py-2 text-neutral-700 hover:text-primary transition-colors duration-200">建设成就</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- 侧边导航 -->
+            <aside class="hidden md:block w-64 flex-shrink-0">
+                <nav class="sticky top-24 bg-neutral-50 rounded-lg shadow-sm p-4">
+                    <h2 class="text-lg font-semibold text-primary mb-4 flex items-center">
+                        <i class="fa fa-list-ul mr-2"></i>目录
+                    </h2>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#overview" class="block py-2 px-3 rounded hover:bg-primary/10 transition-colors duration-200" data-target="overview">一、西丰县森林资源概况</a></li>
+                        <li><a href="#coverage-change" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="coverage-change">1.1 森林覆盖率变化</a></li>
+                        <li><a href="#forest-status" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="forest-status">1.2 森林资源基本状况</a></li>
+                        <li><a href="#forest-data" class="block py-2 px-3 rounded hover:bg-primary/10 transition-colors duration-200" data-target="forest-data">二、森林资源数据</a></li>
+                        <li><a href="#tree-distribution" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="tree-distribution">2.1 主要树种分布比例</a></li>
+                        <li><a href="#timber-stock" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="timber-stock">2.2 林木蓄积量统计</a></li>
+                        <li><a href="#forest-type" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="forest-type">2.3 森林类型分布</a></li>
+                        <li><a href="#ancient-trees" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="ancient-trees">2.4 古树名木资源</a></li>
+                        <li><a href="#biodiversity" class="block py-2 px-3 rounded hover:bg-primary/10 transition-colors duration-200" data-target="biodiversity">三、生物多样性数据</a></li>
+                        <li><a href="#wildlife" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="wildlife">3.1 陆生野生动物名录</a></li>
+                        <li><a href="#bird-monitor" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="bird-monitor">3.2 鸟类资源监测</a></li>
+                        <li><a href="#rare-species" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="rare-species">3.3 珍稀濒危物种保护</a></li>
+                        <li><a href="#eco-monitor" class="block py-2 px-3 rounded hover:bg-primary/10 transition-colors duration-200" data-target="eco-monitor">四、生态监测数据</a></li>
+                        <li><a href="#meteorology" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="meteorology">4.1 气象因子观测</a></li>
+                        <li><a href="#soil-quality" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="soil-quality">4.2 森林土壤质量</a></li>
+                        <li><a href="#carbon-stock" class="block py-2 px-3 pl-6 rounded hover:bg-primary/10 transition-colors duration-200" data-target="carbon-stock">4.3 生态系统碳储量</a></li>
+                        <li><a href="#data-guide" class="block py-2 px-3 rounded hover:bg-primary/10 transition-colors duration-200" data-target="data-guide">五、数据获取与使用</a></li>
+                        <li><a href="#achievements" class="block py-2 px-3 rounded hover:bg-primary/10 transition-colors duration-200" data-target="achievements">六、生态建设成就与展望</a></li>
+                        <li><a href="#conclusion" class="block py-2 px-3 rounded hover:bg-primary/10 transition-colors duration-200" data-target="conclusion">七、结论</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- 主要内容区 -->
+            <div class="flex-1 max-w-4xl">
+                <!-- 封面区域 -->
+                <div class="bg-gradient-to-r from-primary/90 to-secondary/90 text-white rounded-xl p-6 md:p-8 mb-10 shadow-md">
+                    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">西丰县森林资源与生态环境数据汇编</h1>
+                    <p class="text-lg md:text-xl opacity-90 mb-6">全面呈现西丰县森林资源、生物多样性及生态环境现状与发展趋势</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center bg-white/20 rounded-lg px-4 py-2">
+                            <i class="fa fa-tree text-xl mr-2"></i>
+                            <span>森林覆盖率 57.81%</span>
+                        </div>
+                        <div class="flex items-center bg-white/20 rounded-lg px-4 py-2">
+                            <i class="fa fa-paw text-xl mr-2"></i>
+                            <span>野生动物 113种</span>
+                        </div>
+                        <div class="flex items-center bg-white/20 rounded-lg px-4 py-2">
+                            <i class="fa fa-tint text-xl mr-2"></i>
+                            <span>年降水量 738mm</span>
+                        </div>
+                        <div class="flex items-center bg-white/20 rounded-lg px-4 py-2">
+                            <i class="fa fa-thermometer-half text-xl mr-2"></i>
+                            <span>年均气温 6.2℃</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 一、西丰县森林资源概况 -->
+                <section id="overview" class="mb-12 section-fade">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                            <i class="fa fa-info"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-neutral-900">一、西丰县森林资源概况</h2>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 border border-neutral-200">
+                        <p class="text-neutral-700 leading-relaxed mb-4">
+                            西丰县位于辽宁省东北部，地处长白山脉与松辽平原过渡地带，区域面积2686平方公里，辖12个镇、6个满族乡，174个行政村，614个自然屯，有汉、满、回、朝鲜等22个民族，总人口约35万。作为辽宁省东部山区9个重点林业县之一，西丰县生态环境优良，呈"七山半水二分田、半分道路和庄园"的地貌特征，森林资源丰富，是辽宁重点木材产区。
+                        </p>
+                        
+                        <!-- 1.1 森林覆盖率变化 -->
+                        <div id="coverage-change" class="mt-8">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-line-chart mr-2"></i>1.1 西丰县森林覆盖率变化(2010-2025)
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                西丰县森林覆盖率变化数据显示出明显的上升趋势，体现了当地政府和人民对生态环境保护的持续努力。
+                            </p>
+                            
+                            <!-- 森林覆盖率图表 -->
+                            <div class="chart-container mb-6">
+                                <canvas id="coverageChart"></canvas>
+                            </div>
+                            
+                            <!-- 森林覆盖率表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>年份</th>
+                                            <th>森林覆盖率(%)</th>
+                                            <th>数据来源</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>2010</td><td>52.3(推算值)</td><td>西丰县"十四五"规划纲要</td></tr>
+                                        <tr><td>2012</td><td>60.47</td><td>2013年西丰县政府工作报告</td></tr>
+                                        <tr><td>2013</td><td>60.47</td><td>西丰县林业局</td></tr>
+                                        <tr><td>2015</td><td>61</td><td>人民论坛网</td></tr>
+                                        <tr><td>2016</td><td>61</td><td>辽宁日报</td></tr>
+                                        <tr><td>2018</td><td>61</td><td>人民网</td></tr>
+                                        <tr><td>2019</td><td>61</td><td>澎湃新闻</td></tr>
+                                        <tr><td>2020</td><td>60.47</td><td>中国银行保险报</td></tr>
+                                        <tr><td>2022</td><td>61</td><td>铁岭日报</td></tr>
+                                        <tr><td>2023</td><td>57.81</td><td>铁岭市人民政府</td></tr>
+                                        <tr><td>2024</td><td>57.81</td><td>铁岭市人民政府</td></tr>
+                                        <tr><td>2025</td><td>58.1(目标值)</td><td>西丰县"十四五"规划纲要</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                从2010年的基准值52.3%推算到2023年达到57.81%，年均增幅约0.37%，预计到2025年将达到58.1%的目标。值得注意的是，2012-2016年间森林覆盖率曾达到60%以上，2023年有所下降，这与当地生态建设和保护政策的调整有关。
+                            </p>
+                        </div>
+                        
+                        <!-- 1.2 森林资源基本状况 -->
+                        <div id="forest-status" class="mt-10">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-tree mr-2"></i>1.2 西丰县森林资源基本状况
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                西丰县林业用地面积258万亩，森林覆盖率超过60%，是辽宁省重点木材产区。区域面积402万亩，林业用地258万亩，天然林面积63万亩。截至2024年，西丰县已成为国家级"绿水青山就是金山银山"实践创新基地，同时获得"中国天然氧吧"和国家"避暑旅游目的地"称号。
+                            </p>
+                            <p class="text-neutral-700 leading-relaxed">
+                                西丰县有林面积16.7万公顷，活立木蓄积量850万立方米，森林覆盖率达61%。空气中每立方厘米负氧离子含量均值达1.3万个，超过世界卫生组织标准13倍，这与当地良好的森林生态环境密切相关。
+                            </p>
+                            
+                            <!-- 关键数据卡片 -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                                <div class="bg-neutral-50 rounded-lg p-4 border border-neutral-200">
+                                    <h4 class="text-neutral-700 font-medium mb-2">林业用地面积</h4>
+                                    <p class="text-2xl font-bold text-primary">258万亩</p>
+                                </div>
+                                <div class="bg-neutral-50 rounded-lg p-4 border border-neutral-200">
+                                    <h4 class="text-neutral-700 font-medium mb-2">有林面积</h4>
+                                    <p class="text-2xl font-bold text-primary">16.7万公顷</p>
+                                </div>
+                                <div class="bg-neutral-50 rounded-lg p-4 border border-neutral-200">
+                                    <h4 class="text-neutral-700 font-medium mb-2">负氧离子含量</h4>
+                                    <p class="text-2xl font-bold text-primary">1.3万个/cm³</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 二、森林资源数据 -->
+                <section id="forest-data" class="mb-12 section-fade">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                            <i class="fa fa-database"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-neutral-900">二、森林资源数据</h2>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 border border-neutral-200">
+                        <!-- 2.1 主要树种分布比例 -->
+                        <div id="tree-distribution" class="mb-10">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-pie-chart mr-2"></i>2.1 主要树种分布比例(2024年)
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                根据2024年最新数据，西丰县主要树种分布比例如下：
+                            </p>
+                            
+                            <!-- 树种分布图表 -->
+                            <div class="chart-container mb-6">
+                                <canvas id="treeDistributionChart"></canvas>
+                            </div>
+                            
+                            <!-- 树种分布表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>树种</th>
+                                            <th>占比</th>
+                                            <th>用途及特点</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>柞树</td><td>42%</td><td>支撑46万亩柞蚕养殖，是西丰县特色产业的重要基础</td></tr>
+                                        <tr><td>落叶松</td><td>28%</td><td>主要用材林树种，分布广泛</td></tr>
+                                        <tr><td>白桦</td><td>15%</td><td>重要的生态和观赏树种</td></tr>
+                                        <tr><td>其他阔叶树</td><td>15%</td><td>包括多种本地阔叶树种</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                柞树是西丰县最主要的树种，占比高达42%，这与当地发展柞蚕养殖的传统产业密切相关。柞蚕养殖是西丰县的特色产业，被誉为"中国柞蚕之乡"。
+                            </p>
+                        </div>
+                        
+                        <!-- 2.2 林木蓄积量统计 -->
+                        <div id="timber-stock" class="mb-10">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-bar-chart mr-2"></i>2.2 林木蓄积量统计(2024年)
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                2024年西丰县林木蓄积量统计数据如下：
+                            </p>
+                            
+                            <!-- 林木蓄积量图表 -->
+                            <div class="chart-container mb-6">
+                                <canvas id="timberStockChart"></canvas>
+                            </div>
+                            
+                            <!-- 林木蓄积量表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>林区类型</th>
+                                            <th>蓄积量(万立方米)</th>
+                                            <th>占比</th>
+                                            <th>年生长量(万立方米)</th>
+                                            <th>年消耗量(万立方米)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>国有林场</td><td>92</td><td>49.5%</td><td>4.1</td><td>1.5</td></tr>
+                                        <tr><td>集体林区</td><td>78</td><td>41.9%</td><td>3.6</td><td>1.3</td></tr>
+                                        <tr><td>人工林</td><td>16</td><td>8.6%</td><td>0.6</td><td>0.3</td></tr>
+                                        <tr><td>总计</td><td>186</td><td>100%</td><td>8.3</td><td>3.1</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                2024年西丰县林木总蓄积量达186万立方米，其中国有林场占比近50%，是主要的森林资源主体。年生长量为8.3万立方米，年消耗量控制在3.1万立方米以内，生长量远大于消耗量，体现了良好的森林资源可持续发展状态。
+                            </p>
+                        </div>
+                        
+                        <!-- 2.3 森林类型分布 -->
+                        <div id="forest-type" class="mb-10">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-map mr-2"></i>2.3 森林类型分布图(2023年)
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                2023年西丰县森林类型分布图数据显示了不同森林类型在县域内的空间分布：
+                            </p>
+                            
+                            <!-- 森林类型表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>森林类型</th>
+                                            <th>主要分布区域</th>
+                                            <th>面积(公顷)</th>
+                                            <th>特点</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>针叶林区</td><td>冰砬山区域</td><td>约5,000</td><td>以落叶松等针叶树种为主，生态系统相对单一</td></tr>
+                                        <tr><td>阔叶林区</td><td>寇河流域两岸</td><td>约8,000</td><td>以柞树、桦树等阔叶树种为主，生物多样性较高</td></tr>
+                                        <tr><td>混交林区</td><td>凉泉镇等鹿养殖核心区</td><td>约3,000</td><td>针叶树与阔叶树混交，生态稳定性强</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                该数据基于森林资源二类调查绘制，采用矢量数据格式，覆盖全县18个乡镇。冰砬山国家森林公园是西丰县森林资源的精华区域，总面积2269.3公顷，森林覆盖率高达96%，空气负氧离子含量达到3万个/立方厘米以上。
+                            </p>
+                        </div>
+                        
+                        <!-- 2.4 古树名木资源 -->
+                        <div id="ancient-trees">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-tree text-lg mr-2"></i>2.4 古树名木资源普查(2024年)
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                2024年西丰县古树名木资源普查结果如下：
+                            </p>
+                            
+                            <!-- 古树名木表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>树种</th>
+                                            <th>数量(株)</th>
+                                            <th>占比</th>
+                                            <th>最老树龄</th>
+                                            <th>分布区域</th>
+                                            <th>保护措施</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>蒙古栎</td><td>89</td><td>70.1%</td><td>320年(平岗镇)</td><td>全县各山区</td><td>设立保护标识，定期监测</td></tr>
+                                        <tr><td>山槐</td><td>23</td><td>18.1%</td><td>150年左右</td><td>寇河沿岸</td><td>围栏保护，防治病虫害</td></tr>
+                                        <tr><td>其他树种</td><td>15</td><td>11.8%</td><td>100-200年不等</td><td>分散分布</td><td>建立档案，加强巡查</td></tr>
+                                        <tr><td>总计</td><td>127</td><td>100%</td><td>-</td><td>全县18个乡镇</td><td>-</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                此次普查共登记古树127株，每株古树都附有GPS定位坐标及健康监测记录。其中最珍贵的是位于平岗镇的一株320年树龄的蒙古栎，已被列为重点保护对象。西丰县已建立古树名木保护专项档案，对所有古树实施挂牌保护，并定期进行健康检查和维护。
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 三、生物多样性数据 -->
+                <section id="biodiversity" class="mb-12 section-fade">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                            <i class="fa fa-paw"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-neutral-900">三、生物多样性数据</h2>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 border border-neutral-200">
+                        <!-- 3.1 陆生野生动物名录 -->
+                        <div id="wildlife" class="mb-10">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-dove mr-2"></i>3.1 陆生野生动物名录(2024年)
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                2024年西丰县陆生野生动物名录记录了丰富的动物资源：
+                            </p>
+                            
+                            <!-- 野生动物图表 -->
+                            <div class="chart-container mb-6">
+                                <canvas id="wildlifeChart"></canvas>
+                            </div>
+                            
+                            <!-- 野生动物表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>动物类别</th>
+                                            <th>种类数</th>
+                                            <th>占比</th>
+                                            <th>代表性物种</th>
+                                            <th>保护级别</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>兽类</td><td>28</td><td>24.8%</td><td>东北虎、黑熊、狐狸、狍子等</td><td>国家一级、二级保护动物</td></tr>
+                                        <tr><td>禽类</td><td>65</td><td>57.5%</td><td>野鸡、啄木鸟、白鹭等</td><td>部分为国家保护鸟类</td></tr>
+                                        <tr><td>爬行类</td><td>20</td><td>17.7%</td><td>穿山甲、蜥蜴等</td><td>部分为省级保护动物</td></tr>
+                                        <tr><td>总计</td><td>113</td><td>100%</td><td>-</td><td>-</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                西丰县特色物种西丰梅花鹿存栏达6万只，是当地重要的经济动物和生态标志。狐狸、狍子等野生动物重回山林，体现了当地生态环境的改善。
+                            </p>
+                        </div>
+                        
+                        <!-- 3.2 鸟类资源监测 -->
+                        <div id="bird-monitor" class="mb-10">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-eye mr-2"></i>3.2 鸟类资源监测数据(2023-2024年)
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                2023-2024年西丰县鸟类资源监测数据覆盖了12个监测点，主要数据如下：
+                            </p>
+                            
+                            <!-- 鸟类监测表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>监测区域</th>
+                                            <th>监测点数量</th>
+                                            <th>记录鸟类种类</th>
+                                            <th>主要观测结果</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>寇河流域核心区</td><td>5</td><td>42种</td><td>春季迁徙高峰期单日观测量超300只，候鸟种类丰富</td></tr>
+                                        <tr><td>湿地监测点</td><td>3</td><td>25种</td><td>发现白鹭繁殖种群，数量较2023年增长15%</td></tr>
+                                        <tr><td>山区监测点</td><td>4</td><td>35种</td><td>留鸟种类稳定，部分猛禽数量有所增加</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                2023-2024年期间，西丰县共救助放归鸟类23只，其中包括国家二级保护动物猫头鹰等。监测数据显示，随着生态环境的改善，西丰县鸟类多样性呈上升趋势，特别是湿地生态系统中的水鸟数量明显增加。
+                            </p>
+                        </div>
+                        
+                        <!-- 3.3 珍稀濒危物种保护 -->
+                        <div id="rare-species">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-shield mr-2"></i>3.3 珍稀濒危物种保护现状(2024年)
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                2024年西丰县珍稀濒危物种保护现状如下：
+                            </p>
+                            
+                            <!-- 珍稀物种表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>物种名称</th>
+                                            <th>保护级别</th>
+                                            <th>种群数量</th>
+                                            <th>分布区域</th>
+                                            <th>保护措施</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>西丰梅花鹿</td><td>省级重点保护</td><td>存栏6万只</td><td>全县各养殖基地及保护区</td><td>建立种质资源保护中心，年选育优质种公鹿100只</td></tr>
+                                        <tr><td>东北虎</td><td>国家一级保护</td><td>红外相机记录3次活动痕迹</td><td>冰砬山区域</td><td>建立7家林场常态化巡查机制，年巡护里程超5万公里</td></tr>
+                                        <tr><td>黑熊</td><td>国家二级保护</td><td>约20-30只</td><td>冰砬山、城子山等山区</td><td>设置红外监测相机，加强栖息地保护</td></tr>
+                                        <tr><td>白鹭</td><td>省级重点保护</td><td>繁殖种群约50只</td><td>寇河湿地</td><td>划定核心保护区，禁止人类活动干扰</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                西丰县建立了梅花鹿种质资源保护中心，现存西丰纯种梅花鹿精子2.1万管，年人工授精2000只，鹿茸优质率等八项指标国际领先。同时，投资1.3亿资金，建成全国首家标准化万头梅花鹿种源文化园，带动小区、庭院养殖协调发展。
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 四、生态监测数据 -->
+                <section id="eco-monitor" class="mb-12 section-fade">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                            <i class="fa fa-area-chart"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-neutral-900">四、生态监测数据</h2>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 border border-neutral-200">
+                        <!-- 4.1 气象因子观测 -->
+                        <div id="meteorology" class="mb-10">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-cloud mr-2"></i>4.1 气象因子长期观测(2010-2024年)
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                2010-2024年西丰县气象因子长期观测数据显示了该地区的气候特征：
+                            </p>
+                            
+                            <!-- 气象因子表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>气象因子</th>
+                                            <th>平均值</th>
+                                            <th>年波动范围</th>
+                                            <th>季节性特征</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>年平均气温</td><td>6.2℃</td><td>±0.3℃</td><td>冬季寒冷，极端低温可达-43℃；夏季凉爽，极端高温35.2℃</td></tr>
+                                        <tr><td>年降水量</td><td>738mm</td><td>年际变化约10-15%</td><td>6-8月占比62%，夏季降水集中</td></tr>
+                                        <tr><td>年平均风速</td><td>2.1m/s</td><td>1.5-2.8m/s</td><td>春季风速较大，秋冬季风速较小</td></tr>
+                                        <tr><td>相对湿度</td><td>78%</td><td>70-85%</td><td>夏季湿度高，冬季湿度低</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                西丰县气候特点是四季分明，昼夜温差大，这为生产"绿色鹿茸"、有机鹿产品提供了有利条件。该地区被称为"辽宁的寒极"，2001年曾出现过零下43℃的极端低温。
+                            </p>
+                        </div>
+                        
+                        <!-- 4.2 森林土壤质量 -->
+                        <div id="soil-quality" class="mb-10">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-database mr-2"></i>4.2 森林土壤质量分析(2024年)
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                2024年西丰县森林土壤质量分析数据覆盖了3大林区：
+                            </p>
+                            
+                            <!-- 土壤质量表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>林区类型</th>
+                                            <th>有机质含量</th>
+                                            <th>pH值</th>
+                                            <th>氮磷钾总量(g/kg)</th>
+                                            <th>含水量</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>柞林区</td><td>4.2%</td><td>5.6</td><td>2.1</td><td>25.3%</td></tr>
+                                        <tr><td>针叶林区</td><td>2.8%</td><td>6.2</td><td>1.8</td><td>22.7%</td></tr>
+                                        <tr><td>河谷林区</td><td>5.1%</td><td>5.8</td><td>2.5</td><td>28.3%</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                数据按1km×1km网格提供采样数据，全面反映了西丰县森林土壤的理化性质。柞林区土壤有机质含量适中，pH值5.6，非常适宜柞树生长，这也是柞树成为西丰县主要树种的重要原因之一。河谷林区土壤肥沃，含水量高，有利于多种树种生长。
+                            </p>
+                        </div>
+                        
+                        <!-- 4.3 生态系统碳储量 -->
+                        <div id="carbon-stock">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-leaf mr-2"></i>4.3 森林生态系统碳储量(2023年)
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                2023年西丰县森林生态系统碳储量数据如下：
+                            </p>
+                            
+                            <!-- 碳储量图表 -->
+                            <div class="chart-container mb-6">
+                                <canvas id="carbonStockChart"></canvas>
+                            </div>
+                            
+                            <!-- 碳储量表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>森林类型</th>
+                                            <th>碳储量(万吨)</th>
+                                            <th>碳密度(吨/亩)</th>
+                                            <th>占比</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>针叶林</td><td>48.6</td><td>4.8</td><td>38.1%</td></tr>
+                                        <tr><td>阔叶林</td><td>68.9</td><td>5.3</td><td>54.0%</td></tr>
+                                        <tr><td>混交林</td><td>10.1</td><td>4.9</td><td>7.9%</td></tr>
+                                        <tr><td>总计</td><td>127.6</td><td>-</td><td>100%</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                西丰县森林生态系统碳储量总量为127.6万吨，年碳汇潜力约3.2万吨。阔叶林的碳密度最高，达到5.3吨/亩，这与阔叶树种生长快、生物量大的特点有关。该数据参考辽东山区碳储量测算标准，采用科学方法评估，具有较高的可靠性。
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 五、数据获取与使用说明 -->
+                <section id="data-guide" class="mb-12 section-fade">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                            <i class="fa fa-download"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-neutral-900">五、数据获取与使用说明</h2>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 border border-neutral-200">
+                        <!-- 5.1 数据获取方式 -->
+                        <div class="mb-10">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-cloud-download mr-2"></i>5.1 数据获取方式
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                西丰县生态数据公益共享平台提供了多种数据获取方式：
+                            </p>
+                            
+                            <!-- 数据获取表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>数据类型</th>
+                                            <th>获取方式</th>
+                                            <th>访问限制</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>森林资源数据</td><td>在线下载</td><td>无需注册，直接下载</td></tr>
+                                        <tr><td>生物多样性数据</td><td>在线申请</td><td>需提交使用申请，审核通过后下载</td></tr>
+                                        <tr><td>生态监测数据</td><td>批量申请</td><td>科研团队可申请批量获取近15年气象观测数据</td></tr>
+                                        <tr><td>矢量数据</td><td>数据解读服务</td><td>提供矢量格式森林分布图的数据解读服务</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                平台提供零门槛使用服务，任何人、学校、公益组织、科研机构均可使用，不限次数、不收会员费、无需积分，点击即可下载。
+                            </p>
+                        </div>
+                        
+                        <!-- 5.2 数据使用规范 -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-book mr-2"></i>5.2 数据使用规范
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                西丰县生态数据使用规范明确了数据的合法使用范围：
+                            </p>
+                            
+                            <!-- 数据使用表格 -->
+                            <div class="overflow-x-auto table-shadow rounded-lg mb-4">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>使用主体</th>
+                                            <th>允许用途</th>
+                                            <th>禁止行为</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>科研机构</td><td>非商业性生态保护研究与教育活动</td><td>商业用途、数据转售</td></tr>
+                                        <tr><td>教育单位</td><td>教学实践、学生科研项目</td><td>用于商业培训、盈利性活动</td></tr>
+                                        <tr><td>企业</td><td>生态相关产品研发、环境影响评价</td><td>商业开发，如鹿产品加工、柞蚕养殖等商业开发</td></tr>
+                                        <tr><td>个人</td><td>非商业性研究、科普创作</td><td>用于商业目的或非法用途</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-neutral-700 leading-relaxed">
+                                所有使用主体在发表成果时需注明数据来源为"西丰县林业生态公益基金会"。数据修改需经平台审核备案，确保数据的真实性和完整性。
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 六、生态建设成就与展望 -->
+                <section id="achievements" class="mb-12 section-fade">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                            <i class="fa fa-trophy"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-neutral-900">六、西丰县生态建设成就与展望</h2>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 border border-neutral-200">
+                        <!-- 6.1 生态建设成就 -->
+                        <div class="mb-10">
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-check-circle mr-2"></i>6.1 生态建设成就
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                西丰县通过多年的生态建设，取得了显著成就：
+                            </p>
+                            
+                            <div class="space-y-4 mb-6">
+                                <div class="bg-neutral-50 p-4 rounded-lg border-l-4 border-primary">
+                                    <h4 class="font-semibold text-neutral-800 mb-2">1. 森林资源持续增长</h4>
+                                    <p class="text-neutral-700">森林覆盖率从2010年的52.3%提高到2023年的57.81%，增长了5.5个百分点。</p>
+                                </div>
+                                <div class="bg-neutral-50 p-4 rounded-lg border-l-4 border-primary">
+                                    <h4 class="font-semibold text-neutral-800 mb-2">2. 生物多样性明显改善</h4>
+                                    <p class="text-neutral-700">狐狸、狍子等野生动物重回山林，鸟类种类和数量增加，东北虎等珍稀动物活动痕迹被记录。</p>
+                                </div>
+                                <div class="bg-neutral-50 p-4 rounded-lg border-l-4 border-primary">
+                                    <h4 class="font-semibold text-neutral-800 mb-2">3. 生态环境质量提升</h4>
+                                    <p class="text-neutral-700">空气中负氧离子含量均值达1.3万个/cm³，超过世界卫生组织标准13倍；环境空气质量优良率为83.3%，集中式饮用水水源地水质达标率、地表水和地下水水质达标率均达到100%。</p>
+                                </div>
+                                <div class="bg-neutral-50 p-4 rounded-lg border-l-4 border-primary">
+                                    <h4 class="font-semibold text-neutral-800 mb-2">4. 生态产业蓬勃发展</h4>
+                                    <p class="text-neutral-700">依托良好生态环境，西丰县发展了鹿产业、柞蚕养殖、中草药材种植等特色产业，梅花鹿饲养量突破6万只。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 6.2 未来发展展望 -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-primary mb-4 flex items-center">
+                                <i class="fa fa-rocket mr-2"></i>6.2 未来发展展望
+                            </h3>
+                            <p class="text-neutral-700 leading-relaxed mb-4">
+                                西丰县未来生态建设与发展的主要目标包括：
+                            </p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-neutral-50 p-4 rounded-lg border-l-4 border-blue">
+                                    <h4 class="font-semibold text-neutral-800 mb-2">1. 森林覆盖率目标</h4>
+                                    <p class="text-neutral-700">到2025年，森林覆盖率达到58.1%，比2023年再提高0.3个百分点。</p>
+                                </div>
+                                <div class="bg-neutral-50 p-4 rounded-lg border-l-4 border-blue">
+                                    <h4 class="font-semibold text-neutral-800 mb-2">2. 生态系统质量提升</h4>
+                                    <p class="text-neutral-700">继续推进国家储备林项目，计划完成授信8.6亿元、用信1.8亿元，进一步提高森林质量和生态系统服务功能。</p>
+                                </div>
+                                <div class="bg-neutral-50 p-4 rounded-lg border-l-4 border-blue">
+                                    <h4 class="font-semibold text-neutral-800 mb-2">3. 生态产业发展</h4>
+                                    <p class="text-neutral-700">打造"三业并举"（绿业、鹿业、蚕业）的生态产业格局，在生态农业、滋补健康产业和全域旅游三个方面加大"两山"成果转化力度。</p>
+                                </div>
+                                <div class="bg-neutral-50 p-4 rounded-lg border-l-4 border-blue">
+                                    <h4 class="font-semibold text-neutral-800 mb-2">4. 生态保护与修复工程</h4>
+                                    <p class="text-neutral-700">继续实施青山工程、碧水工程、蓝天工程，加强生态系统保护与修复，确保生态环境质量持续改善。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 七、结论 -->
+                <section id="conclusion" class="mb-12 section-fade">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                            <i class="fa fa-flag-checkered"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-neutral-900">七、结论</h2>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 border border-neutral-200">
+                        <p class="text-neutral-700 leading-relaxed mb-4">
+                            西丰县作为辽宁省重点林业县，拥有丰富的森林资源和生物多样性，生态环境优良。通过多年的生态建设和保护，森林覆盖率持续提高，生态系统服务功能不断增强，为当地经济社会可持续发展提供了坚实的生态基础。
+                        </p>
+                        <p class="text-neutral-700 leading-relaxed mb-4">
+                            本报告汇编的森林资源数据、生物多样性数据和生态监测数据，全面反映了西丰县的生态环境状况和变化趋势，为科研机构、教育单位、企业和个人开展生态保护研究与教育活动提供了重要的数据支持。
+                        </p>
+                        <p class="text-neutral-700 leading-relaxed">
+                            西丰县将继续坚持"生态立县·绿色崛起"战略，加大生态环境保护力度，持续提升绿水青山"颜值"，促进县域产业高质量发展，打造靓丽生态名片。
+                        </p>
+                        
+                        <div class="mt-8 pt-6 border-t border-neutral-200 text-sm text-neutral-600 italic">
+                            <p><strong>数据来源说明</strong>：本报告数据主要来源于西丰县林业局年度报告、西丰县政府工作报告、辽宁省林业和草原局相关报告以及西丰县生态数据公益共享平台。所有数据均经过多源验证，确保真实可靠。</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90 focus:outline-none">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- 页脚 -->
+    <footer class="bg-neutral-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">
+                        <i class="fa fa-tree mr-2"></i>西丰县森林资源与生态环境数据汇编
+                    </h3>
+                    <p class="text-neutral-400">全面、准确、及时的生态环境数据服务</p>
+                </div>
+                <div class="flex flex-col items-center md:items-end">
+                    <p class="text-neutral-400 mb-2">© 2025 西丰县林业生态公益基金会</p>
+                    <p class="text-neutral-400 text-sm">数据更新时间：2025年10月</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 等待DOM加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移动端菜单切换
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // 导航栏滚动效果
+            const topNav = document.getElementById('top-nav');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    topNav.classList.add('shadow-md');
+                    topNav.classList.add('py-2');
+                    topNav.classList.remove('py-3');
+                } else {
+                    topNav.classList.remove('shadow-md');
+                    topNav.classList.add('py-3');
+                    topNav.classList.remove('py-2');
+                }
+            });
+            
+            // 返回顶部按钮
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove('opacity-0', 'invisible');
+                    backToTopBtn.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'invisible');
+                    backToTopBtn.classList.remove('opacity-100', 'visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 侧边导航高亮当前章节
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('aside nav a');
+            
+            function highlightNavLink() {
+                let scrollPosition = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('nav-active');
+                            if (link.getAttribute('data-target') === sectionId) {
+                                link.classList.add('nav-active');
+                                
+                                // 高亮父级菜单
+                                const parentLink = link.closest('li').previousElementSibling;
+                                if (parentLink && parentLink.querySelector('a')) {
+                                    parentLink.querySelector('a').classList.add('nav-active');
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightNavLink);
+            highlightNavLink(); // 初始加载时执行一次
+            
+            // 图表初始化
+            initCharts();
+        });
+        
+        // 初始化所有图表
+        function initCharts() {
+            // 1. 森林覆盖率变化图表
+            const coverageCtx = document.getElementById('coverageChart').getContext('2d');
+            new Chart(coverageCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2010', '2012', '2013', '2015', '2016', '2018', '2019', '2020', '2022', '2023', '2024', '2025'],
+                    datasets: [{
+                        label: '森林覆盖率(%)',
+                        data: [52.3, 60.47, 60.47, 61, 61, 61, 61, 60.47, 61, 57.81, 57.81, 58.1],
+                        borderColor: '#2E7D32',
+                        backgroundColor: 'rgba(46, 125, 50, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3,
+                        pointBackgroundColor: '#2E7D32',
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        title: {
+                            display: true,
+                            text: '西丰县森林覆盖率变化趋势(2010-2025)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: 50,
+                            max: 62,
+                            ticks: {
+                                stepSize: 2
+                            },
+                            title: {
+                                display: true,
+                                text: '覆盖率(%)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '年份'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 2. 树种分布比例图表
+            const treeDistributionCtx = document.getElementById('treeDistributionChart').getContext('2d');
+            new Chart(treeDistributionCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['柞树', '落叶松', '白桦', '其他阔叶树'],
+                    datasets: [{
+                        data: [42, 28, 15, 15],
+                        backgroundColor: [
+                            '#2E7D32',
+                            '#4CAF50',
+                            '#81C784',
+                            '#A5D6A7'
+                        ],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: '西丰县主要树种分布比例(2024年)'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+            
+            // 3. 林木蓄积量统计图表
+            const timberStockCtx = document.getElementById('timberStockChart').getContext('2d');
+            new Chart(timberStockCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['国有林场', '集体林区', '人工林'],
+                    datasets: [{
+                        label: '蓄积量(万立方米)',
+                        data: [92, 78, 16],
+                        backgroundColor: '#2E7D32',
+                        borderColor: '#1B5E20',
+                        borderWidth: 1
+                    }, {
+                        label: '年生长量(万立方米)',
+                        data: [4.1, 3.6, 0.6],
+                        backgroundColor: '#4CAF50',
+                        borderColor: '#2E7D32',
+                        borderWidth: 1
+                    }, {
+                        label: '年消耗量(万立方米)',
+                        data: [1.5, 1.3, 0.3],
+                        backgroundColor: '#FFC107',
+                        borderColor: '#FF8F00',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: '西丰县林木蓄积量统计(2024年)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '数量(万立方米)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '林区类型'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 4. 陆生野生动物种类图表
+            const wildlifeCtx = document.getElementById('wildlifeChart').getContext('2d');
+            new Chart(wildlifeCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['兽类', '禽类', '爬行类'],
+                    datasets: [{
+                        data: [28, 65, 20],
+                        backgroundColor: [
+                            '#1976D2',
+                            '#42A5F5',
+                            '#90CAF9'
+                        ],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: '西丰县陆生野生动物种类分布(2024年)'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ${value}种 (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 5. 森林生态系统碳储量图表
+            const carbonStockCtx = document.getElementById('carbonStockChart').getContext('2d');
+            new Chart(carbonStockCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['针叶林', '阔叶林', '混交林'],
+                    datasets: [{
+                        label: '碳储量(万吨)',
+                        data: [48.6, 68.9, 10.1],
+                        backgroundColor: '#2E7D32',
+                        borderColor: '#1B5E20',
+                        borderWidth: 1
+                    }, {
+                        label: '碳密度(吨/亩)',
+                        data: [4.8, 5.3, 4.9],
+                        backgroundColor: '#81C784',
+                        borderColor: '#4CAF50',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: '西丰县森林生态系统碳储量(2023年)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '数量'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '森林类型'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
