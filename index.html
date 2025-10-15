@@ -99,11 +99,8 @@
 
 <body class="bg-darker text-gray-200 leaf-pattern min-h-screen cursor-leaf">
 
-<!-- 顶部装饰线条 -->
-<div class="h-1 bg-gradient-to-r from-primary via-secondary to-accent"></div>
-
-<!-- ========== 导航栏 ========== -->
-<header id="navbar" class="sticky top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-accent/20">
+<!-- ========== 导航栏 - 移动端初始透明 ========== -->
+<header id="navbar" class="fixed top-0 z-50 w-full bg-transparent transition-all duration-300">
     <div class="container mx-auto px-4 py-4 flex items-center justify-between">
         <a href="index.html" class="flex items-center space-x-2">
             <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/86b2afb44581460781d95b59f9a14a9c.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251013222858D6F409237749738BB606&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760970538&x-signature=%2BnBlQI%2BOmhnxBxiIMlOi4DadsS4%3D" alt="基金会LOGO" class="h-12">
@@ -201,12 +198,12 @@
 <section id="content" class="py-20 bg-darker relative">
     <div class="absolute inset-0 leaf-pattern opacity-20"></div>
     <div class="container mx-auto px-4 relative z-10">
-        <!-- 内容分类入口 - 六个板块 - 保留原有颜色 -->
+        <!-- 内容分类入口 - 六个板块 - 添加边框和虚光效果 -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <!-- 光影 -->
-            <a href="videos.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
+            <a href="videos.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border bg-primary/10 glow">
                 <img src="https://picsum.photos/id/29/800/600" alt="茂密森林的航拍图，展示生态系统的广阔" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
-                <div class="absolute inset-0 bg-forest-dark/60 group-hover:bg-forest-dark/70 transition-custom"></div>
+                <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/30 transition-custom"></div>
                 <div class="relative text-center px-4">
                     <i class="fa fa-film text-white text-5xl mb-4 group-hover:text-forest-accent transition-custom"></i>
                     <h3 class="text-white text-2xl font-bold mb-2">光影</h3>
@@ -215,9 +212,9 @@
             </a>
             
             <!-- 文苑 -->
-            <a href="articles.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
+            <a href="articles.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border bg-primary/10 glow">
                 <img src="https://picsum.photos/id/177/800/600" alt="阳光透过树叶形成的光斑，落在森林地面的苔藓上" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
-                <div class="absolute inset-0 bg-forest-dark/60 group-hover:bg-forest-dark/70 transition-custom"></div>
+                <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/30 transition-custom"></div>
                 <div class="relative text-center px-4">
                     <i class="fa fa-book text-white text-5xl mb-4 group-hover:text-forest-accent transition-custom"></i>
                     <h3 class="text-white text-2xl font-bold mb-2">文苑</h3>
@@ -226,9 +223,9 @@
             </a>
             
             <!-- 声享 -->
-            <a href="audio.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
+            <a href="audio.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border bg-primary/10 glow">
                 <img src="https://picsum.photos/id/110/800/600" alt="清晨的森林，有薄雾和鸟鸣" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
-                <div class="absolute inset-0 bg-forest-dark/60 group-hover:bg-forest-dark/70 transition-custom"></div>
+                <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/30 transition-custom"></div>
                 <div class="relative text-center px-4">
                     <i class="fa fa-music text-white text-5xl mb-4 group-hover:text-forest-accent transition-custom"></i>
                     <h3 class="text-white text-2xl font-bold mb-2">声享</h3>
@@ -237,9 +234,9 @@
             </a>
             
             <!-- 志愿者 - 更新图片 -->
-            <a href="volunteer.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
-                <img src="https://pic1.imgdb.cn/item/68ef61b2c5157e1a8874a5f2.png" alt="志愿者植树活动" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
-                <div class="absolute inset-0 bg-forest-dark/60 group-hover:bg-forest-dark/70 transition-custom"></div>
+            <a href="volunteer.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border bg-primary/10 glow">
+                <img src="https://pic1.imgdb.cn/item/68ef5fffc5157e1a8874a09c.png" alt="志愿者植树活动" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
+                <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/30 transition-custom"></div>
                 <div class="relative text-center px-4">
                     <i class="fa fa-users text-white text-5xl mb-4 group-hover:text-forest-accent transition-custom"></i>
                     <h3 class="text-white text-2xl font-bold mb-2">志愿者</h3>
@@ -248,9 +245,9 @@
             </a>
             
             <!-- 数据共享 - 更新图片 -->
-            <a href="data-sharing.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
+            <a href="data-sharing.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border bg-primary/10 glow">
                 <img src="https://pic1.imgdb.cn/item/68ef7a8dc5157e1a887529d9.png" alt="数据共享平台" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
-                <div class="absolute inset-0 bg-forest-dark/60 group-hover:bg-forest-dark/70 transition-custom"></div>
+                <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/30 transition-custom"></div>
                 <div class="relative text-center px-4">
                     <i class="fa fa-database text-white text-5xl mb-4 group-hover:text-forest-accent transition-custom"></i>
                     <h3 class="text-white text-2xl font-bold mb-2">数据共享</h3>
@@ -259,9 +256,9 @@
             </a>
             
             <!-- 林权流转 - 更新图片 -->
-            <a href="forest-rights.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
+            <a href="forest-rights.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border bg-primary/10 glow">
                 <img src="https://pic1.imgdb.cn/item/68ef7ac0c5157e1a887529e3.png" alt="林权流转服务" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
-                <div class="absolute inset-0 bg-forest-dark/60 group-hover:bg-forest-dark/70 transition-custom"></div>
+                <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/30 transition-custom"></div>
                 <div class="relative text-center px-4">
                     <i class="fa fa-handshake-o text-white text-5xl mb-4 group-hover:text-forest-accent transition-custom"></i>
                     <h3 class="text-white text-2xl font-bold mb-2">林权流转</h3>
@@ -271,7 +268,7 @@
         </div>
         
         <!-- 最新视频板块 -->
-        <section class="mb-20">
+        <section class="mb-20 bg-dark py-12 px-8 rounded-2xl">
             <div class="flex justify-between items-end mb-8">
                 <div>
                     <h2 class="text-3xl font-bold text-white mb-2 glow-text">最新光影</h2>
@@ -350,7 +347,7 @@
         </section>
         
         <!-- 精选文章板块 -->
-        <section class="mb-20">
+        <section class="mb-20 bg-darker py-12 px-8 rounded-2xl">
             <div class="flex justify-between items-end mb-8">
                 <div>
                     <h2 class="text-3xl font-bold text-white mb-2 glow-text">精选文苑</h2>
@@ -362,9 +359,9 @@
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- 重点文章 (第一张图片) -->
+                <!-- 重点文章 (第一张图片) - 更新封面 -->
                 <a href="articles/article1.html" class="relative rounded-xl overflow-hidden h-96 group card-border glow">
-                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a88fe934a95c41868d28d593045fa576.png~tplv-a9rns2rl98-24:720:720.png?rcl=202510061724233A99413622BF985A8211&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760347463&x-signature=BjEdICrPPxcFlTD22InjeUDKxVE%3D" alt="森林与阳光的景观图" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-105">
+                    <img src="https://pic1.imgdb.cn/item/68ef9a5cc5157e1a88755b3d.png" alt="气候变化对森林生态系统的长期影响" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-8">
                         <span class="bg-accent text-white text-sm px-3 py-1 rounded-full">气候变化</span>
@@ -379,9 +376,9 @@
                 
                 <!-- 文章列表 -->
                 <div class="space-y-6">
-                    <!-- 文章1 (第二张图片) -->
+                    <!-- 文章1 (第二张图片) - 更新封面 -->
                     <a href="articles/article2.html" class="flex flex-col md:flex-row gap-4 bg-primary/10 p-4 rounded-xl card-border hover:bg-primary/20 transition">
-                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/5f61aa804b504360b81594e53a378fa8.png~tplv-a9rns2rl98-24:720:720.png?rcl=202510061724233A99413622BF985A8211&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760347463&x-signature=rNg1LAyo2OJMk%2FPCB53fbqSCHeI%3D" alt="树木根系与真菌网络示意图" class="w-full md:w-48 h-32 object-cover rounded-lg">
+                        <img src="https://pic1.imgdb.cn/item/68ef9a76c5157e1a88755b69.png" alt="树木根系与真菌网络示意图" class="w-full md:w-48 h-32 object-cover rounded-lg">
                         <div>
                             <span class="bg-accent/20 text-accent text-xs px-3 py-1 rounded-full">森林生态</span>
                             <h3 class="font-semibold text-lg mt-2 mb-1 text-white hover:text-accent transition-custom">树木的秘密生活：地下网络的奇迹</h3>
@@ -409,9 +406,9 @@
                         </div>
                     </a>
                     
-                    <!-- 文章3 (第三张图片) -->
+                    <!-- 文章3 (第三张图片) - 更新封面 -->
                     <a href="articles/article4.html" class="flex flex-col md:flex-row gap-4 bg-primary/10 p-4 rounded-xl card-border hover:bg-primary/20 transition">
-                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/db84084d537a494fa2df74841ec0e8a9.png~tplv-a9rns2rl98-24:720:720.png?rcl=202510061724233A99413622BF985A8211&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760347463&x-signature=jN0eKTj7G2X5yJFjBijeSIc3re0%3D" alt="西丰县文明健康绿色环保生活方式手册封面" class="w-full md:w-48 h-32 object-cover rounded-lg">
+                        <img src="https://pic1.imgdb.cn/item/68ef607ec5157e1a8874a150.png" alt="西丰县文明健康绿色环保生活方式手册封面" class="w-full md:w-48 h-32 object-cover rounded-lg">
                         <div>
                             <span class="bg-accent/20 text-accent text-xs px-3 py-1 rounded-full">修复实践</span>
                             <h3 class="font-semibold text-lg mt-2 mb-1 text-white hover:text-accent transition-custom">《西丰县文明健康绿色环保生活方式手册》电子版制作</h3>
@@ -428,7 +425,7 @@
         </section>
         
         <!-- 有声读物板块 -->
-        <section class="mb-20">
+        <section class="mb-20 bg-dark py-12 px-8 rounded-2xl">
             <div class="flex justify-between items-end mb-8">
                 <div>
                     <h2 class="text-3xl font-bold text-white mb-2 glow-text">声享空间</h2>
@@ -440,10 +437,10 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- 音频1 - 心声光影·生活指南 -->
+                <!-- 音频1 - 心声光影·生活指南 - 更新封面 -->
                 <a href="audio.html" class="block bg-primary/10 rounded-xl p-5 card-border hover:bg-primary/20 transition group">
                     <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a990e4cee49f4ea9968cc2e25aff58c0.png~tplv-a9rns2rl98-24:720:720.png?rcl=202510071540510BEAFAC5F51BCBA1765D&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760427651&x-signature=%2FjvmLVD9GXzU5T9bmwDjU5qiNng%3D" alt="雨中的绿叶，带有水珠的植物特写" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
+                        <img src="https://pic1.imgdb.cn/item/68ef9adfc5157e1a88755c0f.jpg" alt="雨中的绿叶，带有水珠的植物特写" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
                         <button class="absolute inset-0 m-auto w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
                             <i class="fa fa-play"></i>
                         </button>
@@ -456,10 +453,10 @@
                     </div>
                 </a>
                 
-                <!-- 音频2 - 《心游太玄》冥想修行，静心解压 -->
+                <!-- 音频2 - 《心游太玄》冥想修行，静心解压 - 更新封面 -->
                 <a href="audio/audio2.html" class="block bg-primary/10 rounded-xl p-5 card-border hover:bg-primary/20 transition group">
                     <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/7a307714e2ce4f8eb84db749611978d1.png~tplv-a9rns2rl98-24:720:720.png?rcl=202510071540510BEAFAC5F51BCBA1765D&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760427651&x-signature=mbokrSw1Qb8f8vDZDFwUuVufb2U%3D" alt="秋天的山水湖泊，色彩斑斓的自然景观" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
+                        <img src="https://pic1.imgdb.cn/item/68ef9af2c5157e1a88755c3e.jpg" alt="秋天的山水湖泊，色彩斑斓的自然景观" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
                         <button class="absolute inset-0 m-auto w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
                             <i class="fa fa-play"></i>
                         </button>
@@ -472,10 +469,10 @@
                     </div>
                 </a>
                 
-                <!-- 音频3 - 《雨浸深山・木鱼禅心》冥想解压白噪音 -->
+                <!-- 音频3 - 《雨浸深山・木鱼禅心》冥想解压白噪音 - 更新封面 -->
                 <a href="audio/audio3.html" class="block bg-primary/10 rounded-xl p-5 card-border hover:bg-primary/20 transition group">
                     <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/c82bdf9fa0974bf792467d03383beec2.png~tplv-a9rns2rl98-24:720:720.png?rcl=202510071540510BEAFAC5F51BCBA1765D&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760427651&x-signature=GgI07%2B0GtFkv7N6Out%2FJGLgqK3A%3D" alt="雨中的林间小屋，静谧的自然场景" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
+                        <img src="https://pic1.imgdb.cn/item/68ef9b06c5157e1a88755c67.jpg" alt="雨中的林间小屋，静谧的自然场景" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
                         <button class="absolute inset-0 m-auto w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
                             <i class="fa fa-play"></i>
                         </button>
@@ -488,10 +485,10 @@
                     </div>
                 </a>
                 
-                <!-- 音频4 - 《林涧絮语》幽静山间小溪流淌 -->
+                <!-- 音频4 - 《林涧絮语》幽静山间小溪流淌 - 更新封面 -->
                 <a href="audio/audio4.html" class="block bg-primary/10 rounded-xl p-5 card-border hover:bg-primary/20 transition group">
                     <div class="relative w-full h-40 mb-4 rounded-lg overflow-hidden">
-                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/de23b82989f34d14b1e6b46f66e02da2.png~tplv-a9rns2rl98-24:720:720.png?rcl=202510071540510BEAFAC5F51BCBA1765D&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1760427651&x-signature=p9vrcVGpFfp60SPxix3shgAfxqQ%3D" alt="覆盖青苔的石头和溪流，自然生态景观" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
+                        <img src="https://pic1.imgdb.cn/item/68ef9b19c5157e1a88755c92.jpg" alt="覆盖青苔的石头和溪流，自然生态景观" class="w-full h-full object-cover group-hover:scale-105 transition-custom">
                         <button class="absolute inset-0 m-auto w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-custom">
                             <i class="fa fa-play"></i>
                         </button>
@@ -507,7 +504,7 @@
         </section>
 
         <!-- 志愿者报名板块 -->
-        <section class="mb-20 bg-primary/10 rounded-2xl p-8 md:p-12 card-border">
+        <section class="mb-20 bg-darker py-12 px-8 rounded-2xl card-border">
             <div class="flex flex-col md:flex-row gap-8 items-center">
                 <div class="md:w-1/2">
                     <h2 class="text-3xl font-bold text-white mb-4 glow-text">加入我们的志愿者团队</h2>
@@ -550,15 +547,15 @@
                     </a>
                 </div>
                 
-                <div class="md:w-1/2 rounded-xl overflow-hidden card-border">
-                    <!-- 修复志愿者团队封面图片 -->
+                <div class="md:w-1/2 w-full rounded-xl overflow-hidden card-border">
+                    <!-- 修复志愿者团队封面图片 - 移动端显示最大最宽 -->
                     <img src="https://pic1.imgdb.cn/item/68ef61b2c5157e1a8874a5f2.png" alt="志愿者在进行植树活动" class="w-full h-full object-cover">
                 </div>
             </div>
         </section>
         
         <!-- 数据共享板块 - 已优化为突出公益性和便民性 -->
-        <section class="mb-20">
+        <section class="mb-20 bg-dark py-12 px-8 rounded-2xl">
             <div class="flex justify-between items-end mb-8">
                 <div>
                     <h2 class="text-3xl font-bold text-white mb-2 glow-text">生态数据公益共享平台</h2>
@@ -639,7 +636,7 @@
         </section>
         
         <!-- 林权流转板块 - 已优化为突出公益性和便民性 -->
-        <section class="mb-20 bg-primary/10 rounded-2xl overflow-hidden card-border">
+        <section class="mb-20 bg-darker py-12 px-8 rounded-2xl card-border">
             <div class="grid grid-cols-1 lg:grid-cols-2">
                 <div class="p-8 md:p-12 flex flex-col justify-center">
                     <h2 class="text-3xl font-bold text-white mb-4 glow-text">公益林权信息桥梁</h2>
@@ -822,14 +819,14 @@ document.getElementById('prevSlide').addEventListener('click', () => {
 
 slideInterval = setInterval(nextSlide, intervalTime);
 
-// 导航栏滚动效果
+// 导航栏滚动效果 - 移动端初始透明，滚动后显示背景
 window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');
     if (window.scrollY > 50) {
-        navbar.classList.add('bg-dark/95', 'backdrop-blur-sm', 'shadow-md');
+        navbar.classList.add('bg-dark/80', 'backdrop-blur-md', 'border-b', 'border-accent/20');
         navbar.classList.remove('bg-transparent');
     } else {
-        navbar.classList.remove('bg-dark/95', 'backdrop-blur-sm', 'shadow-md');
+        navbar.classList.remove('bg-dark/80', 'backdrop-blur-md', 'border-b', 'border-accent/20');
         navbar.classList.add('bg-transparent');
     }
 });
