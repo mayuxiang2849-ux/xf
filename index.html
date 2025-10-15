@@ -80,6 +80,13 @@
             .leaf-pattern {
                 background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234caf50' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
             }
+            .text-outline {
+                text-shadow: 
+                    -1px -1px 0 rgba(0, 0, 0, 0.5),
+                    1px -1px 0 rgba(0, 0, 0, 0.5),
+                    -1px 1px 0 rgba(0, 0, 0, 0.5),
+                    1px 1px 0 rgba(0, 0, 0, 0.5);
+            }
             @media (max-width: 640px) {
                 #prevSlide {
                     left: 0.25rem !important; /* 缩小左箭头间距 */
@@ -98,7 +105,7 @@
         }
     </style>
 </head>
-<body class="font-sans bg-darker text-gray-200 cursor-leaf leaf-pattern">
+<body class="font-sans bg-gradient-to-b from-darker via-primary to-dark text-gray-200 cursor-leaf leaf-pattern">
     <!-- 导航栏 -->
     <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -206,73 +213,73 @@
     </section>
 
     <!-- 核心内容区 - 更新为深色背景 -->
-    <section id="content" class="py-20 bg-darker">
+    <section id="content" class="py-20 bg-gradient-to-b from-darker via-primary to-dark">
         <div class="container mx-auto px-4">
             <!-- 内容分类入口 - 六个板块 -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 <!-- 光影 -->
-                <a href="videos.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
+                <a href="videos.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://picsum.photos/id/29/800/600" alt="茂密森林的航拍图，展示生态系统的广阔" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-dark/60 group-hover:bg-dark/70 transition-custom"></div>
                     <div class="relative text-center px-4">
-                        <i class="fa fa-film text-white text-5xl mb-4 group-hover:text-accent transition-custom"></i>
-                        <h3 class="text-white text-2xl font-bold mb-2">光影</h3>
-                        <p class="text-white/90">生态宣传片与纪录片</p>
+                        <i class="fa fa-film text-white text-5xl mb-4 group-hover:text-accent transition-custom text-outline"></i>
+                        <h3 class="text-white text-2xl font-bold mb-2 text-outline">光影</h3>
+                        <p class="text-white/90 text-outline">生态宣传片与纪录片</p>
                     </div>
                 </a>
                 
                 <!-- 文苑 -->
-                <a href="articles.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
+                <a href="articles.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://picsum.photos/id/177/800/600" alt="阳光透过树叶形成的光斑，落在森林地面的苔藓上" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-dark/60 group-hover:bg-dark/70 transition-custom"></div>
                     <div class="relative text-center px-4">
-                        <i class="fa fa-book text-white text-5xl mb-4 group-hover:text-accent transition-custom"></i>
-                        <h3 class="text-white text-2xl font-bold mb-2">文苑</h3>
-                        <p class="text-white/90">系统性生态科普文章</p>
+                        <i class="fa fa-book text-white text-5xl mb-4 group-hover:text-accent transition-custom text-outline"></i>
+                        <h3 class="text-white text-2xl font-bold mb-2 text-outline">文苑</h3>
+                        <p class="text-white/90 text-outline">系统性生态科普文章</p>
                     </div>
                 </a>
                 
                 <!-- 声享 -->
-                <a href="audio.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
+                <a href="audio.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://picsum.photos/id/110/800/600" alt="清晨的森林，有薄雾和鸟鸣" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-dark/60 group-hover:bg-dark/70 transition-custom"></div>
                     <div class="relative text-center px-4">
-                        <i class="fa fa-music text-white text-5xl mb-4 group-hover:text-accent transition-custom"></i>
-                        <h3 class="text-white text-2xl font-bold mb-2">声享</h3>
-                        <p class="text-white/90">有声读物与自然音乐</p>
+                        <i class="fa fa-music text-white text-5xl mb-4 group-hover:text-accent transition-custom text-outline"></i>
+                        <h3 class="text-white text-2xl font-bold mb-2 text-outline">声享</h3>
+                        <p class="text-white/90 text-outline">有声读物与自然音乐</p>
                     </div>
                 </a>
                 
                 <!-- 志愿者 - 更新图片 -->
-                <a href="volunteer.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
+                <a href="volunteer.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://pic1.imgdb.cn/item/68ef5fffc5157e1a8874a09c.png" alt="志愿者植树活动" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-dark/60 group-hover:bg-dark/70 transition-custom"></div>
                     <div class="relative text-center px-4">
-                        <i class="fa fa-users text-white text-5xl mb-4 group-hover:text-accent transition-custom"></i>
-                        <h3 class="text-white text-2xl font-bold mb-2">志愿者</h3>
-                        <p class="text-white/90">加入生态保护行动</p>
+                        <i class="fa fa-users text-white text-5xl mb-4 group-hover:text-accent transition-custom text-outline"></i>
+                        <h3 class="text-white text-2xl font-bold mb-2 text-outline">志愿者</h3>
+                        <p class="text-white/90 text-outline">加入生态保护行动</p>
                     </div>
                 </a>
                 
                 <!-- 数据共享 - 更新图片 -->
-                <a href="data-sharing.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
+                <a href="data-sharing.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://pic1.imgdb.cn/item/68ef7a8dc5157e1a887529d9.png" alt="数据共享平台" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-dark/60 group-hover:bg-dark/70 transition-custom"></div>
                     <div class="relative text-center px-4">
-                        <i class="fa fa-database text-white text-5xl mb-4 group-hover:text-accent transition-custom"></i>
-                        <h3 class="text-white text-2xl font-bold mb-2">数据共享</h3>
-                        <p class="text-white/90">免费开放生态数据资源</p>
+                        <i class="fa fa-database text-white text-5xl mb-4 group-hover:text-accent transition-custom text-outline"></i>
+                        <h3 class="text-white text-2xl font-bold mb-2 text-outline">数据共享</h3>
+                        <p class="text-white/90 text-outline">免费开放生态数据资源</p>
                     </div>
                 </a>
                 
                 <!-- 林权流转 - 更新图片 -->
-                <a href="forest-rights.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2">
+                <a href="forest-rights.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://pic1.imgdb.cn/item/68ef7ac0c5157e1a887529e3.png" alt="林权流转服务" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-dark/60 group-hover:bg-dark/70 transition-custom"></div>
                     <div class="relative text-center px-4">
-                        <i class="fa fa-handshake-o text-white text-5xl mb-4 group-hover:text-accent transition-custom"></i>
-                        <h3 class="text-white text-2xl font-bold mb-2">林权流转</h3>
-                        <p class="text-white/90">免费发布林地流转信息服务</p>
+                        <i class="fa fa-handshake-o text-white text-5xl mb-4 group-hover:text-accent transition-custom text-outline"></i>
+                        <h3 class="text-white text-2xl font-bold mb-2 text-outline">林权流转</h3>
+                        <p class="text-white/90 text-outline">免费发布林地流转信息服务</p>
                     </div>
                 </a>
             </div>
@@ -305,7 +312,7 @@
                         <div class="p-5">
                             <div class="flex items-center mb-3">
                                 <span class="bg-accent/20 text-accent text-xs px-3 py-1 rounded-full">基金会宣传片</span>
-                                <span class="text-gray-400 text-sm ml-auto">2025-10-06</span>
+                                <span class="text-gray-400 text-sm ml-auto">2025-10-18</span>
                             </div>
                             <h3 class="font-semibold text-xl mb-2 text-white group-hover:text-accent transition-custom">西丰县林业生态公益基金会 - 守护绿色家园生态公益宣传片</h3>
                             <p class="text-gray-400 mb-4 line-clamp-2">本宣传片展示了西丰县林业生态公益基金会的使命与愿景，记录了志愿者们为守护绿色家园所做的努力和成果。</p>
@@ -326,7 +333,7 @@
                         <div class="p-5">
                             <div class="flex items-center mb-3">
                                 <span class="bg-accent/20 text-accent text-xs px-3 py-1 rounded-full">生态宣传短片</span>
-                                <span class="text-gray-400 text-sm ml-auto">2025-10-06</span>
+                                <span class="text-gray-400 text-sm ml-auto">2025-10-18</span>
                             </div>
                             <h3 class="font-semibold text-xl mb-2 text-white group-hover:text-accent transition-custom">以改变 致地球</h3>
                             <p class="text-gray-400 mb-4 line-clamp-2">拯救森林，保护海洋，修复土地，净化环境，我们不再一味索取，我们决心致力改变！</p>
@@ -347,7 +354,7 @@
                         <div class="p-5">
                             <div class="flex items-center mb-3">
                                 <span class="bg-accent/20 text-accent text-xs px-3 py-1 rounded-full">水资源</span>
-                                <span class="text-gray-400 text-sm ml-auto">2025-10-06</span>
+                                <span class="text-gray-400 text-sm ml-auto">2025-10-18</span>
                             </div>
                             <h3 class="font-semibold text-xl mb-2 text-white group-hover:text-accent transition-custom">敬畏自然，它很温柔，也很凶猛！</h3>
                             <p class="text-gray-400 mb-4 line-clamp-2">珍爱生命，远离危险！</p>
@@ -379,7 +386,7 @@
                             <p class="text-gray-300 mb-4 line-clamp-2">分析全球气候变化如何影响森林生态系统的结构与功能，探讨适应性管理策略。</p>
                             <div class="flex items-center">
                                 <span class="text-gray-300 text-sm"><i class="fa fa-clock-o mr-1"></i> 阅读时间: 12分钟</span>
-                                <span class="text-gray-300 text-sm ml-auto">2025-10-06</span>
+                                <span class="text-gray-300 text-sm ml-auto">2025-10-18</span>
                             </div>
                         </div>
                     </a>
@@ -396,7 +403,7 @@
                                 <div class="flex items-center text-xs text-gray-500">
                                     <span><i class="fa fa-clock-o mr-1"></i> 8分钟</span>
                                     <span class="mx-2">•</span>
-                                    <span>2025-10-06</span>
+                                    <span>2025-10-18</span>
                                 </div>
                             </div>
                         </a>
@@ -411,7 +418,7 @@
                                 <div class="flex items-center text-xs text-gray-500">
                                     <span><i class="fa fa-clock-o mr-1"></i> 10分钟</span>
                                     <span class="mx-2">•</span>
-                                    <span>2025-10-06</span>
+                                    <span>2025-10-18</span>
                                 </div>
                             </div>
                         </a>
@@ -426,7 +433,7 @@
                                 <div class="flex items-center text-xs text-gray-500">
                                     <span><i class="fa fa-clock-o mr-1"></i> 15分钟</span>
                                     <span class="mx-2">•</span>
-                                    <span>2025-10-06</span>
+                                    <span>2025-10-18</span>
                                 </div>
                             </div>
                         </a>
@@ -557,7 +564,7 @@
                         </a>
                     </div>
                     
-                    <div class="md:w-1/2 rounded-xl overflow-hidden shadow-lg">
+                    <div class="md:w-1/2 rounded-xl overflow-hidden shadow-lg h-64">
                         <!-- 修复志愿者团队封面图片 -->
                         <img src="https://pic1.imgdb.cn/item/68ef61b2c5157e1a8874a5f2.png" alt="志愿者在进行植树活动" class="w-full h-full object-cover">
                     </div>
