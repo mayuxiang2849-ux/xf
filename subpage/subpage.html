@@ -65,49 +65,49 @@
         }
     </style>
 </head>
+<body class="bg-white text-gray-800">
+    <!-- ========== 导航栏（统一风格） ========== -->
+    <header class="sticky top-0 z-50 bg-green-900 shadow-md">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2">
+                <!-- LOGO -->
+                <div class="h-12 w-12 rounded-full bg-white flex items-center justify-center">
+                    <i class="fa fa-tree text-green-800 text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-white font-bold">西丰县林业生态公益基金会</h1>
+                    <p class="text-green-300 text-xs">生态心声 · 万物有灵</p>
+                </div>
+            </a>
 
-<body class="font-sans bg-gray-50 text-stone-dark">
+            <!-- 桌面导航 -->
+            <nav class="hidden md:flex space-x-6 text-white">
+                <a href="../index.html" class="hover:text-green-300 transition-colors">首页</a>
+                <a href="../videos.html" class="hover:text-green-300 transition-colors">光影</a>
+                <a href="../articles.html" class="hover:text-green-300 transition-colors">文苑</a>
+                <a href="../audio.html" class="hover:text-green-300 transition-colors">声享</a>
+                <a href="../volunteer.html" class="hover:text-green-300 transition-colors">志愿者</a>
+                <a href="../data-sharing.html" class="text-green-300 font-medium border-b-2 border-green-300">数据共享</a>
+                <a href="../forest-rights.html" class="hover:text-green-300 transition-colors">林权流转</a>
+                <a href="../about.html" class="hover:text-green-300 transition-colors">关于我们</a>
+            </nav>
 
-<!-- ========== 导航栏（统一风格） ========== -->
-<header id="navbar" class="sticky top-0 z-50 bg-forest-dark/95 backdrop-blur shadow">
-    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="index.html" class="flex items-center space-x-2">
-            <!-- ✅ 圈白底 LOGO -->
-            <img src="https://s1.imagehub.cc/images/2025/10/13/f55001d78051544d0b97778ff3559bbb.png" alt="基金会LOGO圈白底" class="h-12">
-            <div>
-                <h1 class="text-white font-bold">西丰县林业生态公益基金会</h1>
-                <p class="text-forest-accent text-xs">生态心声 · 万物有灵</p>
-            </div>
-        </a>
+            <!-- 移动端菜单按钮 -->
+            <button id="mobile-menu-btn" class="md:hidden text-white text-2xl"><i class="fa fa-bars"></i></button>
+        </div>
 
-        <!-- 桌面导航 -->
-        <nav class="hidden md:flex space-x-6 text-white">
-            <a href="index.html" class="hover:text-forest-accent">首页</a>
-            <a href="videos.html" class="hover:text-forest-accent">光影</a>
-            <a href="articles.html" class="hover:text-forest-accent">文苑</a>
-            <a href="audio.html" class="text-forest-accent font-medium">声享</a>
-            <a href="volunteer.html" class="hover:text-forest-accent">志愿者</a>
-            <a href="data-sharing.html" class="hover:text-forest-accent">数据共享</a>
-            <a href="forest-rights.html" class="hover:text-forest-accent">林权流转</a>
-            <a href="about.html" class="hover:text-forest-accent">关于我们</a>
-        </nav>
-
-        <!-- 移动端菜单按钮 -->
-        <button id="mobileMenuBtn" class="md:hidden text-white text-2xl"><i class="fa fa-bars"></i></button>
-    </div>
-
-    <!-- 移动端导航 -->
-    <div id="mobileMenu" class="hidden md:hidden px-4 pb-4 text-white flex-col space-y-2">
-        <a href="index.html" class="hover:text-forest-accent">首页</a>
-        <a href="videos.html" class="hover:text-forest-accent">光影</a>
-        <a href="articles.html" class="hover:text-forest-accent">文苑</a>
-        <a href="audio.html" class="text-forest-accent font-medium">声享</a>
-        <a href="volunteer.html" class="hover:text-forest-accent">志愿者</a>
-        <a href="data-sharing.html" class="hover:text-forest-accent">数据共享</a>
-        <a href="forest-rights.html" class="hover:text-forest-accent">林权流转</a>
-        <a href="about.html" class="hover:text-forest-accent">关于我们</a>
-    </div>
-</header>
+        <!-- 移动端导航 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-green-800 px-4 pb-4 text-white flex flex-col space-y-2">
+            <a href="../index.html" class="py-2 hover:text-green-300 transition-colors">首页</a>
+            <a href="../videos.html" class="py-2 hover:text-green-300 transition-colors">光影</a>
+            <a href="../articles.html" class="py-2 hover:text-green-300 transition-colors">文苑</a>
+            <a href="../audio.html" class="py-2 hover:text-green-300 transition-colors">声享</a>
+            <a href="../volunteer.html" class="py-2 hover:text-green-300 transition-colors">志愿者</a>
+            <a href="../data-sharing.html" class="py-2 text-green-300 font-medium border-l-4 border-green-300 pl-2">数据共享</a>
+            <a href="../forest-rights.html" class="py-2 hover:text-green-300 transition-colors">林权流转</a>
+            <a href="../about.html" class="py-2 hover:text-green-300 transition-colors">关于我们</a>
+        </div>
+    </header>
 
     <!-- 页面内容区域 -->
     <main class="container mx-auto px-4 py-8 md:py-12">
