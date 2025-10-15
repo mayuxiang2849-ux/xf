@@ -50,6 +50,12 @@
             .data-card-hover {
                 @apply hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
             }
+            .chart-container {
+                position: relative;
+                height: 300px;
+                width: 100%;
+                margin: 1rem 0;
+            }
         }
     </style>
 </head>
@@ -104,6 +110,24 @@
             永久免费 · 无需注册 · 开放下载<br>
             为科研、教育、环保公益提供可靠数据支撑
         </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <div class="flex items-center bg-white/20 rounded-lg px-4 py-2">
+                <i class="fa fa-tree text-xl mr-2"></i>
+                <span>森林覆盖率 57.81%</span>
+            </div>
+            <div class="flex items-center bg-white/20 rounded-lg px-4 py-2">
+                <i class="fa fa-paw text-xl mr-2"></i>
+                <span>野生动物 113种</span>
+            </div>
+            <div class="flex items-center bg-white/20 rounded-lg px-4 py-2">
+                <i class="fa fa-tint text-xl mr-2"></i>
+                <span>年降水量 738mm</span>
+            </div>
+            <div class="flex items-center bg-white/20 rounded-lg px-4 py-2">
+                <i class="fa fa-thermometer-half text-xl mr-2"></i>
+                <span>年均气温 6.2℃</span>
+            </div>
+        </div>
     </div>
     <!-- 装饰线条 -->
     <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent z-20"></div>
@@ -182,7 +206,7 @@
                 <!-- 森林覆盖率图表 -->
                 <div class="bg-primary/10 rounded-xl p-6 card-border data-card-hover">
                     <h3 class="text-xl font-semibold mb-4 text-white">西丰县森林覆盖率变化 (2010-2025)</h3>
-                    <div class="h-80">
+                    <div class="chart-container">
                         <canvas id="forestCoverageChart"></canvas>
                     </div>
                     <div class="mt-4 flex justify-between items-center">
@@ -196,11 +220,42 @@
                 <!-- 树种分布数据 -->
                 <div class="bg-primary/10 rounded-xl p-6 card-border data-card-hover">
                     <h3 class="text-xl font-semibold mb-4 text-white">主要树种分布比例</h3>
-                    <div class="h-80">
+                    <div class="chart-container">
                         <canvas id="treeSpeciesChart"></canvas>
                     </div>
                     <div class="mt-4 flex justify-between items-center">
                         <span class="text-sm text-gray-400">数据年份：2024年</span>
+                        <a href="subpage/subpage.html#forest" class="text-accent hover:text-light text-sm font-medium transition">
+                            下载完整数据 <i class="fa fa-download ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 新增林木蓄积量统计图表 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                <!-- 林木蓄积量统计图表 -->
+                <div class="bg-primary/10 rounded-xl p-6 card-border data-card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-white">林木蓄积量统计 (2024年)</h3>
+                    <div class="chart-container">
+                        <canvas id="timberStockChart"></canvas>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-sm text-gray-400">数据年份：2024年</span>
+                        <a href="subpage/subpage.html#forest" class="text-accent hover:text-light text-sm font-medium transition">
+                            下载完整数据 <i class="fa fa-download ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 森林生态系统碳储量图表 -->
+                <div class="bg-primary/10 rounded-xl p-6 card-border data-card-hover">
+                    <h3 class="text-xl font-semibold mb-4 text-white">森林生态系统碳储量 (2023年)</h3>
+                    <div class="chart-container">
+                        <canvas id="carbonStockChart"></canvas>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-sm text-gray-400">数据年份：2023年</span>
                         <a href="subpage/subpage.html#forest" class="text-accent hover:text-light text-sm font-medium transition">
                             下载完整数据 <i class="fa fa-download ml-1"></i>
                         </a>
@@ -261,6 +316,20 @@
                 <a href="subpage/subpage.html#biodiversity" class="text-accent hover:text-light transition flex items-center font-medium">
                     查看全部 <i class="fa fa-arrow-right ml-2"></i>
                 </a>
+            </div>
+            
+            <!-- 新增陆生野生动物种类图表 -->
+            <div class="bg-primary/10 rounded-xl p-6 card-border data-card-hover mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-white">陆生野生动物种类分布 (2024年)</h3>
+                <div class="chart-container">
+                    <canvas id="wildlifeChart"></canvas>
+                </div>
+                <div class="mt-4 flex justify-between items-center">
+                    <span class="text-sm text-gray-400">数据年份：2024年</span>
+                    <a href="subpage/subpage.html#biodiversity" class="text-accent hover:text-light text-sm font-medium transition">
+                        下载完整数据 <i class="fa fa-download ml-1"></i>
+                    </a>
+                </div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -504,20 +573,23 @@ document.addEventListener('DOMContentLoaded', function() {
     Chart.defaults.backgroundColor = 'rgba(76, 175, 80, 0.1)';
     Chart.defaults.borderColor = 'rgba(76, 175, 80, 0.3)';
     
-    // 森林覆盖率图表
+    // 1. 森林覆盖率图表
     const forestCtx = document.getElementById('forestCoverageChart').getContext('2d');
     new Chart(forestCtx, {
         type: 'line',
         data: {
-            labels: ['2010', '2012', '2014', '2016', '2018', '2020', '2022', '2024'],
+            labels: ['2010', '2012', '2013', '2015', '2016', '2018', '2019', '2020', '2022', '2023', '2024', '2025'],
             datasets: [{
-                label: '森林覆盖率 (%)',
-                data: [58.2, 59.5, 60.3, 60.7, 60.1, 60.5, 60.8, 60.2],
+                label: '森林覆盖率(%)',
+                data: [52.3, 60.47, 60.47, 61, 61, 61, 61, 60.47, 61, 57.81, 57.81, 58.1],
+                borderColor: '#4caf50',
                 backgroundColor: 'rgba(76, 175, 80, 0.1)',
-                borderColor: 'rgba(76, 175, 80, 1)',
                 borderWidth: 2,
+                fill: true,
                 tension: 0.3,
-                fill: true
+                pointBackgroundColor: '#4caf50',
+                pointRadius: 4,
+                pointHoverRadius: 6
             }]
         },
         options: {
@@ -526,23 +598,37 @@ document.addEventListener('DOMContentLoaded', function() {
             plugins: {
                 legend: {
                     position: 'top',
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                title: {
+                    display: true,
+                    text: '西丰县森林覆盖率变化趋势(2010-2025)',
+                    color: '#8bc34a'
                 }
             },
             scales: {
                 y: {
-                    beginAtZero: false,
-                    min: 55,
-                    max: 65,
+                    min: 50,
+                    max: 62,
+                    ticks: {
+                        stepSize: 2
+                    },
+                    title: {
+                        display: true,
+                        text: '覆盖率(%)'
+                    },
                     grid: {
                         color: 'rgba(255, 255, 255, 0.05)'
-                    },
-                    ticks: {
-                        callback: function(value) {
-                            return value + '%';
-                        }
                     }
                 },
                 x: {
+                    title: {
+                        display: true,
+                        text: '年份'
+                    },
                     grid: {
                         color: 'rgba(255, 255, 255, 0.05)'
                     }
@@ -551,21 +637,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // 树种分布图表
+    // 2. 树种分布图表
     const speciesCtx = document.getElementById('treeSpeciesChart').getContext('2d');
     new Chart(speciesCtx, {
         type: 'doughnut',
         data: {
-            labels: ['落叶松', '红松', '杨树', '桦树', '柞树', '其他'],
+            labels: ['柞树', '落叶松', '白桦', '其他阔叶树'],
             datasets: [{
-                data: [35, 20, 15, 12, 10, 8],
+                data: [42, 28, 15, 15],
                 backgroundColor: [
                     'rgba(26, 86, 50, 0.8)',
                     'rgba(46, 125, 50, 0.8)',
                     'rgba(76, 175, 80, 0.8)',
-                    'rgba(129, 199, 132, 0.8)',
-                    'rgba(174, 213, 129, 0.8)',
-                    'rgba(230, 230, 230, 0.8)'
+                    'rgba(129, 199, 132, 0.8)'
                 ],
                 borderColor: 'rgba(255, 255, 255, 0.3)',
                 borderWidth: 2
@@ -577,6 +661,183 @@ document.addEventListener('DOMContentLoaded', function() {
             plugins: {
                 legend: {
                     position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: '西丰县主要树种分布比例(2024年)',
+                    color: '#8bc34a'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.label + ': ' + context.raw + '%';
+                        }
+                    }
+                }
+            },
+            cutout: '60%'
+        }
+    });
+    
+    // 3. 林木蓄积量统计图表
+    const timberStockCtx = document.getElementById('timberStockChart').getContext('2d');
+    new Chart(timberStockCtx, {
+        type: 'bar',
+        data: {
+            labels: ['国有林场', '集体林区', '人工林'],
+            datasets: [{
+                label: '蓄积量(万立方米)',
+                data: [92, 78, 16],
+                backgroundColor: '#1a5632',
+                borderColor: '#0a2e1a',
+                borderWidth: 1
+            }, {
+                label: '年生长量(万立方米)',
+                data: [4.1, 3.6, 0.6],
+                backgroundColor: '#2e8b57',
+                borderColor: '#1a5632',
+                borderWidth: 1
+            }, {
+                label: '年消耗量(万立方米)',
+                data: [1.5, 1.3, 0.3],
+                backgroundColor: '#8bc34a',
+                borderColor: '#4caf50',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: '西丰县林木蓄积量统计(2024年)',
+                    color: '#8bc34a'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: '数量(万立方米)'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: '林区类型'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)'
+                    }
+                }
+            }
+        }
+    });
+    
+    // 4. 陆生野生动物种类图表
+    const wildlifeCtx = document.getElementById('wildlifeChart').getContext('2d');
+    new Chart(wildlifeCtx, {
+        type: 'pie',
+        data: {
+            labels: ['兽类', '禽类', '爬行类'],
+            datasets: [{
+                data: [28, 65, 20],
+                backgroundColor: [
+                    'rgba(26, 86, 50, 0.8)',
+                    'rgba(46, 125, 50, 0.8)',
+                    'rgba(76, 175, 80, 0.8)'
+                ],
+                borderColor: 'rgba(255, 255, 255, 0.3)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: '西丰县陆生野生动物种类分布(2024年)',
+                    color: '#8bc34a'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.label || '';
+                            const value = context.raw || 0;
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = Math.round((value / total) * 100);
+                            return `${label}: ${value}种 (${percentage}%)`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+    
+    // 5. 森林生态系统碳储量图表
+    const carbonStockCtx = document.getElementById('carbonStockChart').getContext('2d');
+    new Chart(carbonStockCtx, {
+        type: 'bar',
+        data: {
+            labels: ['针叶林', '阔叶林', '混交林'],
+            datasets: [{
+                label: '碳储量(万吨)',
+                data: [48.6, 68.9, 10.1],
+                backgroundColor: '#1a5632',
+                borderColor: '#0a2e1a',
+                borderWidth: 1
+            }, {
+                label: '碳密度(吨/亩)',
+                data: [4.8, 5.3, 4.9],
+                backgroundColor: '#4caf50',
+                borderColor: '#2e8b57',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: '西丰县森林生态系统碳储量(2023年)',
+                    color: '#8bc34a'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: '数量'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: '森林类型'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)'
+                    }
                 }
             }
         }
