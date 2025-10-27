@@ -74,8 +74,10 @@
                     linear-gradient(90deg, rgba(76, 175, 80, 0.05) 1px, transparent 1px);
                 background-size: 20px 20px;
             }
+            /* 更新卡片边框样式 - 添加翠绿色细描边 */
             .card-border {
-                border: 1px solid rgba(0, 0, 0, 0.08);
+                border: 1px solid rgba(76, 175, 80, 0.3);
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             }
             .leaf-pattern {
                 background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234caf50' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
@@ -151,13 +153,14 @@
         </div>
     </header>
 
-    <!-- 主视觉区 - 保持原有颜色不变 -->
+    <!-- 主视觉区 - 移除绿色滤镜 -->
     <section class="relative h-screen overflow-hidden">
         <div id="carousel" class="h-full">
             <!-- 轮播图片1 -->
             <div class="carousel-item absolute inset-0 opacity-100 transition-opacity duration-1000">
                 <img src="https://picsum.photos/id/137/1920/1080" alt="茂密的森林景观，阳光透过树叶洒下" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-forest-dark/40"></div>
+                <!-- 移除绿色滤镜，改为黑色透明层 -->
+                <div class="absolute inset-0 bg-black/20"></div>
                 <div class="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-8">
                     <div>
                         <h2 class="text-white text-[clamp(2rem,5vw,4rem)] font-bold mb-6 text-shadow">回归，是未来的方向</h2>
@@ -169,7 +172,8 @@
             <!-- 轮播图片2 -->
             <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-1000">
                 <img src="https://picsum.photos/id/129/1920/1080" alt="清澈的溪流穿过森林，周围环绕着茂密的植被" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-forest-dark/40"></div>
+                <!-- 移除绿色滤镜，改为黑色透明层 -->
+                <div class="absolute inset-0 bg-black/20"></div>
                 <div class="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-8">
                     <div>
                         <h2 class="text-white text-[clamp(2rem,5vw,4rem)] font-bold mb-6 text-shadow">我们，是生命的编织者</h2>
@@ -181,7 +185,8 @@
             <!-- 轮播图片3 -->
             <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-1000">
                 <img src="https://picsum.photos/id/15/1920/1080" alt="晨雾中的森林，阳光穿透雾气形成光柱" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-forest-dark/40"></div>
+                <!-- 移除绿色滤镜，改为黑色透明层 -->
+                <div class="absolute inset-0 bg-black/20"></div>
                 <div class="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-8">
                     <div>
                         <h2 class="text-white text-[clamp(2rem,5vw,4rem)] font-bold mb-6 text-shadow">万物有灵，生生不息</h2>
@@ -218,7 +223,7 @@
             <!-- 内容分类入口 - 六个板块 -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 <!-- 光影 -->
-                <a href="videos.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border shadow-md hover:shadow-lg">
+                <a href="videos.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://picsum.photos/id/29/800/600" alt="茂密森林的航拍图，展示生态系统的广阔" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-custom"></div>
                     <div class="relative text-center px-4">
@@ -229,7 +234,7 @@
                 </a>
                 
                 <!-- 文苑 -->
-                <a href="articles.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border shadow-md hover:shadow-lg">
+                <a href="articles.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://picsum.photos/id/177/800/600" alt="阳光透过树叶形成的光斑，落在森林地面的苔藓上" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-custom"></div>
                     <div class="relative text-center px-4">
@@ -240,7 +245,7 @@
                 </a>
                 
                 <!-- 声享 -->
-                <a href="audio.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border shadow-md hover:shadow-lg">
+                <a href="audio.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://picsum.photos/id/110/800/600" alt="清晨的森林，有薄雾和鸟鸣" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-custom"></div>
                     <div class="relative text-center px-4">
@@ -251,7 +256,7 @@
                 </a>
                 
                 <!-- 志愿者 - 更新图片 -->
-                <a href="volunteer.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border shadow-md hover:shadow-lg">
+                <a href="volunteer.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://pic1.imgdb.cn/item/68ef5fffc5157e1a8874a09c.png" alt="志愿者植树活动" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-custom"></div>
                     <div class="relative text-center px-4">
@@ -262,7 +267,7 @@
                 </a>
                 
                 <!-- 数据共享 - 更新图片 -->
-                <a href="data-sharing.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border shadow-md hover:shadow-lg">
+                <a href="data-sharing.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://pic1.imgdb.cn/item/68ef7a8dc5157e1a887529d9.png" alt="数据共享平台" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-custom"></div>
                     <div class="relative text-center px-4">
@@ -273,7 +278,7 @@
                 </a>
                 
                 <!-- 林权流转 - 更新图片 -->
-                <a href="forest-rights.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border shadow-md hover:shadow-lg">
+                <a href="forest-rights.html" class="group relative rounded-xl overflow-hidden h-64 flex items-center justify-center transition-custom hover:-translate-y-2 card-border">
                     <img src="https://pic1.imgdb.cn/item/68efd6b5c5157e1a887603fa.png" alt="林权流转服务" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-110">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-custom"></div>
                     <div class="relative text-center px-4">
@@ -377,7 +382,7 @@
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- 重点文章 (第一张图片) -->
-                    <a href="articles/article1.html" class="relative rounded-xl overflow-hidden h-96 group card-border shadow-md hover:shadow-lg">
+                    <a href="articles/article1.html" class="relative rounded-xl overflow-hidden h-96 group card-border">
                         <img src="https://pic1.imgdb.cn/item/68ef9a5cc5157e1a88755b3d.png" alt="森林与阳光的景观图" class="absolute inset-0 w-full h-full object-cover transition-custom group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 right-0 p-8">
@@ -520,7 +525,7 @@
                 </div>
             </section>
 
-            <!-- 志愿者报名板块 -->
+            <!-- 志愿者报名板块 - 图片放大 -->
             <section class="mb-20 bg-gradient-to-br from-accent/5 to-accent/10 rounded-2xl p-8 md:p-12 card-border shadow-md">
                 <div class="flex flex-col md:flex-row gap-8 items-center">
                     <div class="md:w-1/2">
@@ -564,7 +569,8 @@
                         </a>
                     </div>
                     
-                    <div class="md:w-1/2 rounded-xl overflow-hidden shadow-lg h-64">
+                    <!-- 放大图片容器高度 -->
+                    <div class="md:w-1/2 rounded-xl overflow-hidden shadow-lg h-96">
                         <!-- 修复志愿者团队封面图片 -->
                         <img src="https://pic1.imgdb.cn/item/68ef61b2c5157e1a8874a5f2.png" alt="志愿者在进行植树活动" class="w-full h-full object-cover">
                     </div>
@@ -578,7 +584,8 @@
                         <h2 class="text-3xl font-bold text-gray-800 mb-2">生态数据公益共享平台</h2>
                         <p class="text-gray-600 text-lg">我们坚信<strong class="text-accent">数据是公共资源</strong>，本平台永久<strong class="text-accent">免费向全民、公益组织、科研机构开放</strong>，助力科学决策、守护生物多样性、推动公益环保教育。</p>
                     </div>
-                    <a href="data-sharing.html" class="text-accent hover:text-secondary transition-custom flex items-center font-medium">
+                    <!-- 突出进入数据共享平台按钮 -->
+                    <a href="data-sharing.html" class="bg-accent hover:bg-secondary text-white font-medium py-2 px-6 rounded-lg transition-custom shadow-md hover:shadow-lg flex items-center">
                         进入公益数据共享平台 <i class="fa fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -683,10 +690,12 @@
                         </div>
                         
                         <div class="flex flex-wrap gap-4">
-                            <a href="forest-rights.html#policy" class="bg-accent hover:bg-secondary text-white font-medium py-2 px-6 rounded-lg transition-custom">
+                            <!-- 弱化政策法规参考按钮 -->
+                            <a href="forest-rights.html#policy" class="bg-white border border-accent/50 text-accent/70 hover:bg-accent/5 font-medium py-2 px-6 rounded-lg transition-custom">
                                 政策法规参考
                             </a>
-                            <a href="forest-rights.html#projects" class="bg-white border border-accent text-accent hover:bg-accent/5 font-medium py-2 px-6 rounded-lg transition-custom">
+                            <!-- 突出林权交易信息栏按钮 -->
+                            <a href="forest-rights.html#projects" class="bg-accent hover:bg-secondary text-white font-medium py-2 px-6 rounded-lg transition-custom shadow-md hover:shadow-lg">
                                 林权交易信息栏
                             </a>
                             <a href="forest-rights.html#process" class="bg-white border border-accent text-accent hover:bg-accent/5 font-medium py-2 px-6 rounded-lg transition-custom">
@@ -698,7 +707,7 @@
                     <div class="relative h-64 lg:h-auto">
                         <!-- 修复林地流转封面图片 -->
                         <img src="https://pic1.imgdb.cn/item/68ef7f43c5157e1a88752b42.png" alt="林地风光与林权证书示意图" class="absolute inset-0 w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-r from-white/20 lg:from-transparent to-transparent lg:to-white/40"></div>
+                        <!-- 移除渐变遮罩 -->
                     </div>
                 </div>
             </section>
